@@ -43,6 +43,7 @@ public final class VKEXTExtendedDynamicState3 {
     public static final int VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV = 1000455030;
     public static final int VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV = 1000455031;
     public static final int VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV = 1000455032;
+    private VKEXTExtendedDynamicState3() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetDepthClampEnableEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetPolygonModeEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
@@ -78,11 +79,9 @@ public final class VKEXTExtendedDynamicState3 {
         private Handles() {}
     }
 
-    private VKEXTExtendedDynamicState3() {}
-
     /// Invokes `vkCmdSetDepthClampEnableEXT`.
     /// ```
-    /// void vkCmdSetDepthClampEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthClampEnable);
+    /// void vkCmdSetDepthClampEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable);
     /// ```
     public static void vkCmdSetDepthClampEnableEXT(@NonNull VkCommandBuffer commandBuffer, int depthClampEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthClampEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthClampEnableEXT");
@@ -93,7 +92,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetPolygonModeEXT`.
     /// ```
-    /// void vkCmdSetPolygonModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPolygonMode polygonMode);
+    /// void vkCmdSetPolygonModeEXT(VkCommandBuffer commandBuffer, VkPolygonMode polygonMode);
     /// ```
     public static void vkCmdSetPolygonModeEXT(@NonNull VkCommandBuffer commandBuffer, int polygonMode) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPolygonModeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPolygonModeEXT");
@@ -104,7 +103,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetRasterizationSamplesEXT`.
     /// ```
-    /// void vkCmdSetRasterizationSamplesEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkSampleCountFlagBits rasterizationSamples);
+    /// void vkCmdSetRasterizationSamplesEXT(VkCommandBuffer commandBuffer, VkSampleCountFlagBits rasterizationSamples);
     /// ```
     public static void vkCmdSetRasterizationSamplesEXT(@NonNull VkCommandBuffer commandBuffer, int rasterizationSamples) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRasterizationSamplesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRasterizationSamplesEXT");
@@ -115,7 +114,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetSampleMaskEXT`.
     /// ```
-    /// void vkCmdSetSampleMaskEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkSampleCountFlagBits samples, const VkSampleMask* pSampleMask);
+    /// void vkCmdSetSampleMaskEXT(VkCommandBuffer commandBuffer, VkSampleCountFlagBits samples, const VkSampleMask* pSampleMask);
     /// ```
     public static void vkCmdSetSampleMaskEXT(@NonNull VkCommandBuffer commandBuffer, int samples, @NonNull MemorySegment pSampleMask) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetSampleMaskEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetSampleMaskEXT");
@@ -126,7 +125,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetAlphaToCoverageEnableEXT`.
     /// ```
-    /// void vkCmdSetAlphaToCoverageEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 alphaToCoverageEnable);
+    /// void vkCmdSetAlphaToCoverageEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToCoverageEnable);
     /// ```
     public static void vkCmdSetAlphaToCoverageEnableEXT(@NonNull VkCommandBuffer commandBuffer, int alphaToCoverageEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetAlphaToCoverageEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetAlphaToCoverageEnableEXT");
@@ -137,7 +136,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetAlphaToOneEnableEXT`.
     /// ```
-    /// void vkCmdSetAlphaToOneEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 alphaToOneEnable);
+    /// void vkCmdSetAlphaToOneEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToOneEnable);
     /// ```
     public static void vkCmdSetAlphaToOneEnableEXT(@NonNull VkCommandBuffer commandBuffer, int alphaToOneEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetAlphaToOneEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetAlphaToOneEnableEXT");
@@ -148,7 +147,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetLogicOpEnableEXT`.
     /// ```
-    /// void vkCmdSetLogicOpEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 logicOpEnable);
+    /// void vkCmdSetLogicOpEnableEXT(VkCommandBuffer commandBuffer, VkBool32 logicOpEnable);
     /// ```
     public static void vkCmdSetLogicOpEnableEXT(@NonNull VkCommandBuffer commandBuffer, int logicOpEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLogicOpEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLogicOpEnableEXT");
@@ -159,7 +158,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetColorBlendEnableEXT`.
     /// ```
-    /// void vkCmdSetColorBlendEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkBool32* pColorBlendEnables);
+    /// void vkCmdSetColorBlendEnableEXT(VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkBool32* pColorBlendEnables);
     /// ```
     public static void vkCmdSetColorBlendEnableEXT(@NonNull VkCommandBuffer commandBuffer, int firstAttachment, int attachmentCount, @NonNull MemorySegment pColorBlendEnables) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorBlendEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetColorBlendEnableEXT");
@@ -170,7 +169,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetColorBlendEquationEXT`.
     /// ```
-    /// void vkCmdSetColorBlendEquationEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorBlendEquationEXT* pColorBlendEquations);
+    /// void vkCmdSetColorBlendEquationEXT(VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorBlendEquationEXT* pColorBlendEquations);
     /// ```
     public static void vkCmdSetColorBlendEquationEXT(@NonNull VkCommandBuffer commandBuffer, int firstAttachment, int attachmentCount, @NonNull MemorySegment pColorBlendEquations) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorBlendEquationEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetColorBlendEquationEXT");
@@ -181,7 +180,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetColorWriteMaskEXT`.
     /// ```
-    /// void vkCmdSetColorWriteMaskEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorComponentFlags* pColorWriteMasks);
+    /// void vkCmdSetColorWriteMaskEXT(VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorComponentFlags* pColorWriteMasks);
     /// ```
     public static void vkCmdSetColorWriteMaskEXT(@NonNull VkCommandBuffer commandBuffer, int firstAttachment, int attachmentCount, @NonNull MemorySegment pColorWriteMasks) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorWriteMaskEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetColorWriteMaskEXT");
@@ -192,7 +191,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetTessellationDomainOriginEXT`.
     /// ```
-    /// void vkCmdSetTessellationDomainOriginEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkTessellationDomainOrigin domainOrigin);
+    /// void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin);
     /// ```
     public static void vkCmdSetTessellationDomainOriginEXT(@NonNull VkCommandBuffer commandBuffer, int domainOrigin) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetTessellationDomainOriginEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetTessellationDomainOriginEXT");
@@ -203,7 +202,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetRasterizationStreamEXT`.
     /// ```
-    /// void vkCmdSetRasterizationStreamEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t rasterizationStream);
+    /// void vkCmdSetRasterizationStreamEXT(VkCommandBuffer commandBuffer, uint32_t rasterizationStream);
     /// ```
     public static void vkCmdSetRasterizationStreamEXT(@NonNull VkCommandBuffer commandBuffer, int rasterizationStream) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRasterizationStreamEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRasterizationStreamEXT");
@@ -214,7 +213,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetConservativeRasterizationModeEXT`.
     /// ```
-    /// void vkCmdSetConservativeRasterizationModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkConservativeRasterizationModeEXT conservativeRasterizationMode);
+    /// void vkCmdSetConservativeRasterizationModeEXT(VkCommandBuffer commandBuffer, VkConservativeRasterizationModeEXT conservativeRasterizationMode);
     /// ```
     public static void vkCmdSetConservativeRasterizationModeEXT(@NonNull VkCommandBuffer commandBuffer, int conservativeRasterizationMode) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetConservativeRasterizationModeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetConservativeRasterizationModeEXT");
@@ -225,7 +224,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetExtraPrimitiveOverestimationSizeEXT`.
     /// ```
-    /// void vkCmdSetExtraPrimitiveOverestimationSizeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize);
+    /// void vkCmdSetExtraPrimitiveOverestimationSizeEXT(VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize);
     /// ```
     public static void vkCmdSetExtraPrimitiveOverestimationSizeEXT(@NonNull VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetExtraPrimitiveOverestimationSizeEXT");
@@ -236,7 +235,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetDepthClipEnableEXT`.
     /// ```
-    /// void vkCmdSetDepthClipEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthClipEnable);
+    /// void vkCmdSetDepthClipEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClipEnable);
     /// ```
     public static void vkCmdSetDepthClipEnableEXT(@NonNull VkCommandBuffer commandBuffer, int depthClipEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthClipEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthClipEnableEXT");
@@ -247,7 +246,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetSampleLocationsEnableEXT`.
     /// ```
-    /// void vkCmdSetSampleLocationsEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 sampleLocationsEnable);
+    /// void vkCmdSetSampleLocationsEnableEXT(VkCommandBuffer commandBuffer, VkBool32 sampleLocationsEnable);
     /// ```
     public static void vkCmdSetSampleLocationsEnableEXT(@NonNull VkCommandBuffer commandBuffer, int sampleLocationsEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetSampleLocationsEnableEXT");
@@ -258,7 +257,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetColorBlendAdvancedEXT`.
     /// ```
-    /// void vkCmdSetColorBlendAdvancedEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorBlendAdvancedEXT* pColorBlendAdvanced);
+    /// void vkCmdSetColorBlendAdvancedEXT(VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorBlendAdvancedEXT* pColorBlendAdvanced);
     /// ```
     public static void vkCmdSetColorBlendAdvancedEXT(@NonNull VkCommandBuffer commandBuffer, int firstAttachment, int attachmentCount, @NonNull MemorySegment pColorBlendAdvanced) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorBlendAdvancedEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetColorBlendAdvancedEXT");
@@ -269,7 +268,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetProvokingVertexModeEXT`.
     /// ```
-    /// void vkCmdSetProvokingVertexModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkProvokingVertexModeEXT provokingVertexMode);
+    /// void vkCmdSetProvokingVertexModeEXT(VkCommandBuffer commandBuffer, VkProvokingVertexModeEXT provokingVertexMode);
     /// ```
     public static void vkCmdSetProvokingVertexModeEXT(@NonNull VkCommandBuffer commandBuffer, int provokingVertexMode) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetProvokingVertexModeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetProvokingVertexModeEXT");
@@ -280,7 +279,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetLineRasterizationModeEXT`.
     /// ```
-    /// void vkCmdSetLineRasterizationModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((int) VkLineRasterizationMode) VkLineRasterizationModeEXT lineRasterizationMode);
+    /// void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationModeEXT lineRasterizationMode);
     /// ```
     public static void vkCmdSetLineRasterizationModeEXT(@NonNull VkCommandBuffer commandBuffer, int lineRasterizationMode) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineRasterizationModeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLineRasterizationModeEXT");
@@ -291,7 +290,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetLineStippleEnableEXT`.
     /// ```
-    /// void vkCmdSetLineStippleEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 stippledLineEnable);
+    /// void vkCmdSetLineStippleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stippledLineEnable);
     /// ```
     public static void vkCmdSetLineStippleEnableEXT(@NonNull VkCommandBuffer commandBuffer, int stippledLineEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLineStippleEnableEXT");
@@ -302,7 +301,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetDepthClipNegativeOneToOneEXT`.
     /// ```
-    /// void vkCmdSetDepthClipNegativeOneToOneEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 negativeOneToOne);
+    /// void vkCmdSetDepthClipNegativeOneToOneEXT(VkCommandBuffer commandBuffer, VkBool32 negativeOneToOne);
     /// ```
     public static void vkCmdSetDepthClipNegativeOneToOneEXT(@NonNull VkCommandBuffer commandBuffer, int negativeOneToOne) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthClipNegativeOneToOneEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthClipNegativeOneToOneEXT");
@@ -313,7 +312,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetViewportWScalingEnableNV`.
     /// ```
-    /// void vkCmdSetViewportWScalingEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 viewportWScalingEnable);
+    /// void vkCmdSetViewportWScalingEnableNV(VkCommandBuffer commandBuffer, VkBool32 viewportWScalingEnable);
     /// ```
     public static void vkCmdSetViewportWScalingEnableNV(@NonNull VkCommandBuffer commandBuffer, int viewportWScalingEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingEnableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingEnableNV");
@@ -324,7 +323,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetViewportSwizzleNV`.
     /// ```
-    /// void vkCmdSetViewportSwizzleNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkViewportSwizzleNV* pViewportSwizzles);
+    /// void vkCmdSetViewportSwizzleNV(VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkViewportSwizzleNV* pViewportSwizzles);
     /// ```
     public static void vkCmdSetViewportSwizzleNV(@NonNull VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, @NonNull MemorySegment pViewportSwizzles) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportSwizzleNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportSwizzleNV");
@@ -335,7 +334,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetCoverageToColorEnableNV`.
     /// ```
-    /// void vkCmdSetCoverageToColorEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 coverageToColorEnable);
+    /// void vkCmdSetCoverageToColorEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageToColorEnable);
     /// ```
     public static void vkCmdSetCoverageToColorEnableNV(@NonNull VkCommandBuffer commandBuffer, int coverageToColorEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageToColorEnableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoverageToColorEnableNV");
@@ -346,7 +345,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetCoverageToColorLocationNV`.
     /// ```
-    /// void vkCmdSetCoverageToColorLocationNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t coverageToColorLocation);
+    /// void vkCmdSetCoverageToColorLocationNV(VkCommandBuffer commandBuffer, uint32_t coverageToColorLocation);
     /// ```
     public static void vkCmdSetCoverageToColorLocationNV(@NonNull VkCommandBuffer commandBuffer, int coverageToColorLocation) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageToColorLocationNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoverageToColorLocationNV");
@@ -357,7 +356,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetCoverageModulationModeNV`.
     /// ```
-    /// void vkCmdSetCoverageModulationModeNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCoverageModulationModeNV coverageModulationMode);
+    /// void vkCmdSetCoverageModulationModeNV(VkCommandBuffer commandBuffer, VkCoverageModulationModeNV coverageModulationMode);
     /// ```
     public static void vkCmdSetCoverageModulationModeNV(@NonNull VkCommandBuffer commandBuffer, int coverageModulationMode) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationModeNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationModeNV");
@@ -368,7 +367,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetCoverageModulationTableEnableNV`.
     /// ```
-    /// void vkCmdSetCoverageModulationTableEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 coverageModulationTableEnable);
+    /// void vkCmdSetCoverageModulationTableEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageModulationTableEnable);
     /// ```
     public static void vkCmdSetCoverageModulationTableEnableNV(@NonNull VkCommandBuffer commandBuffer, int coverageModulationTableEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationTableEnableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationTableEnableNV");
@@ -379,7 +378,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetCoverageModulationTableNV`.
     /// ```
-    /// void vkCmdSetCoverageModulationTableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t coverageModulationTableCount, const float* pCoverageModulationTable);
+    /// void vkCmdSetCoverageModulationTableNV(VkCommandBuffer commandBuffer, uint32_t coverageModulationTableCount, const float* pCoverageModulationTable);
     /// ```
     public static void vkCmdSetCoverageModulationTableNV(@NonNull VkCommandBuffer commandBuffer, int coverageModulationTableCount, @NonNull MemorySegment pCoverageModulationTable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationTableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationTableNV");
@@ -390,7 +389,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetShadingRateImageEnableNV`.
     /// ```
-    /// void vkCmdSetShadingRateImageEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 shadingRateImageEnable);
+    /// void vkCmdSetShadingRateImageEnableNV(VkCommandBuffer commandBuffer, VkBool32 shadingRateImageEnable);
     /// ```
     public static void vkCmdSetShadingRateImageEnableNV(@NonNull VkCommandBuffer commandBuffer, int shadingRateImageEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetShadingRateImageEnableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetShadingRateImageEnableNV");
@@ -401,7 +400,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetRepresentativeFragmentTestEnableNV`.
     /// ```
-    /// void vkCmdSetRepresentativeFragmentTestEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 representativeFragmentTestEnable);
+    /// void vkCmdSetRepresentativeFragmentTestEnableNV(VkCommandBuffer commandBuffer, VkBool32 representativeFragmentTestEnable);
     /// ```
     public static void vkCmdSetRepresentativeFragmentTestEnableNV(@NonNull VkCommandBuffer commandBuffer, int representativeFragmentTestEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRepresentativeFragmentTestEnableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRepresentativeFragmentTestEnableNV");
@@ -412,7 +411,7 @@ public final class VKEXTExtendedDynamicState3 {
 
     /// Invokes `vkCmdSetCoverageReductionModeNV`.
     /// ```
-    /// void vkCmdSetCoverageReductionModeNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCoverageReductionModeNV coverageReductionMode);
+    /// void vkCmdSetCoverageReductionModeNV(VkCommandBuffer commandBuffer, VkCoverageReductionModeNV coverageReductionMode);
     /// ```
     public static void vkCmdSetCoverageReductionModeNV(@NonNull VkCommandBuffer commandBuffer, int coverageReductionMode) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageReductionModeNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoverageReductionModeNV");

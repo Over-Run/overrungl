@@ -14,16 +14,15 @@ public final class VKKHRMaintenance3 {
     public static final String VK_KHR_MAINTENANCE3_EXTENSION_NAME = "VK_KHR_maintenance3";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES_KHR = 1000168000;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT_KHR = 1000168001;
+    private VKKHRMaintenance3() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetDescriptorSetLayoutSupportKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRMaintenance3() {}
-
     /// Invokes `vkGetDescriptorSetLayoutSupportKHR`.
     /// ```
-    /// void vkGetDescriptorSetLayoutSupportKHR((struct VkDevice*) VkDevice device, const VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport);
+    /// void vkGetDescriptorSetLayoutSupportKHR(VkDevice device, const VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport);
     /// ```
     public static void vkGetDescriptorSetLayoutSupportKHR(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pSupport) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSupportKHR");

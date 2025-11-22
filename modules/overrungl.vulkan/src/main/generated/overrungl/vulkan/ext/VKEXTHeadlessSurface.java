@@ -11,16 +11,15 @@ public final class VKEXTHeadlessSurface {
     public static final int VK_EXT_HEADLESS_SURFACE_SPEC_VERSION = 1;
     public static final String VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface";
     public static final int VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT = 1000256000;
+    private VKEXTHeadlessSurface() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateHeadlessSurfaceEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTHeadlessSurface() {}
-
     /// Invokes `vkCreateHeadlessSurfaceEXT`.
     /// ```
-    /// (int) VkResult vkCreateHeadlessSurfaceEXT((struct VkInstance*) VkInstance instance, const VkHeadlessSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// VkResult vkCreateHeadlessSurfaceEXT(VkInstance instance, const VkHeadlessSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateHeadlessSurfaceEXT(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateHeadlessSurfaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateHeadlessSurfaceEXT");

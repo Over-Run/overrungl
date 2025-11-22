@@ -73,17 +73,16 @@ public final class VKKHRSamplerYcbcrConversion {
     public static final int VK_CHROMA_LOCATION_MIDPOINT_KHR = 1;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT = 1000156000;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR_EXT = 1000156000;
+    private VKKHRSamplerYcbcrConversion() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateSamplerYcbcrConversionKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroySamplerYcbcrConversionKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRSamplerYcbcrConversion() {}
-
     /// Invokes `vkCreateSamplerYcbcrConversionKHR`.
     /// ```
-    /// (int) VkResult vkCreateSamplerYcbcrConversionKHR((struct VkDevice*) VkDevice device, const VkSamplerYcbcrConversionCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion);
+    /// VkResult vkCreateSamplerYcbcrConversionKHR(VkDevice device, const VkSamplerYcbcrConversionCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion);
     /// ```
     public static int vkCreateSamplerYcbcrConversionKHR(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pYcbcrConversion) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversionKHR");
@@ -94,7 +93,7 @@ public final class VKKHRSamplerYcbcrConversion {
 
     /// Invokes `vkDestroySamplerYcbcrConversionKHR`.
     /// ```
-    /// void vkDestroySamplerYcbcrConversionKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSamplerYcbcrConversion ycbcrConversion, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroySamplerYcbcrConversionKHR(@NonNull VkDevice device, long ycbcrConversion, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversionKHR");

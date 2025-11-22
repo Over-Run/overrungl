@@ -22,4 +22,4 @@ dependencies {
     implementation(project(":generators"))
 }
 
-registerGenerateTask("overrungl.vulkan.VulkanGeneratorKt", ":vulkan")
+registerGenerateTask("overrungl.vulkan.VulkanGenerator2Kt", ":vulkan")

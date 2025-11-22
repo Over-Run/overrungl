@@ -8,6 +8,8 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_NV_fragment_shading_rate_enums` - device extension
 public final class VKNVFragmentShadingRateEnums {
+    public static final int VK_NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION = 1;
+    public static final String VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums";
     public static final int VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV = 0;
     public static final int VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV = 1;
     public static final int VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV = 4;
@@ -22,21 +24,18 @@ public final class VKNVFragmentShadingRateEnums {
     public static final int VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV = 15;
     public static final int VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV = 0;
     public static final int VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV = 1;
-    public static final int VK_NV_FRAGMENT_SHADING_RATE_ENUMS_SPEC_VERSION = 1;
-    public static final String VK_NV_FRAGMENT_SHADING_RATE_ENUMS_EXTENSION_NAME = "VK_NV_fragment_shading_rate_enums";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV = 1000326000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV = 1000326001;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV = 1000326002;
+    private VKNVFragmentShadingRateEnums() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetFragmentShadingRateEnumNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKNVFragmentShadingRateEnums() {}
-
     /// Invokes `vkCmdSetFragmentShadingRateEnumNV`.
     /// ```
-    /// void vkCmdSetFragmentShadingRateEnumNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkFragmentShadingRateNV shadingRate, (int) const VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
+    /// void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, const VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
     /// ```
     public static void vkCmdSetFragmentShadingRateEnumNV(@NonNull VkCommandBuffer commandBuffer, int shadingRate, @NonNull MemorySegment combinerOps) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetFragmentShadingRateEnumNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetFragmentShadingRateEnumNV");

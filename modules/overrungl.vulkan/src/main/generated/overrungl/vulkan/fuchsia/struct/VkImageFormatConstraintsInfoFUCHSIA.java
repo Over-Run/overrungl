@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.fuchsia.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,18 +12,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageFormatConstraintsInfoFUCHSIA {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (struct VkImageCreateInfo) VkImageCreateInfo imageCreateInfo;
-///     ((uint32_t) VkFlags) VkFormatFeatureFlags requiredFormatFeatures;
-///     ((uint32_t) VkFlags) VkImageFormatConstraintsFlagsFUCHSIA flags;
+///     VkImageCreateInfo imageCreateInfo;
+///     VkFormatFeatureFlags requiredFormatFeatures;
+///     VkImageFormatConstraintsFlagsFUCHSIA flags;
 ///     uint64_t sysmemPixelFormat;
 ///     uint32_t colorSpaceCount;
 ///     const VkSysmemColorSpaceFUCHSIA* pColorSpaces;
-/// };
+/// }
 /// ```
 public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
-    /// The struct layout of `VkImageFormatConstraintsInfoFUCHSIA`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -35,323 +33,190 @@ public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
         ValueLayout.JAVA_INT.withName("colorSpaceCount"),
         ValueLayout.ADDRESS.withName("pColorSpaces")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `imageCreateInfo`.
     public static final long OFFSET_imageCreateInfo = LAYOUT.byteOffset(PathElement.groupElement("imageCreateInfo"));
-    /// The memory layout of `imageCreateInfo`.
-    public static final MemoryLayout LAYOUT_imageCreateInfo = LAYOUT.select(PathElement.groupElement("imageCreateInfo"));
-    /// The byte offset of `requiredFormatFeatures`.
     public static final long OFFSET_requiredFormatFeatures = LAYOUT.byteOffset(PathElement.groupElement("requiredFormatFeatures"));
-    /// The memory layout of `requiredFormatFeatures`.
-    public static final MemoryLayout LAYOUT_requiredFormatFeatures = LAYOUT.select(PathElement.groupElement("requiredFormatFeatures"));
-    /// The [VarHandle] of `requiredFormatFeatures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_requiredFormatFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredFormatFeatures"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `sysmemPixelFormat`.
     public static final long OFFSET_sysmemPixelFormat = LAYOUT.byteOffset(PathElement.groupElement("sysmemPixelFormat"));
-    /// The memory layout of `sysmemPixelFormat`.
-    public static final MemoryLayout LAYOUT_sysmemPixelFormat = LAYOUT.select(PathElement.groupElement("sysmemPixelFormat"));
-    /// The [VarHandle] of `sysmemPixelFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sysmemPixelFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat"));
-    /// The byte offset of `colorSpaceCount`.
     public static final long OFFSET_colorSpaceCount = LAYOUT.byteOffset(PathElement.groupElement("colorSpaceCount"));
-    /// The memory layout of `colorSpaceCount`.
-    public static final MemoryLayout LAYOUT_colorSpaceCount = LAYOUT.select(PathElement.groupElement("colorSpaceCount"));
-    /// The [VarHandle] of `colorSpaceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorSpaceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSpaceCount"));
-    /// The byte offset of `pColorSpaces`.
     public static final long OFFSET_pColorSpaces = LAYOUT.byteOffset(PathElement.groupElement("pColorSpaces"));
-    /// The memory layout of `pColorSpaces`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_imageCreateInfo = LAYOUT.select(PathElement.groupElement("imageCreateInfo"));
+    public static final MemoryLayout LAYOUT_requiredFormatFeatures = LAYOUT.select(PathElement.groupElement("requiredFormatFeatures"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_sysmemPixelFormat = LAYOUT.select(PathElement.groupElement("sysmemPixelFormat"));
+    public static final MemoryLayout LAYOUT_colorSpaceCount = LAYOUT.select(PathElement.groupElement("colorSpaceCount"));
     public static final MemoryLayout LAYOUT_pColorSpaces = LAYOUT.select(PathElement.groupElement("pColorSpaces"));
-    /// The [VarHandle] of `pColorSpaces` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_imageCreateInfo$sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("sType"));
+    public static final VarHandle VH_imageCreateInfo$pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("pNext"));
+    public static final VarHandle VH_imageCreateInfo$flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("flags"));
+    public static final VarHandle VH_imageCreateInfo$imageType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("imageType"));
+    public static final VarHandle VH_imageCreateInfo$format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("format"));
+    public static final VarHandle VH_imageCreateInfo$extent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("extent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_imageCreateInfo$extent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("extent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_imageCreateInfo$extent$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("extent"), PathElement.groupElement("depth"));
+    public static final VarHandle VH_imageCreateInfo$mipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("mipLevels"));
+    public static final VarHandle VH_imageCreateInfo$arrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("arrayLayers"));
+    public static final VarHandle VH_imageCreateInfo$samples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("samples"));
+    public static final VarHandle VH_imageCreateInfo$tiling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("tiling"));
+    public static final VarHandle VH_imageCreateInfo$usage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("usage"));
+    public static final VarHandle VH_imageCreateInfo$sharingMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("sharingMode"));
+    public static final VarHandle VH_imageCreateInfo$queueFamilyIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("queueFamilyIndexCount"));
+    public static final VarHandle VH_imageCreateInfo$pQueueFamilyIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("pQueueFamilyIndices"));
+    public static final VarHandle VH_imageCreateInfo$initialLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCreateInfo"), PathElement.groupElement("initialLayout"));
+    public static final VarHandle VH_requiredFormatFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredFormatFeatures"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_sysmemPixelFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sysmemPixelFormat"));
+    public static final VarHandle VH_colorSpaceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSpaceCount"));
     public static final VarHandle VH_pColorSpaces = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorSpaces"));
 
-    /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageFormatConstraintsInfoFUCHSIA of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatConstraintsInfoFUCHSIA(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageFormatConstraintsInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageFormatConstraintsInfoFUCHSIA ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkImageFormatConstraintsInfoFUCHSIA` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageFormatConstraintsInfoFUCHSIA`
     public static VkImageFormatConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator) { return new VkImageFormatConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkImageFormatConstraintsInfoFUCHSIA` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkImageFormatConstraintsInfoFUCHSIA`
     public static VkImageFormatConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImageFormatConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkImageFormatConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.fuchsia.VKFUCHSIABufferCollection.VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA); }
+    public static VkImageFormatConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.fuchsia.VKFUCHSIABufferCollection.VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA);
+        return s;
+    }
     public VkImageFormatConstraintsInfoFUCHSIA copyFrom(VkImageFormatConstraintsInfoFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkImageFormatConstraintsInfoFUCHSIA reinterpret(long count) { return new VkImageFormatConstraintsInfoFUCHSIA(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageCreateInfo` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment imageCreateInfo(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageCreateInfo, index), LAYOUT_imageCreateInfo); }
-    /// {@return `imageCreateInfo`}
-    public MemorySegment imageCreateInfo() { return imageCreateInfo(this.segment(), 0L); }
-    /// Sets `imageCreateInfo` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageCreateInfo(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageCreateInfo, index), LAYOUT_imageCreateInfo.byteSize()); }
-    /// Sets `imageCreateInfo` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(MemorySegment value) { imageCreateInfo(this.segment(), 0L, value); return this; }
-    /// Accepts `imageCreateInfo` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(Consumer<overrungl.vulkan.struct.VkImageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkImageCreateInfo.of(imageCreateInfo())); return this; }
-
-    /// {@return `requiredFormatFeatures` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int requiredFormatFeatures(MemorySegment segment, long index) { return (int) VH_requiredFormatFeatures.get(segment, 0L, index); }
-    /// {@return `requiredFormatFeatures`}
-    public int requiredFormatFeatures() { return requiredFormatFeatures(this.segment(), 0L); }
-    /// Sets `requiredFormatFeatures` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void requiredFormatFeatures(MemorySegment segment, long index, int value) { VH_requiredFormatFeatures.set(segment, 0L, index, value); }
-    /// Sets `requiredFormatFeatures` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeatures(int value) { requiredFormatFeatures(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `sysmemPixelFormat` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long sysmemPixelFormat(MemorySegment segment, long index) { return (long) VH_sysmemPixelFormat.get(segment, 0L, index); }
-    /// {@return `sysmemPixelFormat`}
-    public long sysmemPixelFormat() { return sysmemPixelFormat(this.segment(), 0L); }
-    /// Sets `sysmemPixelFormat` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sysmemPixelFormat(MemorySegment segment, long index, long value) { VH_sysmemPixelFormat.set(segment, 0L, index, value); }
-    /// Sets `sysmemPixelFormat` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA sysmemPixelFormat(long value) { sysmemPixelFormat(this.segment(), 0L, value); return this; }
-
-    /// {@return `colorSpaceCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int colorSpaceCount(MemorySegment segment, long index) { return (int) VH_colorSpaceCount.get(segment, 0L, index); }
-    /// {@return `colorSpaceCount`}
-    public int colorSpaceCount() { return colorSpaceCount(this.segment(), 0L); }
-    /// Sets `colorSpaceCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void colorSpaceCount(MemorySegment segment, long index, int value) { VH_colorSpaceCount.set(segment, 0L, index, value); }
-    /// Sets `colorSpaceCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA colorSpaceCount(int value) { colorSpaceCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pColorSpaces` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pColorSpaces(MemorySegment segment, long index) { return (MemorySegment) VH_pColorSpaces.get(segment, 0L, index); }
-    /// {@return `pColorSpaces`}
-    public MemorySegment pColorSpaces() { return pColorSpaces(this.segment(), 0L); }
-    /// Sets `pColorSpaces` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pColorSpaces(MemorySegment segment, long index, MemorySegment value) { VH_pColorSpaces.set(segment, 0L, index, value); }
-    /// Sets `pColorSpaces` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA pColorSpaces(MemorySegment value) { pColorSpaces(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkImageFormatConstraintsInfoFUCHSIA`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageFormatConstraintsInfoFUCHSIA`
     public VkImageFormatConstraintsInfoFUCHSIA asSlice(long index) { return new VkImageFormatConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkImageFormatConstraintsInfoFUCHSIA`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageFormatConstraintsInfoFUCHSIA`
     public VkImageFormatConstraintsInfoFUCHSIA asSlice(long index, long count) { return new VkImageFormatConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkImageFormatConstraintsInfoFUCHSIA` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkImageFormatConstraintsInfoFUCHSIA at(long index, Consumer<VkImageFormatConstraintsInfoFUCHSIA> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `imageCreateInfo` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment imageCreateInfoAt(long index) { return imageCreateInfo(this.segment(), index); }
-    /// Sets `imageCreateInfo` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfoAt(long index, MemorySegment value) { imageCreateInfo(this.segment(), index, value); return this; }
-    /// Accepts `imageCreateInfo` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfoAt(long index, Consumer<overrungl.vulkan.struct.VkImageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkImageCreateInfo.of(imageCreateInfoAt(index))); return this; }
-
-    /// {@return `requiredFormatFeatures` at the given index}
-    /// @param index the index of the struct buffer
-    public int requiredFormatFeaturesAt(long index) { return requiredFormatFeatures(this.segment(), index); }
-    /// Sets `requiredFormatFeatures` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeaturesAt(long index, int value) { requiredFormatFeatures(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `sysmemPixelFormat` at the given index}
-    /// @param index the index of the struct buffer
-    public long sysmemPixelFormatAt(long index) { return sysmemPixelFormat(this.segment(), index); }
-    /// Sets `sysmemPixelFormat` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA sysmemPixelFormatAt(long index, long value) { sysmemPixelFormat(this.segment(), index, value); return this; }
-
-    /// {@return `colorSpaceCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int colorSpaceCountAt(long index) { return colorSpaceCount(this.segment(), index); }
-    /// Sets `colorSpaceCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA colorSpaceCountAt(long index, int value) { colorSpaceCount(this.segment(), index, value); return this; }
-
-    /// {@return `pColorSpaces` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pColorSpacesAt(long index) { return pColorSpaces(this.segment(), index); }
-    /// Sets `pColorSpaces` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatConstraintsInfoFUCHSIA pColorSpacesAt(long index, MemorySegment value) { pColorSpaces(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$sTypeAt(long index) { return (int) VH_imageCreateInfo$sType.get(this.segment(), 0L, index); }
+    public MemorySegment imageCreateInfo$pNextAt(long index) { return (MemorySegment) VH_imageCreateInfo$pNext.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$flagsAt(long index) { return (int) VH_imageCreateInfo$flags.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$imageTypeAt(long index) { return (int) VH_imageCreateInfo$imageType.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$formatAt(long index) { return (int) VH_imageCreateInfo$format.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$extent$widthAt(long index) { return (int) VH_imageCreateInfo$extent$width.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$extent$heightAt(long index) { return (int) VH_imageCreateInfo$extent$height.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$extent$depthAt(long index) { return (int) VH_imageCreateInfo$extent$depth.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$mipLevelsAt(long index) { return (int) VH_imageCreateInfo$mipLevels.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$arrayLayersAt(long index) { return (int) VH_imageCreateInfo$arrayLayers.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$samplesAt(long index) { return (int) VH_imageCreateInfo$samples.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$tilingAt(long index) { return (int) VH_imageCreateInfo$tiling.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$usageAt(long index) { return (int) VH_imageCreateInfo$usage.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$sharingModeAt(long index) { return (int) VH_imageCreateInfo$sharingMode.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$queueFamilyIndexCountAt(long index) { return (int) VH_imageCreateInfo$queueFamilyIndexCount.get(this.segment(), 0L, index); }
+    public MemorySegment imageCreateInfo$pQueueFamilyIndicesAt(long index) { return (MemorySegment) VH_imageCreateInfo$pQueueFamilyIndices.get(this.segment(), 0L, index); }
+    public int imageCreateInfo$initialLayoutAt(long index) { return (int) VH_imageCreateInfo$initialLayout.get(this.segment(), 0L, index); }
+    public int requiredFormatFeaturesAt(long index) { return (int) VH_requiredFormatFeatures.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public long sysmemPixelFormatAt(long index) { return (long) VH_sysmemPixelFormat.get(this.segment(), 0L, index); }
+    public int colorSpaceCountAt(long index) { return (int) VH_colorSpaceCount.get(this.segment(), 0L, index); }
+    public MemorySegment pColorSpacesAt(long index) { return (MemorySegment) VH_pColorSpaces.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$sType() { return (int) VH_imageCreateInfo$sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment imageCreateInfo$pNext() { return (MemorySegment) VH_imageCreateInfo$pNext.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$flags() { return (int) VH_imageCreateInfo$flags.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$imageType() { return (int) VH_imageCreateInfo$imageType.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$format() { return (int) VH_imageCreateInfo$format.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$extent$width() { return (int) VH_imageCreateInfo$extent$width.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$extent$height() { return (int) VH_imageCreateInfo$extent$height.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$extent$depth() { return (int) VH_imageCreateInfo$extent$depth.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$mipLevels() { return (int) VH_imageCreateInfo$mipLevels.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$arrayLayers() { return (int) VH_imageCreateInfo$arrayLayers.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$samples() { return (int) VH_imageCreateInfo$samples.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$tiling() { return (int) VH_imageCreateInfo$tiling.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$usage() { return (int) VH_imageCreateInfo$usage.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$sharingMode() { return (int) VH_imageCreateInfo$sharingMode.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$queueFamilyIndexCount() { return (int) VH_imageCreateInfo$queueFamilyIndexCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment imageCreateInfo$pQueueFamilyIndices() { return (MemorySegment) VH_imageCreateInfo$pQueueFamilyIndices.get(this.segment(), 0L, 0L); }
+    public int imageCreateInfo$initialLayout() { return (int) VH_imageCreateInfo$initialLayout.get(this.segment(), 0L, 0L); }
+    public int requiredFormatFeatures() { return (int) VH_requiredFormatFeatures.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public long sysmemPixelFormat() { return (long) VH_sysmemPixelFormat.get(this.segment(), 0L, 0L); }
+    public int colorSpaceCount() { return (int) VH_colorSpaceCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pColorSpaces() { return (MemorySegment) VH_pColorSpaces.get(this.segment(), 0L, 0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$sTypeAt(long index, int value) { VH_imageCreateInfo$sType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$pNextAt(long index, MemorySegment value) { VH_imageCreateInfo$pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$flagsAt(long index, int value) { VH_imageCreateInfo$flags.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$imageTypeAt(long index, int value) { VH_imageCreateInfo$imageType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$formatAt(long index, int value) { VH_imageCreateInfo$format.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$extent$widthAt(long index, int value) { VH_imageCreateInfo$extent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$extent$heightAt(long index, int value) { VH_imageCreateInfo$extent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$extent$depthAt(long index, int value) { VH_imageCreateInfo$extent$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$mipLevelsAt(long index, int value) { VH_imageCreateInfo$mipLevels.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$arrayLayersAt(long index, int value) { VH_imageCreateInfo$arrayLayers.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$samplesAt(long index, int value) { VH_imageCreateInfo$samples.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$tilingAt(long index, int value) { VH_imageCreateInfo$tiling.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$usageAt(long index, int value) { VH_imageCreateInfo$usage.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$sharingModeAt(long index, int value) { VH_imageCreateInfo$sharingMode.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$queueFamilyIndexCountAt(long index, int value) { VH_imageCreateInfo$queueFamilyIndexCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$pQueueFamilyIndicesAt(long index, MemorySegment value) { VH_imageCreateInfo$pQueueFamilyIndices.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$initialLayoutAt(long index, int value) { VH_imageCreateInfo$initialLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeaturesAt(long index, int value) { VH_requiredFormatFeatures.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA sysmemPixelFormatAt(long index, long value) { VH_sysmemPixelFormat.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA colorSpaceCountAt(long index, int value) { VH_colorSpaceCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA pColorSpacesAt(long index, MemorySegment value) { VH_pColorSpaces.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$sType(int value) { VH_imageCreateInfo$sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$pNext(MemorySegment value) { VH_imageCreateInfo$pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$flags(int value) { VH_imageCreateInfo$flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$imageType(int value) { VH_imageCreateInfo$imageType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$format(int value) { VH_imageCreateInfo$format.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$extent$width(int value) { VH_imageCreateInfo$extent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$extent$height(int value) { VH_imageCreateInfo$extent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$extent$depth(int value) { VH_imageCreateInfo$extent$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$mipLevels(int value) { VH_imageCreateInfo$mipLevels.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$arrayLayers(int value) { VH_imageCreateInfo$arrayLayers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$samples(int value) { VH_imageCreateInfo$samples.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$tiling(int value) { VH_imageCreateInfo$tiling.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$usage(int value) { VH_imageCreateInfo$usage.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$sharingMode(int value) { VH_imageCreateInfo$sharingMode.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$queueFamilyIndexCount(int value) { VH_imageCreateInfo$queueFamilyIndexCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$pQueueFamilyIndices(MemorySegment value) { VH_imageCreateInfo$pQueueFamilyIndices.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo$initialLayout(int value) { VH_imageCreateInfo$initialLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeatures(int value) { VH_requiredFormatFeatures.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA sysmemPixelFormat(long value) { VH_sysmemPixelFormat.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA colorSpaceCount(int value) { VH_colorSpaceCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA pColorSpaces(MemorySegment value) { VH_pColorSpaces.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _imageCreateInfoAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageCreateInfo, index), LAYOUT_imageCreateInfo); }
+    public MemorySegment _imageCreateInfo() { return _imageCreateInfoAt(0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA _imageCreateInfoAt(long index, MemorySegment src) { _imageCreateInfoAt(index).copyFrom(src); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA _imageCreateInfo(MemorySegment src) { return _imageCreateInfoAt(0L, src); }
+    public MemorySegment _requiredFormatFeaturesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_requiredFormatFeatures, index), LAYOUT_requiredFormatFeatures); }
+    public MemorySegment _requiredFormatFeatures() { return _requiredFormatFeaturesAt(0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA _requiredFormatFeaturesAt(long index, MemorySegment src) { _requiredFormatFeaturesAt(index).copyFrom(src); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA _requiredFormatFeatures(MemorySegment src) { return _requiredFormatFeaturesAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _sysmemPixelFormatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sysmemPixelFormat, index), LAYOUT_sysmemPixelFormat); }
+    public MemorySegment _sysmemPixelFormat() { return _sysmemPixelFormatAt(0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA _sysmemPixelFormatAt(long index, MemorySegment src) { _sysmemPixelFormatAt(index).copyFrom(src); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA _sysmemPixelFormat(MemorySegment src) { return _sysmemPixelFormatAt(0L, src); }
+    public MemorySegment _colorSpaceCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_colorSpaceCount, index), LAYOUT_colorSpaceCount); }
+    public MemorySegment _colorSpaceCount() { return _colorSpaceCountAt(0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA _colorSpaceCountAt(long index, MemorySegment src) { _colorSpaceCountAt(index).copyFrom(src); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA _colorSpaceCount(MemorySegment src) { return _colorSpaceCountAt(0L, src); }
+    public MemorySegment _pColorSpacesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pColorSpaces, index), LAYOUT_pColorSpaces); }
+    public MemorySegment _pColorSpaces() { return _pColorSpacesAt(0L); }
+    public VkImageFormatConstraintsInfoFUCHSIA _pColorSpacesAt(long index, MemorySegment src) { _pColorSpacesAt(index).copyFrom(src); return this; }
+    public VkImageFormatConstraintsInfoFUCHSIA _pColorSpaces(MemorySegment src) { return _pColorSpacesAt(0L, src); }
 }

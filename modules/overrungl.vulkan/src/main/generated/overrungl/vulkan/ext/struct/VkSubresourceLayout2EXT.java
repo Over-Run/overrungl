@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,180 +12,86 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubresourceLayout2EXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (struct VkSubresourceLayout) VkSubresourceLayout subresourceLayout;
-/// };
+///     VkSubresourceLayout subresourceLayout;
+/// }
 /// ```
 public final class VkSubresourceLayout2EXT extends GroupType {
-    /// The struct layout of `VkSubresourceLayout2EXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkSubresourceLayout.LAYOUT.withName("subresourceLayout")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `subresourceLayout`.
     public static final long OFFSET_subresourceLayout = LAYOUT.byteOffset(PathElement.groupElement("subresourceLayout"));
-    /// The memory layout of `subresourceLayout`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_subresourceLayout = LAYOUT.select(PathElement.groupElement("subresourceLayout"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_subresourceLayout$offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceLayout"), PathElement.groupElement("offset"));
+    public static final VarHandle VH_subresourceLayout$size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceLayout"), PathElement.groupElement("size"));
+    public static final VarHandle VH_subresourceLayout$rowPitch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceLayout"), PathElement.groupElement("rowPitch"));
+    public static final VarHandle VH_subresourceLayout$arrayPitch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceLayout"), PathElement.groupElement("arrayPitch"));
+    public static final VarHandle VH_subresourceLayout$depthPitch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceLayout"), PathElement.groupElement("depthPitch"));
 
-    /// Creates `VkSubresourceLayout2EXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkSubresourceLayout2EXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkSubresourceLayout2EXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSubresourceLayout2EXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubresourceLayout2EXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkSubresourceLayout2EXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSubresourceLayout2EXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubresourceLayout2EXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkSubresourceLayout2EXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSubresourceLayout2EXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubresourceLayout2EXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkSubresourceLayout2EXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSubresourceLayout2EXT`
     public static VkSubresourceLayout2EXT alloc(SegmentAllocator allocator) { return new VkSubresourceLayout2EXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkSubresourceLayout2EXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkSubresourceLayout2EXT`
     public static VkSubresourceLayout2EXT alloc(SegmentAllocator allocator, long count) { return new VkSubresourceLayout2EXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkSubresourceLayout2EXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK14.VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2); }
+    public static VkSubresourceLayout2EXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK14.VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2);
+        return s;
+    }
     public VkSubresourceLayout2EXT copyFrom(VkSubresourceLayout2EXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkSubresourceLayout2EXT reinterpret(long count) { return new VkSubresourceLayout2EXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout2EXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout2EXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `subresourceLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment subresourceLayout(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_subresourceLayout, index), LAYOUT_subresourceLayout); }
-    /// {@return `subresourceLayout`}
-    public MemorySegment subresourceLayout() { return subresourceLayout(this.segment(), 0L); }
-    /// Sets `subresourceLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void subresourceLayout(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_subresourceLayout, index), LAYOUT_subresourceLayout.byteSize()); }
-    /// Sets `subresourceLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout2EXT subresourceLayout(MemorySegment value) { subresourceLayout(this.segment(), 0L, value); return this; }
-    /// Accepts `subresourceLayout` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkSubresourceLayout2EXT subresourceLayout(Consumer<overrungl.vulkan.struct.VkSubresourceLayout> func) { func.accept(overrungl.vulkan.struct.VkSubresourceLayout.of(subresourceLayout())); return this; }
-
-    /// Creates a slice of `VkSubresourceLayout2EXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSubresourceLayout2EXT`
     public VkSubresourceLayout2EXT asSlice(long index) { return new VkSubresourceLayout2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkSubresourceLayout2EXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSubresourceLayout2EXT`
     public VkSubresourceLayout2EXT asSlice(long index, long count) { return new VkSubresourceLayout2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkSubresourceLayout2EXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkSubresourceLayout2EXT at(long index, Consumer<VkSubresourceLayout2EXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout2EXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout2EXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `subresourceLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment subresourceLayoutAt(long index) { return subresourceLayout(this.segment(), index); }
-    /// Sets `subresourceLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout2EXT subresourceLayoutAt(long index, MemorySegment value) { subresourceLayout(this.segment(), index, value); return this; }
-    /// Accepts `subresourceLayout` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkSubresourceLayout2EXT subresourceLayoutAt(long index, Consumer<overrungl.vulkan.struct.VkSubresourceLayout> func) { func.accept(overrungl.vulkan.struct.VkSubresourceLayout.of(subresourceLayoutAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long subresourceLayout$offsetAt(long index) { return (long) VH_subresourceLayout$offset.get(this.segment(), 0L, index); }
+    public long subresourceLayout$sizeAt(long index) { return (long) VH_subresourceLayout$size.get(this.segment(), 0L, index); }
+    public long subresourceLayout$rowPitchAt(long index) { return (long) VH_subresourceLayout$rowPitch.get(this.segment(), 0L, index); }
+    public long subresourceLayout$arrayPitchAt(long index) { return (long) VH_subresourceLayout$arrayPitch.get(this.segment(), 0L, index); }
+    public long subresourceLayout$depthPitchAt(long index) { return (long) VH_subresourceLayout$depthPitch.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long subresourceLayout$offset() { return (long) VH_subresourceLayout$offset.get(this.segment(), 0L, 0L); }
+    public long subresourceLayout$size() { return (long) VH_subresourceLayout$size.get(this.segment(), 0L, 0L); }
+    public long subresourceLayout$rowPitch() { return (long) VH_subresourceLayout$rowPitch.get(this.segment(), 0L, 0L); }
+    public long subresourceLayout$arrayPitch() { return (long) VH_subresourceLayout$arrayPitch.get(this.segment(), 0L, 0L); }
+    public long subresourceLayout$depthPitch() { return (long) VH_subresourceLayout$depthPitch.get(this.segment(), 0L, 0L); }
+    public VkSubresourceLayout2EXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkSubresourceLayout2EXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$offsetAt(long index, long value) { VH_subresourceLayout$offset.set(this.segment(), 0L, index, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$sizeAt(long index, long value) { VH_subresourceLayout$size.set(this.segment(), 0L, index, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$rowPitchAt(long index, long value) { VH_subresourceLayout$rowPitch.set(this.segment(), 0L, index, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$arrayPitchAt(long index, long value) { VH_subresourceLayout$arrayPitch.set(this.segment(), 0L, index, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$depthPitchAt(long index, long value) { VH_subresourceLayout$depthPitch.set(this.segment(), 0L, index, value); return this; }
+    public VkSubresourceLayout2EXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSubresourceLayout2EXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$offset(long value) { VH_subresourceLayout$offset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$size(long value) { VH_subresourceLayout$size.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$rowPitch(long value) { VH_subresourceLayout$rowPitch.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$arrayPitch(long value) { VH_subresourceLayout$arrayPitch.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSubresourceLayout2EXT subresourceLayout$depthPitch(long value) { VH_subresourceLayout$depthPitch.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkSubresourceLayout2EXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkSubresourceLayout2EXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkSubresourceLayout2EXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkSubresourceLayout2EXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _subresourceLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_subresourceLayout, index), LAYOUT_subresourceLayout); }
+    public MemorySegment _subresourceLayout() { return _subresourceLayoutAt(0L); }
+    public VkSubresourceLayout2EXT _subresourceLayoutAt(long index, MemorySegment src) { _subresourceLayoutAt(index).copyFrom(src); return this; }
+    public VkSubresourceLayout2EXT _subresourceLayout(MemorySegment src) { return _subresourceLayoutAt(0L, src); }
 }

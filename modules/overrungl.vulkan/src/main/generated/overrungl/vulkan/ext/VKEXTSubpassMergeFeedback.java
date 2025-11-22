@@ -1,9 +1,14 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_subpass_merge_feedback` - device extension
 public final class VKEXTSubpassMergeFeedback {
+    public static final int VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 2;
+    public static final String VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback";
     public static final int VK_SUBPASS_MERGE_STATUS_MERGED_EXT = 0;
     public static final int VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT = 1;
     public static final int VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SIDE_EFFECTS_EXT = 2;
@@ -18,13 +23,9 @@ public final class VKEXTSubpassMergeFeedback {
     public static final int VK_SUBPASS_MERGE_STATUS_NOT_MERGED_RESOLVE_ATTACHMENT_REUSE_EXT = 11;
     public static final int VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SINGLE_SUBPASS_EXT = 12;
     public static final int VK_SUBPASS_MERGE_STATUS_NOT_MERGED_UNSPECIFIED_EXT = 13;
-    public static final int VK_EXT_SUBPASS_MERGE_FEEDBACK_SPEC_VERSION = 2;
-    public static final String VK_EXT_SUBPASS_MERGE_FEEDBACK_EXTENSION_NAME = "VK_EXT_subpass_merge_feedback";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_MERGE_FEEDBACK_FEATURES_EXT = 1000458000;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_CONTROL_EXT = 1000458001;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_FEEDBACK_CREATE_INFO_EXT = 1000458002;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT = 1000458003;
-
     private VKEXTSubpassMergeFeedback() {}
-
 }

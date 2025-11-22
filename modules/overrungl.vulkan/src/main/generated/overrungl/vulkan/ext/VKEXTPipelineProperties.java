@@ -13,16 +13,15 @@ public final class VKEXTPipelineProperties {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT = 1000372000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT = 1000372001;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_INFO_EXT = 1000269001;
+    private VKEXTPipelineProperties() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPipelinePropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTPipelineProperties() {}
-
     /// Invokes `vkGetPipelinePropertiesEXT`.
     /// ```
-    /// (int) VkResult vkGetPipelinePropertiesEXT((struct VkDevice*) VkDevice device, const VkPipelineInfoEXT* pPipelineInfo, VkBaseOutStructure* pPipelineProperties);
+    /// VkResult vkGetPipelinePropertiesEXT(VkDevice device, const VkPipelineInfoEXT* pPipelineInfo, VkBaseOutStructure* pPipelineProperties);
     /// ```
     public static int vkGetPipelinePropertiesEXT(@NonNull VkDevice device, @NonNull MemorySegment pPipelineInfo, @NonNull MemorySegment pPipelineProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelinePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelinePropertiesEXT");

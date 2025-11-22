@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.fuchsia.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageConstraintsInfoFUCHSIA {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t formatConstraintsCount;
 ///     const VkImageFormatConstraintsInfoFUCHSIA* pFormatConstraints;
-///     (struct VkBufferCollectionConstraintsInfoFUCHSIA) VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
-///     ((uint32_t) VkFlags) VkImageConstraintsInfoFlagsFUCHSIA flags;
-/// };
+///     VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
+///     VkImageConstraintsInfoFlagsFUCHSIA flags;
+/// }
 /// ```
 public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
-    /// The struct layout of `VkImageConstraintsInfoFUCHSIA`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,261 +29,118 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
         overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA.LAYOUT.withName("bufferCollectionConstraints"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `formatConstraintsCount`.
     public static final long OFFSET_formatConstraintsCount = LAYOUT.byteOffset(PathElement.groupElement("formatConstraintsCount"));
-    /// The memory layout of `formatConstraintsCount`.
-    public static final MemoryLayout LAYOUT_formatConstraintsCount = LAYOUT.select(PathElement.groupElement("formatConstraintsCount"));
-    /// The [VarHandle] of `formatConstraintsCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_formatConstraintsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatConstraintsCount"));
-    /// The byte offset of `pFormatConstraints`.
     public static final long OFFSET_pFormatConstraints = LAYOUT.byteOffset(PathElement.groupElement("pFormatConstraints"));
-    /// The memory layout of `pFormatConstraints`.
-    public static final MemoryLayout LAYOUT_pFormatConstraints = LAYOUT.select(PathElement.groupElement("pFormatConstraints"));
-    /// The [VarHandle] of `pFormatConstraints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pFormatConstraints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFormatConstraints"));
-    /// The byte offset of `bufferCollectionConstraints`.
     public static final long OFFSET_bufferCollectionConstraints = LAYOUT.byteOffset(PathElement.groupElement("bufferCollectionConstraints"));
-    /// The memory layout of `bufferCollectionConstraints`.
-    public static final MemoryLayout LAYOUT_bufferCollectionConstraints = LAYOUT.select(PathElement.groupElement("bufferCollectionConstraints"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_formatConstraintsCount = LAYOUT.select(PathElement.groupElement("formatConstraintsCount"));
+    public static final MemoryLayout LAYOUT_pFormatConstraints = LAYOUT.select(PathElement.groupElement("pFormatConstraints"));
+    public static final MemoryLayout LAYOUT_bufferCollectionConstraints = LAYOUT.select(PathElement.groupElement("bufferCollectionConstraints"));
     public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_formatConstraintsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatConstraintsCount"));
+    public static final VarHandle VH_pFormatConstraints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFormatConstraints"));
+    public static final VarHandle VH_bufferCollectionConstraints$sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCollectionConstraints"), PathElement.groupElement("sType"));
+    public static final VarHandle VH_bufferCollectionConstraints$pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCollectionConstraints"), PathElement.groupElement("pNext"));
+    public static final VarHandle VH_bufferCollectionConstraints$minBufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCollectionConstraints"), PathElement.groupElement("minBufferCount"));
+    public static final VarHandle VH_bufferCollectionConstraints$maxBufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCollectionConstraints"), PathElement.groupElement("maxBufferCount"));
+    public static final VarHandle VH_bufferCollectionConstraints$minBufferCountForCamping = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCollectionConstraints"), PathElement.groupElement("minBufferCountForCamping"));
+    public static final VarHandle VH_bufferCollectionConstraints$minBufferCountForDedicatedSlack = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCollectionConstraints"), PathElement.groupElement("minBufferCountForDedicatedSlack"));
+    public static final VarHandle VH_bufferCollectionConstraints$minBufferCountForSharedSlack = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCollectionConstraints"), PathElement.groupElement("minBufferCountForSharedSlack"));
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
 
-    /// Creates `VkImageConstraintsInfoFUCHSIA` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkImageConstraintsInfoFUCHSIA(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkImageConstraintsInfoFUCHSIA` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageConstraintsInfoFUCHSIA of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageConstraintsInfoFUCHSIA(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkImageConstraintsInfoFUCHSIA` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageConstraintsInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkImageConstraintsInfoFUCHSIA` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageConstraintsInfoFUCHSIA ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkImageConstraintsInfoFUCHSIA` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
     public static VkImageConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator) { return new VkImageConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkImageConstraintsInfoFUCHSIA` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
     public static VkImageConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImageConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkImageConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.fuchsia.VKFUCHSIABufferCollection.VK_STRUCTURE_TYPE_IMAGE_CONSTRAINTS_INFO_FUCHSIA); }
+    public static VkImageConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.fuchsia.VKFUCHSIABufferCollection.VK_STRUCTURE_TYPE_IMAGE_CONSTRAINTS_INFO_FUCHSIA);
+        return s;
+    }
     public VkImageConstraintsInfoFUCHSIA copyFrom(VkImageConstraintsInfoFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkImageConstraintsInfoFUCHSIA reinterpret(long count) { return new VkImageConstraintsInfoFUCHSIA(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `formatConstraintsCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int formatConstraintsCount(MemorySegment segment, long index) { return (int) VH_formatConstraintsCount.get(segment, 0L, index); }
-    /// {@return `formatConstraintsCount`}
-    public int formatConstraintsCount() { return formatConstraintsCount(this.segment(), 0L); }
-    /// Sets `formatConstraintsCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void formatConstraintsCount(MemorySegment segment, long index, int value) { VH_formatConstraintsCount.set(segment, 0L, index, value); }
-    /// Sets `formatConstraintsCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA formatConstraintsCount(int value) { formatConstraintsCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pFormatConstraints` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pFormatConstraints(MemorySegment segment, long index) { return (MemorySegment) VH_pFormatConstraints.get(segment, 0L, index); }
-    /// {@return `pFormatConstraints`}
-    public MemorySegment pFormatConstraints() { return pFormatConstraints(this.segment(), 0L); }
-    /// Sets `pFormatConstraints` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pFormatConstraints(MemorySegment segment, long index, MemorySegment value) { VH_pFormatConstraints.set(segment, 0L, index, value); }
-    /// Sets `pFormatConstraints` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA pFormatConstraints(MemorySegment value) { pFormatConstraints(this.segment(), 0L, value); return this; }
-
-    /// {@return `bufferCollectionConstraints` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment bufferCollectionConstraints(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_bufferCollectionConstraints, index), LAYOUT_bufferCollectionConstraints); }
-    /// {@return `bufferCollectionConstraints`}
-    public MemorySegment bufferCollectionConstraints() { return bufferCollectionConstraints(this.segment(), 0L); }
-    /// Sets `bufferCollectionConstraints` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void bufferCollectionConstraints(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_bufferCollectionConstraints, index), LAYOUT_bufferCollectionConstraints.byteSize()); }
-    /// Sets `bufferCollectionConstraints` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints(MemorySegment value) { bufferCollectionConstraints(this.segment(), 0L, value); return this; }
-    /// Accepts `bufferCollectionConstraints` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints(Consumer<overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA.of(bufferCollectionConstraints())); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkImageConstraintsInfoFUCHSIA`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageConstraintsInfoFUCHSIA`
     public VkImageConstraintsInfoFUCHSIA asSlice(long index) { return new VkImageConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkImageConstraintsInfoFUCHSIA`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageConstraintsInfoFUCHSIA`
     public VkImageConstraintsInfoFUCHSIA asSlice(long index, long count) { return new VkImageConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkImageConstraintsInfoFUCHSIA` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkImageConstraintsInfoFUCHSIA at(long index, Consumer<VkImageConstraintsInfoFUCHSIA> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `formatConstraintsCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int formatConstraintsCountAt(long index) { return formatConstraintsCount(this.segment(), index); }
-    /// Sets `formatConstraintsCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA formatConstraintsCountAt(long index, int value) { formatConstraintsCount(this.segment(), index, value); return this; }
-
-    /// {@return `pFormatConstraints` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pFormatConstraintsAt(long index) { return pFormatConstraints(this.segment(), index); }
-    /// Sets `pFormatConstraints` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA pFormatConstraintsAt(long index, MemorySegment value) { pFormatConstraints(this.segment(), index, value); return this; }
-
-    /// {@return `bufferCollectionConstraints` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment bufferCollectionConstraintsAt(long index) { return bufferCollectionConstraints(this.segment(), index); }
-    /// Sets `bufferCollectionConstraints` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraintsAt(long index, MemorySegment value) { bufferCollectionConstraints(this.segment(), index, value); return this; }
-    /// Accepts `bufferCollectionConstraints` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraintsAt(long index, Consumer<overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA.of(bufferCollectionConstraintsAt(index))); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageConstraintsInfoFUCHSIA flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int formatConstraintsCountAt(long index) { return (int) VH_formatConstraintsCount.get(this.segment(), 0L, index); }
+    public MemorySegment pFormatConstraintsAt(long index) { return (MemorySegment) VH_pFormatConstraints.get(this.segment(), 0L, index); }
+    public int bufferCollectionConstraints$sTypeAt(long index) { return (int) VH_bufferCollectionConstraints$sType.get(this.segment(), 0L, index); }
+    public MemorySegment bufferCollectionConstraints$pNextAt(long index) { return (MemorySegment) VH_bufferCollectionConstraints$pNext.get(this.segment(), 0L, index); }
+    public int bufferCollectionConstraints$minBufferCountAt(long index) { return (int) VH_bufferCollectionConstraints$minBufferCount.get(this.segment(), 0L, index); }
+    public int bufferCollectionConstraints$maxBufferCountAt(long index) { return (int) VH_bufferCollectionConstraints$maxBufferCount.get(this.segment(), 0L, index); }
+    public int bufferCollectionConstraints$minBufferCountForCampingAt(long index) { return (int) VH_bufferCollectionConstraints$minBufferCountForCamping.get(this.segment(), 0L, index); }
+    public int bufferCollectionConstraints$minBufferCountForDedicatedSlackAt(long index) { return (int) VH_bufferCollectionConstraints$minBufferCountForDedicatedSlack.get(this.segment(), 0L, index); }
+    public int bufferCollectionConstraints$minBufferCountForSharedSlackAt(long index) { return (int) VH_bufferCollectionConstraints$minBufferCountForSharedSlack.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int formatConstraintsCount() { return (int) VH_formatConstraintsCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pFormatConstraints() { return (MemorySegment) VH_pFormatConstraints.get(this.segment(), 0L, 0L); }
+    public int bufferCollectionConstraints$sType() { return (int) VH_bufferCollectionConstraints$sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment bufferCollectionConstraints$pNext() { return (MemorySegment) VH_bufferCollectionConstraints$pNext.get(this.segment(), 0L, 0L); }
+    public int bufferCollectionConstraints$minBufferCount() { return (int) VH_bufferCollectionConstraints$minBufferCount.get(this.segment(), 0L, 0L); }
+    public int bufferCollectionConstraints$maxBufferCount() { return (int) VH_bufferCollectionConstraints$maxBufferCount.get(this.segment(), 0L, 0L); }
+    public int bufferCollectionConstraints$minBufferCountForCamping() { return (int) VH_bufferCollectionConstraints$minBufferCountForCamping.get(this.segment(), 0L, 0L); }
+    public int bufferCollectionConstraints$minBufferCountForDedicatedSlack() { return (int) VH_bufferCollectionConstraints$minBufferCountForDedicatedSlack.get(this.segment(), 0L, 0L); }
+    public int bufferCollectionConstraints$minBufferCountForSharedSlack() { return (int) VH_bufferCollectionConstraints$minBufferCountForSharedSlack.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public VkImageConstraintsInfoFUCHSIA sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA formatConstraintsCountAt(long index, int value) { VH_formatConstraintsCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA pFormatConstraintsAt(long index, MemorySegment value) { VH_pFormatConstraints.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$sTypeAt(long index, int value) { VH_bufferCollectionConstraints$sType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$pNextAt(long index, MemorySegment value) { VH_bufferCollectionConstraints$pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$minBufferCountAt(long index, int value) { VH_bufferCollectionConstraints$minBufferCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$maxBufferCountAt(long index, int value) { VH_bufferCollectionConstraints$maxBufferCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$minBufferCountForCampingAt(long index, int value) { VH_bufferCollectionConstraints$minBufferCountForCamping.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$minBufferCountForDedicatedSlackAt(long index, int value) { VH_bufferCollectionConstraints$minBufferCountForDedicatedSlack.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$minBufferCountForSharedSlackAt(long index, int value) { VH_bufferCollectionConstraints$minBufferCountForSharedSlack.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA formatConstraintsCount(int value) { VH_formatConstraintsCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA pFormatConstraints(MemorySegment value) { VH_pFormatConstraints.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$sType(int value) { VH_bufferCollectionConstraints$sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$pNext(MemorySegment value) { VH_bufferCollectionConstraints$pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$minBufferCount(int value) { VH_bufferCollectionConstraints$minBufferCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$maxBufferCount(int value) { VH_bufferCollectionConstraints$maxBufferCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$minBufferCountForCamping(int value) { VH_bufferCollectionConstraints$minBufferCountForCamping.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$minBufferCountForDedicatedSlack(int value) { VH_bufferCollectionConstraints$minBufferCountForDedicatedSlack.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints$minBufferCountForSharedSlack(int value) { VH_bufferCollectionConstraints$minBufferCountForSharedSlack.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageConstraintsInfoFUCHSIA flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkImageConstraintsInfoFUCHSIA _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkImageConstraintsInfoFUCHSIA _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkImageConstraintsInfoFUCHSIA _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkImageConstraintsInfoFUCHSIA _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _formatConstraintsCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_formatConstraintsCount, index), LAYOUT_formatConstraintsCount); }
+    public MemorySegment _formatConstraintsCount() { return _formatConstraintsCountAt(0L); }
+    public VkImageConstraintsInfoFUCHSIA _formatConstraintsCountAt(long index, MemorySegment src) { _formatConstraintsCountAt(index).copyFrom(src); return this; }
+    public VkImageConstraintsInfoFUCHSIA _formatConstraintsCount(MemorySegment src) { return _formatConstraintsCountAt(0L, src); }
+    public MemorySegment _pFormatConstraintsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pFormatConstraints, index), LAYOUT_pFormatConstraints); }
+    public MemorySegment _pFormatConstraints() { return _pFormatConstraintsAt(0L); }
+    public VkImageConstraintsInfoFUCHSIA _pFormatConstraintsAt(long index, MemorySegment src) { _pFormatConstraintsAt(index).copyFrom(src); return this; }
+    public VkImageConstraintsInfoFUCHSIA _pFormatConstraints(MemorySegment src) { return _pFormatConstraintsAt(0L, src); }
+    public MemorySegment _bufferCollectionConstraintsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_bufferCollectionConstraints, index), LAYOUT_bufferCollectionConstraints); }
+    public MemorySegment _bufferCollectionConstraints() { return _bufferCollectionConstraintsAt(0L); }
+    public VkImageConstraintsInfoFUCHSIA _bufferCollectionConstraintsAt(long index, MemorySegment src) { _bufferCollectionConstraintsAt(index).copyFrom(src); return this; }
+    public VkImageConstraintsInfoFUCHSIA _bufferCollectionConstraints(MemorySegment src) { return _bufferCollectionConstraintsAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkImageConstraintsInfoFUCHSIA _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkImageConstraintsInfoFUCHSIA _flags(MemorySegment src) { return _flagsAt(0L, src); }
 }

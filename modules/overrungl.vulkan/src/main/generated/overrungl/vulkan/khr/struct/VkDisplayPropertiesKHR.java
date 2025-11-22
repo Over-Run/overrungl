@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,17 +12,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPropertiesKHR {
-///     (uint64_t) VkDisplayKHR display;
+///     VkDisplayKHR display;
 ///     const char* displayName;
-///     (struct VkExtent2D) VkExtent2D physicalDimensions;
-///     (struct VkExtent2D) VkExtent2D physicalResolution;
-///     ((uint32_t) VkFlags) VkSurfaceTransformFlagsKHR supportedTransforms;
-///     (uint32_t) VkBool32 planeReorderPossible;
-///     (uint32_t) VkBool32 persistentContent;
-/// };
+///     VkExtent2D physicalDimensions;
+///     VkExtent2D physicalResolution;
+///     VkSurfaceTransformFlagsKHR supportedTransforms;
+///     VkBool32 planeReorderPossible;
+///     VkBool32 persistentContent;
+/// }
 /// ```
 public final class VkDisplayPropertiesKHR extends GroupType {
-    /// The struct layout of `VkDisplayPropertiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("display"),
         ValueLayout.ADDRESS.withName("displayName"),
@@ -33,299 +31,103 @@ public final class VkDisplayPropertiesKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("planeReorderPossible"),
         ValueLayout.JAVA_INT.withName("persistentContent")
     );
-    /// The byte offset of `display`.
     public static final long OFFSET_display = LAYOUT.byteOffset(PathElement.groupElement("display"));
-    /// The memory layout of `display`.
-    public static final MemoryLayout LAYOUT_display = LAYOUT.select(PathElement.groupElement("display"));
-    /// The [VarHandle] of `display` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_display = LAYOUT.arrayElementVarHandle(PathElement.groupElement("display"));
-    /// The byte offset of `displayName`.
     public static final long OFFSET_displayName = LAYOUT.byteOffset(PathElement.groupElement("displayName"));
-    /// The memory layout of `displayName`.
-    public static final MemoryLayout LAYOUT_displayName = LAYOUT.select(PathElement.groupElement("displayName"));
-    /// The [VarHandle] of `displayName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_displayName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayName"));
-    /// The byte offset of `physicalDimensions`.
     public static final long OFFSET_physicalDimensions = LAYOUT.byteOffset(PathElement.groupElement("physicalDimensions"));
-    /// The memory layout of `physicalDimensions`.
-    public static final MemoryLayout LAYOUT_physicalDimensions = LAYOUT.select(PathElement.groupElement("physicalDimensions"));
-    /// The byte offset of `physicalResolution`.
     public static final long OFFSET_physicalResolution = LAYOUT.byteOffset(PathElement.groupElement("physicalResolution"));
-    /// The memory layout of `physicalResolution`.
-    public static final MemoryLayout LAYOUT_physicalResolution = LAYOUT.select(PathElement.groupElement("physicalResolution"));
-    /// The byte offset of `supportedTransforms`.
     public static final long OFFSET_supportedTransforms = LAYOUT.byteOffset(PathElement.groupElement("supportedTransforms"));
-    /// The memory layout of `supportedTransforms`.
-    public static final MemoryLayout LAYOUT_supportedTransforms = LAYOUT.select(PathElement.groupElement("supportedTransforms"));
-    /// The [VarHandle] of `supportedTransforms` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_supportedTransforms = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedTransforms"));
-    /// The byte offset of `planeReorderPossible`.
     public static final long OFFSET_planeReorderPossible = LAYOUT.byteOffset(PathElement.groupElement("planeReorderPossible"));
-    /// The memory layout of `planeReorderPossible`.
-    public static final MemoryLayout LAYOUT_planeReorderPossible = LAYOUT.select(PathElement.groupElement("planeReorderPossible"));
-    /// The [VarHandle] of `planeReorderPossible` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_planeReorderPossible = LAYOUT.arrayElementVarHandle(PathElement.groupElement("planeReorderPossible"));
-    /// The byte offset of `persistentContent`.
     public static final long OFFSET_persistentContent = LAYOUT.byteOffset(PathElement.groupElement("persistentContent"));
-    /// The memory layout of `persistentContent`.
+    public static final MemoryLayout LAYOUT_display = LAYOUT.select(PathElement.groupElement("display"));
+    public static final MemoryLayout LAYOUT_displayName = LAYOUT.select(PathElement.groupElement("displayName"));
+    public static final MemoryLayout LAYOUT_physicalDimensions = LAYOUT.select(PathElement.groupElement("physicalDimensions"));
+    public static final MemoryLayout LAYOUT_physicalResolution = LAYOUT.select(PathElement.groupElement("physicalResolution"));
+    public static final MemoryLayout LAYOUT_supportedTransforms = LAYOUT.select(PathElement.groupElement("supportedTransforms"));
+    public static final MemoryLayout LAYOUT_planeReorderPossible = LAYOUT.select(PathElement.groupElement("planeReorderPossible"));
     public static final MemoryLayout LAYOUT_persistentContent = LAYOUT.select(PathElement.groupElement("persistentContent"));
-    /// The [VarHandle] of `persistentContent` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_display = LAYOUT.arrayElementVarHandle(PathElement.groupElement("display"));
+    public static final VarHandle VH_displayName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayName"));
+    public static final VarHandle VH_physicalDimensions$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDimensions"), PathElement.groupElement("width"));
+    public static final VarHandle VH_physicalDimensions$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDimensions"), PathElement.groupElement("height"));
+    public static final VarHandle VH_physicalResolution$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalResolution"), PathElement.groupElement("width"));
+    public static final VarHandle VH_physicalResolution$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalResolution"), PathElement.groupElement("height"));
+    public static final VarHandle VH_supportedTransforms = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedTransforms"));
+    public static final VarHandle VH_planeReorderPossible = LAYOUT.arrayElementVarHandle(PathElement.groupElement("planeReorderPossible"));
     public static final VarHandle VH_persistentContent = LAYOUT.arrayElementVarHandle(PathElement.groupElement("persistentContent"));
 
-    /// Creates `VkDisplayPropertiesKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDisplayPropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDisplayPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDisplayPropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDisplayPropertiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDisplayPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDisplayPropertiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDisplayPropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDisplayPropertiesKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDisplayPropertiesKHR`
     public static VkDisplayPropertiesKHR alloc(SegmentAllocator allocator) { return new VkDisplayPropertiesKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDisplayPropertiesKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDisplayPropertiesKHR`
     public static VkDisplayPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkDisplayPropertiesKHR copyFrom(VkDisplayPropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDisplayPropertiesKHR reinterpret(long count) { return new VkDisplayPropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `display` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long display(MemorySegment segment, long index) { return (long) VH_display.get(segment, 0L, index); }
-    /// {@return `display`}
-    public long display() { return display(this.segment(), 0L); }
-    /// Sets `display` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void display(MemorySegment segment, long index, long value) { VH_display.set(segment, 0L, index, value); }
-    /// Sets `display` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR display(long value) { display(this.segment(), 0L, value); return this; }
-
-    /// {@return `displayName` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment displayName(MemorySegment segment, long index) { return (MemorySegment) VH_displayName.get(segment, 0L, index); }
-    /// {@return `displayName`}
-    public MemorySegment displayName() { return displayName(this.segment(), 0L); }
-    /// Sets `displayName` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void displayName(MemorySegment segment, long index, MemorySegment value) { VH_displayName.set(segment, 0L, index, value); }
-    /// Sets `displayName` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR displayName(MemorySegment value) { displayName(this.segment(), 0L, value); return this; }
-
-    /// {@return `physicalDimensions` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment physicalDimensions(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_physicalDimensions, index), LAYOUT_physicalDimensions); }
-    /// {@return `physicalDimensions`}
-    public MemorySegment physicalDimensions() { return physicalDimensions(this.segment(), 0L); }
-    /// Sets `physicalDimensions` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void physicalDimensions(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_physicalDimensions, index), LAYOUT_physicalDimensions.byteSize()); }
-    /// Sets `physicalDimensions` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR physicalDimensions(MemorySegment value) { physicalDimensions(this.segment(), 0L, value); return this; }
-    /// Accepts `physicalDimensions` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPropertiesKHR physicalDimensions(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalDimensions())); return this; }
-
-    /// {@return `physicalResolution` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment physicalResolution(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_physicalResolution, index), LAYOUT_physicalResolution); }
-    /// {@return `physicalResolution`}
-    public MemorySegment physicalResolution() { return physicalResolution(this.segment(), 0L); }
-    /// Sets `physicalResolution` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void physicalResolution(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_physicalResolution, index), LAYOUT_physicalResolution.byteSize()); }
-    /// Sets `physicalResolution` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR physicalResolution(MemorySegment value) { physicalResolution(this.segment(), 0L, value); return this; }
-    /// Accepts `physicalResolution` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPropertiesKHR physicalResolution(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalResolution())); return this; }
-
-    /// {@return `supportedTransforms` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int supportedTransforms(MemorySegment segment, long index) { return (int) VH_supportedTransforms.get(segment, 0L, index); }
-    /// {@return `supportedTransforms`}
-    public int supportedTransforms() { return supportedTransforms(this.segment(), 0L); }
-    /// Sets `supportedTransforms` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void supportedTransforms(MemorySegment segment, long index, int value) { VH_supportedTransforms.set(segment, 0L, index, value); }
-    /// Sets `supportedTransforms` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR supportedTransforms(int value) { supportedTransforms(this.segment(), 0L, value); return this; }
-
-    /// {@return `planeReorderPossible` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int planeReorderPossible(MemorySegment segment, long index) { return (int) VH_planeReorderPossible.get(segment, 0L, index); }
-    /// {@return `planeReorderPossible`}
-    public int planeReorderPossible() { return planeReorderPossible(this.segment(), 0L); }
-    /// Sets `planeReorderPossible` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void planeReorderPossible(MemorySegment segment, long index, int value) { VH_planeReorderPossible.set(segment, 0L, index, value); }
-    /// Sets `planeReorderPossible` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR planeReorderPossible(int value) { planeReorderPossible(this.segment(), 0L, value); return this; }
-
-    /// {@return `persistentContent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int persistentContent(MemorySegment segment, long index) { return (int) VH_persistentContent.get(segment, 0L, index); }
-    /// {@return `persistentContent`}
-    public int persistentContent() { return persistentContent(this.segment(), 0L); }
-    /// Sets `persistentContent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void persistentContent(MemorySegment segment, long index, int value) { VH_persistentContent.set(segment, 0L, index, value); }
-    /// Sets `persistentContent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR persistentContent(int value) { persistentContent(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDisplayPropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDisplayPropertiesKHR`
     public VkDisplayPropertiesKHR asSlice(long index) { return new VkDisplayPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDisplayPropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDisplayPropertiesKHR`
     public VkDisplayPropertiesKHR asSlice(long index, long count) { return new VkDisplayPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDisplayPropertiesKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDisplayPropertiesKHR at(long index, Consumer<VkDisplayPropertiesKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `display` at the given index}
-    /// @param index the index of the struct buffer
-    public long displayAt(long index) { return display(this.segment(), index); }
-    /// Sets `display` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR displayAt(long index, long value) { display(this.segment(), index, value); return this; }
-
-    /// {@return `displayName` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment displayNameAt(long index) { return displayName(this.segment(), index); }
-    /// Sets `displayName` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR displayNameAt(long index, MemorySegment value) { displayName(this.segment(), index, value); return this; }
-
-    /// {@return `physicalDimensions` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment physicalDimensionsAt(long index) { return physicalDimensions(this.segment(), index); }
-    /// Sets `physicalDimensions` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR physicalDimensionsAt(long index, MemorySegment value) { physicalDimensions(this.segment(), index, value); return this; }
-    /// Accepts `physicalDimensions` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPropertiesKHR physicalDimensionsAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalDimensionsAt(index))); return this; }
-
-    /// {@return `physicalResolution` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment physicalResolutionAt(long index) { return physicalResolution(this.segment(), index); }
-    /// Sets `physicalResolution` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR physicalResolutionAt(long index, MemorySegment value) { physicalResolution(this.segment(), index, value); return this; }
-    /// Accepts `physicalResolution` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkDisplayPropertiesKHR physicalResolutionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalResolutionAt(index))); return this; }
-
-    /// {@return `supportedTransforms` at the given index}
-    /// @param index the index of the struct buffer
-    public int supportedTransformsAt(long index) { return supportedTransforms(this.segment(), index); }
-    /// Sets `supportedTransforms` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR supportedTransformsAt(long index, int value) { supportedTransforms(this.segment(), index, value); return this; }
-
-    /// {@return `planeReorderPossible` at the given index}
-    /// @param index the index of the struct buffer
-    public int planeReorderPossibleAt(long index) { return planeReorderPossible(this.segment(), index); }
-    /// Sets `planeReorderPossible` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR planeReorderPossibleAt(long index, int value) { planeReorderPossible(this.segment(), index, value); return this; }
-
-    /// {@return `persistentContent` at the given index}
-    /// @param index the index of the struct buffer
-    public int persistentContentAt(long index) { return persistentContent(this.segment(), index); }
-    /// Sets `persistentContent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPropertiesKHR persistentContentAt(long index, int value) { persistentContent(this.segment(), index, value); return this; }
-
+    public long displayAt(long index) { return (long) VH_display.get(this.segment(), 0L, index); }
+    public MemorySegment displayNameAt(long index) { return (MemorySegment) VH_displayName.get(this.segment(), 0L, index); }
+    public int physicalDimensions$widthAt(long index) { return (int) VH_physicalDimensions$width.get(this.segment(), 0L, index); }
+    public int physicalDimensions$heightAt(long index) { return (int) VH_physicalDimensions$height.get(this.segment(), 0L, index); }
+    public int physicalResolution$widthAt(long index) { return (int) VH_physicalResolution$width.get(this.segment(), 0L, index); }
+    public int physicalResolution$heightAt(long index) { return (int) VH_physicalResolution$height.get(this.segment(), 0L, index); }
+    public int supportedTransformsAt(long index) { return (int) VH_supportedTransforms.get(this.segment(), 0L, index); }
+    public int planeReorderPossibleAt(long index) { return (int) VH_planeReorderPossible.get(this.segment(), 0L, index); }
+    public int persistentContentAt(long index) { return (int) VH_persistentContent.get(this.segment(), 0L, index); }
+    public long display() { return (long) VH_display.get(this.segment(), 0L, 0L); }
+    public MemorySegment displayName() { return (MemorySegment) VH_displayName.get(this.segment(), 0L, 0L); }
+    public int physicalDimensions$width() { return (int) VH_physicalDimensions$width.get(this.segment(), 0L, 0L); }
+    public int physicalDimensions$height() { return (int) VH_physicalDimensions$height.get(this.segment(), 0L, 0L); }
+    public int physicalResolution$width() { return (int) VH_physicalResolution$width.get(this.segment(), 0L, 0L); }
+    public int physicalResolution$height() { return (int) VH_physicalResolution$height.get(this.segment(), 0L, 0L); }
+    public int supportedTransforms() { return (int) VH_supportedTransforms.get(this.segment(), 0L, 0L); }
+    public int planeReorderPossible() { return (int) VH_planeReorderPossible.get(this.segment(), 0L, 0L); }
+    public int persistentContent() { return (int) VH_persistentContent.get(this.segment(), 0L, 0L); }
+    public VkDisplayPropertiesKHR displayAt(long index, long value) { VH_display.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR displayNameAt(long index, MemorySegment value) { VH_displayName.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR physicalDimensions$widthAt(long index, int value) { VH_physicalDimensions$width.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR physicalDimensions$heightAt(long index, int value) { VH_physicalDimensions$height.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR physicalResolution$widthAt(long index, int value) { VH_physicalResolution$width.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR physicalResolution$heightAt(long index, int value) { VH_physicalResolution$height.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR supportedTransformsAt(long index, int value) { VH_supportedTransforms.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR planeReorderPossibleAt(long index, int value) { VH_planeReorderPossible.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR persistentContentAt(long index, int value) { VH_persistentContent.set(this.segment(), 0L, index, value); return this; }
+    public VkDisplayPropertiesKHR display(long value) { VH_display.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPropertiesKHR displayName(MemorySegment value) { VH_displayName.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPropertiesKHR physicalDimensions$width(int value) { VH_physicalDimensions$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPropertiesKHR physicalDimensions$height(int value) { VH_physicalDimensions$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPropertiesKHR physicalResolution$width(int value) { VH_physicalResolution$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPropertiesKHR physicalResolution$height(int value) { VH_physicalResolution$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPropertiesKHR supportedTransforms(int value) { VH_supportedTransforms.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPropertiesKHR planeReorderPossible(int value) { VH_planeReorderPossible.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDisplayPropertiesKHR persistentContent(int value) { VH_persistentContent.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _displayAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_display, index), LAYOUT_display); }
+    public MemorySegment _display() { return _displayAt(0L); }
+    public VkDisplayPropertiesKHR _displayAt(long index, MemorySegment src) { _displayAt(index).copyFrom(src); return this; }
+    public VkDisplayPropertiesKHR _display(MemorySegment src) { return _displayAt(0L, src); }
+    public MemorySegment _displayNameAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_displayName, index), LAYOUT_displayName); }
+    public MemorySegment _displayName() { return _displayNameAt(0L); }
+    public VkDisplayPropertiesKHR _displayNameAt(long index, MemorySegment src) { _displayNameAt(index).copyFrom(src); return this; }
+    public VkDisplayPropertiesKHR _displayName(MemorySegment src) { return _displayNameAt(0L, src); }
+    public MemorySegment _physicalDimensionsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_physicalDimensions, index), LAYOUT_physicalDimensions); }
+    public MemorySegment _physicalDimensions() { return _physicalDimensionsAt(0L); }
+    public VkDisplayPropertiesKHR _physicalDimensionsAt(long index, MemorySegment src) { _physicalDimensionsAt(index).copyFrom(src); return this; }
+    public VkDisplayPropertiesKHR _physicalDimensions(MemorySegment src) { return _physicalDimensionsAt(0L, src); }
+    public MemorySegment _physicalResolutionAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_physicalResolution, index), LAYOUT_physicalResolution); }
+    public MemorySegment _physicalResolution() { return _physicalResolutionAt(0L); }
+    public VkDisplayPropertiesKHR _physicalResolutionAt(long index, MemorySegment src) { _physicalResolutionAt(index).copyFrom(src); return this; }
+    public VkDisplayPropertiesKHR _physicalResolution(MemorySegment src) { return _physicalResolutionAt(0L, src); }
+    public MemorySegment _supportedTransformsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_supportedTransforms, index), LAYOUT_supportedTransforms); }
+    public MemorySegment _supportedTransforms() { return _supportedTransformsAt(0L); }
+    public VkDisplayPropertiesKHR _supportedTransformsAt(long index, MemorySegment src) { _supportedTransformsAt(index).copyFrom(src); return this; }
+    public VkDisplayPropertiesKHR _supportedTransforms(MemorySegment src) { return _supportedTransformsAt(0L, src); }
+    public MemorySegment _planeReorderPossibleAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_planeReorderPossible, index), LAYOUT_planeReorderPossible); }
+    public MemorySegment _planeReorderPossible() { return _planeReorderPossibleAt(0L); }
+    public VkDisplayPropertiesKHR _planeReorderPossibleAt(long index, MemorySegment src) { _planeReorderPossibleAt(index).copyFrom(src); return this; }
+    public VkDisplayPropertiesKHR _planeReorderPossible(MemorySegment src) { return _planeReorderPossibleAt(0L, src); }
+    public MemorySegment _persistentContentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_persistentContent, index), LAYOUT_persistentContent); }
+    public MemorySegment _persistentContent() { return _persistentContentAt(0L); }
+    public VkDisplayPropertiesKHR _persistentContentAt(long index, MemorySegment src) { _persistentContentAt(index).copyFrom(src); return this; }
+    public VkDisplayPropertiesKHR _persistentContent(MemorySegment src) { return _persistentContentAt(0L, src); }
 }

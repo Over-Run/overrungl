@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,18 +12,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH264RateControlLayerInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint32_t) VkBool32 useMinQp;
-///     (struct VkVideoEncodeH264QpKHR) VkVideoEncodeH264QpKHR minQp;
-///     (uint32_t) VkBool32 useMaxQp;
-///     (struct VkVideoEncodeH264QpKHR) VkVideoEncodeH264QpKHR maxQp;
-///     (uint32_t) VkBool32 useMaxFrameSize;
-///     (struct VkVideoEncodeH264FrameSizeKHR) VkVideoEncodeH264FrameSizeKHR maxFrameSize;
-/// };
+///     VkBool32 useMinQp;
+///     VkVideoEncodeH264QpKHR minQp;
+///     VkBool32 useMaxQp;
+///     VkVideoEncodeH264QpKHR maxQp;
+///     VkBool32 useMaxFrameSize;
+///     VkVideoEncodeH264FrameSizeKHR maxFrameSize;
+/// }
 /// ```
 public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
-    /// The struct layout of `VkVideoEncodeH264RateControlLayerInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -35,337 +33,140 @@ public final class VkVideoEncodeH264RateControlLayerInfoKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("useMaxFrameSize"),
         overrungl.vulkan.khr.struct.VkVideoEncodeH264FrameSizeKHR.LAYOUT.withName("maxFrameSize")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `useMinQp`.
     public static final long OFFSET_useMinQp = LAYOUT.byteOffset(PathElement.groupElement("useMinQp"));
-    /// The memory layout of `useMinQp`.
-    public static final MemoryLayout LAYOUT_useMinQp = LAYOUT.select(PathElement.groupElement("useMinQp"));
-    /// The [VarHandle] of `useMinQp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_useMinQp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMinQp"));
-    /// The byte offset of `minQp`.
     public static final long OFFSET_minQp = LAYOUT.byteOffset(PathElement.groupElement("minQp"));
-    /// The memory layout of `minQp`.
-    public static final MemoryLayout LAYOUT_minQp = LAYOUT.select(PathElement.groupElement("minQp"));
-    /// The byte offset of `useMaxQp`.
     public static final long OFFSET_useMaxQp = LAYOUT.byteOffset(PathElement.groupElement("useMaxQp"));
-    /// The memory layout of `useMaxQp`.
-    public static final MemoryLayout LAYOUT_useMaxQp = LAYOUT.select(PathElement.groupElement("useMaxQp"));
-    /// The [VarHandle] of `useMaxQp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_useMaxQp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxQp"));
-    /// The byte offset of `maxQp`.
     public static final long OFFSET_maxQp = LAYOUT.byteOffset(PathElement.groupElement("maxQp"));
-    /// The memory layout of `maxQp`.
-    public static final MemoryLayout LAYOUT_maxQp = LAYOUT.select(PathElement.groupElement("maxQp"));
-    /// The byte offset of `useMaxFrameSize`.
     public static final long OFFSET_useMaxFrameSize = LAYOUT.byteOffset(PathElement.groupElement("useMaxFrameSize"));
-    /// The memory layout of `useMaxFrameSize`.
-    public static final MemoryLayout LAYOUT_useMaxFrameSize = LAYOUT.select(PathElement.groupElement("useMaxFrameSize"));
-    /// The [VarHandle] of `useMaxFrameSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_useMaxFrameSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxFrameSize"));
-    /// The byte offset of `maxFrameSize`.
     public static final long OFFSET_maxFrameSize = LAYOUT.byteOffset(PathElement.groupElement("maxFrameSize"));
-    /// The memory layout of `maxFrameSize`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_useMinQp = LAYOUT.select(PathElement.groupElement("useMinQp"));
+    public static final MemoryLayout LAYOUT_minQp = LAYOUT.select(PathElement.groupElement("minQp"));
+    public static final MemoryLayout LAYOUT_useMaxQp = LAYOUT.select(PathElement.groupElement("useMaxQp"));
+    public static final MemoryLayout LAYOUT_maxQp = LAYOUT.select(PathElement.groupElement("maxQp"));
+    public static final MemoryLayout LAYOUT_useMaxFrameSize = LAYOUT.select(PathElement.groupElement("useMaxFrameSize"));
     public static final MemoryLayout LAYOUT_maxFrameSize = LAYOUT.select(PathElement.groupElement("maxFrameSize"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_useMinQp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMinQp"));
+    public static final VarHandle VH_minQp$qpI = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQp"), PathElement.groupElement("qpI"));
+    public static final VarHandle VH_minQp$qpP = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQp"), PathElement.groupElement("qpP"));
+    public static final VarHandle VH_minQp$qpB = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQp"), PathElement.groupElement("qpB"));
+    public static final VarHandle VH_useMaxQp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxQp"));
+    public static final VarHandle VH_maxQp$qpI = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQp"), PathElement.groupElement("qpI"));
+    public static final VarHandle VH_maxQp$qpP = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQp"), PathElement.groupElement("qpP"));
+    public static final VarHandle VH_maxQp$qpB = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQp"), PathElement.groupElement("qpB"));
+    public static final VarHandle VH_useMaxFrameSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxFrameSize"));
+    public static final VarHandle VH_maxFrameSize$frameISize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFrameSize"), PathElement.groupElement("frameISize"));
+    public static final VarHandle VH_maxFrameSize$framePSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFrameSize"), PathElement.groupElement("framePSize"));
+    public static final VarHandle VH_maxFrameSize$frameBSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFrameSize"), PathElement.groupElement("frameBSize"));
 
-    /// Creates `VkVideoEncodeH264RateControlLayerInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkVideoEncodeH264RateControlLayerInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkVideoEncodeH264RateControlLayerInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeH264RateControlLayerInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH264RateControlLayerInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkVideoEncodeH264RateControlLayerInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeH264RateControlLayerInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH264RateControlLayerInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkVideoEncodeH264RateControlLayerInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeH264RateControlLayerInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH264RateControlLayerInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkVideoEncodeH264RateControlLayerInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeH264RateControlLayerInfoKHR`
     public static VkVideoEncodeH264RateControlLayerInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeH264RateControlLayerInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkVideoEncodeH264RateControlLayerInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkVideoEncodeH264RateControlLayerInfoKHR`
     public static VkVideoEncodeH264RateControlLayerInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264RateControlLayerInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkVideoEncodeH264RateControlLayerInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRVideoEncodeH264.VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR); }
+    public static VkVideoEncodeH264RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRVideoEncodeH264.VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR);
+        return s;
+    }
     public VkVideoEncodeH264RateControlLayerInfoKHR copyFrom(VkVideoEncodeH264RateControlLayerInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkVideoEncodeH264RateControlLayerInfoKHR reinterpret(long count) { return new VkVideoEncodeH264RateControlLayerInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `useMinQp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int useMinQp(MemorySegment segment, long index) { return (int) VH_useMinQp.get(segment, 0L, index); }
-    /// {@return `useMinQp`}
-    public int useMinQp() { return useMinQp(this.segment(), 0L); }
-    /// Sets `useMinQp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void useMinQp(MemorySegment segment, long index, int value) { VH_useMinQp.set(segment, 0L, index, value); }
-    /// Sets `useMinQp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR useMinQp(int value) { useMinQp(this.segment(), 0L, value); return this; }
-
-    /// {@return `minQp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment minQp(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minQp, index), LAYOUT_minQp); }
-    /// {@return `minQp`}
-    public MemorySegment minQp() { return minQp(this.segment(), 0L); }
-    /// Sets `minQp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minQp(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minQp, index), LAYOUT_minQp.byteSize()); }
-    /// Sets `minQp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR minQp(MemorySegment value) { minQp(this.segment(), 0L, value); return this; }
-    /// Accepts `minQp` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR minQp(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH264QpKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH264QpKHR.of(minQp())); return this; }
-
-    /// {@return `useMaxQp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int useMaxQp(MemorySegment segment, long index) { return (int) VH_useMaxQp.get(segment, 0L, index); }
-    /// {@return `useMaxQp`}
-    public int useMaxQp() { return useMaxQp(this.segment(), 0L); }
-    /// Sets `useMaxQp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void useMaxQp(MemorySegment segment, long index, int value) { VH_useMaxQp.set(segment, 0L, index, value); }
-    /// Sets `useMaxQp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR useMaxQp(int value) { useMaxQp(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxQp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment maxQp(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxQp, index), LAYOUT_maxQp); }
-    /// {@return `maxQp`}
-    public MemorySegment maxQp() { return maxQp(this.segment(), 0L); }
-    /// Sets `maxQp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxQp(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxQp, index), LAYOUT_maxQp.byteSize()); }
-    /// Sets `maxQp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR maxQp(MemorySegment value) { maxQp(this.segment(), 0L, value); return this; }
-    /// Accepts `maxQp` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR maxQp(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH264QpKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH264QpKHR.of(maxQp())); return this; }
-
-    /// {@return `useMaxFrameSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int useMaxFrameSize(MemorySegment segment, long index) { return (int) VH_useMaxFrameSize.get(segment, 0L, index); }
-    /// {@return `useMaxFrameSize`}
-    public int useMaxFrameSize() { return useMaxFrameSize(this.segment(), 0L); }
-    /// Sets `useMaxFrameSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void useMaxFrameSize(MemorySegment segment, long index, int value) { VH_useMaxFrameSize.set(segment, 0L, index, value); }
-    /// Sets `useMaxFrameSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR useMaxFrameSize(int value) { useMaxFrameSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxFrameSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment maxFrameSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxFrameSize, index), LAYOUT_maxFrameSize); }
-    /// {@return `maxFrameSize`}
-    public MemorySegment maxFrameSize() { return maxFrameSize(this.segment(), 0L); }
-    /// Sets `maxFrameSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxFrameSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxFrameSize, index), LAYOUT_maxFrameSize.byteSize()); }
-    /// Sets `maxFrameSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSize(MemorySegment value) { maxFrameSize(this.segment(), 0L, value); return this; }
-    /// Accepts `maxFrameSize` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSize(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH264FrameSizeKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH264FrameSizeKHR.of(maxFrameSize())); return this; }
-
-    /// Creates a slice of `VkVideoEncodeH264RateControlLayerInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoEncodeH264RateControlLayerInfoKHR`
     public VkVideoEncodeH264RateControlLayerInfoKHR asSlice(long index) { return new VkVideoEncodeH264RateControlLayerInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkVideoEncodeH264RateControlLayerInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoEncodeH264RateControlLayerInfoKHR`
     public VkVideoEncodeH264RateControlLayerInfoKHR asSlice(long index, long count) { return new VkVideoEncodeH264RateControlLayerInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkVideoEncodeH264RateControlLayerInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkVideoEncodeH264RateControlLayerInfoKHR at(long index, Consumer<VkVideoEncodeH264RateControlLayerInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `useMinQp` at the given index}
-    /// @param index the index of the struct buffer
-    public int useMinQpAt(long index) { return useMinQp(this.segment(), index); }
-    /// Sets `useMinQp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR useMinQpAt(long index, int value) { useMinQp(this.segment(), index, value); return this; }
-
-    /// {@return `minQp` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment minQpAt(long index) { return minQp(this.segment(), index); }
-    /// Sets `minQp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR minQpAt(long index, MemorySegment value) { minQp(this.segment(), index, value); return this; }
-    /// Accepts `minQp` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR minQpAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH264QpKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH264QpKHR.of(minQpAt(index))); return this; }
-
-    /// {@return `useMaxQp` at the given index}
-    /// @param index the index of the struct buffer
-    public int useMaxQpAt(long index) { return useMaxQp(this.segment(), index); }
-    /// Sets `useMaxQp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR useMaxQpAt(long index, int value) { useMaxQp(this.segment(), index, value); return this; }
-
-    /// {@return `maxQp` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment maxQpAt(long index) { return maxQp(this.segment(), index); }
-    /// Sets `maxQp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR maxQpAt(long index, MemorySegment value) { maxQp(this.segment(), index, value); return this; }
-    /// Accepts `maxQp` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR maxQpAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH264QpKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH264QpKHR.of(maxQpAt(index))); return this; }
-
-    /// {@return `useMaxFrameSize` at the given index}
-    /// @param index the index of the struct buffer
-    public int useMaxFrameSizeAt(long index) { return useMaxFrameSize(this.segment(), index); }
-    /// Sets `useMaxFrameSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR useMaxFrameSizeAt(long index, int value) { useMaxFrameSize(this.segment(), index, value); return this; }
-
-    /// {@return `maxFrameSize` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment maxFrameSizeAt(long index) { return maxFrameSize(this.segment(), index); }
-    /// Sets `maxFrameSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSizeAt(long index, MemorySegment value) { maxFrameSize(this.segment(), index, value); return this; }
-    /// Accepts `maxFrameSize` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSizeAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH264FrameSizeKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH264FrameSizeKHR.of(maxFrameSizeAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int useMinQpAt(long index) { return (int) VH_useMinQp.get(this.segment(), 0L, index); }
+    public int minQp$qpIAt(long index) { return (int) VH_minQp$qpI.get(this.segment(), 0L, index); }
+    public int minQp$qpPAt(long index) { return (int) VH_minQp$qpP.get(this.segment(), 0L, index); }
+    public int minQp$qpBAt(long index) { return (int) VH_minQp$qpB.get(this.segment(), 0L, index); }
+    public int useMaxQpAt(long index) { return (int) VH_useMaxQp.get(this.segment(), 0L, index); }
+    public int maxQp$qpIAt(long index) { return (int) VH_maxQp$qpI.get(this.segment(), 0L, index); }
+    public int maxQp$qpPAt(long index) { return (int) VH_maxQp$qpP.get(this.segment(), 0L, index); }
+    public int maxQp$qpBAt(long index) { return (int) VH_maxQp$qpB.get(this.segment(), 0L, index); }
+    public int useMaxFrameSizeAt(long index) { return (int) VH_useMaxFrameSize.get(this.segment(), 0L, index); }
+    public int maxFrameSize$frameISizeAt(long index) { return (int) VH_maxFrameSize$frameISize.get(this.segment(), 0L, index); }
+    public int maxFrameSize$framePSizeAt(long index) { return (int) VH_maxFrameSize$framePSize.get(this.segment(), 0L, index); }
+    public int maxFrameSize$frameBSizeAt(long index) { return (int) VH_maxFrameSize$frameBSize.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int useMinQp() { return (int) VH_useMinQp.get(this.segment(), 0L, 0L); }
+    public int minQp$qpI() { return (int) VH_minQp$qpI.get(this.segment(), 0L, 0L); }
+    public int minQp$qpP() { return (int) VH_minQp$qpP.get(this.segment(), 0L, 0L); }
+    public int minQp$qpB() { return (int) VH_minQp$qpB.get(this.segment(), 0L, 0L); }
+    public int useMaxQp() { return (int) VH_useMaxQp.get(this.segment(), 0L, 0L); }
+    public int maxQp$qpI() { return (int) VH_maxQp$qpI.get(this.segment(), 0L, 0L); }
+    public int maxQp$qpP() { return (int) VH_maxQp$qpP.get(this.segment(), 0L, 0L); }
+    public int maxQp$qpB() { return (int) VH_maxQp$qpB.get(this.segment(), 0L, 0L); }
+    public int useMaxFrameSize() { return (int) VH_useMaxFrameSize.get(this.segment(), 0L, 0L); }
+    public int maxFrameSize$frameISize() { return (int) VH_maxFrameSize$frameISize.get(this.segment(), 0L, 0L); }
+    public int maxFrameSize$framePSize() { return (int) VH_maxFrameSize$framePSize.get(this.segment(), 0L, 0L); }
+    public int maxFrameSize$frameBSize() { return (int) VH_maxFrameSize$frameBSize.get(this.segment(), 0L, 0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR useMinQpAt(long index, int value) { VH_useMinQp.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR minQp$qpIAt(long index, int value) { VH_minQp$qpI.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR minQp$qpPAt(long index, int value) { VH_minQp$qpP.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR minQp$qpBAt(long index, int value) { VH_minQp$qpB.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR useMaxQpAt(long index, int value) { VH_useMaxQp.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxQp$qpIAt(long index, int value) { VH_maxQp$qpI.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxQp$qpPAt(long index, int value) { VH_maxQp$qpP.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxQp$qpBAt(long index, int value) { VH_maxQp$qpB.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR useMaxFrameSizeAt(long index, int value) { VH_useMaxFrameSize.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSize$frameISizeAt(long index, int value) { VH_maxFrameSize$frameISize.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSize$framePSizeAt(long index, int value) { VH_maxFrameSize$framePSize.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSize$frameBSizeAt(long index, int value) { VH_maxFrameSize$frameBSize.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR useMinQp(int value) { VH_useMinQp.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR minQp$qpI(int value) { VH_minQp$qpI.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR minQp$qpP(int value) { VH_minQp$qpP.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR minQp$qpB(int value) { VH_minQp$qpB.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR useMaxQp(int value) { VH_useMaxQp.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxQp$qpI(int value) { VH_maxQp$qpI.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxQp$qpP(int value) { VH_maxQp$qpP.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxQp$qpB(int value) { VH_maxQp$qpB.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR useMaxFrameSize(int value) { VH_useMaxFrameSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSize$frameISize(int value) { VH_maxFrameSize$frameISize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSize$framePSize(int value) { VH_maxFrameSize$framePSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR maxFrameSize$frameBSize(int value) { VH_maxFrameSize$frameBSize.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _useMinQpAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_useMinQp, index), LAYOUT_useMinQp); }
+    public MemorySegment _useMinQp() { return _useMinQpAt(0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _useMinQpAt(long index, MemorySegment src) { _useMinQpAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _useMinQp(MemorySegment src) { return _useMinQpAt(0L, src); }
+    public MemorySegment _minQpAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minQp, index), LAYOUT_minQp); }
+    public MemorySegment _minQp() { return _minQpAt(0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _minQpAt(long index, MemorySegment src) { _minQpAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _minQp(MemorySegment src) { return _minQpAt(0L, src); }
+    public MemorySegment _useMaxQpAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_useMaxQp, index), LAYOUT_useMaxQp); }
+    public MemorySegment _useMaxQp() { return _useMaxQpAt(0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _useMaxQpAt(long index, MemorySegment src) { _useMaxQpAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _useMaxQp(MemorySegment src) { return _useMaxQpAt(0L, src); }
+    public MemorySegment _maxQpAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxQp, index), LAYOUT_maxQp); }
+    public MemorySegment _maxQp() { return _maxQpAt(0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _maxQpAt(long index, MemorySegment src) { _maxQpAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _maxQp(MemorySegment src) { return _maxQpAt(0L, src); }
+    public MemorySegment _useMaxFrameSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_useMaxFrameSize, index), LAYOUT_useMaxFrameSize); }
+    public MemorySegment _useMaxFrameSize() { return _useMaxFrameSizeAt(0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _useMaxFrameSizeAt(long index, MemorySegment src) { _useMaxFrameSizeAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _useMaxFrameSize(MemorySegment src) { return _useMaxFrameSizeAt(0L, src); }
+    public MemorySegment _maxFrameSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxFrameSize, index), LAYOUT_maxFrameSize); }
+    public MemorySegment _maxFrameSize() { return _maxFrameSizeAt(0L); }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _maxFrameSizeAt(long index, MemorySegment src) { _maxFrameSizeAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH264RateControlLayerInfoKHR _maxFrameSize(MemorySegment src) { return _maxFrameSizeAt(0L, src); }
 }

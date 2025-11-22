@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDisplacementMicromapFeaturesNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 displacementMicromap;
-/// };
+///     VkBool32 displacementMicromap;
+/// }
 /// ```
 public final class VkPhysicalDeviceDisplacementMicromapFeaturesNV extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceDisplacementMicromapFeaturesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("displacementMicromap")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `displacementMicromap`.
     public static final long OFFSET_displacementMicromap = LAYOUT.byteOffset(PathElement.groupElement("displacementMicromap"));
-    /// The memory layout of `displacementMicromap`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_displacementMicromap = LAYOUT.select(PathElement.groupElement("displacementMicromap"));
-    /// The [VarHandle] of `displacementMicromap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_displacementMicromap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displacementMicromap"));
 
-    /// Creates `VkPhysicalDeviceDisplacementMicromapFeaturesNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceDisplacementMicromapFeaturesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceDisplacementMicromapFeaturesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceDisplacementMicromapFeaturesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDisplacementMicromapFeaturesNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceDisplacementMicromapFeaturesNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceDisplacementMicromapFeaturesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDisplacementMicromapFeaturesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceDisplacementMicromapFeaturesNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceDisplacementMicromapFeaturesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDisplacementMicromapFeaturesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceDisplacementMicromapFeaturesNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceDisplacementMicromapFeaturesNV`
     public static VkPhysicalDeviceDisplacementMicromapFeaturesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceDisplacementMicromapFeaturesNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceDisplacementMicromapFeaturesNV`
     public static VkPhysicalDeviceDisplacementMicromapFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceDisplacementMicromapFeaturesNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVDisplacementMicromap.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV); }
+    public static VkPhysicalDeviceDisplacementMicromapFeaturesNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVDisplacementMicromap.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV);
+        return s;
+    }
     public VkPhysicalDeviceDisplacementMicromapFeaturesNV copyFrom(VkPhysicalDeviceDisplacementMicromapFeaturesNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceDisplacementMicromapFeaturesNV reinterpret(long count) { return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDisplacementMicromapFeaturesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDisplacementMicromapFeaturesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `displacementMicromap` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int displacementMicromap(MemorySegment segment, long index) { return (int) VH_displacementMicromap.get(segment, 0L, index); }
-    /// {@return `displacementMicromap`}
-    public int displacementMicromap() { return displacementMicromap(this.segment(), 0L); }
-    /// Sets `displacementMicromap` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void displacementMicromap(MemorySegment segment, long index, int value) { VH_displacementMicromap.set(segment, 0L, index, value); }
-    /// Sets `displacementMicromap` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDisplacementMicromapFeaturesNV displacementMicromap(int value) { displacementMicromap(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceDisplacementMicromapFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceDisplacementMicromapFeaturesNV`
     public VkPhysicalDeviceDisplacementMicromapFeaturesNV asSlice(long index) { return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceDisplacementMicromapFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceDisplacementMicromapFeaturesNV`
     public VkPhysicalDeviceDisplacementMicromapFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceDisplacementMicromapFeaturesNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceDisplacementMicromapFeaturesNV at(long index, Consumer<VkPhysicalDeviceDisplacementMicromapFeaturesNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDisplacementMicromapFeaturesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDisplacementMicromapFeaturesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `displacementMicromap` at the given index}
-    /// @param index the index of the struct buffer
-    public int displacementMicromapAt(long index) { return displacementMicromap(this.segment(), index); }
-    /// Sets `displacementMicromap` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDisplacementMicromapFeaturesNV displacementMicromapAt(long index, int value) { displacementMicromap(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int displacementMicromapAt(long index) { return (int) VH_displacementMicromap.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int displacementMicromap() { return (int) VH_displacementMicromap.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV displacementMicromapAt(long index, int value) { VH_displacementMicromap.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV displacementMicromap(int value) { VH_displacementMicromap.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _displacementMicromapAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_displacementMicromap, index), LAYOUT_displacementMicromap); }
+    public MemorySegment _displacementMicromap() { return _displacementMicromapAt(0L); }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV _displacementMicromapAt(long index, MemorySegment src) { _displacementMicromapAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceDisplacementMicromapFeaturesNV _displacementMicromap(MemorySegment src) { return _displacementMicromapAt(0L, src); }
 }

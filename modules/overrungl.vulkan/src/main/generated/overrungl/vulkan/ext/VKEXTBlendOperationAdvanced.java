@@ -1,14 +1,17 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_blend_operation_advanced` - device extension
 public final class VKEXTBlendOperationAdvanced {
+    public static final int VK_EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION = 2;
+    public static final String VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME = "VK_EXT_blend_operation_advanced";
     public static final int VK_BLEND_OVERLAP_UNCORRELATED_EXT = 0;
     public static final int VK_BLEND_OVERLAP_DISJOINT_EXT = 1;
     public static final int VK_BLEND_OVERLAP_CONJOINT_EXT = 2;
-    public static final int VK_EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION = 2;
-    public static final String VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME = "VK_EXT_blend_operation_advanced";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT = 1000148000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT = 1000148001;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT = 1000148002;
@@ -59,7 +62,5 @@ public final class VKEXTBlendOperationAdvanced {
     public static final int VK_BLEND_OP_GREEN_EXT = 1000148044;
     public static final int VK_BLEND_OP_BLUE_EXT = 1000148045;
     public static final int VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT = 0x00080000;
-
     private VKEXTBlendOperationAdvanced() {}
-
 }

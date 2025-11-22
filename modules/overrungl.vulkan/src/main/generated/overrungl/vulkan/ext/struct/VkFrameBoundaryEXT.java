@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,9 +12,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFrameBoundaryEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkFrameBoundaryFlagsEXT flags;
+///     VkFrameBoundaryFlagsEXT flags;
 ///     uint64_t frameID;
 ///     uint32_t imageCount;
 ///     const VkImage* pImages;
@@ -24,10 +23,9 @@ import overrungl.util.*;
 ///     uint64_t tagName;
 ///     size_t tagSize;
 ///     const void* pTag;
-/// };
+/// }
 /// ```
 public final class VkFrameBoundaryEXT extends GroupType {
-    /// The struct layout of `VkFrameBoundaryEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,409 +39,143 @@ public final class VkFrameBoundaryEXT extends GroupType {
         CanonicalTypes.SIZE_T.withName("tagSize"),
         ValueLayout.ADDRESS.withName("pTag")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `frameID`.
     public static final long OFFSET_frameID = LAYOUT.byteOffset(PathElement.groupElement("frameID"));
-    /// The memory layout of `frameID`.
-    public static final MemoryLayout LAYOUT_frameID = LAYOUT.select(PathElement.groupElement("frameID"));
-    /// The [VarHandle] of `frameID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_frameID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameID"));
-    /// The byte offset of `imageCount`.
     public static final long OFFSET_imageCount = LAYOUT.byteOffset(PathElement.groupElement("imageCount"));
-    /// The memory layout of `imageCount`.
-    public static final MemoryLayout LAYOUT_imageCount = LAYOUT.select(PathElement.groupElement("imageCount"));
-    /// The [VarHandle] of `imageCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCount"));
-    /// The byte offset of `pImages`.
     public static final long OFFSET_pImages = LAYOUT.byteOffset(PathElement.groupElement("pImages"));
-    /// The memory layout of `pImages`.
-    public static final MemoryLayout LAYOUT_pImages = LAYOUT.select(PathElement.groupElement("pImages"));
-    /// The [VarHandle] of `pImages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImages"));
-    /// The byte offset of `bufferCount`.
     public static final long OFFSET_bufferCount = LAYOUT.byteOffset(PathElement.groupElement("bufferCount"));
-    /// The memory layout of `bufferCount`.
-    public static final MemoryLayout LAYOUT_bufferCount = LAYOUT.select(PathElement.groupElement("bufferCount"));
-    /// The [VarHandle] of `bufferCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCount"));
-    /// The byte offset of `pBuffers`.
     public static final long OFFSET_pBuffers = LAYOUT.byteOffset(PathElement.groupElement("pBuffers"));
-    /// The memory layout of `pBuffers`.
-    public static final MemoryLayout LAYOUT_pBuffers = LAYOUT.select(PathElement.groupElement("pBuffers"));
-    /// The [VarHandle] of `pBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBuffers"));
-    /// The byte offset of `tagName`.
     public static final long OFFSET_tagName = LAYOUT.byteOffset(PathElement.groupElement("tagName"));
-    /// The memory layout of `tagName`.
-    public static final MemoryLayout LAYOUT_tagName = LAYOUT.select(PathElement.groupElement("tagName"));
-    /// The [VarHandle] of `tagName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tagName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tagName"));
-    /// The byte offset of `tagSize`.
     public static final long OFFSET_tagSize = LAYOUT.byteOffset(PathElement.groupElement("tagSize"));
-    /// The memory layout of `tagSize`.
-    public static final MemoryLayout LAYOUT_tagSize = LAYOUT.select(PathElement.groupElement("tagSize"));
-    /// The [VarHandle] of `tagSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tagSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tagSize"));
-    /// The byte offset of `pTag`.
     public static final long OFFSET_pTag = LAYOUT.byteOffset(PathElement.groupElement("pTag"));
-    /// The memory layout of `pTag`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_frameID = LAYOUT.select(PathElement.groupElement("frameID"));
+    public static final MemoryLayout LAYOUT_imageCount = LAYOUT.select(PathElement.groupElement("imageCount"));
+    public static final MemoryLayout LAYOUT_pImages = LAYOUT.select(PathElement.groupElement("pImages"));
+    public static final MemoryLayout LAYOUT_bufferCount = LAYOUT.select(PathElement.groupElement("bufferCount"));
+    public static final MemoryLayout LAYOUT_pBuffers = LAYOUT.select(PathElement.groupElement("pBuffers"));
+    public static final MemoryLayout LAYOUT_tagName = LAYOUT.select(PathElement.groupElement("tagName"));
+    public static final MemoryLayout LAYOUT_tagSize = LAYOUT.select(PathElement.groupElement("tagSize"));
     public static final MemoryLayout LAYOUT_pTag = LAYOUT.select(PathElement.groupElement("pTag"));
-    /// The [VarHandle] of `pTag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_frameID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameID"));
+    public static final VarHandle VH_imageCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCount"));
+    public static final VarHandle VH_pImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImages"));
+    public static final VarHandle VH_bufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferCount"));
+    public static final VarHandle VH_pBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBuffers"));
+    public static final VarHandle VH_tagName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tagName"));
+    public static final VarHandle VH_tagSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tagSize"));
     public static final VarHandle VH_pTag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTag"));
 
-    /// Creates `VkFrameBoundaryEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkFrameBoundaryEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkFrameBoundaryEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkFrameBoundaryEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFrameBoundaryEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkFrameBoundaryEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkFrameBoundaryEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFrameBoundaryEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkFrameBoundaryEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkFrameBoundaryEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkFrameBoundaryEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkFrameBoundaryEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkFrameBoundaryEXT`
     public static VkFrameBoundaryEXT alloc(SegmentAllocator allocator) { return new VkFrameBoundaryEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkFrameBoundaryEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkFrameBoundaryEXT`
     public static VkFrameBoundaryEXT alloc(SegmentAllocator allocator, long count) { return new VkFrameBoundaryEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkFrameBoundaryEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTFrameBoundary.VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT); }
+    public static VkFrameBoundaryEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTFrameBoundary.VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT);
+        return s;
+    }
     public VkFrameBoundaryEXT copyFrom(VkFrameBoundaryEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkFrameBoundaryEXT reinterpret(long count) { return new VkFrameBoundaryEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `frameID` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long frameID(MemorySegment segment, long index) { return (long) VH_frameID.get(segment, 0L, index); }
-    /// {@return `frameID`}
-    public long frameID() { return frameID(this.segment(), 0L); }
-    /// Sets `frameID` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void frameID(MemorySegment segment, long index, long value) { VH_frameID.set(segment, 0L, index, value); }
-    /// Sets `frameID` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT frameID(long value) { frameID(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int imageCount(MemorySegment segment, long index) { return (int) VH_imageCount.get(segment, 0L, index); }
-    /// {@return `imageCount`}
-    public int imageCount() { return imageCount(this.segment(), 0L); }
-    /// Sets `imageCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageCount(MemorySegment segment, long index, int value) { VH_imageCount.set(segment, 0L, index, value); }
-    /// Sets `imageCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT imageCount(int value) { imageCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pImages` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pImages(MemorySegment segment, long index) { return (MemorySegment) VH_pImages.get(segment, 0L, index); }
-    /// {@return `pImages`}
-    public MemorySegment pImages() { return pImages(this.segment(), 0L); }
-    /// Sets `pImages` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pImages(MemorySegment segment, long index, MemorySegment value) { VH_pImages.set(segment, 0L, index, value); }
-    /// Sets `pImages` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pImages(MemorySegment value) { pImages(this.segment(), 0L, value); return this; }
-
-    /// {@return `bufferCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int bufferCount(MemorySegment segment, long index) { return (int) VH_bufferCount.get(segment, 0L, index); }
-    /// {@return `bufferCount`}
-    public int bufferCount() { return bufferCount(this.segment(), 0L); }
-    /// Sets `bufferCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void bufferCount(MemorySegment segment, long index, int value) { VH_bufferCount.set(segment, 0L, index, value); }
-    /// Sets `bufferCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT bufferCount(int value) { bufferCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pBuffers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pBuffers(MemorySegment segment, long index) { return (MemorySegment) VH_pBuffers.get(segment, 0L, index); }
-    /// {@return `pBuffers`}
-    public MemorySegment pBuffers() { return pBuffers(this.segment(), 0L); }
-    /// Sets `pBuffers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pBuffers(MemorySegment segment, long index, MemorySegment value) { VH_pBuffers.set(segment, 0L, index, value); }
-    /// Sets `pBuffers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pBuffers(MemorySegment value) { pBuffers(this.segment(), 0L, value); return this; }
-
-    /// {@return `tagName` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long tagName(MemorySegment segment, long index) { return (long) VH_tagName.get(segment, 0L, index); }
-    /// {@return `tagName`}
-    public long tagName() { return tagName(this.segment(), 0L); }
-    /// Sets `tagName` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void tagName(MemorySegment segment, long index, long value) { VH_tagName.set(segment, 0L, index, value); }
-    /// Sets `tagName` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT tagName(long value) { tagName(this.segment(), 0L, value); return this; }
-
-    /// {@return `tagSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long tagSize(MemorySegment segment, long index) { return MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, VH_tagSize.get(segment, 0L, index)); }
-    /// {@return `tagSize`}
-    public long tagSize() { return tagSize(this.segment(), 0L); }
-    /// Sets `tagSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void tagSize(MemorySegment segment, long index, long value) { VH_tagSize.set(segment, 0L, index, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, value)); }
-    /// Sets `tagSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT tagSize(long value) { tagSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `pTag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pTag(MemorySegment segment, long index) { return (MemorySegment) VH_pTag.get(segment, 0L, index); }
-    /// {@return `pTag`}
-    public MemorySegment pTag() { return pTag(this.segment(), 0L); }
-    /// Sets `pTag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pTag(MemorySegment segment, long index, MemorySegment value) { VH_pTag.set(segment, 0L, index, value); }
-    /// Sets `pTag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pTag(MemorySegment value) { pTag(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkFrameBoundaryEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkFrameBoundaryEXT`
     public VkFrameBoundaryEXT asSlice(long index) { return new VkFrameBoundaryEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkFrameBoundaryEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkFrameBoundaryEXT`
     public VkFrameBoundaryEXT asSlice(long index, long count) { return new VkFrameBoundaryEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkFrameBoundaryEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkFrameBoundaryEXT at(long index, Consumer<VkFrameBoundaryEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `frameID` at the given index}
-    /// @param index the index of the struct buffer
-    public long frameIDAt(long index) { return frameID(this.segment(), index); }
-    /// Sets `frameID` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT frameIDAt(long index, long value) { frameID(this.segment(), index, value); return this; }
-
-    /// {@return `imageCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int imageCountAt(long index) { return imageCount(this.segment(), index); }
-    /// Sets `imageCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT imageCountAt(long index, int value) { imageCount(this.segment(), index, value); return this; }
-
-    /// {@return `pImages` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pImagesAt(long index) { return pImages(this.segment(), index); }
-    /// Sets `pImages` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pImagesAt(long index, MemorySegment value) { pImages(this.segment(), index, value); return this; }
-
-    /// {@return `bufferCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int bufferCountAt(long index) { return bufferCount(this.segment(), index); }
-    /// Sets `bufferCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT bufferCountAt(long index, int value) { bufferCount(this.segment(), index, value); return this; }
-
-    /// {@return `pBuffers` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pBuffersAt(long index) { return pBuffers(this.segment(), index); }
-    /// Sets `pBuffers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pBuffersAt(long index, MemorySegment value) { pBuffers(this.segment(), index, value); return this; }
-
-    /// {@return `tagName` at the given index}
-    /// @param index the index of the struct buffer
-    public long tagNameAt(long index) { return tagName(this.segment(), index); }
-    /// Sets `tagName` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT tagNameAt(long index, long value) { tagName(this.segment(), index, value); return this; }
-
-    /// {@return `tagSize` at the given index}
-    /// @param index the index of the struct buffer
-    public long tagSizeAt(long index) { return tagSize(this.segment(), index); }
-    /// Sets `tagSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT tagSizeAt(long index, long value) { tagSize(this.segment(), index, value); return this; }
-
-    /// {@return `pTag` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pTagAt(long index) { return pTag(this.segment(), index); }
-    /// Sets `pTag` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pTagAt(long index, MemorySegment value) { pTag(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public long frameIDAt(long index) { return (long) VH_frameID.get(this.segment(), 0L, index); }
+    public int imageCountAt(long index) { return (int) VH_imageCount.get(this.segment(), 0L, index); }
+    public MemorySegment pImagesAt(long index) { return (MemorySegment) VH_pImages.get(this.segment(), 0L, index); }
+    public int bufferCountAt(long index) { return (int) VH_bufferCount.get(this.segment(), 0L, index); }
+    public MemorySegment pBuffersAt(long index) { return (MemorySegment) VH_pBuffers.get(this.segment(), 0L, index); }
+    public long tagNameAt(long index) { return (long) VH_tagName.get(this.segment(), 0L, index); }
+    public long tagSizeAt(long index) { return (long) VH_tagSize.get(this.segment(), 0L, index); }
+    public MemorySegment pTagAt(long index) { return (MemorySegment) VH_pTag.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public long frameID() { return (long) VH_frameID.get(this.segment(), 0L, 0L); }
+    public int imageCount() { return (int) VH_imageCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pImages() { return (MemorySegment) VH_pImages.get(this.segment(), 0L, 0L); }
+    public int bufferCount() { return (int) VH_bufferCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pBuffers() { return (MemorySegment) VH_pBuffers.get(this.segment(), 0L, 0L); }
+    public long tagName() { return (long) VH_tagName.get(this.segment(), 0L, 0L); }
+    public long tagSize() { return (long) VH_tagSize.get(this.segment(), 0L, 0L); }
+    public MemorySegment pTag() { return (MemorySegment) VH_pTag.get(this.segment(), 0L, 0L); }
+    public VkFrameBoundaryEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT frameIDAt(long index, long value) { VH_frameID.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT imageCountAt(long index, int value) { VH_imageCount.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT pImagesAt(long index, MemorySegment value) { VH_pImages.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT bufferCountAt(long index, int value) { VH_bufferCount.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT pBuffersAt(long index, MemorySegment value) { VH_pBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT tagNameAt(long index, long value) { VH_tagName.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT tagSizeAt(long index, long value) { VH_tagSize.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT pTagAt(long index, MemorySegment value) { VH_pTag.set(this.segment(), 0L, index, value); return this; }
+    public VkFrameBoundaryEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT frameID(long value) { VH_frameID.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT imageCount(int value) { VH_imageCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT pImages(MemorySegment value) { VH_pImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT bufferCount(int value) { VH_bufferCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT pBuffers(MemorySegment value) { VH_pBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT tagName(long value) { VH_tagName.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT tagSize(long value) { VH_tagSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkFrameBoundaryEXT pTag(MemorySegment value) { VH_pTag.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkFrameBoundaryEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkFrameBoundaryEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkFrameBoundaryEXT _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _frameIDAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_frameID, index), LAYOUT_frameID); }
+    public MemorySegment _frameID() { return _frameIDAt(0L); }
+    public VkFrameBoundaryEXT _frameIDAt(long index, MemorySegment src) { _frameIDAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _frameID(MemorySegment src) { return _frameIDAt(0L, src); }
+    public MemorySegment _imageCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageCount, index), LAYOUT_imageCount); }
+    public MemorySegment _imageCount() { return _imageCountAt(0L); }
+    public VkFrameBoundaryEXT _imageCountAt(long index, MemorySegment src) { _imageCountAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _imageCount(MemorySegment src) { return _imageCountAt(0L, src); }
+    public MemorySegment _pImagesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pImages, index), LAYOUT_pImages); }
+    public MemorySegment _pImages() { return _pImagesAt(0L); }
+    public VkFrameBoundaryEXT _pImagesAt(long index, MemorySegment src) { _pImagesAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _pImages(MemorySegment src) { return _pImagesAt(0L, src); }
+    public MemorySegment _bufferCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_bufferCount, index), LAYOUT_bufferCount); }
+    public MemorySegment _bufferCount() { return _bufferCountAt(0L); }
+    public VkFrameBoundaryEXT _bufferCountAt(long index, MemorySegment src) { _bufferCountAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _bufferCount(MemorySegment src) { return _bufferCountAt(0L, src); }
+    public MemorySegment _pBuffersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pBuffers, index), LAYOUT_pBuffers); }
+    public MemorySegment _pBuffers() { return _pBuffersAt(0L); }
+    public VkFrameBoundaryEXT _pBuffersAt(long index, MemorySegment src) { _pBuffersAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _pBuffers(MemorySegment src) { return _pBuffersAt(0L, src); }
+    public MemorySegment _tagNameAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_tagName, index), LAYOUT_tagName); }
+    public MemorySegment _tagName() { return _tagNameAt(0L); }
+    public VkFrameBoundaryEXT _tagNameAt(long index, MemorySegment src) { _tagNameAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _tagName(MemorySegment src) { return _tagNameAt(0L, src); }
+    public MemorySegment _tagSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_tagSize, index), LAYOUT_tagSize); }
+    public MemorySegment _tagSize() { return _tagSizeAt(0L); }
+    public VkFrameBoundaryEXT _tagSizeAt(long index, MemorySegment src) { _tagSizeAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _tagSize(MemorySegment src) { return _tagSizeAt(0L, src); }
+    public MemorySegment _pTagAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pTag, index), LAYOUT_pTag); }
+    public MemorySegment _pTag() { return _pTagAt(0L); }
+    public VkFrameBoundaryEXT _pTagAt(long index, MemorySegment src) { _pTagAt(index).copyFrom(src); return this; }
+    public VkFrameBoundaryEXT _pTag(MemorySegment src) { return _pTagAt(0L, src); }
 }

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePresentIdFeaturesKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 presentId;
-/// };
+///     VkBool32 presentId;
+/// }
 /// ```
 public final class VkPhysicalDevicePresentIdFeaturesKHR extends GroupType {
-    /// The struct layout of `VkPhysicalDevicePresentIdFeaturesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("presentId")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `presentId`.
     public static final long OFFSET_presentId = LAYOUT.byteOffset(PathElement.groupElement("presentId"));
-    /// The memory layout of `presentId`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_presentId = LAYOUT.select(PathElement.groupElement("presentId"));
-    /// The [VarHandle] of `presentId` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_presentId = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentId"));
 
-    /// Creates `VkPhysicalDevicePresentIdFeaturesKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDevicePresentIdFeaturesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDevicePresentIdFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePresentIdFeaturesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePresentIdFeaturesKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDevicePresentIdFeaturesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePresentIdFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePresentIdFeaturesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDevicePresentIdFeaturesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDevicePresentIdFeaturesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePresentIdFeaturesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDevicePresentIdFeaturesKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevicePresentIdFeaturesKHR`
     public static VkPhysicalDevicePresentIdFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePresentIdFeaturesKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDevicePresentIdFeaturesKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDevicePresentIdFeaturesKHR`
     public static VkPhysicalDevicePresentIdFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePresentIdFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDevicePresentIdFeaturesKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRPresentId.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR); }
+    public static VkPhysicalDevicePresentIdFeaturesKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRPresentId.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR);
+        return s;
+    }
     public VkPhysicalDevicePresentIdFeaturesKHR copyFrom(VkPhysicalDevicePresentIdFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDevicePresentIdFeaturesKHR reinterpret(long count) { return new VkPhysicalDevicePresentIdFeaturesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentIdFeaturesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentIdFeaturesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `presentId` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int presentId(MemorySegment segment, long index) { return (int) VH_presentId.get(segment, 0L, index); }
-    /// {@return `presentId`}
-    public int presentId() { return presentId(this.segment(), 0L); }
-    /// Sets `presentId` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void presentId(MemorySegment segment, long index, int value) { VH_presentId.set(segment, 0L, index, value); }
-    /// Sets `presentId` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentIdFeaturesKHR presentId(int value) { presentId(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDevicePresentIdFeaturesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDevicePresentIdFeaturesKHR`
     public VkPhysicalDevicePresentIdFeaturesKHR asSlice(long index) { return new VkPhysicalDevicePresentIdFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDevicePresentIdFeaturesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDevicePresentIdFeaturesKHR`
     public VkPhysicalDevicePresentIdFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDevicePresentIdFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDevicePresentIdFeaturesKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDevicePresentIdFeaturesKHR at(long index, Consumer<VkPhysicalDevicePresentIdFeaturesKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentIdFeaturesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentIdFeaturesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `presentId` at the given index}
-    /// @param index the index of the struct buffer
-    public int presentIdAt(long index) { return presentId(this.segment(), index); }
-    /// Sets `presentId` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePresentIdFeaturesKHR presentIdAt(long index, int value) { presentId(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int presentIdAt(long index) { return (int) VH_presentId.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int presentId() { return (int) VH_presentId.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDevicePresentIdFeaturesKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePresentIdFeaturesKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePresentIdFeaturesKHR presentIdAt(long index, int value) { VH_presentId.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDevicePresentIdFeaturesKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePresentIdFeaturesKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDevicePresentIdFeaturesKHR presentId(int value) { VH_presentId.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDevicePresentIdFeaturesKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePresentIdFeaturesKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDevicePresentIdFeaturesKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePresentIdFeaturesKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _presentIdAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_presentId, index), LAYOUT_presentId); }
+    public MemorySegment _presentId() { return _presentIdAt(0L); }
+    public VkPhysicalDevicePresentIdFeaturesKHR _presentIdAt(long index, MemorySegment src) { _presentIdAt(index).copyFrom(src); return this; }
+    public VkPhysicalDevicePresentIdFeaturesKHR _presentId(MemorySegment src) { return _presentIdAt(0L, src); }
 }

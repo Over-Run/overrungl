@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassInputAttachmentAspectCreateInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t aspectReferenceCount;
 ///     const VkInputAttachmentAspectReference* pAspectReferences;
-/// };
+/// }
 /// ```
 public final class VkRenderPassInputAttachmentAspectCreateInfo extends GroupType {
-    /// The struct layout of `VkRenderPassInputAttachmentAspectCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("aspectReferenceCount"),
         ValueLayout.ADDRESS.withName("pAspectReferences")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `aspectReferenceCount`.
     public static final long OFFSET_aspectReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("aspectReferenceCount"));
-    /// The memory layout of `aspectReferenceCount`.
-    public static final MemoryLayout LAYOUT_aspectReferenceCount = LAYOUT.select(PathElement.groupElement("aspectReferenceCount"));
-    /// The [VarHandle] of `aspectReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_aspectReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectReferenceCount"));
-    /// The byte offset of `pAspectReferences`.
     public static final long OFFSET_pAspectReferences = LAYOUT.byteOffset(PathElement.groupElement("pAspectReferences"));
-    /// The memory layout of `pAspectReferences`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_aspectReferenceCount = LAYOUT.select(PathElement.groupElement("aspectReferenceCount"));
     public static final MemoryLayout LAYOUT_pAspectReferences = LAYOUT.select(PathElement.groupElement("pAspectReferences"));
-    /// The [VarHandle] of `pAspectReferences` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_aspectReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectReferenceCount"));
     public static final VarHandle VH_pAspectReferences = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAspectReferences"));
 
-    /// Creates `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkRenderPassInputAttachmentAspectCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderPassInputAttachmentAspectCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassInputAttachmentAspectCreateInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderPassInputAttachmentAspectCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassInputAttachmentAspectCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderPassInputAttachmentAspectCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassInputAttachmentAspectCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRenderPassInputAttachmentAspectCreateInfo`
     public static VkRenderPassInputAttachmentAspectCreateInfo alloc(SegmentAllocator allocator) { return new VkRenderPassInputAttachmentAspectCreateInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkRenderPassInputAttachmentAspectCreateInfo`
     public static VkRenderPassInputAttachmentAspectCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderPassInputAttachmentAspectCreateInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkRenderPassInputAttachmentAspectCreateInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO); }
+    public static VkRenderPassInputAttachmentAspectCreateInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO);
+        return s;
+    }
     public VkRenderPassInputAttachmentAspectCreateInfo copyFrom(VkRenderPassInputAttachmentAspectCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkRenderPassInputAttachmentAspectCreateInfo reinterpret(long count) { return new VkRenderPassInputAttachmentAspectCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassInputAttachmentAspectCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassInputAttachmentAspectCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `aspectReferenceCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int aspectReferenceCount(MemorySegment segment, long index) { return (int) VH_aspectReferenceCount.get(segment, 0L, index); }
-    /// {@return `aspectReferenceCount`}
-    public int aspectReferenceCount() { return aspectReferenceCount(this.segment(), 0L); }
-    /// Sets `aspectReferenceCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void aspectReferenceCount(MemorySegment segment, long index, int value) { VH_aspectReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `aspectReferenceCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassInputAttachmentAspectCreateInfo aspectReferenceCount(int value) { aspectReferenceCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pAspectReferences` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pAspectReferences(MemorySegment segment, long index) { return (MemorySegment) VH_pAspectReferences.get(segment, 0L, index); }
-    /// {@return `pAspectReferences`}
-    public MemorySegment pAspectReferences() { return pAspectReferences(this.segment(), 0L); }
-    /// Sets `pAspectReferences` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pAspectReferences(MemorySegment segment, long index, MemorySegment value) { VH_pAspectReferences.set(segment, 0L, index, value); }
-    /// Sets `pAspectReferences` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassInputAttachmentAspectCreateInfo pAspectReferences(MemorySegment value) { pAspectReferences(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkRenderPassInputAttachmentAspectCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderPassInputAttachmentAspectCreateInfo`
     public VkRenderPassInputAttachmentAspectCreateInfo asSlice(long index) { return new VkRenderPassInputAttachmentAspectCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkRenderPassInputAttachmentAspectCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderPassInputAttachmentAspectCreateInfo`
     public VkRenderPassInputAttachmentAspectCreateInfo asSlice(long index, long count) { return new VkRenderPassInputAttachmentAspectCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkRenderPassInputAttachmentAspectCreateInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkRenderPassInputAttachmentAspectCreateInfo at(long index, Consumer<VkRenderPassInputAttachmentAspectCreateInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassInputAttachmentAspectCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassInputAttachmentAspectCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `aspectReferenceCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int aspectReferenceCountAt(long index) { return aspectReferenceCount(this.segment(), index); }
-    /// Sets `aspectReferenceCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassInputAttachmentAspectCreateInfo aspectReferenceCountAt(long index, int value) { aspectReferenceCount(this.segment(), index, value); return this; }
-
-    /// {@return `pAspectReferences` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pAspectReferencesAt(long index) { return pAspectReferences(this.segment(), index); }
-    /// Sets `pAspectReferences` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassInputAttachmentAspectCreateInfo pAspectReferencesAt(long index, MemorySegment value) { pAspectReferences(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int aspectReferenceCountAt(long index) { return (int) VH_aspectReferenceCount.get(this.segment(), 0L, index); }
+    public MemorySegment pAspectReferencesAt(long index) { return (MemorySegment) VH_pAspectReferences.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int aspectReferenceCount() { return (int) VH_aspectReferenceCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pAspectReferences() { return (MemorySegment) VH_pAspectReferences.get(this.segment(), 0L, 0L); }
+    public VkRenderPassInputAttachmentAspectCreateInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo aspectReferenceCountAt(long index, int value) { VH_aspectReferenceCount.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo pAspectReferencesAt(long index, MemorySegment value) { VH_pAspectReferences.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo aspectReferenceCount(int value) { VH_aspectReferenceCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo pAspectReferences(MemorySegment value) { VH_pAspectReferences.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkRenderPassInputAttachmentAspectCreateInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkRenderPassInputAttachmentAspectCreateInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _aspectReferenceCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_aspectReferenceCount, index), LAYOUT_aspectReferenceCount); }
+    public MemorySegment _aspectReferenceCount() { return _aspectReferenceCountAt(0L); }
+    public VkRenderPassInputAttachmentAspectCreateInfo _aspectReferenceCountAt(long index, MemorySegment src) { _aspectReferenceCountAt(index).copyFrom(src); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo _aspectReferenceCount(MemorySegment src) { return _aspectReferenceCountAt(0L, src); }
+    public MemorySegment _pAspectReferencesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pAspectReferences, index), LAYOUT_pAspectReferences); }
+    public MemorySegment _pAspectReferences() { return _pAspectReferencesAt(0L); }
+    public VkRenderPassInputAttachmentAspectCreateInfo _pAspectReferencesAt(long index, MemorySegment src) { _pAspectReferencesAt(index).copyFrom(src); return this; }
+    public VkRenderPassInputAttachmentAspectCreateInfo _pAspectReferences(MemorySegment src) { return _pAspectReferencesAt(0L, src); }
 }

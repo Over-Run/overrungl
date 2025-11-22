@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_maintenance2` - device extension
 public final class VKKHRMaintenance2 {
     public static final int VK_KHR_MAINTENANCE_2_SPEC_VERSION = 1;
@@ -20,7 +23,5 @@ public final class VKKHRMaintenance2 {
     public static final int VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR = 1;
     public static final int VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR = 0;
     public static final int VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR = 1;
-
     private VKKHRMaintenance2() {}
-
 }

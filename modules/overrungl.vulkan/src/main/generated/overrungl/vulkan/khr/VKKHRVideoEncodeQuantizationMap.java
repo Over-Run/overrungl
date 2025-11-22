@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_video_encode_quantization_map` - device extension
 public final class VKKHRVideoEncodeQuantizationMap {
     public static final int VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_SPEC_VERSION = 2;
@@ -30,7 +33,5 @@ public final class VKKHRVideoEncodeQuantizationMap {
     public static final int VK_VIDEO_ENCODE_H265_CAPABILITY_CU_QP_DIFF_WRAPAROUND_BIT_KHR = 0x00000400;
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR = 1000553007;
     public static final int VK_STRUCTURE_TYPE_VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR = 1000553008;
-
     private VKKHRVideoEncodeQuantizationMap() {}
-
 }

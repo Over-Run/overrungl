@@ -16,16 +16,15 @@ public final class VKKHRRayTracingMaintenance1 {
     public static final long VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR = 0x10000000L;
     public static final long VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR = 0x10000000000L;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT = 1000386004;
+    private VKKHRRayTracingMaintenance1() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdTraceRaysIndirect2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         private Handles() {}
     }
 
-    private VKKHRRayTracingMaintenance1() {}
-
     /// Invokes `vkCmdTraceRaysIndirect2KHR`.
     /// ```
-    /// void vkCmdTraceRaysIndirect2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress indirectDeviceAddress);
+    /// void vkCmdTraceRaysIndirect2KHR(VkCommandBuffer commandBuffer, VkDeviceAddress indirectDeviceAddress);
     /// ```
     public static void vkCmdTraceRaysIndirect2KHR(@NonNull VkCommandBuffer commandBuffer, long indirectDeviceAddress) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirect2KHR");

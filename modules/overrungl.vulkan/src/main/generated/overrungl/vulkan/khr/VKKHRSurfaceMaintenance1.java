@@ -1,9 +1,14 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_surface_maintenance1` - instance extension
 public final class VKKHRSurfaceMaintenance1 {
+    public static final int VK_KHR_SURFACE_MAINTENANCE_1_SPEC_VERSION = 1;
+    public static final String VK_KHR_SURFACE_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_surface_maintenance1";
     public static final int VK_PRESENT_SCALING_ONE_TO_ONE_BIT_KHR = 0x00000001;
     public static final int VK_PRESENT_SCALING_ONE_TO_ONE_BIT_EXT = 0x00000001;
     public static final int VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_KHR = 0x00000002;
@@ -16,12 +21,8 @@ public final class VKKHRSurfaceMaintenance1 {
     public static final int VK_PRESENT_GRAVITY_MAX_BIT_EXT = 0x00000002;
     public static final int VK_PRESENT_GRAVITY_CENTERED_BIT_KHR = 0x00000004;
     public static final int VK_PRESENT_GRAVITY_CENTERED_BIT_EXT = 0x00000004;
-    public static final int VK_KHR_SURFACE_MAINTENANCE_1_SPEC_VERSION = 1;
-    public static final String VK_KHR_SURFACE_MAINTENANCE_1_EXTENSION_NAME = "VK_KHR_surface_maintenance1";
-    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR = 1000486000;
-    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR = 1000486001;
-    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR = 1000486002;
-
+    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR = 1000274000;
+    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR = 1000274001;
+    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR = 1000274002;
     private VKKHRSurfaceMaintenance1() {}
-
 }

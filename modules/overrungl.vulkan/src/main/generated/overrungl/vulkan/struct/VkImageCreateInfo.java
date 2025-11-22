@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,25 +12,24 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageCreateInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkImageCreateFlags flags;
-///     (int) VkImageType imageType;
-///     (int) VkFormat format;
-///     (struct VkExtent3D) VkExtent3D extent;
+///     VkImageCreateFlags flags;
+///     VkImageType imageType;
+///     VkFormat format;
+///     VkExtent3D extent;
 ///     uint32_t mipLevels;
 ///     uint32_t arrayLayers;
-///     (int) VkSampleCountFlagBits samples;
-///     (int) VkImageTiling tiling;
-///     ((uint32_t) VkFlags) VkImageUsageFlags usage;
-///     (int) VkSharingMode sharingMode;
+///     VkSampleCountFlagBits samples;
+///     VkImageTiling tiling;
+///     VkImageUsageFlags usage;
+///     VkSharingMode sharingMode;
 ///     uint32_t queueFamilyIndexCount;
 ///     const uint32_t* pQueueFamilyIndices;
-///     (int) VkImageLayout initialLayout;
-/// };
+///     VkImageLayout initialLayout;
+/// }
 /// ```
 public final class VkImageCreateInfo extends GroupType {
-    /// The struct layout of `VkImageCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -49,540 +47,197 @@ public final class VkImageCreateInfo extends GroupType {
         ValueLayout.ADDRESS.withName("pQueueFamilyIndices"),
         ValueLayout.JAVA_INT.withName("initialLayout")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `imageType`.
     public static final long OFFSET_imageType = LAYOUT.byteOffset(PathElement.groupElement("imageType"));
-    /// The memory layout of `imageType`.
-    public static final MemoryLayout LAYOUT_imageType = LAYOUT.select(PathElement.groupElement("imageType"));
-    /// The [VarHandle] of `imageType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageType"));
-    /// The byte offset of `format`.
     public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
-    /// The memory layout of `format`.
-    public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
-    /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
-    /// The byte offset of `extent`.
     public static final long OFFSET_extent = LAYOUT.byteOffset(PathElement.groupElement("extent"));
-    /// The memory layout of `extent`.
-    public static final MemoryLayout LAYOUT_extent = LAYOUT.select(PathElement.groupElement("extent"));
-    /// The byte offset of `mipLevels`.
     public static final long OFFSET_mipLevels = LAYOUT.byteOffset(PathElement.groupElement("mipLevels"));
-    /// The memory layout of `mipLevels`.
-    public static final MemoryLayout LAYOUT_mipLevels = LAYOUT.select(PathElement.groupElement("mipLevels"));
-    /// The [VarHandle] of `mipLevels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_mipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mipLevels"));
-    /// The byte offset of `arrayLayers`.
     public static final long OFFSET_arrayLayers = LAYOUT.byteOffset(PathElement.groupElement("arrayLayers"));
-    /// The memory layout of `arrayLayers`.
-    public static final MemoryLayout LAYOUT_arrayLayers = LAYOUT.select(PathElement.groupElement("arrayLayers"));
-    /// The [VarHandle] of `arrayLayers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_arrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("arrayLayers"));
-    /// The byte offset of `samples`.
     public static final long OFFSET_samples = LAYOUT.byteOffset(PathElement.groupElement("samples"));
-    /// The memory layout of `samples`.
-    public static final MemoryLayout LAYOUT_samples = LAYOUT.select(PathElement.groupElement("samples"));
-    /// The [VarHandle] of `samples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_samples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samples"));
-    /// The byte offset of `tiling`.
     public static final long OFFSET_tiling = LAYOUT.byteOffset(PathElement.groupElement("tiling"));
-    /// The memory layout of `tiling`.
-    public static final MemoryLayout LAYOUT_tiling = LAYOUT.select(PathElement.groupElement("tiling"));
-    /// The [VarHandle] of `tiling` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tiling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tiling"));
-    /// The byte offset of `usage`.
     public static final long OFFSET_usage = LAYOUT.byteOffset(PathElement.groupElement("usage"));
-    /// The memory layout of `usage`.
-    public static final MemoryLayout LAYOUT_usage = LAYOUT.select(PathElement.groupElement("usage"));
-    /// The [VarHandle] of `usage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_usage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usage"));
-    /// The byte offset of `sharingMode`.
     public static final long OFFSET_sharingMode = LAYOUT.byteOffset(PathElement.groupElement("sharingMode"));
-    /// The memory layout of `sharingMode`.
-    public static final MemoryLayout LAYOUT_sharingMode = LAYOUT.select(PathElement.groupElement("sharingMode"));
-    /// The [VarHandle] of `sharingMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sharingMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sharingMode"));
-    /// The byte offset of `queueFamilyIndexCount`.
     public static final long OFFSET_queueFamilyIndexCount = LAYOUT.byteOffset(PathElement.groupElement("queueFamilyIndexCount"));
-    /// The memory layout of `queueFamilyIndexCount`.
-    public static final MemoryLayout LAYOUT_queueFamilyIndexCount = LAYOUT.select(PathElement.groupElement("queueFamilyIndexCount"));
-    /// The [VarHandle] of `queueFamilyIndexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_queueFamilyIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndexCount"));
-    /// The byte offset of `pQueueFamilyIndices`.
     public static final long OFFSET_pQueueFamilyIndices = LAYOUT.byteOffset(PathElement.groupElement("pQueueFamilyIndices"));
-    /// The memory layout of `pQueueFamilyIndices`.
-    public static final MemoryLayout LAYOUT_pQueueFamilyIndices = LAYOUT.select(PathElement.groupElement("pQueueFamilyIndices"));
-    /// The [VarHandle] of `pQueueFamilyIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pQueueFamilyIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pQueueFamilyIndices"));
-    /// The byte offset of `initialLayout`.
     public static final long OFFSET_initialLayout = LAYOUT.byteOffset(PathElement.groupElement("initialLayout"));
-    /// The memory layout of `initialLayout`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_imageType = LAYOUT.select(PathElement.groupElement("imageType"));
+    public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
+    public static final MemoryLayout LAYOUT_extent = LAYOUT.select(PathElement.groupElement("extent"));
+    public static final MemoryLayout LAYOUT_mipLevels = LAYOUT.select(PathElement.groupElement("mipLevels"));
+    public static final MemoryLayout LAYOUT_arrayLayers = LAYOUT.select(PathElement.groupElement("arrayLayers"));
+    public static final MemoryLayout LAYOUT_samples = LAYOUT.select(PathElement.groupElement("samples"));
+    public static final MemoryLayout LAYOUT_tiling = LAYOUT.select(PathElement.groupElement("tiling"));
+    public static final MemoryLayout LAYOUT_usage = LAYOUT.select(PathElement.groupElement("usage"));
+    public static final MemoryLayout LAYOUT_sharingMode = LAYOUT.select(PathElement.groupElement("sharingMode"));
+    public static final MemoryLayout LAYOUT_queueFamilyIndexCount = LAYOUT.select(PathElement.groupElement("queueFamilyIndexCount"));
+    public static final MemoryLayout LAYOUT_pQueueFamilyIndices = LAYOUT.select(PathElement.groupElement("pQueueFamilyIndices"));
     public static final MemoryLayout LAYOUT_initialLayout = LAYOUT.select(PathElement.groupElement("initialLayout"));
-    /// The [VarHandle] of `initialLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_imageType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageType"));
+    public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
+    public static final VarHandle VH_extent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_extent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_extent$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extent"), PathElement.groupElement("depth"));
+    public static final VarHandle VH_mipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mipLevels"));
+    public static final VarHandle VH_arrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("arrayLayers"));
+    public static final VarHandle VH_samples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samples"));
+    public static final VarHandle VH_tiling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tiling"));
+    public static final VarHandle VH_usage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usage"));
+    public static final VarHandle VH_sharingMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sharingMode"));
+    public static final VarHandle VH_queueFamilyIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyIndexCount"));
+    public static final VarHandle VH_pQueueFamilyIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pQueueFamilyIndices"));
     public static final VarHandle VH_initialLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("initialLayout"));
 
-    /// Creates `VkImageCreateInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkImageCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkImageCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageCreateInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkImageCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkImageCreateInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkImageCreateInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageCreateInfo`
     public static VkImageCreateInfo alloc(SegmentAllocator allocator) { return new VkImageCreateInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkImageCreateInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkImageCreateInfo`
     public static VkImageCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkImageCreateInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO); }
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK10.VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO);
+        return s;
+    }
     public VkImageCreateInfo copyFrom(VkImageCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkImageCreateInfo reinterpret(long count) { return new VkImageCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int imageType(MemorySegment segment, long index) { return (int) VH_imageType.get(segment, 0L, index); }
-    /// {@return `imageType`}
-    public int imageType() { return imageType(this.segment(), 0L); }
-    /// Sets `imageType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageType(MemorySegment segment, long index, int value) { VH_imageType.set(segment, 0L, index, value); }
-    /// Sets `imageType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo imageType(int value) { imageType(this.segment(), 0L, value); return this; }
-
-    /// {@return `format` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
-    /// {@return `format`}
-    public int format() { return format(this.segment(), 0L); }
-    /// Sets `format` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
-    /// Sets `format` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo format(int value) { format(this.segment(), 0L, value); return this; }
-
-    /// {@return `extent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment extent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_extent, index), LAYOUT_extent); }
-    /// {@return `extent`}
-    public MemorySegment extent() { return extent(this.segment(), 0L); }
-    /// Sets `extent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void extent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_extent, index), LAYOUT_extent.byteSize()); }
-    /// Sets `extent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo extent(MemorySegment value) { extent(this.segment(), 0L, value); return this; }
-    /// Accepts `extent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageCreateInfo extent(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extent())); return this; }
-
-    /// {@return `mipLevels` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int mipLevels(MemorySegment segment, long index) { return (int) VH_mipLevels.get(segment, 0L, index); }
-    /// {@return `mipLevels`}
-    public int mipLevels() { return mipLevels(this.segment(), 0L); }
-    /// Sets `mipLevels` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void mipLevels(MemorySegment segment, long index, int value) { VH_mipLevels.set(segment, 0L, index, value); }
-    /// Sets `mipLevels` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo mipLevels(int value) { mipLevels(this.segment(), 0L, value); return this; }
-
-    /// {@return `arrayLayers` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int arrayLayers(MemorySegment segment, long index) { return (int) VH_arrayLayers.get(segment, 0L, index); }
-    /// {@return `arrayLayers`}
-    public int arrayLayers() { return arrayLayers(this.segment(), 0L); }
-    /// Sets `arrayLayers` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void arrayLayers(MemorySegment segment, long index, int value) { VH_arrayLayers.set(segment, 0L, index, value); }
-    /// Sets `arrayLayers` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo arrayLayers(int value) { arrayLayers(this.segment(), 0L, value); return this; }
-
-    /// {@return `samples` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int samples(MemorySegment segment, long index) { return (int) VH_samples.get(segment, 0L, index); }
-    /// {@return `samples`}
-    public int samples() { return samples(this.segment(), 0L); }
-    /// Sets `samples` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void samples(MemorySegment segment, long index, int value) { VH_samples.set(segment, 0L, index, value); }
-    /// Sets `samples` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo samples(int value) { samples(this.segment(), 0L, value); return this; }
-
-    /// {@return `tiling` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int tiling(MemorySegment segment, long index) { return (int) VH_tiling.get(segment, 0L, index); }
-    /// {@return `tiling`}
-    public int tiling() { return tiling(this.segment(), 0L); }
-    /// Sets `tiling` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void tiling(MemorySegment segment, long index, int value) { VH_tiling.set(segment, 0L, index, value); }
-    /// Sets `tiling` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo tiling(int value) { tiling(this.segment(), 0L, value); return this; }
-
-    /// {@return `usage` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int usage(MemorySegment segment, long index) { return (int) VH_usage.get(segment, 0L, index); }
-    /// {@return `usage`}
-    public int usage() { return usage(this.segment(), 0L); }
-    /// Sets `usage` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void usage(MemorySegment segment, long index, int value) { VH_usage.set(segment, 0L, index, value); }
-    /// Sets `usage` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo usage(int value) { usage(this.segment(), 0L, value); return this; }
-
-    /// {@return `sharingMode` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sharingMode(MemorySegment segment, long index) { return (int) VH_sharingMode.get(segment, 0L, index); }
-    /// {@return `sharingMode`}
-    public int sharingMode() { return sharingMode(this.segment(), 0L); }
-    /// Sets `sharingMode` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sharingMode(MemorySegment segment, long index, int value) { VH_sharingMode.set(segment, 0L, index, value); }
-    /// Sets `sharingMode` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo sharingMode(int value) { sharingMode(this.segment(), 0L, value); return this; }
-
-    /// {@return `queueFamilyIndexCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int queueFamilyIndexCount(MemorySegment segment, long index) { return (int) VH_queueFamilyIndexCount.get(segment, 0L, index); }
-    /// {@return `queueFamilyIndexCount`}
-    public int queueFamilyIndexCount() { return queueFamilyIndexCount(this.segment(), 0L); }
-    /// Sets `queueFamilyIndexCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void queueFamilyIndexCount(MemorySegment segment, long index, int value) { VH_queueFamilyIndexCount.set(segment, 0L, index, value); }
-    /// Sets `queueFamilyIndexCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo queueFamilyIndexCount(int value) { queueFamilyIndexCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pQueueFamilyIndices` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pQueueFamilyIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pQueueFamilyIndices.get(segment, 0L, index); }
-    /// {@return `pQueueFamilyIndices`}
-    public MemorySegment pQueueFamilyIndices() { return pQueueFamilyIndices(this.segment(), 0L); }
-    /// Sets `pQueueFamilyIndices` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pQueueFamilyIndices(MemorySegment segment, long index, MemorySegment value) { VH_pQueueFamilyIndices.set(segment, 0L, index, value); }
-    /// Sets `pQueueFamilyIndices` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo pQueueFamilyIndices(MemorySegment value) { pQueueFamilyIndices(this.segment(), 0L, value); return this; }
-
-    /// {@return `initialLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int initialLayout(MemorySegment segment, long index) { return (int) VH_initialLayout.get(segment, 0L, index); }
-    /// {@return `initialLayout`}
-    public int initialLayout() { return initialLayout(this.segment(), 0L); }
-    /// Sets `initialLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void initialLayout(MemorySegment segment, long index, int value) { VH_initialLayout.set(segment, 0L, index, value); }
-    /// Sets `initialLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo initialLayout(int value) { initialLayout(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkImageCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageCreateInfo`
     public VkImageCreateInfo asSlice(long index) { return new VkImageCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkImageCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageCreateInfo`
     public VkImageCreateInfo asSlice(long index, long count) { return new VkImageCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkImageCreateInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkImageCreateInfo at(long index, Consumer<VkImageCreateInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `imageType` at the given index}
-    /// @param index the index of the struct buffer
-    public int imageTypeAt(long index) { return imageType(this.segment(), index); }
-    /// Sets `imageType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo imageTypeAt(long index, int value) { imageType(this.segment(), index, value); return this; }
-
-    /// {@return `format` at the given index}
-    /// @param index the index of the struct buffer
-    public int formatAt(long index) { return format(this.segment(), index); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo formatAt(long index, int value) { format(this.segment(), index, value); return this; }
-
-    /// {@return `extent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment extentAt(long index) { return extent(this.segment(), index); }
-    /// Sets `extent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
-    /// Accepts `extent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageCreateInfo extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extentAt(index))); return this; }
-
-    /// {@return `mipLevels` at the given index}
-    /// @param index the index of the struct buffer
-    public int mipLevelsAt(long index) { return mipLevels(this.segment(), index); }
-    /// Sets `mipLevels` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo mipLevelsAt(long index, int value) { mipLevels(this.segment(), index, value); return this; }
-
-    /// {@return `arrayLayers` at the given index}
-    /// @param index the index of the struct buffer
-    public int arrayLayersAt(long index) { return arrayLayers(this.segment(), index); }
-    /// Sets `arrayLayers` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo arrayLayersAt(long index, int value) { arrayLayers(this.segment(), index, value); return this; }
-
-    /// {@return `samples` at the given index}
-    /// @param index the index of the struct buffer
-    public int samplesAt(long index) { return samples(this.segment(), index); }
-    /// Sets `samples` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo samplesAt(long index, int value) { samples(this.segment(), index, value); return this; }
-
-    /// {@return `tiling` at the given index}
-    /// @param index the index of the struct buffer
-    public int tilingAt(long index) { return tiling(this.segment(), index); }
-    /// Sets `tiling` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo tilingAt(long index, int value) { tiling(this.segment(), index, value); return this; }
-
-    /// {@return `usage` at the given index}
-    /// @param index the index of the struct buffer
-    public int usageAt(long index) { return usage(this.segment(), index); }
-    /// Sets `usage` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo usageAt(long index, int value) { usage(this.segment(), index, value); return this; }
-
-    /// {@return `sharingMode` at the given index}
-    /// @param index the index of the struct buffer
-    public int sharingModeAt(long index) { return sharingMode(this.segment(), index); }
-    /// Sets `sharingMode` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo sharingModeAt(long index, int value) { sharingMode(this.segment(), index, value); return this; }
-
-    /// {@return `queueFamilyIndexCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int queueFamilyIndexCountAt(long index) { return queueFamilyIndexCount(this.segment(), index); }
-    /// Sets `queueFamilyIndexCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo queueFamilyIndexCountAt(long index, int value) { queueFamilyIndexCount(this.segment(), index, value); return this; }
-
-    /// {@return `pQueueFamilyIndices` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pQueueFamilyIndicesAt(long index) { return pQueueFamilyIndices(this.segment(), index); }
-    /// Sets `pQueueFamilyIndices` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo pQueueFamilyIndicesAt(long index, MemorySegment value) { pQueueFamilyIndices(this.segment(), index, value); return this; }
-
-    /// {@return `initialLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public int initialLayoutAt(long index) { return initialLayout(this.segment(), index); }
-    /// Sets `initialLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo initialLayoutAt(long index, int value) { initialLayout(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public int imageTypeAt(long index) { return (int) VH_imageType.get(this.segment(), 0L, index); }
+    public int formatAt(long index) { return (int) VH_format.get(this.segment(), 0L, index); }
+    public int extent$widthAt(long index) { return (int) VH_extent$width.get(this.segment(), 0L, index); }
+    public int extent$heightAt(long index) { return (int) VH_extent$height.get(this.segment(), 0L, index); }
+    public int extent$depthAt(long index) { return (int) VH_extent$depth.get(this.segment(), 0L, index); }
+    public int mipLevelsAt(long index) { return (int) VH_mipLevels.get(this.segment(), 0L, index); }
+    public int arrayLayersAt(long index) { return (int) VH_arrayLayers.get(this.segment(), 0L, index); }
+    public int samplesAt(long index) { return (int) VH_samples.get(this.segment(), 0L, index); }
+    public int tilingAt(long index) { return (int) VH_tiling.get(this.segment(), 0L, index); }
+    public int usageAt(long index) { return (int) VH_usage.get(this.segment(), 0L, index); }
+    public int sharingModeAt(long index) { return (int) VH_sharingMode.get(this.segment(), 0L, index); }
+    public int queueFamilyIndexCountAt(long index) { return (int) VH_queueFamilyIndexCount.get(this.segment(), 0L, index); }
+    public MemorySegment pQueueFamilyIndicesAt(long index) { return (MemorySegment) VH_pQueueFamilyIndices.get(this.segment(), 0L, index); }
+    public int initialLayoutAt(long index) { return (int) VH_initialLayout.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public int imageType() { return (int) VH_imageType.get(this.segment(), 0L, 0L); }
+    public int format() { return (int) VH_format.get(this.segment(), 0L, 0L); }
+    public int extent$width() { return (int) VH_extent$width.get(this.segment(), 0L, 0L); }
+    public int extent$height() { return (int) VH_extent$height.get(this.segment(), 0L, 0L); }
+    public int extent$depth() { return (int) VH_extent$depth.get(this.segment(), 0L, 0L); }
+    public int mipLevels() { return (int) VH_mipLevels.get(this.segment(), 0L, 0L); }
+    public int arrayLayers() { return (int) VH_arrayLayers.get(this.segment(), 0L, 0L); }
+    public int samples() { return (int) VH_samples.get(this.segment(), 0L, 0L); }
+    public int tiling() { return (int) VH_tiling.get(this.segment(), 0L, 0L); }
+    public int usage() { return (int) VH_usage.get(this.segment(), 0L, 0L); }
+    public int sharingMode() { return (int) VH_sharingMode.get(this.segment(), 0L, 0L); }
+    public int queueFamilyIndexCount() { return (int) VH_queueFamilyIndexCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pQueueFamilyIndices() { return (MemorySegment) VH_pQueueFamilyIndices.get(this.segment(), 0L, 0L); }
+    public int initialLayout() { return (int) VH_initialLayout.get(this.segment(), 0L, 0L); }
+    public VkImageCreateInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo imageTypeAt(long index, int value) { VH_imageType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo formatAt(long index, int value) { VH_format.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo extent$widthAt(long index, int value) { VH_extent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo extent$heightAt(long index, int value) { VH_extent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo extent$depthAt(long index, int value) { VH_extent$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo mipLevelsAt(long index, int value) { VH_mipLevels.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo arrayLayersAt(long index, int value) { VH_arrayLayers.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo samplesAt(long index, int value) { VH_samples.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo tilingAt(long index, int value) { VH_tiling.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo usageAt(long index, int value) { VH_usage.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo sharingModeAt(long index, int value) { VH_sharingMode.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo queueFamilyIndexCountAt(long index, int value) { VH_queueFamilyIndexCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo pQueueFamilyIndicesAt(long index, MemorySegment value) { VH_pQueueFamilyIndices.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo initialLayoutAt(long index, int value) { VH_initialLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCreateInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo imageType(int value) { VH_imageType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo format(int value) { VH_format.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo extent$width(int value) { VH_extent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo extent$height(int value) { VH_extent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo extent$depth(int value) { VH_extent$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo mipLevels(int value) { VH_mipLevels.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo arrayLayers(int value) { VH_arrayLayers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo samples(int value) { VH_samples.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo tiling(int value) { VH_tiling.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo usage(int value) { VH_usage.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo sharingMode(int value) { VH_sharingMode.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo queueFamilyIndexCount(int value) { VH_queueFamilyIndexCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo pQueueFamilyIndices(MemorySegment value) { VH_pQueueFamilyIndices.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCreateInfo initialLayout(int value) { VH_initialLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkImageCreateInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkImageCreateInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkImageCreateInfo _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _imageTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageType, index), LAYOUT_imageType); }
+    public MemorySegment _imageType() { return _imageTypeAt(0L); }
+    public VkImageCreateInfo _imageTypeAt(long index, MemorySegment src) { _imageTypeAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _imageType(MemorySegment src) { return _imageTypeAt(0L, src); }
+    public MemorySegment _formatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_format, index), LAYOUT_format); }
+    public MemorySegment _format() { return _formatAt(0L); }
+    public VkImageCreateInfo _formatAt(long index, MemorySegment src) { _formatAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _format(MemorySegment src) { return _formatAt(0L, src); }
+    public MemorySegment _extentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_extent, index), LAYOUT_extent); }
+    public MemorySegment _extent() { return _extentAt(0L); }
+    public VkImageCreateInfo _extentAt(long index, MemorySegment src) { _extentAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _extent(MemorySegment src) { return _extentAt(0L, src); }
+    public MemorySegment _mipLevelsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_mipLevels, index), LAYOUT_mipLevels); }
+    public MemorySegment _mipLevels() { return _mipLevelsAt(0L); }
+    public VkImageCreateInfo _mipLevelsAt(long index, MemorySegment src) { _mipLevelsAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _mipLevels(MemorySegment src) { return _mipLevelsAt(0L, src); }
+    public MemorySegment _arrayLayersAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_arrayLayers, index), LAYOUT_arrayLayers); }
+    public MemorySegment _arrayLayers() { return _arrayLayersAt(0L); }
+    public VkImageCreateInfo _arrayLayersAt(long index, MemorySegment src) { _arrayLayersAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _arrayLayers(MemorySegment src) { return _arrayLayersAt(0L, src); }
+    public MemorySegment _samplesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_samples, index), LAYOUT_samples); }
+    public MemorySegment _samples() { return _samplesAt(0L); }
+    public VkImageCreateInfo _samplesAt(long index, MemorySegment src) { _samplesAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _samples(MemorySegment src) { return _samplesAt(0L, src); }
+    public MemorySegment _tilingAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_tiling, index), LAYOUT_tiling); }
+    public MemorySegment _tiling() { return _tilingAt(0L); }
+    public VkImageCreateInfo _tilingAt(long index, MemorySegment src) { _tilingAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _tiling(MemorySegment src) { return _tilingAt(0L, src); }
+    public MemorySegment _usageAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_usage, index), LAYOUT_usage); }
+    public MemorySegment _usage() { return _usageAt(0L); }
+    public VkImageCreateInfo _usageAt(long index, MemorySegment src) { _usageAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _usage(MemorySegment src) { return _usageAt(0L, src); }
+    public MemorySegment _sharingModeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sharingMode, index), LAYOUT_sharingMode); }
+    public MemorySegment _sharingMode() { return _sharingModeAt(0L); }
+    public VkImageCreateInfo _sharingModeAt(long index, MemorySegment src) { _sharingModeAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _sharingMode(MemorySegment src) { return _sharingModeAt(0L, src); }
+    public MemorySegment _queueFamilyIndexCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_queueFamilyIndexCount, index), LAYOUT_queueFamilyIndexCount); }
+    public MemorySegment _queueFamilyIndexCount() { return _queueFamilyIndexCountAt(0L); }
+    public VkImageCreateInfo _queueFamilyIndexCountAt(long index, MemorySegment src) { _queueFamilyIndexCountAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _queueFamilyIndexCount(MemorySegment src) { return _queueFamilyIndexCountAt(0L, src); }
+    public MemorySegment _pQueueFamilyIndicesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pQueueFamilyIndices, index), LAYOUT_pQueueFamilyIndices); }
+    public MemorySegment _pQueueFamilyIndices() { return _pQueueFamilyIndicesAt(0L); }
+    public VkImageCreateInfo _pQueueFamilyIndicesAt(long index, MemorySegment src) { _pQueueFamilyIndicesAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _pQueueFamilyIndices(MemorySegment src) { return _pQueueFamilyIndicesAt(0L, src); }
+    public MemorySegment _initialLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_initialLayout, index), LAYOUT_initialLayout); }
+    public MemorySegment _initialLayout() { return _initialLayoutAt(0L); }
+    public VkImageCreateInfo _initialLayoutAt(long index, MemorySegment src) { _initialLayoutAt(index).copyFrom(src); return this; }
+    public VkImageCreateInfo _initialLayout(MemorySegment src) { return _initialLayoutAt(0L, src); }
 }

@@ -12,6 +12,7 @@ public final class VKNVXImageViewHandle {
     public static final String VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle";
     public static final int VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX = 1000030000;
     public static final int VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX = 1000030001;
+    private VKNVXImageViewHandle() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetImageViewHandleNVX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetImageViewHandle64NVX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -19,11 +20,9 @@ public final class VKNVXImageViewHandle {
         private Handles() {}
     }
 
-    private VKNVXImageViewHandle() {}
-
     /// Invokes `vkGetImageViewHandleNVX`.
     /// ```
-    /// uint32_t vkGetImageViewHandleNVX((struct VkDevice*) VkDevice device, const VkImageViewHandleInfoNVX* pInfo);
+    /// uint32_t vkGetImageViewHandleNVX(VkDevice device, const VkImageViewHandleInfoNVX* pInfo);
     /// ```
     public static int vkGetImageViewHandleNVX(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewHandleNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageViewHandleNVX");
@@ -34,7 +33,7 @@ public final class VKNVXImageViewHandle {
 
     /// Invokes `vkGetImageViewHandle64NVX`.
     /// ```
-    /// uint64_t vkGetImageViewHandle64NVX((struct VkDevice*) VkDevice device, const VkImageViewHandleInfoNVX* pInfo);
+    /// uint64_t vkGetImageViewHandle64NVX(VkDevice device, const VkImageViewHandleInfoNVX* pInfo);
     /// ```
     public static long vkGetImageViewHandle64NVX(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewHandle64NVX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageViewHandle64NVX");
@@ -45,7 +44,7 @@ public final class VKNVXImageViewHandle {
 
     /// Invokes `vkGetImageViewAddressNVX`.
     /// ```
-    /// (int) VkResult vkGetImageViewAddressNVX((struct VkDevice*) VkDevice device, (uint64_t) VkImageView imageView, VkImageViewAddressPropertiesNVX* pProperties);
+    /// VkResult vkGetImageViewAddressNVX(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* pProperties);
     /// ```
     public static int vkGetImageViewAddressNVX(@NonNull VkDevice device, long imageView, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewAddressNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageViewAddressNVX");

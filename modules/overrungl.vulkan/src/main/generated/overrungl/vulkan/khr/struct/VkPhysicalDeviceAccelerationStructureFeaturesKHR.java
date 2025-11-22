@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,17 +12,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceAccelerationStructureFeaturesKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 accelerationStructure;
-///     (uint32_t) VkBool32 accelerationStructureCaptureReplay;
-///     (uint32_t) VkBool32 accelerationStructureIndirectBuild;
-///     (uint32_t) VkBool32 accelerationStructureHostCommands;
-///     (uint32_t) VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
-/// };
+///     VkBool32 accelerationStructure;
+///     VkBool32 accelerationStructureCaptureReplay;
+///     VkBool32 accelerationStructureIndirectBuild;
+///     VkBool32 accelerationStructureHostCommands;
+///     VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
+/// }
 /// ```
 public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -33,285 +31,99 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Grou
         ValueLayout.JAVA_INT.withName("accelerationStructureHostCommands"),
         ValueLayout.JAVA_INT.withName("descriptorBindingAccelerationStructureUpdateAfterBind")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `accelerationStructure`.
     public static final long OFFSET_accelerationStructure = LAYOUT.byteOffset(PathElement.groupElement("accelerationStructure"));
-    /// The memory layout of `accelerationStructure`.
-    public static final MemoryLayout LAYOUT_accelerationStructure = LAYOUT.select(PathElement.groupElement("accelerationStructure"));
-    /// The [VarHandle] of `accelerationStructure` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_accelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructure"));
-    /// The byte offset of `accelerationStructureCaptureReplay`.
     public static final long OFFSET_accelerationStructureCaptureReplay = LAYOUT.byteOffset(PathElement.groupElement("accelerationStructureCaptureReplay"));
-    /// The memory layout of `accelerationStructureCaptureReplay`.
-    public static final MemoryLayout LAYOUT_accelerationStructureCaptureReplay = LAYOUT.select(PathElement.groupElement("accelerationStructureCaptureReplay"));
-    /// The [VarHandle] of `accelerationStructureCaptureReplay` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_accelerationStructureCaptureReplay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureCaptureReplay"));
-    /// The byte offset of `accelerationStructureIndirectBuild`.
     public static final long OFFSET_accelerationStructureIndirectBuild = LAYOUT.byteOffset(PathElement.groupElement("accelerationStructureIndirectBuild"));
-    /// The memory layout of `accelerationStructureIndirectBuild`.
-    public static final MemoryLayout LAYOUT_accelerationStructureIndirectBuild = LAYOUT.select(PathElement.groupElement("accelerationStructureIndirectBuild"));
-    /// The [VarHandle] of `accelerationStructureIndirectBuild` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_accelerationStructureIndirectBuild = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureIndirectBuild"));
-    /// The byte offset of `accelerationStructureHostCommands`.
     public static final long OFFSET_accelerationStructureHostCommands = LAYOUT.byteOffset(PathElement.groupElement("accelerationStructureHostCommands"));
-    /// The memory layout of `accelerationStructureHostCommands`.
-    public static final MemoryLayout LAYOUT_accelerationStructureHostCommands = LAYOUT.select(PathElement.groupElement("accelerationStructureHostCommands"));
-    /// The [VarHandle] of `accelerationStructureHostCommands` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_accelerationStructureHostCommands = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureHostCommands"));
-    /// The byte offset of `descriptorBindingAccelerationStructureUpdateAfterBind`.
     public static final long OFFSET_descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingAccelerationStructureUpdateAfterBind"));
-    /// The memory layout of `descriptorBindingAccelerationStructureUpdateAfterBind`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_accelerationStructure = LAYOUT.select(PathElement.groupElement("accelerationStructure"));
+    public static final MemoryLayout LAYOUT_accelerationStructureCaptureReplay = LAYOUT.select(PathElement.groupElement("accelerationStructureCaptureReplay"));
+    public static final MemoryLayout LAYOUT_accelerationStructureIndirectBuild = LAYOUT.select(PathElement.groupElement("accelerationStructureIndirectBuild"));
+    public static final MemoryLayout LAYOUT_accelerationStructureHostCommands = LAYOUT.select(PathElement.groupElement("accelerationStructureHostCommands"));
     public static final MemoryLayout LAYOUT_descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingAccelerationStructureUpdateAfterBind"));
-    /// The [VarHandle] of `descriptorBindingAccelerationStructureUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_accelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructure"));
+    public static final VarHandle VH_accelerationStructureCaptureReplay = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureCaptureReplay"));
+    public static final VarHandle VH_accelerationStructureIndirectBuild = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureIndirectBuild"));
+    public static final VarHandle VH_accelerationStructureHostCommands = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureHostCommands"));
     public static final VarHandle VH_descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingAccelerationStructureUpdateAfterBind"));
 
-    /// Creates `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAccelerationStructureFeaturesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAccelerationStructureFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAccelerationStructureFeaturesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
     public static VkPhysicalDeviceAccelerationStructureFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
     public static VkPhysicalDeviceAccelerationStructureFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRAccelerationStructure.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR); }
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRAccelerationStructure.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR);
+        return s;
+    }
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR copyFrom(VkPhysicalDeviceAccelerationStructureFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR reinterpret(long count) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `accelerationStructure` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int accelerationStructure(MemorySegment segment, long index) { return (int) VH_accelerationStructure.get(segment, 0L, index); }
-    /// {@return `accelerationStructure`}
-    public int accelerationStructure() { return accelerationStructure(this.segment(), 0L); }
-    /// Sets `accelerationStructure` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void accelerationStructure(MemorySegment segment, long index, int value) { VH_accelerationStructure.set(segment, 0L, index, value); }
-    /// Sets `accelerationStructure` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructure(int value) { accelerationStructure(this.segment(), 0L, value); return this; }
-
-    /// {@return `accelerationStructureCaptureReplay` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int accelerationStructureCaptureReplay(MemorySegment segment, long index) { return (int) VH_accelerationStructureCaptureReplay.get(segment, 0L, index); }
-    /// {@return `accelerationStructureCaptureReplay`}
-    public int accelerationStructureCaptureReplay() { return accelerationStructureCaptureReplay(this.segment(), 0L); }
-    /// Sets `accelerationStructureCaptureReplay` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void accelerationStructureCaptureReplay(MemorySegment segment, long index, int value) { VH_accelerationStructureCaptureReplay.set(segment, 0L, index, value); }
-    /// Sets `accelerationStructureCaptureReplay` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureCaptureReplay(int value) { accelerationStructureCaptureReplay(this.segment(), 0L, value); return this; }
-
-    /// {@return `accelerationStructureIndirectBuild` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int accelerationStructureIndirectBuild(MemorySegment segment, long index) { return (int) VH_accelerationStructureIndirectBuild.get(segment, 0L, index); }
-    /// {@return `accelerationStructureIndirectBuild`}
-    public int accelerationStructureIndirectBuild() { return accelerationStructureIndirectBuild(this.segment(), 0L); }
-    /// Sets `accelerationStructureIndirectBuild` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void accelerationStructureIndirectBuild(MemorySegment segment, long index, int value) { VH_accelerationStructureIndirectBuild.set(segment, 0L, index, value); }
-    /// Sets `accelerationStructureIndirectBuild` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureIndirectBuild(int value) { accelerationStructureIndirectBuild(this.segment(), 0L, value); return this; }
-
-    /// {@return `accelerationStructureHostCommands` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int accelerationStructureHostCommands(MemorySegment segment, long index) { return (int) VH_accelerationStructureHostCommands.get(segment, 0L, index); }
-    /// {@return `accelerationStructureHostCommands`}
-    public int accelerationStructureHostCommands() { return accelerationStructureHostCommands(this.segment(), 0L); }
-    /// Sets `accelerationStructureHostCommands` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void accelerationStructureHostCommands(MemorySegment segment, long index, int value) { VH_accelerationStructureHostCommands.set(segment, 0L, index, value); }
-    /// Sets `accelerationStructureHostCommands` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureHostCommands(int value) { accelerationStructureHostCommands(this.segment(), 0L, value); return this; }
-
-    /// {@return `descriptorBindingAccelerationStructureUpdateAfterBind` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int descriptorBindingAccelerationStructureUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingAccelerationStructureUpdateAfterBind.get(segment, 0L, index); }
-    /// {@return `descriptorBindingAccelerationStructureUpdateAfterBind`}
-    public int descriptorBindingAccelerationStructureUpdateAfterBind() { return descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), 0L); }
-    /// Sets `descriptorBindingAccelerationStructureUpdateAfterBind` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void descriptorBindingAccelerationStructureUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingAccelerationStructureUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingAccelerationStructureUpdateAfterBind` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR descriptorBindingAccelerationStructureUpdateAfterBind(int value) { descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceAccelerationStructureFeaturesKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR at(long index, Consumer<VkPhysicalDeviceAccelerationStructureFeaturesKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `accelerationStructure` at the given index}
-    /// @param index the index of the struct buffer
-    public int accelerationStructureAt(long index) { return accelerationStructure(this.segment(), index); }
-    /// Sets `accelerationStructure` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureAt(long index, int value) { accelerationStructure(this.segment(), index, value); return this; }
-
-    /// {@return `accelerationStructureCaptureReplay` at the given index}
-    /// @param index the index of the struct buffer
-    public int accelerationStructureCaptureReplayAt(long index) { return accelerationStructureCaptureReplay(this.segment(), index); }
-    /// Sets `accelerationStructureCaptureReplay` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureCaptureReplayAt(long index, int value) { accelerationStructureCaptureReplay(this.segment(), index, value); return this; }
-
-    /// {@return `accelerationStructureIndirectBuild` at the given index}
-    /// @param index the index of the struct buffer
-    public int accelerationStructureIndirectBuildAt(long index) { return accelerationStructureIndirectBuild(this.segment(), index); }
-    /// Sets `accelerationStructureIndirectBuild` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureIndirectBuildAt(long index, int value) { accelerationStructureIndirectBuild(this.segment(), index, value); return this; }
-
-    /// {@return `accelerationStructureHostCommands` at the given index}
-    /// @param index the index of the struct buffer
-    public int accelerationStructureHostCommandsAt(long index) { return accelerationStructureHostCommands(this.segment(), index); }
-    /// Sets `accelerationStructureHostCommands` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureHostCommandsAt(long index, int value) { accelerationStructureHostCommands(this.segment(), index, value); return this; }
-
-    /// {@return `descriptorBindingAccelerationStructureUpdateAfterBind` at the given index}
-    /// @param index the index of the struct buffer
-    public int descriptorBindingAccelerationStructureUpdateAfterBindAt(long index) { return descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), index); }
-    /// Sets `descriptorBindingAccelerationStructureUpdateAfterBind` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR descriptorBindingAccelerationStructureUpdateAfterBindAt(long index, int value) { descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int accelerationStructureAt(long index) { return (int) VH_accelerationStructure.get(this.segment(), 0L, index); }
+    public int accelerationStructureCaptureReplayAt(long index) { return (int) VH_accelerationStructureCaptureReplay.get(this.segment(), 0L, index); }
+    public int accelerationStructureIndirectBuildAt(long index) { return (int) VH_accelerationStructureIndirectBuild.get(this.segment(), 0L, index); }
+    public int accelerationStructureHostCommandsAt(long index) { return (int) VH_accelerationStructureHostCommands.get(this.segment(), 0L, index); }
+    public int descriptorBindingAccelerationStructureUpdateAfterBindAt(long index) { return (int) VH_descriptorBindingAccelerationStructureUpdateAfterBind.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int accelerationStructure() { return (int) VH_accelerationStructure.get(this.segment(), 0L, 0L); }
+    public int accelerationStructureCaptureReplay() { return (int) VH_accelerationStructureCaptureReplay.get(this.segment(), 0L, 0L); }
+    public int accelerationStructureIndirectBuild() { return (int) VH_accelerationStructureIndirectBuild.get(this.segment(), 0L, 0L); }
+    public int accelerationStructureHostCommands() { return (int) VH_accelerationStructureHostCommands.get(this.segment(), 0L, 0L); }
+    public int descriptorBindingAccelerationStructureUpdateAfterBind() { return (int) VH_descriptorBindingAccelerationStructureUpdateAfterBind.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureAt(long index, int value) { VH_accelerationStructure.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureCaptureReplayAt(long index, int value) { VH_accelerationStructureCaptureReplay.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureIndirectBuildAt(long index, int value) { VH_accelerationStructureIndirectBuild.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureHostCommandsAt(long index, int value) { VH_accelerationStructureHostCommands.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR descriptorBindingAccelerationStructureUpdateAfterBindAt(long index, int value) { VH_descriptorBindingAccelerationStructureUpdateAfterBind.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructure(int value) { VH_accelerationStructure.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureCaptureReplay(int value) { VH_accelerationStructureCaptureReplay.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureIndirectBuild(int value) { VH_accelerationStructureIndirectBuild.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureHostCommands(int value) { VH_accelerationStructureHostCommands.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR descriptorBindingAccelerationStructureUpdateAfterBind(int value) { VH_descriptorBindingAccelerationStructureUpdateAfterBind.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _accelerationStructureAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_accelerationStructure, index), LAYOUT_accelerationStructure); }
+    public MemorySegment _accelerationStructure() { return _accelerationStructureAt(0L); }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _accelerationStructureAt(long index, MemorySegment src) { _accelerationStructureAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _accelerationStructure(MemorySegment src) { return _accelerationStructureAt(0L, src); }
+    public MemorySegment _accelerationStructureCaptureReplayAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_accelerationStructureCaptureReplay, index), LAYOUT_accelerationStructureCaptureReplay); }
+    public MemorySegment _accelerationStructureCaptureReplay() { return _accelerationStructureCaptureReplayAt(0L); }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _accelerationStructureCaptureReplayAt(long index, MemorySegment src) { _accelerationStructureCaptureReplayAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _accelerationStructureCaptureReplay(MemorySegment src) { return _accelerationStructureCaptureReplayAt(0L, src); }
+    public MemorySegment _accelerationStructureIndirectBuildAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_accelerationStructureIndirectBuild, index), LAYOUT_accelerationStructureIndirectBuild); }
+    public MemorySegment _accelerationStructureIndirectBuild() { return _accelerationStructureIndirectBuildAt(0L); }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _accelerationStructureIndirectBuildAt(long index, MemorySegment src) { _accelerationStructureIndirectBuildAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _accelerationStructureIndirectBuild(MemorySegment src) { return _accelerationStructureIndirectBuildAt(0L, src); }
+    public MemorySegment _accelerationStructureHostCommandsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_accelerationStructureHostCommands, index), LAYOUT_accelerationStructureHostCommands); }
+    public MemorySegment _accelerationStructureHostCommands() { return _accelerationStructureHostCommandsAt(0L); }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _accelerationStructureHostCommandsAt(long index, MemorySegment src) { _accelerationStructureHostCommandsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _accelerationStructureHostCommands(MemorySegment src) { return _accelerationStructureHostCommandsAt(0L, src); }
+    public MemorySegment _descriptorBindingAccelerationStructureUpdateAfterBindAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_descriptorBindingAccelerationStructureUpdateAfterBind, index), LAYOUT_descriptorBindingAccelerationStructureUpdateAfterBind); }
+    public MemorySegment _descriptorBindingAccelerationStructureUpdateAfterBind() { return _descriptorBindingAccelerationStructureUpdateAfterBindAt(0L); }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _descriptorBindingAccelerationStructureUpdateAfterBindAt(long index, MemorySegment src) { _descriptorBindingAccelerationStructureUpdateAfterBindAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR _descriptorBindingAccelerationStructureUpdateAfterBind(MemorySegment src) { return _descriptorBindingAccelerationStructureUpdateAfterBindAt(0L, src); }
 }

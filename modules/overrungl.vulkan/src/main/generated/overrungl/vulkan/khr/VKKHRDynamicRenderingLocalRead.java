@@ -14,17 +14,16 @@ public final class VKKHRDynamicRenderingLocalRead {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES_KHR = 1000232000;
     public static final int VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO_KHR = 1000232001;
     public static final int VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO_KHR = 1000232002;
+    private VKKHRDynamicRenderingLocalRead() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocationsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndicesKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRDynamicRenderingLocalRead() {}
-
     /// Invokes `vkCmdSetRenderingAttachmentLocationsKHR`.
     /// ```
-    /// void vkCmdSetRenderingAttachmentLocationsKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingAttachmentLocationInfo* pLocationInfo);
+    /// void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, const VkRenderingAttachmentLocationInfo* pLocationInfo);
     /// ```
     public static void vkCmdSetRenderingAttachmentLocationsKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pLocationInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocationsKHR");
@@ -35,7 +34,7 @@ public final class VKKHRDynamicRenderingLocalRead {
 
     /// Invokes `vkCmdSetRenderingInputAttachmentIndicesKHR`.
     /// ```
-    /// void vkCmdSetRenderingInputAttachmentIndicesKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo);
+    /// void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, const VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo);
     /// ```
     public static void vkCmdSetRenderingInputAttachmentIndicesKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pInputAttachmentIndexInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndicesKHR");

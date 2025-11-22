@@ -16,16 +16,15 @@ public final class VKQNXExternalMemoryScreenBuffer {
     public static final int VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX = 1000529002;
     public static final int VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX = 1000529003;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX = 1000529004;
+    private VKQNXExternalMemoryScreenBuffer() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetScreenBufferPropertiesQNX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKQNXExternalMemoryScreenBuffer() {}
-
     /// Invokes `vkGetScreenBufferPropertiesQNX`.
     /// ```
-    /// (int) VkResult vkGetScreenBufferPropertiesQNX((struct VkDevice*) VkDevice device, const struct _screen_buffer * buffer, VkScreenBufferPropertiesQNX* pProperties);
+    /// VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, const struct _screen_buffer* buffer, VkScreenBufferPropertiesQNX* pProperties);
     /// ```
     public static int vkGetScreenBufferPropertiesQNX(@NonNull VkDevice device, @NonNull MemorySegment buffer, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetScreenBufferPropertiesQNX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetScreenBufferPropertiesQNX");

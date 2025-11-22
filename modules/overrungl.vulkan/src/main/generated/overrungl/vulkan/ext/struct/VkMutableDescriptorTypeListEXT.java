@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -15,138 +14,45 @@ import overrungl.util.*;
 /// struct VkMutableDescriptorTypeListEXT {
 ///     uint32_t descriptorTypeCount;
 ///     const VkDescriptorType* pDescriptorTypes;
-/// };
+/// }
 /// ```
 public final class VkMutableDescriptorTypeListEXT extends GroupType {
-    /// The struct layout of `VkMutableDescriptorTypeListEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("descriptorTypeCount"),
         ValueLayout.ADDRESS.withName("pDescriptorTypes")
     );
-    /// The byte offset of `descriptorTypeCount`.
     public static final long OFFSET_descriptorTypeCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorTypeCount"));
-    /// The memory layout of `descriptorTypeCount`.
-    public static final MemoryLayout LAYOUT_descriptorTypeCount = LAYOUT.select(PathElement.groupElement("descriptorTypeCount"));
-    /// The [VarHandle] of `descriptorTypeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_descriptorTypeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorTypeCount"));
-    /// The byte offset of `pDescriptorTypes`.
     public static final long OFFSET_pDescriptorTypes = LAYOUT.byteOffset(PathElement.groupElement("pDescriptorTypes"));
-    /// The memory layout of `pDescriptorTypes`.
+    public static final MemoryLayout LAYOUT_descriptorTypeCount = LAYOUT.select(PathElement.groupElement("descriptorTypeCount"));
     public static final MemoryLayout LAYOUT_pDescriptorTypes = LAYOUT.select(PathElement.groupElement("pDescriptorTypes"));
-    /// The [VarHandle] of `pDescriptorTypes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_descriptorTypeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorTypeCount"));
     public static final VarHandle VH_pDescriptorTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDescriptorTypes"));
 
-    /// Creates `VkMutableDescriptorTypeListEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkMutableDescriptorTypeListEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkMutableDescriptorTypeListEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMutableDescriptorTypeListEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMutableDescriptorTypeListEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkMutableDescriptorTypeListEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMutableDescriptorTypeListEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMutableDescriptorTypeListEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkMutableDescriptorTypeListEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMutableDescriptorTypeListEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkMutableDescriptorTypeListEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkMutableDescriptorTypeListEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkMutableDescriptorTypeListEXT`
     public static VkMutableDescriptorTypeListEXT alloc(SegmentAllocator allocator) { return new VkMutableDescriptorTypeListEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkMutableDescriptorTypeListEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkMutableDescriptorTypeListEXT`
     public static VkMutableDescriptorTypeListEXT alloc(SegmentAllocator allocator, long count) { return new VkMutableDescriptorTypeListEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkMutableDescriptorTypeListEXT copyFrom(VkMutableDescriptorTypeListEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkMutableDescriptorTypeListEXT reinterpret(long count) { return new VkMutableDescriptorTypeListEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `descriptorTypeCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int descriptorTypeCount(MemorySegment segment, long index) { return (int) VH_descriptorTypeCount.get(segment, 0L, index); }
-    /// {@return `descriptorTypeCount`}
-    public int descriptorTypeCount() { return descriptorTypeCount(this.segment(), 0L); }
-    /// Sets `descriptorTypeCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void descriptorTypeCount(MemorySegment segment, long index, int value) { VH_descriptorTypeCount.set(segment, 0L, index, value); }
-    /// Sets `descriptorTypeCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeListEXT descriptorTypeCount(int value) { descriptorTypeCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pDescriptorTypes` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pDescriptorTypes(MemorySegment segment, long index) { return (MemorySegment) VH_pDescriptorTypes.get(segment, 0L, index); }
-    /// {@return `pDescriptorTypes`}
-    public MemorySegment pDescriptorTypes() { return pDescriptorTypes(this.segment(), 0L); }
-    /// Sets `pDescriptorTypes` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pDescriptorTypes(MemorySegment segment, long index, MemorySegment value) { VH_pDescriptorTypes.set(segment, 0L, index, value); }
-    /// Sets `pDescriptorTypes` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeListEXT pDescriptorTypes(MemorySegment value) { pDescriptorTypes(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkMutableDescriptorTypeListEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkMutableDescriptorTypeListEXT`
     public VkMutableDescriptorTypeListEXT asSlice(long index) { return new VkMutableDescriptorTypeListEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkMutableDescriptorTypeListEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkMutableDescriptorTypeListEXT`
     public VkMutableDescriptorTypeListEXT asSlice(long index, long count) { return new VkMutableDescriptorTypeListEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkMutableDescriptorTypeListEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkMutableDescriptorTypeListEXT at(long index, Consumer<VkMutableDescriptorTypeListEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `descriptorTypeCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int descriptorTypeCountAt(long index) { return descriptorTypeCount(this.segment(), index); }
-    /// Sets `descriptorTypeCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeListEXT descriptorTypeCountAt(long index, int value) { descriptorTypeCount(this.segment(), index, value); return this; }
-
-    /// {@return `pDescriptorTypes` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pDescriptorTypesAt(long index) { return pDescriptorTypes(this.segment(), index); }
-    /// Sets `pDescriptorTypes` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMutableDescriptorTypeListEXT pDescriptorTypesAt(long index, MemorySegment value) { pDescriptorTypes(this.segment(), index, value); return this; }
-
+    public int descriptorTypeCountAt(long index) { return (int) VH_descriptorTypeCount.get(this.segment(), 0L, index); }
+    public MemorySegment pDescriptorTypesAt(long index) { return (MemorySegment) VH_pDescriptorTypes.get(this.segment(), 0L, index); }
+    public int descriptorTypeCount() { return (int) VH_descriptorTypeCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pDescriptorTypes() { return (MemorySegment) VH_pDescriptorTypes.get(this.segment(), 0L, 0L); }
+    public VkMutableDescriptorTypeListEXT descriptorTypeCountAt(long index, int value) { VH_descriptorTypeCount.set(this.segment(), 0L, index, value); return this; }
+    public VkMutableDescriptorTypeListEXT pDescriptorTypesAt(long index, MemorySegment value) { VH_pDescriptorTypes.set(this.segment(), 0L, index, value); return this; }
+    public VkMutableDescriptorTypeListEXT descriptorTypeCount(int value) { VH_descriptorTypeCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMutableDescriptorTypeListEXT pDescriptorTypes(MemorySegment value) { VH_pDescriptorTypes.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _descriptorTypeCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_descriptorTypeCount, index), LAYOUT_descriptorTypeCount); }
+    public MemorySegment _descriptorTypeCount() { return _descriptorTypeCountAt(0L); }
+    public VkMutableDescriptorTypeListEXT _descriptorTypeCountAt(long index, MemorySegment src) { _descriptorTypeCountAt(index).copyFrom(src); return this; }
+    public VkMutableDescriptorTypeListEXT _descriptorTypeCount(MemorySegment src) { return _descriptorTypeCountAt(0L, src); }
+    public MemorySegment _pDescriptorTypesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pDescriptorTypes, index), LAYOUT_pDescriptorTypes); }
+    public MemorySegment _pDescriptorTypes() { return _pDescriptorTypesAt(0L); }
+    public VkMutableDescriptorTypeListEXT _pDescriptorTypesAt(long index, MemorySegment src) { _pDescriptorTypesAt(index).copyFrom(src); return this; }
+    public VkMutableDescriptorTypeListEXT _pDescriptorTypes(MemorySegment src) { return _pDescriptorTypesAt(0L, src); }
 }

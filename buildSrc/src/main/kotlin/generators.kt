@@ -7,6 +7,7 @@ fun Project.registerGenerateTask(main: String, targetProject: String) {
         mainClass.set(main)
         workingDir = project(targetProject).projectDir
         args(projectDir)
+        jvmArgs("-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8")
     }
 
 

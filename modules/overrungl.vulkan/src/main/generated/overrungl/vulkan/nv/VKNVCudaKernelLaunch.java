@@ -19,6 +19,7 @@ public final class VKNVCudaKernelLaunch {
     public static final int VK_OBJECT_TYPE_CUDA_FUNCTION_NV = 1000307001;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_MODULE_NV_EXT = 1000307000;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_FUNCTION_NV_EXT = 1000307001;
+    private VKNVCudaKernelLaunch() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateCudaModuleNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetCudaModuleCacheNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -29,11 +30,9 @@ public final class VKNVCudaKernelLaunch {
         private Handles() {}
     }
 
-    private VKNVCudaKernelLaunch() {}
-
     /// Invokes `vkCreateCudaModuleNV`.
     /// ```
-    /// (int) VkResult vkCreateCudaModuleNV((struct VkDevice*) VkDevice device, const VkCudaModuleCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkCudaModuleNV* pModule);
+    /// VkResult vkCreateCudaModuleNV(VkDevice device, const VkCudaModuleCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkCudaModuleNV* pModule);
     /// ```
     public static int vkCreateCudaModuleNV(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pModule) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateCudaModuleNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateCudaModuleNV");
@@ -44,7 +43,7 @@ public final class VKNVCudaKernelLaunch {
 
     /// Invokes `vkGetCudaModuleCacheNV`.
     /// ```
-    /// (int) VkResult vkGetCudaModuleCacheNV((struct VkDevice*) VkDevice device, (uint64_t) VkCudaModuleNV module, size_t* pCacheSize, void* pCacheData);
+    /// VkResult vkGetCudaModuleCacheNV(VkDevice device, VkCudaModuleNV module, size_t* pCacheSize, void* pCacheData);
     /// ```
     public static int vkGetCudaModuleCacheNV(@NonNull VkDevice device, long module, @NonNull MemorySegment pCacheSize, @NonNull MemorySegment pCacheData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetCudaModuleCacheNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetCudaModuleCacheNV");
@@ -55,7 +54,7 @@ public final class VKNVCudaKernelLaunch {
 
     /// Invokes `vkCreateCudaFunctionNV`.
     /// ```
-    /// (int) VkResult vkCreateCudaFunctionNV((struct VkDevice*) VkDevice device, const VkCudaFunctionCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkCudaFunctionNV* pFunction);
+    /// VkResult vkCreateCudaFunctionNV(VkDevice device, const VkCudaFunctionCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkCudaFunctionNV* pFunction);
     /// ```
     public static int vkCreateCudaFunctionNV(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pFunction) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateCudaFunctionNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateCudaFunctionNV");
@@ -66,7 +65,7 @@ public final class VKNVCudaKernelLaunch {
 
     /// Invokes `vkDestroyCudaModuleNV`.
     /// ```
-    /// void vkDestroyCudaModuleNV((struct VkDevice*) VkDevice device, (uint64_t) VkCudaModuleNV module, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyCudaModuleNV(VkDevice device, VkCudaModuleNV module, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyCudaModuleNV(@NonNull VkDevice device, long module, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyCudaModuleNV)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyCudaModuleNV");
@@ -77,7 +76,7 @@ public final class VKNVCudaKernelLaunch {
 
     /// Invokes `vkDestroyCudaFunctionNV`.
     /// ```
-    /// void vkDestroyCudaFunctionNV((struct VkDevice*) VkDevice device, (uint64_t) VkCudaFunctionNV function, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyCudaFunctionNV(VkDevice device, VkCudaFunctionNV function, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyCudaFunctionNV(@NonNull VkDevice device, long function, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyCudaFunctionNV)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyCudaFunctionNV");
@@ -88,7 +87,7 @@ public final class VKNVCudaKernelLaunch {
 
     /// Invokes `vkCmdCudaLaunchKernelNV`.
     /// ```
-    /// void vkCmdCudaLaunchKernelNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCudaLaunchInfoNV* pLaunchInfo);
+    /// void vkCmdCudaLaunchKernelNV(VkCommandBuffer commandBuffer, const VkCudaLaunchInfoNV* pLaunchInfo);
     /// ```
     public static void vkCmdCudaLaunchKernelNV(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pLaunchInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCudaLaunchKernelNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCudaLaunchKernelNV");

@@ -23,6 +23,7 @@ public final class VKEXTExtendedDynamicState {
     public static final int VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE_EXT = 1000267009;
     public static final int VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE_EXT = 1000267010;
     public static final int VK_DYNAMIC_STATE_STENCIL_OP_EXT = 1000267011;
+    private VKEXTExtendedDynamicState() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetCullModeEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetFrontFaceEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
@@ -39,11 +40,9 @@ public final class VKEXTExtendedDynamicState {
         private Handles() {}
     }
 
-    private VKEXTExtendedDynamicState() {}
-
     /// Invokes `vkCmdSetCullModeEXT`.
     /// ```
-    /// void vkCmdSetCullModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint32_t) VkFlags) VkCullModeFlags cullMode);
+    /// void vkCmdSetCullModeEXT(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode);
     /// ```
     public static void vkCmdSetCullModeEXT(@NonNull VkCommandBuffer commandBuffer, int cullMode) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCullModeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCullModeEXT");
@@ -54,7 +53,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetFrontFaceEXT`.
     /// ```
-    /// void vkCmdSetFrontFaceEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkFrontFace frontFace);
+    /// void vkCmdSetFrontFaceEXT(VkCommandBuffer commandBuffer, VkFrontFace frontFace);
     /// ```
     public static void vkCmdSetFrontFaceEXT(@NonNull VkCommandBuffer commandBuffer, int frontFace) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetFrontFaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetFrontFaceEXT");
@@ -65,7 +64,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetPrimitiveTopologyEXT`.
     /// ```
-    /// void vkCmdSetPrimitiveTopologyEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPrimitiveTopology primitiveTopology);
+    /// void vkCmdSetPrimitiveTopologyEXT(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology);
     /// ```
     public static void vkCmdSetPrimitiveTopologyEXT(@NonNull VkCommandBuffer commandBuffer, int primitiveTopology) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPrimitiveTopologyEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPrimitiveTopologyEXT");
@@ -76,7 +75,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetViewportWithCountEXT`.
     /// ```
-    /// void vkCmdSetViewportWithCountEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t viewportCount, const VkViewport* pViewports);
+    /// void vkCmdSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint32_t viewportCount, const VkViewport* pViewports);
     /// ```
     public static void vkCmdSetViewportWithCountEXT(@NonNull VkCommandBuffer commandBuffer, int viewportCount, @NonNull MemorySegment pViewports) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWithCountEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportWithCountEXT");
@@ -87,7 +86,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetScissorWithCountEXT`.
     /// ```
-    /// void vkCmdSetScissorWithCountEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t scissorCount, const VkRect2D* pScissors);
+    /// void vkCmdSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint32_t scissorCount, const VkRect2D* pScissors);
     /// ```
     public static void vkCmdSetScissorWithCountEXT(@NonNull VkCommandBuffer commandBuffer, int scissorCount, @NonNull MemorySegment pScissors) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetScissorWithCountEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetScissorWithCountEXT");
@@ -98,7 +97,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdBindVertexBuffers2EXT`.
     /// ```
-    /// void vkCmdBindVertexBuffers2EXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstBinding, uint32_t bindingCount, const VkBuffer* pBuffers, const VkDeviceSize* pOffsets, const VkDeviceSize* pSizes, const VkDeviceSize* pStrides);
+    /// void vkCmdBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint32_t firstBinding, uint32_t bindingCount, const VkBuffer* pBuffers, const VkDeviceSize* pOffsets, const VkDeviceSize* pSizes, const VkDeviceSize* pStrides);
     /// ```
     public static void vkCmdBindVertexBuffers2EXT(@NonNull VkCommandBuffer commandBuffer, int firstBinding, int bindingCount, @NonNull MemorySegment pBuffers, @NonNull MemorySegment pOffsets, @NonNull MemorySegment pSizes, @NonNull MemorySegment pStrides) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindVertexBuffers2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindVertexBuffers2EXT");
@@ -109,7 +108,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetDepthTestEnableEXT`.
     /// ```
-    /// void vkCmdSetDepthTestEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthTestEnable);
+    /// void vkCmdSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable);
     /// ```
     public static void vkCmdSetDepthTestEnableEXT(@NonNull VkCommandBuffer commandBuffer, int depthTestEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthTestEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthTestEnableEXT");
@@ -120,7 +119,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetDepthWriteEnableEXT`.
     /// ```
-    /// void vkCmdSetDepthWriteEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthWriteEnable);
+    /// void vkCmdSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable);
     /// ```
     public static void vkCmdSetDepthWriteEnableEXT(@NonNull VkCommandBuffer commandBuffer, int depthWriteEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthWriteEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthWriteEnableEXT");
@@ -131,7 +130,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetDepthCompareOpEXT`.
     /// ```
-    /// void vkCmdSetDepthCompareOpEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCompareOp depthCompareOp);
+    /// void vkCmdSetDepthCompareOpEXT(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp);
     /// ```
     public static void vkCmdSetDepthCompareOpEXT(@NonNull VkCommandBuffer commandBuffer, int depthCompareOp) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthCompareOpEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthCompareOpEXT");
@@ -142,7 +141,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetDepthBoundsTestEnableEXT`.
     /// ```
-    /// void vkCmdSetDepthBoundsTestEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthBoundsTestEnable);
+    /// void vkCmdSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable);
     /// ```
     public static void vkCmdSetDepthBoundsTestEnableEXT(@NonNull VkCommandBuffer commandBuffer, int depthBoundsTestEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthBoundsTestEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthBoundsTestEnableEXT");
@@ -153,7 +152,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetStencilTestEnableEXT`.
     /// ```
-    /// void vkCmdSetStencilTestEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 stencilTestEnable);
+    /// void vkCmdSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable);
     /// ```
     public static void vkCmdSetStencilTestEnableEXT(@NonNull VkCommandBuffer commandBuffer, int stencilTestEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetStencilTestEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetStencilTestEnableEXT");
@@ -164,7 +163,7 @@ public final class VKEXTExtendedDynamicState {
 
     /// Invokes `vkCmdSetStencilOpEXT`.
     /// ```
-    /// void vkCmdSetStencilOpEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint32_t) VkFlags) VkStencilFaceFlags faceMask, (int) VkStencilOp failOp, (int) VkStencilOp passOp, (int) VkStencilOp depthFailOp, (int) VkCompareOp compareOp);
+    /// void vkCmdSetStencilOpEXT(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp);
     /// ```
     public static void vkCmdSetStencilOpEXT(@NonNull VkCommandBuffer commandBuffer, int faceMask, int failOp, int passOp, int depthFailOp, int compareOp) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetStencilOpEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetStencilOpEXT");

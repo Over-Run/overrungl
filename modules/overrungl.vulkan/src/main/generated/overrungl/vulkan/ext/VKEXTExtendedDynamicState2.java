@@ -16,6 +16,7 @@ public final class VKEXTExtendedDynamicState2 {
     public static final int VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE_EXT = 1000377002;
     public static final int VK_DYNAMIC_STATE_LOGIC_OP_EXT = 1000377003;
     public static final int VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT = 1000377004;
+    private VKEXTExtendedDynamicState2() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetPatchControlPointsEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetRasterizerDiscardEnableEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
@@ -25,11 +26,9 @@ public final class VKEXTExtendedDynamicState2 {
         private Handles() {}
     }
 
-    private VKEXTExtendedDynamicState2() {}
-
     /// Invokes `vkCmdSetPatchControlPointsEXT`.
     /// ```
-    /// void vkCmdSetPatchControlPointsEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t patchControlPoints);
+    /// void vkCmdSetPatchControlPointsEXT(VkCommandBuffer commandBuffer, uint32_t patchControlPoints);
     /// ```
     public static void vkCmdSetPatchControlPointsEXT(@NonNull VkCommandBuffer commandBuffer, int patchControlPoints) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPatchControlPointsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPatchControlPointsEXT");
@@ -40,7 +39,7 @@ public final class VKEXTExtendedDynamicState2 {
 
     /// Invokes `vkCmdSetRasterizerDiscardEnableEXT`.
     /// ```
-    /// void vkCmdSetRasterizerDiscardEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 rasterizerDiscardEnable);
+    /// void vkCmdSetRasterizerDiscardEnableEXT(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable);
     /// ```
     public static void vkCmdSetRasterizerDiscardEnableEXT(@NonNull VkCommandBuffer commandBuffer, int rasterizerDiscardEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRasterizerDiscardEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRasterizerDiscardEnableEXT");
@@ -51,7 +50,7 @@ public final class VKEXTExtendedDynamicState2 {
 
     /// Invokes `vkCmdSetDepthBiasEnableEXT`.
     /// ```
-    /// void vkCmdSetDepthBiasEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthBiasEnable);
+    /// void vkCmdSetDepthBiasEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable);
     /// ```
     public static void vkCmdSetDepthBiasEnableEXT(@NonNull VkCommandBuffer commandBuffer, int depthBiasEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthBiasEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthBiasEnableEXT");
@@ -62,7 +61,7 @@ public final class VKEXTExtendedDynamicState2 {
 
     /// Invokes `vkCmdSetLogicOpEXT`.
     /// ```
-    /// void vkCmdSetLogicOpEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkLogicOp logicOp);
+    /// void vkCmdSetLogicOpEXT(VkCommandBuffer commandBuffer, VkLogicOp logicOp);
     /// ```
     public static void vkCmdSetLogicOpEXT(@NonNull VkCommandBuffer commandBuffer, int logicOp) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLogicOpEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLogicOpEXT");
@@ -73,7 +72,7 @@ public final class VKEXTExtendedDynamicState2 {
 
     /// Invokes `vkCmdSetPrimitiveRestartEnableEXT`.
     /// ```
-    /// void vkCmdSetPrimitiveRestartEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 primitiveRestartEnable);
+    /// void vkCmdSetPrimitiveRestartEnableEXT(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable);
     /// ```
     public static void vkCmdSetPrimitiveRestartEnableEXT(@NonNull VkCommandBuffer commandBuffer, int primitiveRestartEnable) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPrimitiveRestartEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPrimitiveRestartEnableEXT");

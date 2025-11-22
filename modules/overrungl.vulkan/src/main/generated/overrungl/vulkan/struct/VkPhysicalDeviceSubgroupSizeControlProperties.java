@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,16 +12,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSubgroupSizeControlProperties {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t minSubgroupSize;
 ///     uint32_t maxSubgroupSize;
 ///     uint32_t maxComputeWorkgroupSubgroups;
-///     ((uint32_t) VkFlags) VkShaderStageFlags requiredSubgroupSizeStages;
-/// };
+///     VkShaderStageFlags requiredSubgroupSizeStages;
+/// }
 /// ```
 public final class VkPhysicalDeviceSubgroupSizeControlProperties extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceSubgroupSizeControlProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -31,254 +29,88 @@ public final class VkPhysicalDeviceSubgroupSizeControlProperties extends GroupTy
         ValueLayout.JAVA_INT.withName("maxComputeWorkgroupSubgroups"),
         ValueLayout.JAVA_INT.withName("requiredSubgroupSizeStages")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `minSubgroupSize`.
     public static final long OFFSET_minSubgroupSize = LAYOUT.byteOffset(PathElement.groupElement("minSubgroupSize"));
-    /// The memory layout of `minSubgroupSize`.
-    public static final MemoryLayout LAYOUT_minSubgroupSize = LAYOUT.select(PathElement.groupElement("minSubgroupSize"));
-    /// The [VarHandle] of `minSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSubgroupSize"));
-    /// The byte offset of `maxSubgroupSize`.
     public static final long OFFSET_maxSubgroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxSubgroupSize"));
-    /// The memory layout of `maxSubgroupSize`.
-    public static final MemoryLayout LAYOUT_maxSubgroupSize = LAYOUT.select(PathElement.groupElement("maxSubgroupSize"));
-    /// The [VarHandle] of `maxSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubgroupSize"));
-    /// The byte offset of `maxComputeWorkgroupSubgroups`.
     public static final long OFFSET_maxComputeWorkgroupSubgroups = LAYOUT.byteOffset(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
-    /// The memory layout of `maxComputeWorkgroupSubgroups`.
-    public static final MemoryLayout LAYOUT_maxComputeWorkgroupSubgroups = LAYOUT.select(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
-    /// The [VarHandle] of `maxComputeWorkgroupSubgroups` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxComputeWorkgroupSubgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
-    /// The byte offset of `requiredSubgroupSizeStages`.
     public static final long OFFSET_requiredSubgroupSizeStages = LAYOUT.byteOffset(PathElement.groupElement("requiredSubgroupSizeStages"));
-    /// The memory layout of `requiredSubgroupSizeStages`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_minSubgroupSize = LAYOUT.select(PathElement.groupElement("minSubgroupSize"));
+    public static final MemoryLayout LAYOUT_maxSubgroupSize = LAYOUT.select(PathElement.groupElement("maxSubgroupSize"));
+    public static final MemoryLayout LAYOUT_maxComputeWorkgroupSubgroups = LAYOUT.select(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
     public static final MemoryLayout LAYOUT_requiredSubgroupSizeStages = LAYOUT.select(PathElement.groupElement("requiredSubgroupSizeStages"));
-    /// The [VarHandle] of `requiredSubgroupSizeStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_minSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSubgroupSize"));
+    public static final VarHandle VH_maxSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubgroupSize"));
+    public static final VarHandle VH_maxComputeWorkgroupSubgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
     public static final VarHandle VH_requiredSubgroupSizeStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredSubgroupSizeStages"));
 
-    /// Creates `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceSubgroupSizeControlProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceSubgroupSizeControlProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupSizeControlProperties(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceSubgroupSizeControlProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupSizeControlProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceSubgroupSizeControlProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupSizeControlProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
     public static VkPhysicalDeviceSubgroupSizeControlProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceSubgroupSizeControlProperties(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
     public static VkPhysicalDeviceSubgroupSizeControlProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSubgroupSizeControlProperties(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceSubgroupSizeControlProperties allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES); }
+    public static VkPhysicalDeviceSubgroupSizeControlProperties allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES);
+        return s;
+    }
     public VkPhysicalDeviceSubgroupSizeControlProperties copyFrom(VkPhysicalDeviceSubgroupSizeControlProperties src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceSubgroupSizeControlProperties reinterpret(long count) { return new VkPhysicalDeviceSubgroupSizeControlProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `minSubgroupSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int minSubgroupSize(MemorySegment segment, long index) { return (int) VH_minSubgroupSize.get(segment, 0L, index); }
-    /// {@return `minSubgroupSize`}
-    public int minSubgroupSize() { return minSubgroupSize(this.segment(), 0L); }
-    /// Sets `minSubgroupSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minSubgroupSize(MemorySegment segment, long index, int value) { VH_minSubgroupSize.set(segment, 0L, index, value); }
-    /// Sets `minSubgroupSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties minSubgroupSize(int value) { minSubgroupSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxSubgroupSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxSubgroupSize(MemorySegment segment, long index) { return (int) VH_maxSubgroupSize.get(segment, 0L, index); }
-    /// {@return `maxSubgroupSize`}
-    public int maxSubgroupSize() { return maxSubgroupSize(this.segment(), 0L); }
-    /// Sets `maxSubgroupSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxSubgroupSize(MemorySegment segment, long index, int value) { VH_maxSubgroupSize.set(segment, 0L, index, value); }
-    /// Sets `maxSubgroupSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties maxSubgroupSize(int value) { maxSubgroupSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxComputeWorkgroupSubgroups` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxComputeWorkgroupSubgroups(MemorySegment segment, long index) { return (int) VH_maxComputeWorkgroupSubgroups.get(segment, 0L, index); }
-    /// {@return `maxComputeWorkgroupSubgroups`}
-    public int maxComputeWorkgroupSubgroups() { return maxComputeWorkgroupSubgroups(this.segment(), 0L); }
-    /// Sets `maxComputeWorkgroupSubgroups` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxComputeWorkgroupSubgroups(MemorySegment segment, long index, int value) { VH_maxComputeWorkgroupSubgroups.set(segment, 0L, index, value); }
-    /// Sets `maxComputeWorkgroupSubgroups` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties maxComputeWorkgroupSubgroups(int value) { maxComputeWorkgroupSubgroups(this.segment(), 0L, value); return this; }
-
-    /// {@return `requiredSubgroupSizeStages` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int requiredSubgroupSizeStages(MemorySegment segment, long index) { return (int) VH_requiredSubgroupSizeStages.get(segment, 0L, index); }
-    /// {@return `requiredSubgroupSizeStages`}
-    public int requiredSubgroupSizeStages() { return requiredSubgroupSizeStages(this.segment(), 0L); }
-    /// Sets `requiredSubgroupSizeStages` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void requiredSubgroupSizeStages(MemorySegment segment, long index, int value) { VH_requiredSubgroupSizeStages.set(segment, 0L, index, value); }
-    /// Sets `requiredSubgroupSizeStages` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStages(int value) { requiredSubgroupSizeStages(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceSubgroupSizeControlProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceSubgroupSizeControlProperties`
     public VkPhysicalDeviceSubgroupSizeControlProperties asSlice(long index) { return new VkPhysicalDeviceSubgroupSizeControlProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceSubgroupSizeControlProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceSubgroupSizeControlProperties`
     public VkPhysicalDeviceSubgroupSizeControlProperties asSlice(long index, long count) { return new VkPhysicalDeviceSubgroupSizeControlProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceSubgroupSizeControlProperties` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceSubgroupSizeControlProperties at(long index, Consumer<VkPhysicalDeviceSubgroupSizeControlProperties> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `minSubgroupSize` at the given index}
-    /// @param index the index of the struct buffer
-    public int minSubgroupSizeAt(long index) { return minSubgroupSize(this.segment(), index); }
-    /// Sets `minSubgroupSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties minSubgroupSizeAt(long index, int value) { minSubgroupSize(this.segment(), index, value); return this; }
-
-    /// {@return `maxSubgroupSize` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxSubgroupSizeAt(long index) { return maxSubgroupSize(this.segment(), index); }
-    /// Sets `maxSubgroupSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties maxSubgroupSizeAt(long index, int value) { maxSubgroupSize(this.segment(), index, value); return this; }
-
-    /// {@return `maxComputeWorkgroupSubgroups` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxComputeWorkgroupSubgroupsAt(long index) { return maxComputeWorkgroupSubgroups(this.segment(), index); }
-    /// Sets `maxComputeWorkgroupSubgroups` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties maxComputeWorkgroupSubgroupsAt(long index, int value) { maxComputeWorkgroupSubgroups(this.segment(), index, value); return this; }
-
-    /// {@return `requiredSubgroupSizeStages` at the given index}
-    /// @param index the index of the struct buffer
-    public int requiredSubgroupSizeStagesAt(long index) { return requiredSubgroupSizeStages(this.segment(), index); }
-    /// Sets `requiredSubgroupSizeStages` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStagesAt(long index, int value) { requiredSubgroupSizeStages(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int minSubgroupSizeAt(long index) { return (int) VH_minSubgroupSize.get(this.segment(), 0L, index); }
+    public int maxSubgroupSizeAt(long index) { return (int) VH_maxSubgroupSize.get(this.segment(), 0L, index); }
+    public int maxComputeWorkgroupSubgroupsAt(long index) { return (int) VH_maxComputeWorkgroupSubgroups.get(this.segment(), 0L, index); }
+    public int requiredSubgroupSizeStagesAt(long index) { return (int) VH_requiredSubgroupSizeStages.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int minSubgroupSize() { return (int) VH_minSubgroupSize.get(this.segment(), 0L, 0L); }
+    public int maxSubgroupSize() { return (int) VH_maxSubgroupSize.get(this.segment(), 0L, 0L); }
+    public int maxComputeWorkgroupSubgroups() { return (int) VH_maxComputeWorkgroupSubgroups.get(this.segment(), 0L, 0L); }
+    public int requiredSubgroupSizeStages() { return (int) VH_requiredSubgroupSizeStages.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceSubgroupSizeControlProperties sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties minSubgroupSizeAt(long index, int value) { VH_minSubgroupSize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties maxSubgroupSizeAt(long index, int value) { VH_maxSubgroupSize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties maxComputeWorkgroupSubgroupsAt(long index, int value) { VH_maxComputeWorkgroupSubgroups.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStagesAt(long index, int value) { VH_requiredSubgroupSizeStages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties minSubgroupSize(int value) { VH_minSubgroupSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties maxSubgroupSize(int value) { VH_maxSubgroupSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties maxComputeWorkgroupSubgroups(int value) { VH_maxComputeWorkgroupSubgroups.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStages(int value) { VH_requiredSubgroupSizeStages.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _minSubgroupSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minSubgroupSize, index), LAYOUT_minSubgroupSize); }
+    public MemorySegment _minSubgroupSize() { return _minSubgroupSizeAt(0L); }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _minSubgroupSizeAt(long index, MemorySegment src) { _minSubgroupSizeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _minSubgroupSize(MemorySegment src) { return _minSubgroupSizeAt(0L, src); }
+    public MemorySegment _maxSubgroupSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxSubgroupSize, index), LAYOUT_maxSubgroupSize); }
+    public MemorySegment _maxSubgroupSize() { return _maxSubgroupSizeAt(0L); }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _maxSubgroupSizeAt(long index, MemorySegment src) { _maxSubgroupSizeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _maxSubgroupSize(MemorySegment src) { return _maxSubgroupSizeAt(0L, src); }
+    public MemorySegment _maxComputeWorkgroupSubgroupsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxComputeWorkgroupSubgroups, index), LAYOUT_maxComputeWorkgroupSubgroups); }
+    public MemorySegment _maxComputeWorkgroupSubgroups() { return _maxComputeWorkgroupSubgroupsAt(0L); }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _maxComputeWorkgroupSubgroupsAt(long index, MemorySegment src) { _maxComputeWorkgroupSubgroupsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _maxComputeWorkgroupSubgroups(MemorySegment src) { return _maxComputeWorkgroupSubgroupsAt(0L, src); }
+    public MemorySegment _requiredSubgroupSizeStagesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_requiredSubgroupSizeStages, index), LAYOUT_requiredSubgroupSizeStages); }
+    public MemorySegment _requiredSubgroupSizeStages() { return _requiredSubgroupSizeStagesAt(0L); }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _requiredSubgroupSizeStagesAt(long index, MemorySegment src) { _requiredSubgroupSizeStagesAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlProperties _requiredSubgroupSizeStages(MemorySegment src) { return _requiredSubgroupSizeStagesAt(0L, src); }
 }

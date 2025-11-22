@@ -5,12 +5,36 @@ package overrungl.vulkan;
 import java.util.*;
 import static overrungl.vulkan.VK10.*;
 import static overrungl.vulkan.VK11.*;
+import static overrungl.vulkan.VK12.*;
 import static overrungl.vulkan.VK13.*;
 import static overrungl.vulkan.VK14.*;
+import static overrungl.vulkan.arm.VKARMDataGraph.*;
 import static overrungl.vulkan.arm.VKARMFormatPack.*;
 import static overrungl.vulkan.arm.VKARMTensors.*;
+import static overrungl.vulkan.ext.VKEXT4444Formats.*;
+import static overrungl.vulkan.ext.VKEXTFilterCubic.*;
+import static overrungl.vulkan.ext.VKEXTFragmentDensityMap.*;
+import static overrungl.vulkan.ext.VKEXTHostImageCopy.*;
+import static overrungl.vulkan.ext.VKEXTSamplerFilterMinmax.*;
+import static overrungl.vulkan.ext.VKEXTTextureCompressionAstcHdr.*;
+import static overrungl.vulkan.ext.VKEXTYcbcr2plane444Formats.*;
+import static overrungl.vulkan.img.VKIMGFilterCubic.*;
 import static overrungl.vulkan.img.VKIMGFormatPvrtc.*;
+import static overrungl.vulkan.khr.VKKHRAccelerationStructure.*;
+import static overrungl.vulkan.khr.VKKHRCopyMemoryIndirect.*;
+import static overrungl.vulkan.khr.VKKHRFormatFeatureFlags2.*;
+import static overrungl.vulkan.khr.VKKHRFragmentShadingRate.*;
+import static overrungl.vulkan.khr.VKKHRMaintenance1.*;
+import static overrungl.vulkan.khr.VKKHRMaintenance10.*;
+import static overrungl.vulkan.khr.VKKHRMaintenance5.*;
+import static overrungl.vulkan.khr.VKKHRSamplerYcbcrConversion.*;
+import static overrungl.vulkan.khr.VKKHRVideoDecodeQueue.*;
+import static overrungl.vulkan.khr.VKKHRVideoEncodeQuantizationMap.*;
+import static overrungl.vulkan.khr.VKKHRVideoEncodeQueue.*;
+import static overrungl.vulkan.nv.VKNVLinearColorAttachment.*;
 import static overrungl.vulkan.nv.VKNVOpticalFlow.*;
+import static overrungl.vulkan.nv.VKNVRayTracingLinearSweptSpheres.*;
+import static overrungl.vulkan.qcom.VKQCOMImageProcessing.*;
 
 /// `VkFormat` adapted from [vulkan_format_traits.hpp](https://github.com/KhronosGroup/Vulkan-Hpp/blob/32f2957efcb552aebcfca3a6e66675ead4d1a240/vulkan/vulkan_format_traits.hpp)
 public enum VkFormat {

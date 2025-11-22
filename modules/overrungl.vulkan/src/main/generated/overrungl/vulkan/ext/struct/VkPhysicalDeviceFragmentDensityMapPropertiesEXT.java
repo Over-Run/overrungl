@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (struct VkExtent2D) VkExtent2D minFragmentDensityTexelSize;
-///     (struct VkExtent2D) VkExtent2D maxFragmentDensityTexelSize;
-///     (uint32_t) VkBool32 fragmentDensityInvocations;
-/// };
+///     VkExtent2D minFragmentDensityTexelSize;
+///     VkExtent2D maxFragmentDensityTexelSize;
+///     VkBool32 fragmentDensityInvocations;
+/// }
 /// ```
 public final class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,237 +27,87 @@ public final class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends Group
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("maxFragmentDensityTexelSize"),
         ValueLayout.JAVA_INT.withName("fragmentDensityInvocations")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `minFragmentDensityTexelSize`.
     public static final long OFFSET_minFragmentDensityTexelSize = LAYOUT.byteOffset(PathElement.groupElement("minFragmentDensityTexelSize"));
-    /// The memory layout of `minFragmentDensityTexelSize`.
-    public static final MemoryLayout LAYOUT_minFragmentDensityTexelSize = LAYOUT.select(PathElement.groupElement("minFragmentDensityTexelSize"));
-    /// The byte offset of `maxFragmentDensityTexelSize`.
     public static final long OFFSET_maxFragmentDensityTexelSize = LAYOUT.byteOffset(PathElement.groupElement("maxFragmentDensityTexelSize"));
-    /// The memory layout of `maxFragmentDensityTexelSize`.
-    public static final MemoryLayout LAYOUT_maxFragmentDensityTexelSize = LAYOUT.select(PathElement.groupElement("maxFragmentDensityTexelSize"));
-    /// The byte offset of `fragmentDensityInvocations`.
     public static final long OFFSET_fragmentDensityInvocations = LAYOUT.byteOffset(PathElement.groupElement("fragmentDensityInvocations"));
-    /// The memory layout of `fragmentDensityInvocations`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_minFragmentDensityTexelSize = LAYOUT.select(PathElement.groupElement("minFragmentDensityTexelSize"));
+    public static final MemoryLayout LAYOUT_maxFragmentDensityTexelSize = LAYOUT.select(PathElement.groupElement("maxFragmentDensityTexelSize"));
     public static final MemoryLayout LAYOUT_fragmentDensityInvocations = LAYOUT.select(PathElement.groupElement("fragmentDensityInvocations"));
-    /// The [VarHandle] of `fragmentDensityInvocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_minFragmentDensityTexelSize$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minFragmentDensityTexelSize"), PathElement.groupElement("width"));
+    public static final VarHandle VH_minFragmentDensityTexelSize$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minFragmentDensityTexelSize"), PathElement.groupElement("height"));
+    public static final VarHandle VH_maxFragmentDensityTexelSize$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentDensityTexelSize"), PathElement.groupElement("width"));
+    public static final VarHandle VH_maxFragmentDensityTexelSize$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentDensityTexelSize"), PathElement.groupElement("height"));
     public static final VarHandle VH_fragmentDensityInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentDensityInvocations"));
 
-    /// Creates `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
     public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
     public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTFragmentDensityMap.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT); }
+    public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTFragmentDensityMap.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT);
+        return s;
+    }
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT copyFrom(VkPhysicalDeviceFragmentDensityMapPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `minFragmentDensityTexelSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment minFragmentDensityTexelSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minFragmentDensityTexelSize, index), LAYOUT_minFragmentDensityTexelSize); }
-    /// {@return `minFragmentDensityTexelSize`}
-    public MemorySegment minFragmentDensityTexelSize() { return minFragmentDensityTexelSize(this.segment(), 0L); }
-    /// Sets `minFragmentDensityTexelSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minFragmentDensityTexelSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minFragmentDensityTexelSize, index), LAYOUT_minFragmentDensityTexelSize.byteSize()); }
-    /// Sets `minFragmentDensityTexelSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize(MemorySegment value) { minFragmentDensityTexelSize(this.segment(), 0L, value); return this; }
-    /// Accepts `minFragmentDensityTexelSize` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minFragmentDensityTexelSize())); return this; }
-
-    /// {@return `maxFragmentDensityTexelSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment maxFragmentDensityTexelSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxFragmentDensityTexelSize, index), LAYOUT_maxFragmentDensityTexelSize); }
-    /// {@return `maxFragmentDensityTexelSize`}
-    public MemorySegment maxFragmentDensityTexelSize() { return maxFragmentDensityTexelSize(this.segment(), 0L); }
-    /// Sets `maxFragmentDensityTexelSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxFragmentDensityTexelSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxFragmentDensityTexelSize, index), LAYOUT_maxFragmentDensityTexelSize.byteSize()); }
-    /// Sets `maxFragmentDensityTexelSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize(MemorySegment value) { maxFragmentDensityTexelSize(this.segment(), 0L, value); return this; }
-    /// Accepts `maxFragmentDensityTexelSize` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentDensityTexelSize())); return this; }
-
-    /// {@return `fragmentDensityInvocations` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int fragmentDensityInvocations(MemorySegment segment, long index) { return (int) VH_fragmentDensityInvocations.get(segment, 0L, index); }
-    /// {@return `fragmentDensityInvocations`}
-    public int fragmentDensityInvocations() { return fragmentDensityInvocations(this.segment(), 0L); }
-    /// Sets `fragmentDensityInvocations` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void fragmentDensityInvocations(MemorySegment segment, long index, int value) { VH_fragmentDensityInvocations.set(segment, 0L, index, value); }
-    /// Sets `fragmentDensityInvocations` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT fragmentDensityInvocations(int value) { fragmentDensityInvocations(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT at(long index, Consumer<VkPhysicalDeviceFragmentDensityMapPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `minFragmentDensityTexelSize` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment minFragmentDensityTexelSizeAt(long index) { return minFragmentDensityTexelSize(this.segment(), index); }
-    /// Sets `minFragmentDensityTexelSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSizeAt(long index, MemorySegment value) { minFragmentDensityTexelSize(this.segment(), index, value); return this; }
-    /// Accepts `minFragmentDensityTexelSize` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minFragmentDensityTexelSizeAt(index))); return this; }
-
-    /// {@return `maxFragmentDensityTexelSize` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment maxFragmentDensityTexelSizeAt(long index) { return maxFragmentDensityTexelSize(this.segment(), index); }
-    /// Sets `maxFragmentDensityTexelSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSizeAt(long index, MemorySegment value) { maxFragmentDensityTexelSize(this.segment(), index, value); return this; }
-    /// Accepts `maxFragmentDensityTexelSize` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentDensityTexelSizeAt(index))); return this; }
-
-    /// {@return `fragmentDensityInvocations` at the given index}
-    /// @param index the index of the struct buffer
-    public int fragmentDensityInvocationsAt(long index) { return fragmentDensityInvocations(this.segment(), index); }
-    /// Sets `fragmentDensityInvocations` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT fragmentDensityInvocationsAt(long index, int value) { fragmentDensityInvocations(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int minFragmentDensityTexelSize$widthAt(long index) { return (int) VH_minFragmentDensityTexelSize$width.get(this.segment(), 0L, index); }
+    public int minFragmentDensityTexelSize$heightAt(long index) { return (int) VH_minFragmentDensityTexelSize$height.get(this.segment(), 0L, index); }
+    public int maxFragmentDensityTexelSize$widthAt(long index) { return (int) VH_maxFragmentDensityTexelSize$width.get(this.segment(), 0L, index); }
+    public int maxFragmentDensityTexelSize$heightAt(long index) { return (int) VH_maxFragmentDensityTexelSize$height.get(this.segment(), 0L, index); }
+    public int fragmentDensityInvocationsAt(long index) { return (int) VH_fragmentDensityInvocations.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int minFragmentDensityTexelSize$width() { return (int) VH_minFragmentDensityTexelSize$width.get(this.segment(), 0L, 0L); }
+    public int minFragmentDensityTexelSize$height() { return (int) VH_minFragmentDensityTexelSize$height.get(this.segment(), 0L, 0L); }
+    public int maxFragmentDensityTexelSize$width() { return (int) VH_maxFragmentDensityTexelSize$width.get(this.segment(), 0L, 0L); }
+    public int maxFragmentDensityTexelSize$height() { return (int) VH_maxFragmentDensityTexelSize$height.get(this.segment(), 0L, 0L); }
+    public int fragmentDensityInvocations() { return (int) VH_fragmentDensityInvocations.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize$widthAt(long index, int value) { VH_minFragmentDensityTexelSize$width.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize$heightAt(long index, int value) { VH_minFragmentDensityTexelSize$height.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize$widthAt(long index, int value) { VH_maxFragmentDensityTexelSize$width.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize$heightAt(long index, int value) { VH_maxFragmentDensityTexelSize$height.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT fragmentDensityInvocationsAt(long index, int value) { VH_fragmentDensityInvocations.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize$width(int value) { VH_minFragmentDensityTexelSize$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize$height(int value) { VH_minFragmentDensityTexelSize$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize$width(int value) { VH_maxFragmentDensityTexelSize$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize$height(int value) { VH_maxFragmentDensityTexelSize$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT fragmentDensityInvocations(int value) { VH_fragmentDensityInvocations.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _minFragmentDensityTexelSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minFragmentDensityTexelSize, index), LAYOUT_minFragmentDensityTexelSize); }
+    public MemorySegment _minFragmentDensityTexelSize() { return _minFragmentDensityTexelSizeAt(0L); }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _minFragmentDensityTexelSizeAt(long index, MemorySegment src) { _minFragmentDensityTexelSizeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _minFragmentDensityTexelSize(MemorySegment src) { return _minFragmentDensityTexelSizeAt(0L, src); }
+    public MemorySegment _maxFragmentDensityTexelSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxFragmentDensityTexelSize, index), LAYOUT_maxFragmentDensityTexelSize); }
+    public MemorySegment _maxFragmentDensityTexelSize() { return _maxFragmentDensityTexelSizeAt(0L); }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _maxFragmentDensityTexelSizeAt(long index, MemorySegment src) { _maxFragmentDensityTexelSizeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _maxFragmentDensityTexelSize(MemorySegment src) { return _maxFragmentDensityTexelSizeAt(0L, src); }
+    public MemorySegment _fragmentDensityInvocationsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_fragmentDensityInvocations, index), LAYOUT_fragmentDensityInvocations); }
+    public MemorySegment _fragmentDensityInvocations() { return _fragmentDensityInvocationsAt(0L); }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _fragmentDensityInvocationsAt(long index, MemorySegment src) { _fragmentDensityInvocationsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT _fragmentDensityInvocations(MemorySegment src) { return _fragmentDensityInvocationsAt(0L, src); }
 }

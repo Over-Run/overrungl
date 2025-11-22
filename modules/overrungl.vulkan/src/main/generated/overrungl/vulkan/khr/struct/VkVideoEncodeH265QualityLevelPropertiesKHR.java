@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,20 +12,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH265QualityLevelPropertiesKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     ((uint32_t) VkFlags) VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags;
+///     VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags;
 ///     uint32_t preferredGopFrameCount;
 ///     uint32_t preferredIdrPeriod;
 ///     uint32_t preferredConsecutiveBFrameCount;
 ///     uint32_t preferredSubLayerCount;
-///     (struct VkVideoEncodeH265QpKHR) VkVideoEncodeH265QpKHR preferredConstantQp;
+///     VkVideoEncodeH265QpKHR preferredConstantQp;
 ///     uint32_t preferredMaxL0ReferenceCount;
 ///     uint32_t preferredMaxL1ReferenceCount;
-/// };
+/// }
 /// ```
 public final class VkVideoEncodeH265QualityLevelPropertiesKHR extends GroupType {
-    /// The struct layout of `VkVideoEncodeH265QualityLevelPropertiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -39,385 +37,142 @@ public final class VkVideoEncodeH265QualityLevelPropertiesKHR extends GroupType 
         ValueLayout.JAVA_INT.withName("preferredMaxL0ReferenceCount"),
         ValueLayout.JAVA_INT.withName("preferredMaxL1ReferenceCount")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `preferredRateControlFlags`.
     public static final long OFFSET_preferredRateControlFlags = LAYOUT.byteOffset(PathElement.groupElement("preferredRateControlFlags"));
-    /// The memory layout of `preferredRateControlFlags`.
-    public static final MemoryLayout LAYOUT_preferredRateControlFlags = LAYOUT.select(PathElement.groupElement("preferredRateControlFlags"));
-    /// The [VarHandle] of `preferredRateControlFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_preferredRateControlFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredRateControlFlags"));
-    /// The byte offset of `preferredGopFrameCount`.
     public static final long OFFSET_preferredGopFrameCount = LAYOUT.byteOffset(PathElement.groupElement("preferredGopFrameCount"));
-    /// The memory layout of `preferredGopFrameCount`.
-    public static final MemoryLayout LAYOUT_preferredGopFrameCount = LAYOUT.select(PathElement.groupElement("preferredGopFrameCount"));
-    /// The [VarHandle] of `preferredGopFrameCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_preferredGopFrameCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredGopFrameCount"));
-    /// The byte offset of `preferredIdrPeriod`.
     public static final long OFFSET_preferredIdrPeriod = LAYOUT.byteOffset(PathElement.groupElement("preferredIdrPeriod"));
-    /// The memory layout of `preferredIdrPeriod`.
-    public static final MemoryLayout LAYOUT_preferredIdrPeriod = LAYOUT.select(PathElement.groupElement("preferredIdrPeriod"));
-    /// The [VarHandle] of `preferredIdrPeriod` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_preferredIdrPeriod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredIdrPeriod"));
-    /// The byte offset of `preferredConsecutiveBFrameCount`.
     public static final long OFFSET_preferredConsecutiveBFrameCount = LAYOUT.byteOffset(PathElement.groupElement("preferredConsecutiveBFrameCount"));
-    /// The memory layout of `preferredConsecutiveBFrameCount`.
-    public static final MemoryLayout LAYOUT_preferredConsecutiveBFrameCount = LAYOUT.select(PathElement.groupElement("preferredConsecutiveBFrameCount"));
-    /// The [VarHandle] of `preferredConsecutiveBFrameCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_preferredConsecutiveBFrameCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredConsecutiveBFrameCount"));
-    /// The byte offset of `preferredSubLayerCount`.
     public static final long OFFSET_preferredSubLayerCount = LAYOUT.byteOffset(PathElement.groupElement("preferredSubLayerCount"));
-    /// The memory layout of `preferredSubLayerCount`.
-    public static final MemoryLayout LAYOUT_preferredSubLayerCount = LAYOUT.select(PathElement.groupElement("preferredSubLayerCount"));
-    /// The [VarHandle] of `preferredSubLayerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_preferredSubLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredSubLayerCount"));
-    /// The byte offset of `preferredConstantQp`.
     public static final long OFFSET_preferredConstantQp = LAYOUT.byteOffset(PathElement.groupElement("preferredConstantQp"));
-    /// The memory layout of `preferredConstantQp`.
-    public static final MemoryLayout LAYOUT_preferredConstantQp = LAYOUT.select(PathElement.groupElement("preferredConstantQp"));
-    /// The byte offset of `preferredMaxL0ReferenceCount`.
     public static final long OFFSET_preferredMaxL0ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("preferredMaxL0ReferenceCount"));
-    /// The memory layout of `preferredMaxL0ReferenceCount`.
-    public static final MemoryLayout LAYOUT_preferredMaxL0ReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxL0ReferenceCount"));
-    /// The [VarHandle] of `preferredMaxL0ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_preferredMaxL0ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxL0ReferenceCount"));
-    /// The byte offset of `preferredMaxL1ReferenceCount`.
     public static final long OFFSET_preferredMaxL1ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("preferredMaxL1ReferenceCount"));
-    /// The memory layout of `preferredMaxL1ReferenceCount`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_preferredRateControlFlags = LAYOUT.select(PathElement.groupElement("preferredRateControlFlags"));
+    public static final MemoryLayout LAYOUT_preferredGopFrameCount = LAYOUT.select(PathElement.groupElement("preferredGopFrameCount"));
+    public static final MemoryLayout LAYOUT_preferredIdrPeriod = LAYOUT.select(PathElement.groupElement("preferredIdrPeriod"));
+    public static final MemoryLayout LAYOUT_preferredConsecutiveBFrameCount = LAYOUT.select(PathElement.groupElement("preferredConsecutiveBFrameCount"));
+    public static final MemoryLayout LAYOUT_preferredSubLayerCount = LAYOUT.select(PathElement.groupElement("preferredSubLayerCount"));
+    public static final MemoryLayout LAYOUT_preferredConstantQp = LAYOUT.select(PathElement.groupElement("preferredConstantQp"));
+    public static final MemoryLayout LAYOUT_preferredMaxL0ReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxL0ReferenceCount"));
     public static final MemoryLayout LAYOUT_preferredMaxL1ReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxL1ReferenceCount"));
-    /// The [VarHandle] of `preferredMaxL1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_preferredRateControlFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredRateControlFlags"));
+    public static final VarHandle VH_preferredGopFrameCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredGopFrameCount"));
+    public static final VarHandle VH_preferredIdrPeriod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredIdrPeriod"));
+    public static final VarHandle VH_preferredConsecutiveBFrameCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredConsecutiveBFrameCount"));
+    public static final VarHandle VH_preferredSubLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredSubLayerCount"));
+    public static final VarHandle VH_preferredConstantQp$qpI = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredConstantQp"), PathElement.groupElement("qpI"));
+    public static final VarHandle VH_preferredConstantQp$qpP = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredConstantQp"), PathElement.groupElement("qpP"));
+    public static final VarHandle VH_preferredConstantQp$qpB = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredConstantQp"), PathElement.groupElement("qpB"));
+    public static final VarHandle VH_preferredMaxL0ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxL0ReferenceCount"));
     public static final VarHandle VH_preferredMaxL1ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxL1ReferenceCount"));
 
-    /// Creates `VkVideoEncodeH265QualityLevelPropertiesKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkVideoEncodeH265QualityLevelPropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkVideoEncodeH265QualityLevelPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeH265QualityLevelPropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH265QualityLevelPropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkVideoEncodeH265QualityLevelPropertiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeH265QualityLevelPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH265QualityLevelPropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkVideoEncodeH265QualityLevelPropertiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoEncodeH265QualityLevelPropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH265QualityLevelPropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkVideoEncodeH265QualityLevelPropertiesKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeH265QualityLevelPropertiesKHR`
     public static VkVideoEncodeH265QualityLevelPropertiesKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeH265QualityLevelPropertiesKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkVideoEncodeH265QualityLevelPropertiesKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkVideoEncodeH265QualityLevelPropertiesKHR`
     public static VkVideoEncodeH265QualityLevelPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265QualityLevelPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkVideoEncodeH265QualityLevelPropertiesKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRVideoEncodeH265.VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR); }
+    public static VkVideoEncodeH265QualityLevelPropertiesKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRVideoEncodeH265.VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR);
+        return s;
+    }
     public VkVideoEncodeH265QualityLevelPropertiesKHR copyFrom(VkVideoEncodeH265QualityLevelPropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkVideoEncodeH265QualityLevelPropertiesKHR reinterpret(long count) { return new VkVideoEncodeH265QualityLevelPropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `preferredRateControlFlags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int preferredRateControlFlags(MemorySegment segment, long index) { return (int) VH_preferredRateControlFlags.get(segment, 0L, index); }
-    /// {@return `preferredRateControlFlags`}
-    public int preferredRateControlFlags() { return preferredRateControlFlags(this.segment(), 0L); }
-    /// Sets `preferredRateControlFlags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void preferredRateControlFlags(MemorySegment segment, long index, int value) { VH_preferredRateControlFlags.set(segment, 0L, index, value); }
-    /// Sets `preferredRateControlFlags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredRateControlFlags(int value) { preferredRateControlFlags(this.segment(), 0L, value); return this; }
-
-    /// {@return `preferredGopFrameCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int preferredGopFrameCount(MemorySegment segment, long index) { return (int) VH_preferredGopFrameCount.get(segment, 0L, index); }
-    /// {@return `preferredGopFrameCount`}
-    public int preferredGopFrameCount() { return preferredGopFrameCount(this.segment(), 0L); }
-    /// Sets `preferredGopFrameCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void preferredGopFrameCount(MemorySegment segment, long index, int value) { VH_preferredGopFrameCount.set(segment, 0L, index, value); }
-    /// Sets `preferredGopFrameCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredGopFrameCount(int value) { preferredGopFrameCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `preferredIdrPeriod` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int preferredIdrPeriod(MemorySegment segment, long index) { return (int) VH_preferredIdrPeriod.get(segment, 0L, index); }
-    /// {@return `preferredIdrPeriod`}
-    public int preferredIdrPeriod() { return preferredIdrPeriod(this.segment(), 0L); }
-    /// Sets `preferredIdrPeriod` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void preferredIdrPeriod(MemorySegment segment, long index, int value) { VH_preferredIdrPeriod.set(segment, 0L, index, value); }
-    /// Sets `preferredIdrPeriod` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredIdrPeriod(int value) { preferredIdrPeriod(this.segment(), 0L, value); return this; }
-
-    /// {@return `preferredConsecutiveBFrameCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int preferredConsecutiveBFrameCount(MemorySegment segment, long index) { return (int) VH_preferredConsecutiveBFrameCount.get(segment, 0L, index); }
-    /// {@return `preferredConsecutiveBFrameCount`}
-    public int preferredConsecutiveBFrameCount() { return preferredConsecutiveBFrameCount(this.segment(), 0L); }
-    /// Sets `preferredConsecutiveBFrameCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void preferredConsecutiveBFrameCount(MemorySegment segment, long index, int value) { VH_preferredConsecutiveBFrameCount.set(segment, 0L, index, value); }
-    /// Sets `preferredConsecutiveBFrameCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConsecutiveBFrameCount(int value) { preferredConsecutiveBFrameCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `preferredSubLayerCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int preferredSubLayerCount(MemorySegment segment, long index) { return (int) VH_preferredSubLayerCount.get(segment, 0L, index); }
-    /// {@return `preferredSubLayerCount`}
-    public int preferredSubLayerCount() { return preferredSubLayerCount(this.segment(), 0L); }
-    /// Sets `preferredSubLayerCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void preferredSubLayerCount(MemorySegment segment, long index, int value) { VH_preferredSubLayerCount.set(segment, 0L, index, value); }
-    /// Sets `preferredSubLayerCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredSubLayerCount(int value) { preferredSubLayerCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `preferredConstantQp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment preferredConstantQp(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_preferredConstantQp, index), LAYOUT_preferredConstantQp); }
-    /// {@return `preferredConstantQp`}
-    public MemorySegment preferredConstantQp() { return preferredConstantQp(this.segment(), 0L); }
-    /// Sets `preferredConstantQp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void preferredConstantQp(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_preferredConstantQp, index), LAYOUT_preferredConstantQp.byteSize()); }
-    /// Sets `preferredConstantQp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp(MemorySegment value) { preferredConstantQp(this.segment(), 0L, value); return this; }
-    /// Accepts `preferredConstantQp` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH265QpKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH265QpKHR.of(preferredConstantQp())); return this; }
-
-    /// {@return `preferredMaxL0ReferenceCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int preferredMaxL0ReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxL0ReferenceCount.get(segment, 0L, index); }
-    /// {@return `preferredMaxL0ReferenceCount`}
-    public int preferredMaxL0ReferenceCount() { return preferredMaxL0ReferenceCount(this.segment(), 0L); }
-    /// Sets `preferredMaxL0ReferenceCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void preferredMaxL0ReferenceCount(MemorySegment segment, long index, int value) { VH_preferredMaxL0ReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `preferredMaxL0ReferenceCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredMaxL0ReferenceCount(int value) { preferredMaxL0ReferenceCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `preferredMaxL1ReferenceCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int preferredMaxL1ReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxL1ReferenceCount.get(segment, 0L, index); }
-    /// {@return `preferredMaxL1ReferenceCount`}
-    public int preferredMaxL1ReferenceCount() { return preferredMaxL1ReferenceCount(this.segment(), 0L); }
-    /// Sets `preferredMaxL1ReferenceCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void preferredMaxL1ReferenceCount(MemorySegment segment, long index, int value) { VH_preferredMaxL1ReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `preferredMaxL1ReferenceCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredMaxL1ReferenceCount(int value) { preferredMaxL1ReferenceCount(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkVideoEncodeH265QualityLevelPropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoEncodeH265QualityLevelPropertiesKHR`
     public VkVideoEncodeH265QualityLevelPropertiesKHR asSlice(long index) { return new VkVideoEncodeH265QualityLevelPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkVideoEncodeH265QualityLevelPropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoEncodeH265QualityLevelPropertiesKHR`
     public VkVideoEncodeH265QualityLevelPropertiesKHR asSlice(long index, long count) { return new VkVideoEncodeH265QualityLevelPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkVideoEncodeH265QualityLevelPropertiesKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkVideoEncodeH265QualityLevelPropertiesKHR at(long index, Consumer<VkVideoEncodeH265QualityLevelPropertiesKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `preferredRateControlFlags` at the given index}
-    /// @param index the index of the struct buffer
-    public int preferredRateControlFlagsAt(long index) { return preferredRateControlFlags(this.segment(), index); }
-    /// Sets `preferredRateControlFlags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredRateControlFlagsAt(long index, int value) { preferredRateControlFlags(this.segment(), index, value); return this; }
-
-    /// {@return `preferredGopFrameCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int preferredGopFrameCountAt(long index) { return preferredGopFrameCount(this.segment(), index); }
-    /// Sets `preferredGopFrameCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredGopFrameCountAt(long index, int value) { preferredGopFrameCount(this.segment(), index, value); return this; }
-
-    /// {@return `preferredIdrPeriod` at the given index}
-    /// @param index the index of the struct buffer
-    public int preferredIdrPeriodAt(long index) { return preferredIdrPeriod(this.segment(), index); }
-    /// Sets `preferredIdrPeriod` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredIdrPeriodAt(long index, int value) { preferredIdrPeriod(this.segment(), index, value); return this; }
-
-    /// {@return `preferredConsecutiveBFrameCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int preferredConsecutiveBFrameCountAt(long index) { return preferredConsecutiveBFrameCount(this.segment(), index); }
-    /// Sets `preferredConsecutiveBFrameCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConsecutiveBFrameCountAt(long index, int value) { preferredConsecutiveBFrameCount(this.segment(), index, value); return this; }
-
-    /// {@return `preferredSubLayerCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int preferredSubLayerCountAt(long index) { return preferredSubLayerCount(this.segment(), index); }
-    /// Sets `preferredSubLayerCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredSubLayerCountAt(long index, int value) { preferredSubLayerCount(this.segment(), index, value); return this; }
-
-    /// {@return `preferredConstantQp` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment preferredConstantQpAt(long index) { return preferredConstantQp(this.segment(), index); }
-    /// Sets `preferredConstantQp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQpAt(long index, MemorySegment value) { preferredConstantQp(this.segment(), index, value); return this; }
-    /// Accepts `preferredConstantQp` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQpAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH265QpKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH265QpKHR.of(preferredConstantQpAt(index))); return this; }
-
-    /// {@return `preferredMaxL0ReferenceCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int preferredMaxL0ReferenceCountAt(long index) { return preferredMaxL0ReferenceCount(this.segment(), index); }
-    /// Sets `preferredMaxL0ReferenceCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredMaxL0ReferenceCountAt(long index, int value) { preferredMaxL0ReferenceCount(this.segment(), index, value); return this; }
-
-    /// {@return `preferredMaxL1ReferenceCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int preferredMaxL1ReferenceCountAt(long index) { return preferredMaxL1ReferenceCount(this.segment(), index); }
-    /// Sets `preferredMaxL1ReferenceCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredMaxL1ReferenceCountAt(long index, int value) { preferredMaxL1ReferenceCount(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int preferredRateControlFlagsAt(long index) { return (int) VH_preferredRateControlFlags.get(this.segment(), 0L, index); }
+    public int preferredGopFrameCountAt(long index) { return (int) VH_preferredGopFrameCount.get(this.segment(), 0L, index); }
+    public int preferredIdrPeriodAt(long index) { return (int) VH_preferredIdrPeriod.get(this.segment(), 0L, index); }
+    public int preferredConsecutiveBFrameCountAt(long index) { return (int) VH_preferredConsecutiveBFrameCount.get(this.segment(), 0L, index); }
+    public int preferredSubLayerCountAt(long index) { return (int) VH_preferredSubLayerCount.get(this.segment(), 0L, index); }
+    public int preferredConstantQp$qpIAt(long index) { return (int) VH_preferredConstantQp$qpI.get(this.segment(), 0L, index); }
+    public int preferredConstantQp$qpPAt(long index) { return (int) VH_preferredConstantQp$qpP.get(this.segment(), 0L, index); }
+    public int preferredConstantQp$qpBAt(long index) { return (int) VH_preferredConstantQp$qpB.get(this.segment(), 0L, index); }
+    public int preferredMaxL0ReferenceCountAt(long index) { return (int) VH_preferredMaxL0ReferenceCount.get(this.segment(), 0L, index); }
+    public int preferredMaxL1ReferenceCountAt(long index) { return (int) VH_preferredMaxL1ReferenceCount.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int preferredRateControlFlags() { return (int) VH_preferredRateControlFlags.get(this.segment(), 0L, 0L); }
+    public int preferredGopFrameCount() { return (int) VH_preferredGopFrameCount.get(this.segment(), 0L, 0L); }
+    public int preferredIdrPeriod() { return (int) VH_preferredIdrPeriod.get(this.segment(), 0L, 0L); }
+    public int preferredConsecutiveBFrameCount() { return (int) VH_preferredConsecutiveBFrameCount.get(this.segment(), 0L, 0L); }
+    public int preferredSubLayerCount() { return (int) VH_preferredSubLayerCount.get(this.segment(), 0L, 0L); }
+    public int preferredConstantQp$qpI() { return (int) VH_preferredConstantQp$qpI.get(this.segment(), 0L, 0L); }
+    public int preferredConstantQp$qpP() { return (int) VH_preferredConstantQp$qpP.get(this.segment(), 0L, 0L); }
+    public int preferredConstantQp$qpB() { return (int) VH_preferredConstantQp$qpB.get(this.segment(), 0L, 0L); }
+    public int preferredMaxL0ReferenceCount() { return (int) VH_preferredMaxL0ReferenceCount.get(this.segment(), 0L, 0L); }
+    public int preferredMaxL1ReferenceCount() { return (int) VH_preferredMaxL1ReferenceCount.get(this.segment(), 0L, 0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredRateControlFlagsAt(long index, int value) { VH_preferredRateControlFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredGopFrameCountAt(long index, int value) { VH_preferredGopFrameCount.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredIdrPeriodAt(long index, int value) { VH_preferredIdrPeriod.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConsecutiveBFrameCountAt(long index, int value) { VH_preferredConsecutiveBFrameCount.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredSubLayerCountAt(long index, int value) { VH_preferredSubLayerCount.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp$qpIAt(long index, int value) { VH_preferredConstantQp$qpI.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp$qpPAt(long index, int value) { VH_preferredConstantQp$qpP.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp$qpBAt(long index, int value) { VH_preferredConstantQp$qpB.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredMaxL0ReferenceCountAt(long index, int value) { VH_preferredMaxL0ReferenceCount.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredMaxL1ReferenceCountAt(long index, int value) { VH_preferredMaxL1ReferenceCount.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredRateControlFlags(int value) { VH_preferredRateControlFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredGopFrameCount(int value) { VH_preferredGopFrameCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredIdrPeriod(int value) { VH_preferredIdrPeriod.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConsecutiveBFrameCount(int value) { VH_preferredConsecutiveBFrameCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredSubLayerCount(int value) { VH_preferredSubLayerCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp$qpI(int value) { VH_preferredConstantQp$qpI.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp$qpP(int value) { VH_preferredConstantQp$qpP.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp$qpB(int value) { VH_preferredConstantQp$qpB.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredMaxL0ReferenceCount(int value) { VH_preferredMaxL0ReferenceCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredMaxL1ReferenceCount(int value) { VH_preferredMaxL1ReferenceCount.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _preferredRateControlFlagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_preferredRateControlFlags, index), LAYOUT_preferredRateControlFlags); }
+    public MemorySegment _preferredRateControlFlags() { return _preferredRateControlFlagsAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredRateControlFlagsAt(long index, MemorySegment src) { _preferredRateControlFlagsAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredRateControlFlags(MemorySegment src) { return _preferredRateControlFlagsAt(0L, src); }
+    public MemorySegment _preferredGopFrameCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_preferredGopFrameCount, index), LAYOUT_preferredGopFrameCount); }
+    public MemorySegment _preferredGopFrameCount() { return _preferredGopFrameCountAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredGopFrameCountAt(long index, MemorySegment src) { _preferredGopFrameCountAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredGopFrameCount(MemorySegment src) { return _preferredGopFrameCountAt(0L, src); }
+    public MemorySegment _preferredIdrPeriodAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_preferredIdrPeriod, index), LAYOUT_preferredIdrPeriod); }
+    public MemorySegment _preferredIdrPeriod() { return _preferredIdrPeriodAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredIdrPeriodAt(long index, MemorySegment src) { _preferredIdrPeriodAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredIdrPeriod(MemorySegment src) { return _preferredIdrPeriodAt(0L, src); }
+    public MemorySegment _preferredConsecutiveBFrameCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_preferredConsecutiveBFrameCount, index), LAYOUT_preferredConsecutiveBFrameCount); }
+    public MemorySegment _preferredConsecutiveBFrameCount() { return _preferredConsecutiveBFrameCountAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredConsecutiveBFrameCountAt(long index, MemorySegment src) { _preferredConsecutiveBFrameCountAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredConsecutiveBFrameCount(MemorySegment src) { return _preferredConsecutiveBFrameCountAt(0L, src); }
+    public MemorySegment _preferredSubLayerCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_preferredSubLayerCount, index), LAYOUT_preferredSubLayerCount); }
+    public MemorySegment _preferredSubLayerCount() { return _preferredSubLayerCountAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredSubLayerCountAt(long index, MemorySegment src) { _preferredSubLayerCountAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredSubLayerCount(MemorySegment src) { return _preferredSubLayerCountAt(0L, src); }
+    public MemorySegment _preferredConstantQpAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_preferredConstantQp, index), LAYOUT_preferredConstantQp); }
+    public MemorySegment _preferredConstantQp() { return _preferredConstantQpAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredConstantQpAt(long index, MemorySegment src) { _preferredConstantQpAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredConstantQp(MemorySegment src) { return _preferredConstantQpAt(0L, src); }
+    public MemorySegment _preferredMaxL0ReferenceCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_preferredMaxL0ReferenceCount, index), LAYOUT_preferredMaxL0ReferenceCount); }
+    public MemorySegment _preferredMaxL0ReferenceCount() { return _preferredMaxL0ReferenceCountAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredMaxL0ReferenceCountAt(long index, MemorySegment src) { _preferredMaxL0ReferenceCountAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredMaxL0ReferenceCount(MemorySegment src) { return _preferredMaxL0ReferenceCountAt(0L, src); }
+    public MemorySegment _preferredMaxL1ReferenceCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_preferredMaxL1ReferenceCount, index), LAYOUT_preferredMaxL1ReferenceCount); }
+    public MemorySegment _preferredMaxL1ReferenceCount() { return _preferredMaxL1ReferenceCountAt(0L); }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredMaxL1ReferenceCountAt(long index, MemorySegment src) { _preferredMaxL1ReferenceCountAt(index).copyFrom(src); return this; }
+    public VkVideoEncodeH265QualityLevelPropertiesKHR _preferredMaxL1ReferenceCount(MemorySegment src) { return _preferredMaxL1ReferenceCountAt(0L, src); }
 }

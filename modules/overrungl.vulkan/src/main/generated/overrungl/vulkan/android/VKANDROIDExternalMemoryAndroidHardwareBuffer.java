@@ -18,17 +18,16 @@ public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static final int VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID = 1000129004;
     public static final int VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID = 1000129005;
     public static final int VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID = 1000129006;
+    private VKANDROIDExternalMemoryAndroidHardwareBuffer() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetAndroidHardwareBufferPropertiesANDROID = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetMemoryAndroidHardwareBufferANDROID = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKANDROIDExternalMemoryAndroidHardwareBuffer() {}
-
     /// Invokes `vkGetAndroidHardwareBufferPropertiesANDROID`.
     /// ```
-    /// (int) VkResult vkGetAndroidHardwareBufferPropertiesANDROID((struct VkDevice*) VkDevice device, const struct AHardwareBuffer * buffer, VkAndroidHardwareBufferPropertiesANDROID* pProperties);
+    /// VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, const struct AHardwareBuffer* buffer, VkAndroidHardwareBufferPropertiesANDROID* pProperties);
     /// ```
     public static int vkGetAndroidHardwareBufferPropertiesANDROID(@NonNull VkDevice device, @NonNull MemorySegment buffer, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
@@ -39,7 +38,7 @@ public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
 
     /// Invokes `vkGetMemoryAndroidHardwareBufferANDROID`.
     /// ```
-    /// (int) VkResult vkGetMemoryAndroidHardwareBufferANDROID((struct VkDevice*) VkDevice device, const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, struct AHardwareBuffer ** pBuffer);
+    /// VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, struct AHardwareBuffer** pBuffer);
     /// ```
     public static int vkGetMemoryAndroidHardwareBufferANDROID(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pBuffer) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");

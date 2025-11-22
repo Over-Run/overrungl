@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageCompressionPropertiesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     ((uint32_t) VkFlags) VkImageCompressionFlagsEXT imageCompressionFlags;
-///     ((uint32_t) VkFlags) VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
-/// };
+///     VkImageCompressionFlagsEXT imageCompressionFlags;
+///     VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
+/// }
 /// ```
 public final class VkImageCompressionPropertiesEXT extends GroupType {
-    /// The struct layout of `VkImageCompressionPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("imageCompressionFlags"),
         ValueLayout.JAVA_INT.withName("imageCompressionFixedRateFlags")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `imageCompressionFlags`.
     public static final long OFFSET_imageCompressionFlags = LAYOUT.byteOffset(PathElement.groupElement("imageCompressionFlags"));
-    /// The memory layout of `imageCompressionFlags`.
-    public static final MemoryLayout LAYOUT_imageCompressionFlags = LAYOUT.select(PathElement.groupElement("imageCompressionFlags"));
-    /// The [VarHandle] of `imageCompressionFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageCompressionFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCompressionFlags"));
-    /// The byte offset of `imageCompressionFixedRateFlags`.
     public static final long OFFSET_imageCompressionFixedRateFlags = LAYOUT.byteOffset(PathElement.groupElement("imageCompressionFixedRateFlags"));
-    /// The memory layout of `imageCompressionFixedRateFlags`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_imageCompressionFlags = LAYOUT.select(PathElement.groupElement("imageCompressionFlags"));
     public static final MemoryLayout LAYOUT_imageCompressionFixedRateFlags = LAYOUT.select(PathElement.groupElement("imageCompressionFixedRateFlags"));
-    /// The [VarHandle] of `imageCompressionFixedRateFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_imageCompressionFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCompressionFlags"));
     public static final VarHandle VH_imageCompressionFixedRateFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageCompressionFixedRateFlags"));
 
-    /// Creates `VkImageCompressionPropertiesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkImageCompressionPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkImageCompressionPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageCompressionPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageCompressionPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkImageCompressionPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageCompressionPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageCompressionPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkImageCompressionPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageCompressionPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageCompressionPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkImageCompressionPropertiesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageCompressionPropertiesEXT`
     public static VkImageCompressionPropertiesEXT alloc(SegmentAllocator allocator) { return new VkImageCompressionPropertiesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkImageCompressionPropertiesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkImageCompressionPropertiesEXT`
     public static VkImageCompressionPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkImageCompressionPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkImageCompressionPropertiesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTImageCompressionControl.VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT); }
+    public static VkImageCompressionPropertiesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTImageCompressionControl.VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT);
+        return s;
+    }
     public VkImageCompressionPropertiesEXT copyFrom(VkImageCompressionPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkImageCompressionPropertiesEXT reinterpret(long count) { return new VkImageCompressionPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCompressionPropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCompressionPropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageCompressionFlags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int imageCompressionFlags(MemorySegment segment, long index) { return (int) VH_imageCompressionFlags.get(segment, 0L, index); }
-    /// {@return `imageCompressionFlags`}
-    public int imageCompressionFlags() { return imageCompressionFlags(this.segment(), 0L); }
-    /// Sets `imageCompressionFlags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageCompressionFlags(MemorySegment segment, long index, int value) { VH_imageCompressionFlags.set(segment, 0L, index, value); }
-    /// Sets `imageCompressionFlags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCompressionPropertiesEXT imageCompressionFlags(int value) { imageCompressionFlags(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageCompressionFixedRateFlags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int imageCompressionFixedRateFlags(MemorySegment segment, long index) { return (int) VH_imageCompressionFixedRateFlags.get(segment, 0L, index); }
-    /// {@return `imageCompressionFixedRateFlags`}
-    public int imageCompressionFixedRateFlags() { return imageCompressionFixedRateFlags(this.segment(), 0L); }
-    /// Sets `imageCompressionFixedRateFlags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageCompressionFixedRateFlags(MemorySegment segment, long index, int value) { VH_imageCompressionFixedRateFlags.set(segment, 0L, index, value); }
-    /// Sets `imageCompressionFixedRateFlags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageCompressionPropertiesEXT imageCompressionFixedRateFlags(int value) { imageCompressionFixedRateFlags(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkImageCompressionPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageCompressionPropertiesEXT`
     public VkImageCompressionPropertiesEXT asSlice(long index) { return new VkImageCompressionPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkImageCompressionPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageCompressionPropertiesEXT`
     public VkImageCompressionPropertiesEXT asSlice(long index, long count) { return new VkImageCompressionPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkImageCompressionPropertiesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkImageCompressionPropertiesEXT at(long index, Consumer<VkImageCompressionPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCompressionPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCompressionPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `imageCompressionFlags` at the given index}
-    /// @param index the index of the struct buffer
-    public int imageCompressionFlagsAt(long index) { return imageCompressionFlags(this.segment(), index); }
-    /// Sets `imageCompressionFlags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCompressionPropertiesEXT imageCompressionFlagsAt(long index, int value) { imageCompressionFlags(this.segment(), index, value); return this; }
-
-    /// {@return `imageCompressionFixedRateFlags` at the given index}
-    /// @param index the index of the struct buffer
-    public int imageCompressionFixedRateFlagsAt(long index) { return imageCompressionFixedRateFlags(this.segment(), index); }
-    /// Sets `imageCompressionFixedRateFlags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageCompressionPropertiesEXT imageCompressionFixedRateFlagsAt(long index, int value) { imageCompressionFixedRateFlags(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int imageCompressionFlagsAt(long index) { return (int) VH_imageCompressionFlags.get(this.segment(), 0L, index); }
+    public int imageCompressionFixedRateFlagsAt(long index) { return (int) VH_imageCompressionFixedRateFlags.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int imageCompressionFlags() { return (int) VH_imageCompressionFlags.get(this.segment(), 0L, 0L); }
+    public int imageCompressionFixedRateFlags() { return (int) VH_imageCompressionFixedRateFlags.get(this.segment(), 0L, 0L); }
+    public VkImageCompressionPropertiesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCompressionPropertiesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCompressionPropertiesEXT imageCompressionFlagsAt(long index, int value) { VH_imageCompressionFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCompressionPropertiesEXT imageCompressionFixedRateFlagsAt(long index, int value) { VH_imageCompressionFixedRateFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkImageCompressionPropertiesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCompressionPropertiesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCompressionPropertiesEXT imageCompressionFlags(int value) { VH_imageCompressionFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageCompressionPropertiesEXT imageCompressionFixedRateFlags(int value) { VH_imageCompressionFixedRateFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkImageCompressionPropertiesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkImageCompressionPropertiesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkImageCompressionPropertiesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkImageCompressionPropertiesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _imageCompressionFlagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageCompressionFlags, index), LAYOUT_imageCompressionFlags); }
+    public MemorySegment _imageCompressionFlags() { return _imageCompressionFlagsAt(0L); }
+    public VkImageCompressionPropertiesEXT _imageCompressionFlagsAt(long index, MemorySegment src) { _imageCompressionFlagsAt(index).copyFrom(src); return this; }
+    public VkImageCompressionPropertiesEXT _imageCompressionFlags(MemorySegment src) { return _imageCompressionFlagsAt(0L, src); }
+    public MemorySegment _imageCompressionFixedRateFlagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageCompressionFixedRateFlags, index), LAYOUT_imageCompressionFixedRateFlags); }
+    public MemorySegment _imageCompressionFixedRateFlags() { return _imageCompressionFixedRateFlagsAt(0L); }
+    public VkImageCompressionPropertiesEXT _imageCompressionFixedRateFlagsAt(long index, MemorySegment src) { _imageCompressionFixedRateFlagsAt(index).copyFrom(src); return this; }
+    public VkImageCompressionPropertiesEXT _imageCompressionFixedRateFlags(MemorySegment src) { return _imageCompressionFixedRateFlagsAt(0L, src); }
 }

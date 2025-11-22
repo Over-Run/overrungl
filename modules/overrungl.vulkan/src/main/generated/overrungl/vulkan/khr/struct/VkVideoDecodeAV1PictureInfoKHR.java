@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,367 +12,131 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoDecodeAV1PictureInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     const StdVideoDecodeAV1PictureInfo* pStdPictureInfo;
-///     int32_t referenceNameSlotIndices[7];
+///     int32_t referenceNameSlotIndices[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR];
 ///     uint32_t frameHeaderOffset;
 ///     uint32_t tileCount;
 ///     const uint32_t* pTileOffsets;
 ///     const uint32_t* pTileSizes;
-/// };
+/// }
 /// ```
 public final class VkVideoDecodeAV1PictureInfoKHR extends GroupType {
-    /// The struct layout of `VkVideoDecodeAV1PictureInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("pStdPictureInfo"),
-        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
+        MemoryLayout.sequenceLayout(overrungl.vulkan.khr.VKKHRVideoEncodeAv1.VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
         ValueLayout.JAVA_INT.withName("frameHeaderOffset"),
         ValueLayout.JAVA_INT.withName("tileCount"),
         ValueLayout.ADDRESS.withName("pTileOffsets"),
         ValueLayout.ADDRESS.withName("pTileSizes")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `pStdPictureInfo`.
     public static final long OFFSET_pStdPictureInfo = LAYOUT.byteOffset(PathElement.groupElement("pStdPictureInfo"));
-    /// The memory layout of `pStdPictureInfo`.
-    public static final MemoryLayout LAYOUT_pStdPictureInfo = LAYOUT.select(PathElement.groupElement("pStdPictureInfo"));
-    /// The [VarHandle] of `pStdPictureInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pStdPictureInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPictureInfo"));
-    /// The byte offset of `referenceNameSlotIndices`.
     public static final long OFFSET_referenceNameSlotIndices = LAYOUT.byteOffset(PathElement.groupElement("referenceNameSlotIndices"));
-    /// The memory layout of `referenceNameSlotIndices`.
-    public static final MemoryLayout LAYOUT_referenceNameSlotIndices = LAYOUT.select(PathElement.groupElement("referenceNameSlotIndices"));
-    /// The [VarHandle] of `referenceNameSlotIndices` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_referenceNameSlotIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("referenceNameSlotIndices"), PathElement.sequenceElement());
-    /// The byte offset of `frameHeaderOffset`.
     public static final long OFFSET_frameHeaderOffset = LAYOUT.byteOffset(PathElement.groupElement("frameHeaderOffset"));
-    /// The memory layout of `frameHeaderOffset`.
-    public static final MemoryLayout LAYOUT_frameHeaderOffset = LAYOUT.select(PathElement.groupElement("frameHeaderOffset"));
-    /// The [VarHandle] of `frameHeaderOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_frameHeaderOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameHeaderOffset"));
-    /// The byte offset of `tileCount`.
     public static final long OFFSET_tileCount = LAYOUT.byteOffset(PathElement.groupElement("tileCount"));
-    /// The memory layout of `tileCount`.
-    public static final MemoryLayout LAYOUT_tileCount = LAYOUT.select(PathElement.groupElement("tileCount"));
-    /// The [VarHandle] of `tileCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tileCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileCount"));
-    /// The byte offset of `pTileOffsets`.
     public static final long OFFSET_pTileOffsets = LAYOUT.byteOffset(PathElement.groupElement("pTileOffsets"));
-    /// The memory layout of `pTileOffsets`.
-    public static final MemoryLayout LAYOUT_pTileOffsets = LAYOUT.select(PathElement.groupElement("pTileOffsets"));
-    /// The [VarHandle] of `pTileOffsets` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pTileOffsets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTileOffsets"));
-    /// The byte offset of `pTileSizes`.
     public static final long OFFSET_pTileSizes = LAYOUT.byteOffset(PathElement.groupElement("pTileSizes"));
-    /// The memory layout of `pTileSizes`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_pStdPictureInfo = LAYOUT.select(PathElement.groupElement("pStdPictureInfo"));
+    public static final MemoryLayout LAYOUT_referenceNameSlotIndices = LAYOUT.select(PathElement.groupElement("referenceNameSlotIndices"));
+    public static final MemoryLayout LAYOUT_frameHeaderOffset = LAYOUT.select(PathElement.groupElement("frameHeaderOffset"));
+    public static final MemoryLayout LAYOUT_tileCount = LAYOUT.select(PathElement.groupElement("tileCount"));
+    public static final MemoryLayout LAYOUT_pTileOffsets = LAYOUT.select(PathElement.groupElement("pTileOffsets"));
     public static final MemoryLayout LAYOUT_pTileSizes = LAYOUT.select(PathElement.groupElement("pTileSizes"));
-    /// The [VarHandle] of `pTileSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_pStdPictureInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPictureInfo"));
+    public static final VarHandle VH_referenceNameSlotIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("referenceNameSlotIndices"), PathElement.sequenceElement());
+    public static final VarHandle VH_frameHeaderOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameHeaderOffset"));
+    public static final VarHandle VH_tileCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileCount"));
+    public static final VarHandle VH_pTileOffsets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTileOffsets"));
     public static final VarHandle VH_pTileSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTileSizes"));
 
-    /// Creates `VkVideoDecodeAV1PictureInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkVideoDecodeAV1PictureInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkVideoDecodeAV1PictureInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoDecodeAV1PictureInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeAV1PictureInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkVideoDecodeAV1PictureInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoDecodeAV1PictureInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeAV1PictureInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkVideoDecodeAV1PictureInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoDecodeAV1PictureInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeAV1PictureInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkVideoDecodeAV1PictureInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoDecodeAV1PictureInfoKHR`
     public static VkVideoDecodeAV1PictureInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoDecodeAV1PictureInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkVideoDecodeAV1PictureInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkVideoDecodeAV1PictureInfoKHR`
     public static VkVideoDecodeAV1PictureInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeAV1PictureInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkVideoDecodeAV1PictureInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRVideoDecodeAv1.VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR); }
+    public static VkVideoDecodeAV1PictureInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRVideoDecodeAv1.VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR);
+        return s;
+    }
     public VkVideoDecodeAV1PictureInfoKHR copyFrom(VkVideoDecodeAV1PictureInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkVideoDecodeAV1PictureInfoKHR reinterpret(long count) { return new VkVideoDecodeAV1PictureInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `pStdPictureInfo` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pStdPictureInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pStdPictureInfo.get(segment, 0L, index); }
-    /// {@return `pStdPictureInfo`}
-    public MemorySegment pStdPictureInfo() { return pStdPictureInfo(this.segment(), 0L); }
-    /// Sets `pStdPictureInfo` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pStdPictureInfo(MemorySegment segment, long index, MemorySegment value) { VH_pStdPictureInfo.set(segment, 0L, index, value); }
-    /// Sets `pStdPictureInfo` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pStdPictureInfo(MemorySegment value) { pStdPictureInfo(this.segment(), 0L, value); return this; }
-
-    /// {@return `referenceNameSlotIndices` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment referenceNameSlotIndices(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_referenceNameSlotIndices, index), LAYOUT_referenceNameSlotIndices); }
-    /// {@return `referenceNameSlotIndices` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    public static int referenceNameSlotIndices(MemorySegment segment, long index, long index0) { return (int) VH_referenceNameSlotIndices.get(segment, 0L, index, index0); }
-    /// {@return `referenceNameSlotIndices`}
-    public MemorySegment referenceNameSlotIndices() { return referenceNameSlotIndices(this.segment(), 0L); }
-    /// {@return `referenceNameSlotIndices`}
-    /// @param index0 the Index 0 of the array
-    public int referenceNameSlotIndices(long index0) { return referenceNameSlotIndices(this.segment(), 0L, index0); }
-    /// Sets `referenceNameSlotIndices` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void referenceNameSlotIndices(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_referenceNameSlotIndices, index), LAYOUT_referenceNameSlotIndices.byteSize()); }
-    /// Sets `referenceNameSlotIndices` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    public static void referenceNameSlotIndices(MemorySegment segment, long index, long index0, int value) { VH_referenceNameSlotIndices.set(segment, 0L, index, index0, value); }
-    /// Sets `referenceNameSlotIndices` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndices(MemorySegment value) { referenceNameSlotIndices(this.segment(), 0L, value); return this; }
-    /// Sets `referenceNameSlotIndices` with the given value.
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndices(long index0, int value) { referenceNameSlotIndices(this.segment(), 0L, index0, value); return this; }
-
-    /// {@return `frameHeaderOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int frameHeaderOffset(MemorySegment segment, long index) { return (int) VH_frameHeaderOffset.get(segment, 0L, index); }
-    /// {@return `frameHeaderOffset`}
-    public int frameHeaderOffset() { return frameHeaderOffset(this.segment(), 0L); }
-    /// Sets `frameHeaderOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void frameHeaderOffset(MemorySegment segment, long index, int value) { VH_frameHeaderOffset.set(segment, 0L, index, value); }
-    /// Sets `frameHeaderOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR frameHeaderOffset(int value) { frameHeaderOffset(this.segment(), 0L, value); return this; }
-
-    /// {@return `tileCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int tileCount(MemorySegment segment, long index) { return (int) VH_tileCount.get(segment, 0L, index); }
-    /// {@return `tileCount`}
-    public int tileCount() { return tileCount(this.segment(), 0L); }
-    /// Sets `tileCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void tileCount(MemorySegment segment, long index, int value) { VH_tileCount.set(segment, 0L, index, value); }
-    /// Sets `tileCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR tileCount(int value) { tileCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pTileOffsets` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pTileOffsets(MemorySegment segment, long index) { return (MemorySegment) VH_pTileOffsets.get(segment, 0L, index); }
-    /// {@return `pTileOffsets`}
-    public MemorySegment pTileOffsets() { return pTileOffsets(this.segment(), 0L); }
-    /// Sets `pTileOffsets` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pTileOffsets(MemorySegment segment, long index, MemorySegment value) { VH_pTileOffsets.set(segment, 0L, index, value); }
-    /// Sets `pTileOffsets` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pTileOffsets(MemorySegment value) { pTileOffsets(this.segment(), 0L, value); return this; }
-
-    /// {@return `pTileSizes` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pTileSizes(MemorySegment segment, long index) { return (MemorySegment) VH_pTileSizes.get(segment, 0L, index); }
-    /// {@return `pTileSizes`}
-    public MemorySegment pTileSizes() { return pTileSizes(this.segment(), 0L); }
-    /// Sets `pTileSizes` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pTileSizes(MemorySegment segment, long index, MemorySegment value) { VH_pTileSizes.set(segment, 0L, index, value); }
-    /// Sets `pTileSizes` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pTileSizes(MemorySegment value) { pTileSizes(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkVideoDecodeAV1PictureInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoDecodeAV1PictureInfoKHR`
     public VkVideoDecodeAV1PictureInfoKHR asSlice(long index) { return new VkVideoDecodeAV1PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkVideoDecodeAV1PictureInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoDecodeAV1PictureInfoKHR`
     public VkVideoDecodeAV1PictureInfoKHR asSlice(long index, long count) { return new VkVideoDecodeAV1PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkVideoDecodeAV1PictureInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkVideoDecodeAV1PictureInfoKHR at(long index, Consumer<VkVideoDecodeAV1PictureInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `pStdPictureInfo` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pStdPictureInfoAt(long index) { return pStdPictureInfo(this.segment(), index); }
-    /// Sets `pStdPictureInfo` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pStdPictureInfoAt(long index, MemorySegment value) { pStdPictureInfo(this.segment(), index, value); return this; }
-
-    /// {@return `referenceNameSlotIndices` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment referenceNameSlotIndicesAt(long index) { return referenceNameSlotIndices(this.segment(), index); }
-    /// {@return `referenceNameSlotIndices` at the given index}
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-        public int referenceNameSlotIndicesAt(long index, long index0) { return referenceNameSlotIndices(this.segment(), index, index0); }
-    /// Sets `referenceNameSlotIndices` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndicesAt(long index, MemorySegment value) { referenceNameSlotIndices(this.segment(), index, value); return this; }
-    /// Sets `referenceNameSlotIndices` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndicesAt(long index, long index0, int value) { referenceNameSlotIndices(this.segment(), index, index0, value); return this; }
-
-    /// {@return `frameHeaderOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public int frameHeaderOffsetAt(long index) { return frameHeaderOffset(this.segment(), index); }
-    /// Sets `frameHeaderOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR frameHeaderOffsetAt(long index, int value) { frameHeaderOffset(this.segment(), index, value); return this; }
-
-    /// {@return `tileCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int tileCountAt(long index) { return tileCount(this.segment(), index); }
-    /// Sets `tileCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR tileCountAt(long index, int value) { tileCount(this.segment(), index, value); return this; }
-
-    /// {@return `pTileOffsets` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pTileOffsetsAt(long index) { return pTileOffsets(this.segment(), index); }
-    /// Sets `pTileOffsets` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pTileOffsetsAt(long index, MemorySegment value) { pTileOffsets(this.segment(), index, value); return this; }
-
-    /// {@return `pTileSizes` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pTileSizesAt(long index) { return pTileSizes(this.segment(), index); }
-    /// Sets `pTileSizes` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pTileSizesAt(long index, MemorySegment value) { pTileSizes(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public MemorySegment pStdPictureInfoAt(long index) { return (MemorySegment) VH_pStdPictureInfo.get(this.segment(), 0L, index); }
+    public int referenceNameSlotIndicesAt(long index, long index0) { return (int) VH_referenceNameSlotIndices.get(this.segment(), 0L, index, index0); }
+    public int frameHeaderOffsetAt(long index) { return (int) VH_frameHeaderOffset.get(this.segment(), 0L, index); }
+    public int tileCountAt(long index) { return (int) VH_tileCount.get(this.segment(), 0L, index); }
+    public MemorySegment pTileOffsetsAt(long index) { return (MemorySegment) VH_pTileOffsets.get(this.segment(), 0L, index); }
+    public MemorySegment pTileSizesAt(long index) { return (MemorySegment) VH_pTileSizes.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public MemorySegment pStdPictureInfo() { return (MemorySegment) VH_pStdPictureInfo.get(this.segment(), 0L, 0L); }
+    public int referenceNameSlotIndices(long index0) { return (int) VH_referenceNameSlotIndices.get(this.segment(), 0L, 0L, index0); }
+    public int frameHeaderOffset() { return (int) VH_frameHeaderOffset.get(this.segment(), 0L, 0L); }
+    public int tileCount() { return (int) VH_tileCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pTileOffsets() { return (MemorySegment) VH_pTileOffsets.get(this.segment(), 0L, 0L); }
+    public MemorySegment pTileSizes() { return (MemorySegment) VH_pTileSizes.get(this.segment(), 0L, 0L); }
+    public VkVideoDecodeAV1PictureInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR pStdPictureInfoAt(long index, MemorySegment value) { VH_pStdPictureInfo.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndicesAt(long index, long index0, int value) { VH_referenceNameSlotIndices.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR frameHeaderOffsetAt(long index, int value) { VH_frameHeaderOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR tileCountAt(long index, int value) { VH_tileCount.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR pTileOffsetsAt(long index, MemorySegment value) { VH_pTileOffsets.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR pTileSizesAt(long index, MemorySegment value) { VH_pTileSizes.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR pStdPictureInfo(MemorySegment value) { VH_pStdPictureInfo.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndices(long index0, int value) { VH_referenceNameSlotIndices.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR frameHeaderOffset(int value) { VH_frameHeaderOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR tileCount(int value) { VH_tileCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR pTileOffsets(MemorySegment value) { VH_pTileOffsets.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR pTileSizes(MemorySegment value) { VH_pTileSizes.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkVideoDecodeAV1PictureInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkVideoDecodeAV1PictureInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _pStdPictureInfoAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pStdPictureInfo, index), LAYOUT_pStdPictureInfo); }
+    public MemorySegment _pStdPictureInfo() { return _pStdPictureInfoAt(0L); }
+    public VkVideoDecodeAV1PictureInfoKHR _pStdPictureInfoAt(long index, MemorySegment src) { _pStdPictureInfoAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR _pStdPictureInfo(MemorySegment src) { return _pStdPictureInfoAt(0L, src); }
+    public MemorySegment _referenceNameSlotIndicesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_referenceNameSlotIndices, index), LAYOUT_referenceNameSlotIndices); }
+    public MemorySegment _referenceNameSlotIndices() { return _referenceNameSlotIndicesAt(0L); }
+    public VkVideoDecodeAV1PictureInfoKHR _referenceNameSlotIndicesAt(long index, MemorySegment src) { _referenceNameSlotIndicesAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR _referenceNameSlotIndices(MemorySegment src) { return _referenceNameSlotIndicesAt(0L, src); }
+    public MemorySegment _frameHeaderOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_frameHeaderOffset, index), LAYOUT_frameHeaderOffset); }
+    public MemorySegment _frameHeaderOffset() { return _frameHeaderOffsetAt(0L); }
+    public VkVideoDecodeAV1PictureInfoKHR _frameHeaderOffsetAt(long index, MemorySegment src) { _frameHeaderOffsetAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR _frameHeaderOffset(MemorySegment src) { return _frameHeaderOffsetAt(0L, src); }
+    public MemorySegment _tileCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_tileCount, index), LAYOUT_tileCount); }
+    public MemorySegment _tileCount() { return _tileCountAt(0L); }
+    public VkVideoDecodeAV1PictureInfoKHR _tileCountAt(long index, MemorySegment src) { _tileCountAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR _tileCount(MemorySegment src) { return _tileCountAt(0L, src); }
+    public MemorySegment _pTileOffsetsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pTileOffsets, index), LAYOUT_pTileOffsets); }
+    public MemorySegment _pTileOffsets() { return _pTileOffsetsAt(0L); }
+    public VkVideoDecodeAV1PictureInfoKHR _pTileOffsetsAt(long index, MemorySegment src) { _pTileOffsetsAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR _pTileOffsets(MemorySegment src) { return _pTileOffsetsAt(0L, src); }
+    public MemorySegment _pTileSizesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pTileSizes, index), LAYOUT_pTileSizes); }
+    public MemorySegment _pTileSizes() { return _pTileSizesAt(0L); }
+    public VkVideoDecodeAV1PictureInfoKHR _pTileSizesAt(long index, MemorySegment src) { _pTileSizesAt(index).copyFrom(src); return this; }
+    public VkVideoDecodeAV1PictureInfoKHR _pTileSizes(MemorySegment src) { return _pTileSizesAt(0L, src); }
 }

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkReleaseSwapchainImagesInfoEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint64_t) VkSwapchainKHR swapchain;
+///     VkSwapchainKHR swapchain;
 ///     uint32_t imageIndexCount;
 ///     const uint32_t* pImageIndices;
-/// };
+/// }
 /// ```
 public final class VkReleaseSwapchainImagesInfoEXT extends GroupType {
-    /// The struct layout of `VkReleaseSwapchainImagesInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkReleaseSwapchainImagesInfoEXT extends GroupType {
         ValueLayout.JAVA_INT.withName("imageIndexCount"),
         ValueLayout.ADDRESS.withName("pImageIndices")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `swapchain`.
     public static final long OFFSET_swapchain = LAYOUT.byteOffset(PathElement.groupElement("swapchain"));
-    /// The memory layout of `swapchain`.
-    public static final MemoryLayout LAYOUT_swapchain = LAYOUT.select(PathElement.groupElement("swapchain"));
-    /// The [VarHandle] of `swapchain` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_swapchain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchain"));
-    /// The byte offset of `imageIndexCount`.
     public static final long OFFSET_imageIndexCount = LAYOUT.byteOffset(PathElement.groupElement("imageIndexCount"));
-    /// The memory layout of `imageIndexCount`.
-    public static final MemoryLayout LAYOUT_imageIndexCount = LAYOUT.select(PathElement.groupElement("imageIndexCount"));
-    /// The [VarHandle] of `imageIndexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageIndexCount"));
-    /// The byte offset of `pImageIndices`.
     public static final long OFFSET_pImageIndices = LAYOUT.byteOffset(PathElement.groupElement("pImageIndices"));
-    /// The memory layout of `pImageIndices`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_swapchain = LAYOUT.select(PathElement.groupElement("swapchain"));
+    public static final MemoryLayout LAYOUT_imageIndexCount = LAYOUT.select(PathElement.groupElement("imageIndexCount"));
     public static final MemoryLayout LAYOUT_pImageIndices = LAYOUT.select(PathElement.groupElement("pImageIndices"));
-    /// The [VarHandle] of `pImageIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_swapchain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchain"));
+    public static final VarHandle VH_imageIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageIndexCount"));
     public static final VarHandle VH_pImageIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageIndices"));
 
-    /// Creates `VkReleaseSwapchainImagesInfoEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkReleaseSwapchainImagesInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkReleaseSwapchainImagesInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkReleaseSwapchainImagesInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkReleaseSwapchainImagesInfoEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkReleaseSwapchainImagesInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkReleaseSwapchainImagesInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkReleaseSwapchainImagesInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkReleaseSwapchainImagesInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkReleaseSwapchainImagesInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkReleaseSwapchainImagesInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkReleaseSwapchainImagesInfoEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkReleaseSwapchainImagesInfoEXT`
     public static VkReleaseSwapchainImagesInfoEXT alloc(SegmentAllocator allocator) { return new VkReleaseSwapchainImagesInfoEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkReleaseSwapchainImagesInfoEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkReleaseSwapchainImagesInfoEXT`
     public static VkReleaseSwapchainImagesInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkReleaseSwapchainImagesInfoEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkReleaseSwapchainImagesInfoEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRSwapchainMaintenance1.VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_KHR); }
+    public static VkReleaseSwapchainImagesInfoEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRSwapchainMaintenance1.VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_KHR);
+        return s;
+    }
     public VkReleaseSwapchainImagesInfoEXT copyFrom(VkReleaseSwapchainImagesInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkReleaseSwapchainImagesInfoEXT reinterpret(long count) { return new VkReleaseSwapchainImagesInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `swapchain` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long swapchain(MemorySegment segment, long index) { return (long) VH_swapchain.get(segment, 0L, index); }
-    /// {@return `swapchain`}
-    public long swapchain() { return swapchain(this.segment(), 0L); }
-    /// Sets `swapchain` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void swapchain(MemorySegment segment, long index, long value) { VH_swapchain.set(segment, 0L, index, value); }
-    /// Sets `swapchain` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT swapchain(long value) { swapchain(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageIndexCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int imageIndexCount(MemorySegment segment, long index) { return (int) VH_imageIndexCount.get(segment, 0L, index); }
-    /// {@return `imageIndexCount`}
-    public int imageIndexCount() { return imageIndexCount(this.segment(), 0L); }
-    /// Sets `imageIndexCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageIndexCount(MemorySegment segment, long index, int value) { VH_imageIndexCount.set(segment, 0L, index, value); }
-    /// Sets `imageIndexCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT imageIndexCount(int value) { imageIndexCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pImageIndices` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pImageIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pImageIndices.get(segment, 0L, index); }
-    /// {@return `pImageIndices`}
-    public MemorySegment pImageIndices() { return pImageIndices(this.segment(), 0L); }
-    /// Sets `pImageIndices` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pImageIndices(MemorySegment segment, long index, MemorySegment value) { VH_pImageIndices.set(segment, 0L, index, value); }
-    /// Sets `pImageIndices` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT pImageIndices(MemorySegment value) { pImageIndices(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkReleaseSwapchainImagesInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkReleaseSwapchainImagesInfoEXT`
     public VkReleaseSwapchainImagesInfoEXT asSlice(long index) { return new VkReleaseSwapchainImagesInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkReleaseSwapchainImagesInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkReleaseSwapchainImagesInfoEXT`
     public VkReleaseSwapchainImagesInfoEXT asSlice(long index, long count) { return new VkReleaseSwapchainImagesInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkReleaseSwapchainImagesInfoEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkReleaseSwapchainImagesInfoEXT at(long index, Consumer<VkReleaseSwapchainImagesInfoEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `swapchain` at the given index}
-    /// @param index the index of the struct buffer
-    public long swapchainAt(long index) { return swapchain(this.segment(), index); }
-    /// Sets `swapchain` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT swapchainAt(long index, long value) { swapchain(this.segment(), index, value); return this; }
-
-    /// {@return `imageIndexCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int imageIndexCountAt(long index) { return imageIndexCount(this.segment(), index); }
-    /// Sets `imageIndexCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT imageIndexCountAt(long index, int value) { imageIndexCount(this.segment(), index, value); return this; }
-
-    /// {@return `pImageIndices` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pImageIndicesAt(long index) { return pImageIndices(this.segment(), index); }
-    /// Sets `pImageIndices` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkReleaseSwapchainImagesInfoEXT pImageIndicesAt(long index, MemorySegment value) { pImageIndices(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long swapchainAt(long index) { return (long) VH_swapchain.get(this.segment(), 0L, index); }
+    public int imageIndexCountAt(long index) { return (int) VH_imageIndexCount.get(this.segment(), 0L, index); }
+    public MemorySegment pImageIndicesAt(long index) { return (MemorySegment) VH_pImageIndices.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long swapchain() { return (long) VH_swapchain.get(this.segment(), 0L, 0L); }
+    public int imageIndexCount() { return (int) VH_imageIndexCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pImageIndices() { return (MemorySegment) VH_pImageIndices.get(this.segment(), 0L, 0L); }
+    public VkReleaseSwapchainImagesInfoEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT swapchainAt(long index, long value) { VH_swapchain.set(this.segment(), 0L, index, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT imageIndexCountAt(long index, int value) { VH_imageIndexCount.set(this.segment(), 0L, index, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT pImageIndicesAt(long index, MemorySegment value) { VH_pImageIndices.set(this.segment(), 0L, index, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT swapchain(long value) { VH_swapchain.set(this.segment(), 0L, 0L, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT imageIndexCount(int value) { VH_imageIndexCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkReleaseSwapchainImagesInfoEXT pImageIndices(MemorySegment value) { VH_pImageIndices.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkReleaseSwapchainImagesInfoEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkReleaseSwapchainImagesInfoEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkReleaseSwapchainImagesInfoEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkReleaseSwapchainImagesInfoEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _swapchainAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_swapchain, index), LAYOUT_swapchain); }
+    public MemorySegment _swapchain() { return _swapchainAt(0L); }
+    public VkReleaseSwapchainImagesInfoEXT _swapchainAt(long index, MemorySegment src) { _swapchainAt(index).copyFrom(src); return this; }
+    public VkReleaseSwapchainImagesInfoEXT _swapchain(MemorySegment src) { return _swapchainAt(0L, src); }
+    public MemorySegment _imageIndexCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageIndexCount, index), LAYOUT_imageIndexCount); }
+    public MemorySegment _imageIndexCount() { return _imageIndexCountAt(0L); }
+    public VkReleaseSwapchainImagesInfoEXT _imageIndexCountAt(long index, MemorySegment src) { _imageIndexCountAt(index).copyFrom(src); return this; }
+    public VkReleaseSwapchainImagesInfoEXT _imageIndexCount(MemorySegment src) { return _imageIndexCountAt(0L, src); }
+    public MemorySegment _pImageIndicesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pImageIndices, index), LAYOUT_pImageIndices); }
+    public MemorySegment _pImageIndices() { return _pImageIndicesAt(0L); }
+    public VkReleaseSwapchainImagesInfoEXT _pImageIndicesAt(long index, MemorySegment src) { _pImageIndicesAt(index).copyFrom(src); return this; }
+    public VkReleaseSwapchainImagesInfoEXT _pImageIndices(MemorySegment src) { return _pImageIndicesAt(0L, src); }
 }

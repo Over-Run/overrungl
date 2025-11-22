@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsLayoutTokenEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (int) VkIndirectCommandsTokenTypeEXT type;
-///     (union VkIndirectCommandsTokenDataEXT) VkIndirectCommandsTokenDataEXT data;
+///     VkIndirectCommandsTokenTypeEXT type;
+///     VkIndirectCommandsTokenDataEXT data;
 ///     uint32_t offset;
-/// };
+/// }
 /// ```
 public final class VkIndirectCommandsLayoutTokenEXT extends GroupType {
-    /// The struct layout of `VkIndirectCommandsLayoutTokenEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,230 +27,92 @@ public final class VkIndirectCommandsLayoutTokenEXT extends GroupType {
         overrungl.vulkan.ext.union.VkIndirectCommandsTokenDataEXT.LAYOUT.withName("data"),
         ValueLayout.JAVA_INT.withName("offset")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `type`.
     public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
-    /// The memory layout of `type`.
-    public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
-    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
-    /// The byte offset of `data`.
     public static final long OFFSET_data = LAYOUT.byteOffset(PathElement.groupElement("data"));
-    /// The memory layout of `data`.
-    public static final MemoryLayout LAYOUT_data = LAYOUT.select(PathElement.groupElement("data"));
-    /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
-    /// The memory layout of `offset`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
+    public static final MemoryLayout LAYOUT_data = LAYOUT.select(PathElement.groupElement("data"));
     public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
-    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
+    public static final VarHandle VH_data$pPushConstant = LAYOUT.arrayElementVarHandle(PathElement.groupElement("data"), PathElement.groupElement("pPushConstant"));
+    public static final VarHandle VH_data$pVertexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("data"), PathElement.groupElement("pVertexBuffer"));
+    public static final VarHandle VH_data$pIndexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("data"), PathElement.groupElement("pIndexBuffer"));
+    public static final VarHandle VH_data$pExecutionSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("data"), PathElement.groupElement("pExecutionSet"));
     public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
 
-    /// Creates `VkIndirectCommandsLayoutTokenEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkIndirectCommandsLayoutTokenEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkIndirectCommandsLayoutTokenEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkIndirectCommandsLayoutTokenEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutTokenEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkIndirectCommandsLayoutTokenEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkIndirectCommandsLayoutTokenEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutTokenEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkIndirectCommandsLayoutTokenEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkIndirectCommandsLayoutTokenEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutTokenEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkIndirectCommandsLayoutTokenEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkIndirectCommandsLayoutTokenEXT`
     public static VkIndirectCommandsLayoutTokenEXT alloc(SegmentAllocator allocator) { return new VkIndirectCommandsLayoutTokenEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkIndirectCommandsLayoutTokenEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkIndirectCommandsLayoutTokenEXT`
     public static VkIndirectCommandsLayoutTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsLayoutTokenEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkIndirectCommandsLayoutTokenEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTDeviceGeneratedCommands.VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT); }
+    public static VkIndirectCommandsLayoutTokenEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTDeviceGeneratedCommands.VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT);
+        return s;
+    }
     public VkIndirectCommandsLayoutTokenEXT copyFrom(VkIndirectCommandsLayoutTokenEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkIndirectCommandsLayoutTokenEXT reinterpret(long count) { return new VkIndirectCommandsLayoutTokenEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `type` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
-    /// {@return `type`}
-    public int type() { return type(this.segment(), 0L); }
-    /// Sets `type` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
-    /// Sets `type` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT type(int value) { type(this.segment(), 0L, value); return this; }
-
-    /// {@return `data` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment data(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_data, index), LAYOUT_data); }
-    /// {@return `data`}
-    public MemorySegment data() { return data(this.segment(), 0L); }
-    /// Sets `data` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void data(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_data, index), LAYOUT_data.byteSize()); }
-    /// Sets `data` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT data(MemorySegment value) { data(this.segment(), 0L, value); return this; }
-    /// Accepts `data` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT data(Consumer<overrungl.vulkan.ext.union.VkIndirectCommandsTokenDataEXT> func) { func.accept(overrungl.vulkan.ext.union.VkIndirectCommandsTokenDataEXT.of(data())); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int offset(MemorySegment segment, long index) { return (int) VH_offset.get(segment, 0L, index); }
-    /// {@return `offset`}
-    public int offset() { return offset(this.segment(), 0L); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void offset(MemorySegment segment, long index, int value) { VH_offset.set(segment, 0L, index, value); }
-    /// Sets `offset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT offset(int value) { offset(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkIndirectCommandsLayoutTokenEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkIndirectCommandsLayoutTokenEXT`
     public VkIndirectCommandsLayoutTokenEXT asSlice(long index) { return new VkIndirectCommandsLayoutTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkIndirectCommandsLayoutTokenEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkIndirectCommandsLayoutTokenEXT`
     public VkIndirectCommandsLayoutTokenEXT asSlice(long index, long count) { return new VkIndirectCommandsLayoutTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkIndirectCommandsLayoutTokenEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkIndirectCommandsLayoutTokenEXT at(long index, Consumer<VkIndirectCommandsLayoutTokenEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `type` at the given index}
-    /// @param index the index of the struct buffer
-    public int typeAt(long index) { return type(this.segment(), index); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT typeAt(long index, int value) { type(this.segment(), index, value); return this; }
-
-    /// {@return `data` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment dataAt(long index) { return data(this.segment(), index); }
-    /// Sets `data` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT dataAt(long index, MemorySegment value) { data(this.segment(), index, value); return this; }
-    /// Accepts `data` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT dataAt(long index, Consumer<overrungl.vulkan.ext.union.VkIndirectCommandsTokenDataEXT> func) { func.accept(overrungl.vulkan.ext.union.VkIndirectCommandsTokenDataEXT.of(dataAt(index))); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param index the index of the struct buffer
-    public int offsetAt(long index) { return offset(this.segment(), index); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenEXT offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int typeAt(long index) { return (int) VH_type.get(this.segment(), 0L, index); }
+    public MemorySegment data$pPushConstantAt(long index) { return (MemorySegment) VH_data$pPushConstant.get(this.segment(), 0L, index); }
+    public MemorySegment data$pVertexBufferAt(long index) { return (MemorySegment) VH_data$pVertexBuffer.get(this.segment(), 0L, index); }
+    public MemorySegment data$pIndexBufferAt(long index) { return (MemorySegment) VH_data$pIndexBuffer.get(this.segment(), 0L, index); }
+    public MemorySegment data$pExecutionSetAt(long index) { return (MemorySegment) VH_data$pExecutionSet.get(this.segment(), 0L, index); }
+    public int offsetAt(long index) { return (int) VH_offset.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int type() { return (int) VH_type.get(this.segment(), 0L, 0L); }
+    public MemorySegment data$pPushConstant() { return (MemorySegment) VH_data$pPushConstant.get(this.segment(), 0L, 0L); }
+    public MemorySegment data$pVertexBuffer() { return (MemorySegment) VH_data$pVertexBuffer.get(this.segment(), 0L, 0L); }
+    public MemorySegment data$pIndexBuffer() { return (MemorySegment) VH_data$pIndexBuffer.get(this.segment(), 0L, 0L); }
+    public MemorySegment data$pExecutionSet() { return (MemorySegment) VH_data$pExecutionSet.get(this.segment(), 0L, 0L); }
+    public int offset() { return (int) VH_offset.get(this.segment(), 0L, 0L); }
+    public VkIndirectCommandsLayoutTokenEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT typeAt(long index, int value) { VH_type.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT data$pPushConstantAt(long index, MemorySegment value) { VH_data$pPushConstant.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT data$pVertexBufferAt(long index, MemorySegment value) { VH_data$pVertexBuffer.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT data$pIndexBufferAt(long index, MemorySegment value) { VH_data$pIndexBuffer.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT data$pExecutionSetAt(long index, MemorySegment value) { VH_data$pExecutionSet.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT offsetAt(long index, int value) { VH_offset.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT type(int value) { VH_type.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT data$pPushConstant(MemorySegment value) { VH_data$pPushConstant.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT data$pVertexBuffer(MemorySegment value) { VH_data$pVertexBuffer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT data$pIndexBuffer(MemorySegment value) { VH_data$pIndexBuffer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT data$pExecutionSet(MemorySegment value) { VH_data$pExecutionSet.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenEXT offset(int value) { VH_offset.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkIndirectCommandsLayoutTokenEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkIndirectCommandsLayoutTokenEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _typeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_type, index), LAYOUT_type); }
+    public MemorySegment _type() { return _typeAt(0L); }
+    public VkIndirectCommandsLayoutTokenEXT _typeAt(long index, MemorySegment src) { _typeAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenEXT _type(MemorySegment src) { return _typeAt(0L, src); }
+    public MemorySegment _dataAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_data, index), LAYOUT_data); }
+    public MemorySegment _data() { return _dataAt(0L); }
+    public VkIndirectCommandsLayoutTokenEXT _dataAt(long index, MemorySegment src) { _dataAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenEXT _data(MemorySegment src) { return _dataAt(0L, src); }
+    public MemorySegment _offsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_offset, index), LAYOUT_offset); }
+    public MemorySegment _offset() { return _offsetAt(0L); }
+    public VkIndirectCommandsLayoutTokenEXT _offsetAt(long index, MemorySegment src) { _offsetAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenEXT _offset(MemorySegment src) { return _offsetAt(0L, src); }
 }

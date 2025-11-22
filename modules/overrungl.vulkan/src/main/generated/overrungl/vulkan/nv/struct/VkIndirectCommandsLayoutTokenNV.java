@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,25 +12,24 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsLayoutTokenNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (int) VkIndirectCommandsTokenTypeNV tokenType;
+///     VkIndirectCommandsTokenTypeNV tokenType;
 ///     uint32_t stream;
 ///     uint32_t offset;
 ///     uint32_t vertexBindingUnit;
-///     (uint32_t) VkBool32 vertexDynamicStride;
-///     (uint64_t) VkPipelineLayout pushconstantPipelineLayout;
-///     ((uint32_t) VkFlags) VkShaderStageFlags pushconstantShaderStageFlags;
+///     VkBool32 vertexDynamicStride;
+///     VkPipelineLayout pushconstantPipelineLayout;
+///     VkShaderStageFlags pushconstantShaderStageFlags;
 ///     uint32_t pushconstantOffset;
 ///     uint32_t pushconstantSize;
-///     ((uint32_t) VkFlags) VkIndirectStateFlagsNV indirectStateFlags;
+///     VkIndirectStateFlagsNV indirectStateFlags;
 ///     uint32_t indexTypeCount;
 ///     const VkIndexType* pIndexTypes;
 ///     const uint32_t* pIndexTypeValues;
-/// };
+/// }
 /// ```
 public final class VkIndirectCommandsLayoutTokenNV extends GroupType {
-    /// The struct layout of `VkIndirectCommandsLayoutTokenNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -49,533 +47,187 @@ public final class VkIndirectCommandsLayoutTokenNV extends GroupType {
         ValueLayout.ADDRESS.withName("pIndexTypes"),
         ValueLayout.ADDRESS.withName("pIndexTypeValues")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `tokenType`.
     public static final long OFFSET_tokenType = LAYOUT.byteOffset(PathElement.groupElement("tokenType"));
-    /// The memory layout of `tokenType`.
-    public static final MemoryLayout LAYOUT_tokenType = LAYOUT.select(PathElement.groupElement("tokenType"));
-    /// The [VarHandle] of `tokenType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_tokenType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tokenType"));
-    /// The byte offset of `stream`.
     public static final long OFFSET_stream = LAYOUT.byteOffset(PathElement.groupElement("stream"));
-    /// The memory layout of `stream`.
-    public static final MemoryLayout LAYOUT_stream = LAYOUT.select(PathElement.groupElement("stream"));
-    /// The [VarHandle] of `stream` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_stream = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stream"));
-    /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
-    /// The memory layout of `offset`.
-    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
-    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
-    /// The byte offset of `vertexBindingUnit`.
     public static final long OFFSET_vertexBindingUnit = LAYOUT.byteOffset(PathElement.groupElement("vertexBindingUnit"));
-    /// The memory layout of `vertexBindingUnit`.
-    public static final MemoryLayout LAYOUT_vertexBindingUnit = LAYOUT.select(PathElement.groupElement("vertexBindingUnit"));
-    /// The [VarHandle] of `vertexBindingUnit` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexBindingUnit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBindingUnit"));
-    /// The byte offset of `vertexDynamicStride`.
     public static final long OFFSET_vertexDynamicStride = LAYOUT.byteOffset(PathElement.groupElement("vertexDynamicStride"));
-    /// The memory layout of `vertexDynamicStride`.
-    public static final MemoryLayout LAYOUT_vertexDynamicStride = LAYOUT.select(PathElement.groupElement("vertexDynamicStride"));
-    /// The [VarHandle] of `vertexDynamicStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexDynamicStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexDynamicStride"));
-    /// The byte offset of `pushconstantPipelineLayout`.
     public static final long OFFSET_pushconstantPipelineLayout = LAYOUT.byteOffset(PathElement.groupElement("pushconstantPipelineLayout"));
-    /// The memory layout of `pushconstantPipelineLayout`.
-    public static final MemoryLayout LAYOUT_pushconstantPipelineLayout = LAYOUT.select(PathElement.groupElement("pushconstantPipelineLayout"));
-    /// The [VarHandle] of `pushconstantPipelineLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pushconstantPipelineLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushconstantPipelineLayout"));
-    /// The byte offset of `pushconstantShaderStageFlags`.
     public static final long OFFSET_pushconstantShaderStageFlags = LAYOUT.byteOffset(PathElement.groupElement("pushconstantShaderStageFlags"));
-    /// The memory layout of `pushconstantShaderStageFlags`.
-    public static final MemoryLayout LAYOUT_pushconstantShaderStageFlags = LAYOUT.select(PathElement.groupElement("pushconstantShaderStageFlags"));
-    /// The [VarHandle] of `pushconstantShaderStageFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pushconstantShaderStageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushconstantShaderStageFlags"));
-    /// The byte offset of `pushconstantOffset`.
     public static final long OFFSET_pushconstantOffset = LAYOUT.byteOffset(PathElement.groupElement("pushconstantOffset"));
-    /// The memory layout of `pushconstantOffset`.
-    public static final MemoryLayout LAYOUT_pushconstantOffset = LAYOUT.select(PathElement.groupElement("pushconstantOffset"));
-    /// The [VarHandle] of `pushconstantOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pushconstantOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushconstantOffset"));
-    /// The byte offset of `pushconstantSize`.
     public static final long OFFSET_pushconstantSize = LAYOUT.byteOffset(PathElement.groupElement("pushconstantSize"));
-    /// The memory layout of `pushconstantSize`.
-    public static final MemoryLayout LAYOUT_pushconstantSize = LAYOUT.select(PathElement.groupElement("pushconstantSize"));
-    /// The [VarHandle] of `pushconstantSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pushconstantSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushconstantSize"));
-    /// The byte offset of `indirectStateFlags`.
     public static final long OFFSET_indirectStateFlags = LAYOUT.byteOffset(PathElement.groupElement("indirectStateFlags"));
-    /// The memory layout of `indirectStateFlags`.
-    public static final MemoryLayout LAYOUT_indirectStateFlags = LAYOUT.select(PathElement.groupElement("indirectStateFlags"));
-    /// The [VarHandle] of `indirectStateFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indirectStateFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectStateFlags"));
-    /// The byte offset of `indexTypeCount`.
     public static final long OFFSET_indexTypeCount = LAYOUT.byteOffset(PathElement.groupElement("indexTypeCount"));
-    /// The memory layout of `indexTypeCount`.
-    public static final MemoryLayout LAYOUT_indexTypeCount = LAYOUT.select(PathElement.groupElement("indexTypeCount"));
-    /// The [VarHandle] of `indexTypeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexTypeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexTypeCount"));
-    /// The byte offset of `pIndexTypes`.
     public static final long OFFSET_pIndexTypes = LAYOUT.byteOffset(PathElement.groupElement("pIndexTypes"));
-    /// The memory layout of `pIndexTypes`.
-    public static final MemoryLayout LAYOUT_pIndexTypes = LAYOUT.select(PathElement.groupElement("pIndexTypes"));
-    /// The [VarHandle] of `pIndexTypes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pIndexTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pIndexTypes"));
-    /// The byte offset of `pIndexTypeValues`.
     public static final long OFFSET_pIndexTypeValues = LAYOUT.byteOffset(PathElement.groupElement("pIndexTypeValues"));
-    /// The memory layout of `pIndexTypeValues`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_tokenType = LAYOUT.select(PathElement.groupElement("tokenType"));
+    public static final MemoryLayout LAYOUT_stream = LAYOUT.select(PathElement.groupElement("stream"));
+    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
+    public static final MemoryLayout LAYOUT_vertexBindingUnit = LAYOUT.select(PathElement.groupElement("vertexBindingUnit"));
+    public static final MemoryLayout LAYOUT_vertexDynamicStride = LAYOUT.select(PathElement.groupElement("vertexDynamicStride"));
+    public static final MemoryLayout LAYOUT_pushconstantPipelineLayout = LAYOUT.select(PathElement.groupElement("pushconstantPipelineLayout"));
+    public static final MemoryLayout LAYOUT_pushconstantShaderStageFlags = LAYOUT.select(PathElement.groupElement("pushconstantShaderStageFlags"));
+    public static final MemoryLayout LAYOUT_pushconstantOffset = LAYOUT.select(PathElement.groupElement("pushconstantOffset"));
+    public static final MemoryLayout LAYOUT_pushconstantSize = LAYOUT.select(PathElement.groupElement("pushconstantSize"));
+    public static final MemoryLayout LAYOUT_indirectStateFlags = LAYOUT.select(PathElement.groupElement("indirectStateFlags"));
+    public static final MemoryLayout LAYOUT_indexTypeCount = LAYOUT.select(PathElement.groupElement("indexTypeCount"));
+    public static final MemoryLayout LAYOUT_pIndexTypes = LAYOUT.select(PathElement.groupElement("pIndexTypes"));
     public static final MemoryLayout LAYOUT_pIndexTypeValues = LAYOUT.select(PathElement.groupElement("pIndexTypeValues"));
-    /// The [VarHandle] of `pIndexTypeValues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_tokenType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tokenType"));
+    public static final VarHandle VH_stream = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stream"));
+    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
+    public static final VarHandle VH_vertexBindingUnit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexBindingUnit"));
+    public static final VarHandle VH_vertexDynamicStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexDynamicStride"));
+    public static final VarHandle VH_pushconstantPipelineLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushconstantPipelineLayout"));
+    public static final VarHandle VH_pushconstantShaderStageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushconstantShaderStageFlags"));
+    public static final VarHandle VH_pushconstantOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushconstantOffset"));
+    public static final VarHandle VH_pushconstantSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushconstantSize"));
+    public static final VarHandle VH_indirectStateFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indirectStateFlags"));
+    public static final VarHandle VH_indexTypeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexTypeCount"));
+    public static final VarHandle VH_pIndexTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pIndexTypes"));
     public static final VarHandle VH_pIndexTypeValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pIndexTypeValues"));
 
-    /// Creates `VkIndirectCommandsLayoutTokenNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkIndirectCommandsLayoutTokenNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkIndirectCommandsLayoutTokenNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkIndirectCommandsLayoutTokenNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutTokenNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkIndirectCommandsLayoutTokenNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkIndirectCommandsLayoutTokenNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutTokenNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkIndirectCommandsLayoutTokenNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkIndirectCommandsLayoutTokenNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutTokenNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
     public static VkIndirectCommandsLayoutTokenNV alloc(SegmentAllocator allocator) { return new VkIndirectCommandsLayoutTokenNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
     public static VkIndirectCommandsLayoutTokenNV alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsLayoutTokenNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVDeviceGeneratedCommands.VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV); }
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVDeviceGeneratedCommands.VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
+        return s;
+    }
     public VkIndirectCommandsLayoutTokenNV copyFrom(VkIndirectCommandsLayoutTokenNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkIndirectCommandsLayoutTokenNV reinterpret(long count) { return new VkIndirectCommandsLayoutTokenNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `tokenType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int tokenType(MemorySegment segment, long index) { return (int) VH_tokenType.get(segment, 0L, index); }
-    /// {@return `tokenType`}
-    public int tokenType() { return tokenType(this.segment(), 0L); }
-    /// Sets `tokenType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void tokenType(MemorySegment segment, long index, int value) { VH_tokenType.set(segment, 0L, index, value); }
-    /// Sets `tokenType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV tokenType(int value) { tokenType(this.segment(), 0L, value); return this; }
-
-    /// {@return `stream` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int stream(MemorySegment segment, long index) { return (int) VH_stream.get(segment, 0L, index); }
-    /// {@return `stream`}
-    public int stream() { return stream(this.segment(), 0L); }
-    /// Sets `stream` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void stream(MemorySegment segment, long index, int value) { VH_stream.set(segment, 0L, index, value); }
-    /// Sets `stream` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV stream(int value) { stream(this.segment(), 0L, value); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int offset(MemorySegment segment, long index) { return (int) VH_offset.get(segment, 0L, index); }
-    /// {@return `offset`}
-    public int offset() { return offset(this.segment(), 0L); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void offset(MemorySegment segment, long index, int value) { VH_offset.set(segment, 0L, index, value); }
-    /// Sets `offset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV offset(int value) { offset(this.segment(), 0L, value); return this; }
-
-    /// {@return `vertexBindingUnit` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int vertexBindingUnit(MemorySegment segment, long index) { return (int) VH_vertexBindingUnit.get(segment, 0L, index); }
-    /// {@return `vertexBindingUnit`}
-    public int vertexBindingUnit() { return vertexBindingUnit(this.segment(), 0L); }
-    /// Sets `vertexBindingUnit` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void vertexBindingUnit(MemorySegment segment, long index, int value) { VH_vertexBindingUnit.set(segment, 0L, index, value); }
-    /// Sets `vertexBindingUnit` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV vertexBindingUnit(int value) { vertexBindingUnit(this.segment(), 0L, value); return this; }
-
-    /// {@return `vertexDynamicStride` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int vertexDynamicStride(MemorySegment segment, long index) { return (int) VH_vertexDynamicStride.get(segment, 0L, index); }
-    /// {@return `vertexDynamicStride`}
-    public int vertexDynamicStride() { return vertexDynamicStride(this.segment(), 0L); }
-    /// Sets `vertexDynamicStride` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void vertexDynamicStride(MemorySegment segment, long index, int value) { VH_vertexDynamicStride.set(segment, 0L, index, value); }
-    /// Sets `vertexDynamicStride` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV vertexDynamicStride(int value) { vertexDynamicStride(this.segment(), 0L, value); return this; }
-
-    /// {@return `pushconstantPipelineLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long pushconstantPipelineLayout(MemorySegment segment, long index) { return (long) VH_pushconstantPipelineLayout.get(segment, 0L, index); }
-    /// {@return `pushconstantPipelineLayout`}
-    public long pushconstantPipelineLayout() { return pushconstantPipelineLayout(this.segment(), 0L); }
-    /// Sets `pushconstantPipelineLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pushconstantPipelineLayout(MemorySegment segment, long index, long value) { VH_pushconstantPipelineLayout.set(segment, 0L, index, value); }
-    /// Sets `pushconstantPipelineLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantPipelineLayout(long value) { pushconstantPipelineLayout(this.segment(), 0L, value); return this; }
-
-    /// {@return `pushconstantShaderStageFlags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pushconstantShaderStageFlags(MemorySegment segment, long index) { return (int) VH_pushconstantShaderStageFlags.get(segment, 0L, index); }
-    /// {@return `pushconstantShaderStageFlags`}
-    public int pushconstantShaderStageFlags() { return pushconstantShaderStageFlags(this.segment(), 0L); }
-    /// Sets `pushconstantShaderStageFlags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pushconstantShaderStageFlags(MemorySegment segment, long index, int value) { VH_pushconstantShaderStageFlags.set(segment, 0L, index, value); }
-    /// Sets `pushconstantShaderStageFlags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlags(int value) { pushconstantShaderStageFlags(this.segment(), 0L, value); return this; }
-
-    /// {@return `pushconstantOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pushconstantOffset(MemorySegment segment, long index) { return (int) VH_pushconstantOffset.get(segment, 0L, index); }
-    /// {@return `pushconstantOffset`}
-    public int pushconstantOffset() { return pushconstantOffset(this.segment(), 0L); }
-    /// Sets `pushconstantOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pushconstantOffset(MemorySegment segment, long index, int value) { VH_pushconstantOffset.set(segment, 0L, index, value); }
-    /// Sets `pushconstantOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantOffset(int value) { pushconstantOffset(this.segment(), 0L, value); return this; }
-
-    /// {@return `pushconstantSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int pushconstantSize(MemorySegment segment, long index) { return (int) VH_pushconstantSize.get(segment, 0L, index); }
-    /// {@return `pushconstantSize`}
-    public int pushconstantSize() { return pushconstantSize(this.segment(), 0L); }
-    /// Sets `pushconstantSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pushconstantSize(MemorySegment segment, long index, int value) { VH_pushconstantSize.set(segment, 0L, index, value); }
-    /// Sets `pushconstantSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantSize(int value) { pushconstantSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `indirectStateFlags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int indirectStateFlags(MemorySegment segment, long index) { return (int) VH_indirectStateFlags.get(segment, 0L, index); }
-    /// {@return `indirectStateFlags`}
-    public int indirectStateFlags() { return indirectStateFlags(this.segment(), 0L); }
-    /// Sets `indirectStateFlags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void indirectStateFlags(MemorySegment segment, long index, int value) { VH_indirectStateFlags.set(segment, 0L, index, value); }
-    /// Sets `indirectStateFlags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV indirectStateFlags(int value) { indirectStateFlags(this.segment(), 0L, value); return this; }
-
-    /// {@return `indexTypeCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int indexTypeCount(MemorySegment segment, long index) { return (int) VH_indexTypeCount.get(segment, 0L, index); }
-    /// {@return `indexTypeCount`}
-    public int indexTypeCount() { return indexTypeCount(this.segment(), 0L); }
-    /// Sets `indexTypeCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void indexTypeCount(MemorySegment segment, long index, int value) { VH_indexTypeCount.set(segment, 0L, index, value); }
-    /// Sets `indexTypeCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV indexTypeCount(int value) { indexTypeCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pIndexTypes` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pIndexTypes(MemorySegment segment, long index) { return (MemorySegment) VH_pIndexTypes.get(segment, 0L, index); }
-    /// {@return `pIndexTypes`}
-    public MemorySegment pIndexTypes() { return pIndexTypes(this.segment(), 0L); }
-    /// Sets `pIndexTypes` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pIndexTypes(MemorySegment segment, long index, MemorySegment value) { VH_pIndexTypes.set(segment, 0L, index, value); }
-    /// Sets `pIndexTypes` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pIndexTypes(MemorySegment value) { pIndexTypes(this.segment(), 0L, value); return this; }
-
-    /// {@return `pIndexTypeValues` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pIndexTypeValues(MemorySegment segment, long index) { return (MemorySegment) VH_pIndexTypeValues.get(segment, 0L, index); }
-    /// {@return `pIndexTypeValues`}
-    public MemorySegment pIndexTypeValues() { return pIndexTypeValues(this.segment(), 0L); }
-    /// Sets `pIndexTypeValues` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pIndexTypeValues(MemorySegment segment, long index, MemorySegment value) { VH_pIndexTypeValues.set(segment, 0L, index, value); }
-    /// Sets `pIndexTypeValues` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pIndexTypeValues(MemorySegment value) { pIndexTypeValues(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkIndirectCommandsLayoutTokenNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkIndirectCommandsLayoutTokenNV`
     public VkIndirectCommandsLayoutTokenNV asSlice(long index) { return new VkIndirectCommandsLayoutTokenNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkIndirectCommandsLayoutTokenNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkIndirectCommandsLayoutTokenNV`
     public VkIndirectCommandsLayoutTokenNV asSlice(long index, long count) { return new VkIndirectCommandsLayoutTokenNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkIndirectCommandsLayoutTokenNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkIndirectCommandsLayoutTokenNV at(long index, Consumer<VkIndirectCommandsLayoutTokenNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `tokenType` at the given index}
-    /// @param index the index of the struct buffer
-    public int tokenTypeAt(long index) { return tokenType(this.segment(), index); }
-    /// Sets `tokenType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV tokenTypeAt(long index, int value) { tokenType(this.segment(), index, value); return this; }
-
-    /// {@return `stream` at the given index}
-    /// @param index the index of the struct buffer
-    public int streamAt(long index) { return stream(this.segment(), index); }
-    /// Sets `stream` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV streamAt(long index, int value) { stream(this.segment(), index, value); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param index the index of the struct buffer
-    public int offsetAt(long index) { return offset(this.segment(), index); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
-
-    /// {@return `vertexBindingUnit` at the given index}
-    /// @param index the index of the struct buffer
-    public int vertexBindingUnitAt(long index) { return vertexBindingUnit(this.segment(), index); }
-    /// Sets `vertexBindingUnit` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV vertexBindingUnitAt(long index, int value) { vertexBindingUnit(this.segment(), index, value); return this; }
-
-    /// {@return `vertexDynamicStride` at the given index}
-    /// @param index the index of the struct buffer
-    public int vertexDynamicStrideAt(long index) { return vertexDynamicStride(this.segment(), index); }
-    /// Sets `vertexDynamicStride` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV vertexDynamicStrideAt(long index, int value) { vertexDynamicStride(this.segment(), index, value); return this; }
-
-    /// {@return `pushconstantPipelineLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public long pushconstantPipelineLayoutAt(long index) { return pushconstantPipelineLayout(this.segment(), index); }
-    /// Sets `pushconstantPipelineLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantPipelineLayoutAt(long index, long value) { pushconstantPipelineLayout(this.segment(), index, value); return this; }
-
-    /// {@return `pushconstantShaderStageFlags` at the given index}
-    /// @param index the index of the struct buffer
-    public int pushconstantShaderStageFlagsAt(long index) { return pushconstantShaderStageFlags(this.segment(), index); }
-    /// Sets `pushconstantShaderStageFlags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlagsAt(long index, int value) { pushconstantShaderStageFlags(this.segment(), index, value); return this; }
-
-    /// {@return `pushconstantOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public int pushconstantOffsetAt(long index) { return pushconstantOffset(this.segment(), index); }
-    /// Sets `pushconstantOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantOffsetAt(long index, int value) { pushconstantOffset(this.segment(), index, value); return this; }
-
-    /// {@return `pushconstantSize` at the given index}
-    /// @param index the index of the struct buffer
-    public int pushconstantSizeAt(long index) { return pushconstantSize(this.segment(), index); }
-    /// Sets `pushconstantSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantSizeAt(long index, int value) { pushconstantSize(this.segment(), index, value); return this; }
-
-    /// {@return `indirectStateFlags` at the given index}
-    /// @param index the index of the struct buffer
-    public int indirectStateFlagsAt(long index) { return indirectStateFlags(this.segment(), index); }
-    /// Sets `indirectStateFlags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV indirectStateFlagsAt(long index, int value) { indirectStateFlags(this.segment(), index, value); return this; }
-
-    /// {@return `indexTypeCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int indexTypeCountAt(long index) { return indexTypeCount(this.segment(), index); }
-    /// Sets `indexTypeCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV indexTypeCountAt(long index, int value) { indexTypeCount(this.segment(), index, value); return this; }
-
-    /// {@return `pIndexTypes` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pIndexTypesAt(long index) { return pIndexTypes(this.segment(), index); }
-    /// Sets `pIndexTypes` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pIndexTypesAt(long index, MemorySegment value) { pIndexTypes(this.segment(), index, value); return this; }
-
-    /// {@return `pIndexTypeValues` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pIndexTypeValuesAt(long index) { return pIndexTypeValues(this.segment(), index); }
-    /// Sets `pIndexTypeValues` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pIndexTypeValuesAt(long index, MemorySegment value) { pIndexTypeValues(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int tokenTypeAt(long index) { return (int) VH_tokenType.get(this.segment(), 0L, index); }
+    public int streamAt(long index) { return (int) VH_stream.get(this.segment(), 0L, index); }
+    public int offsetAt(long index) { return (int) VH_offset.get(this.segment(), 0L, index); }
+    public int vertexBindingUnitAt(long index) { return (int) VH_vertexBindingUnit.get(this.segment(), 0L, index); }
+    public int vertexDynamicStrideAt(long index) { return (int) VH_vertexDynamicStride.get(this.segment(), 0L, index); }
+    public long pushconstantPipelineLayoutAt(long index) { return (long) VH_pushconstantPipelineLayout.get(this.segment(), 0L, index); }
+    public int pushconstantShaderStageFlagsAt(long index) { return (int) VH_pushconstantShaderStageFlags.get(this.segment(), 0L, index); }
+    public int pushconstantOffsetAt(long index) { return (int) VH_pushconstantOffset.get(this.segment(), 0L, index); }
+    public int pushconstantSizeAt(long index) { return (int) VH_pushconstantSize.get(this.segment(), 0L, index); }
+    public int indirectStateFlagsAt(long index) { return (int) VH_indirectStateFlags.get(this.segment(), 0L, index); }
+    public int indexTypeCountAt(long index) { return (int) VH_indexTypeCount.get(this.segment(), 0L, index); }
+    public MemorySegment pIndexTypesAt(long index) { return (MemorySegment) VH_pIndexTypes.get(this.segment(), 0L, index); }
+    public MemorySegment pIndexTypeValuesAt(long index) { return (MemorySegment) VH_pIndexTypeValues.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int tokenType() { return (int) VH_tokenType.get(this.segment(), 0L, 0L); }
+    public int stream() { return (int) VH_stream.get(this.segment(), 0L, 0L); }
+    public int offset() { return (int) VH_offset.get(this.segment(), 0L, 0L); }
+    public int vertexBindingUnit() { return (int) VH_vertexBindingUnit.get(this.segment(), 0L, 0L); }
+    public int vertexDynamicStride() { return (int) VH_vertexDynamicStride.get(this.segment(), 0L, 0L); }
+    public long pushconstantPipelineLayout() { return (long) VH_pushconstantPipelineLayout.get(this.segment(), 0L, 0L); }
+    public int pushconstantShaderStageFlags() { return (int) VH_pushconstantShaderStageFlags.get(this.segment(), 0L, 0L); }
+    public int pushconstantOffset() { return (int) VH_pushconstantOffset.get(this.segment(), 0L, 0L); }
+    public int pushconstantSize() { return (int) VH_pushconstantSize.get(this.segment(), 0L, 0L); }
+    public int indirectStateFlags() { return (int) VH_indirectStateFlags.get(this.segment(), 0L, 0L); }
+    public int indexTypeCount() { return (int) VH_indexTypeCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pIndexTypes() { return (MemorySegment) VH_pIndexTypes.get(this.segment(), 0L, 0L); }
+    public MemorySegment pIndexTypeValues() { return (MemorySegment) VH_pIndexTypeValues.get(this.segment(), 0L, 0L); }
+    public VkIndirectCommandsLayoutTokenNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV tokenTypeAt(long index, int value) { VH_tokenType.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV streamAt(long index, int value) { VH_stream.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV offsetAt(long index, int value) { VH_offset.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV vertexBindingUnitAt(long index, int value) { VH_vertexBindingUnit.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV vertexDynamicStrideAt(long index, int value) { VH_vertexDynamicStride.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pushconstantPipelineLayoutAt(long index, long value) { VH_pushconstantPipelineLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlagsAt(long index, int value) { VH_pushconstantShaderStageFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pushconstantOffsetAt(long index, int value) { VH_pushconstantOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pushconstantSizeAt(long index, int value) { VH_pushconstantSize.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV indirectStateFlagsAt(long index, int value) { VH_indirectStateFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV indexTypeCountAt(long index, int value) { VH_indexTypeCount.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pIndexTypesAt(long index, MemorySegment value) { VH_pIndexTypes.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pIndexTypeValuesAt(long index, MemorySegment value) { VH_pIndexTypeValues.set(this.segment(), 0L, index, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV tokenType(int value) { VH_tokenType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV stream(int value) { VH_stream.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV offset(int value) { VH_offset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV vertexBindingUnit(int value) { VH_vertexBindingUnit.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV vertexDynamicStride(int value) { VH_vertexDynamicStride.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pushconstantPipelineLayout(long value) { VH_pushconstantPipelineLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlags(int value) { VH_pushconstantShaderStageFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pushconstantOffset(int value) { VH_pushconstantOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pushconstantSize(int value) { VH_pushconstantSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV indirectStateFlags(int value) { VH_indirectStateFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV indexTypeCount(int value) { VH_indexTypeCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pIndexTypes(MemorySegment value) { VH_pIndexTypes.set(this.segment(), 0L, 0L, value); return this; }
+    public VkIndirectCommandsLayoutTokenNV pIndexTypeValues(MemorySegment value) { VH_pIndexTypeValues.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _tokenTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_tokenType, index), LAYOUT_tokenType); }
+    public MemorySegment _tokenType() { return _tokenTypeAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _tokenTypeAt(long index, MemorySegment src) { _tokenTypeAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _tokenType(MemorySegment src) { return _tokenTypeAt(0L, src); }
+    public MemorySegment _streamAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_stream, index), LAYOUT_stream); }
+    public MemorySegment _stream() { return _streamAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _streamAt(long index, MemorySegment src) { _streamAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _stream(MemorySegment src) { return _streamAt(0L, src); }
+    public MemorySegment _offsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_offset, index), LAYOUT_offset); }
+    public MemorySegment _offset() { return _offsetAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _offsetAt(long index, MemorySegment src) { _offsetAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _offset(MemorySegment src) { return _offsetAt(0L, src); }
+    public MemorySegment _vertexBindingUnitAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_vertexBindingUnit, index), LAYOUT_vertexBindingUnit); }
+    public MemorySegment _vertexBindingUnit() { return _vertexBindingUnitAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _vertexBindingUnitAt(long index, MemorySegment src) { _vertexBindingUnitAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _vertexBindingUnit(MemorySegment src) { return _vertexBindingUnitAt(0L, src); }
+    public MemorySegment _vertexDynamicStrideAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_vertexDynamicStride, index), LAYOUT_vertexDynamicStride); }
+    public MemorySegment _vertexDynamicStride() { return _vertexDynamicStrideAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _vertexDynamicStrideAt(long index, MemorySegment src) { _vertexDynamicStrideAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _vertexDynamicStride(MemorySegment src) { return _vertexDynamicStrideAt(0L, src); }
+    public MemorySegment _pushconstantPipelineLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pushconstantPipelineLayout, index), LAYOUT_pushconstantPipelineLayout); }
+    public MemorySegment _pushconstantPipelineLayout() { return _pushconstantPipelineLayoutAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _pushconstantPipelineLayoutAt(long index, MemorySegment src) { _pushconstantPipelineLayoutAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _pushconstantPipelineLayout(MemorySegment src) { return _pushconstantPipelineLayoutAt(0L, src); }
+    public MemorySegment _pushconstantShaderStageFlagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pushconstantShaderStageFlags, index), LAYOUT_pushconstantShaderStageFlags); }
+    public MemorySegment _pushconstantShaderStageFlags() { return _pushconstantShaderStageFlagsAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _pushconstantShaderStageFlagsAt(long index, MemorySegment src) { _pushconstantShaderStageFlagsAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _pushconstantShaderStageFlags(MemorySegment src) { return _pushconstantShaderStageFlagsAt(0L, src); }
+    public MemorySegment _pushconstantOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pushconstantOffset, index), LAYOUT_pushconstantOffset); }
+    public MemorySegment _pushconstantOffset() { return _pushconstantOffsetAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _pushconstantOffsetAt(long index, MemorySegment src) { _pushconstantOffsetAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _pushconstantOffset(MemorySegment src) { return _pushconstantOffsetAt(0L, src); }
+    public MemorySegment _pushconstantSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pushconstantSize, index), LAYOUT_pushconstantSize); }
+    public MemorySegment _pushconstantSize() { return _pushconstantSizeAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _pushconstantSizeAt(long index, MemorySegment src) { _pushconstantSizeAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _pushconstantSize(MemorySegment src) { return _pushconstantSizeAt(0L, src); }
+    public MemorySegment _indirectStateFlagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_indirectStateFlags, index), LAYOUT_indirectStateFlags); }
+    public MemorySegment _indirectStateFlags() { return _indirectStateFlagsAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _indirectStateFlagsAt(long index, MemorySegment src) { _indirectStateFlagsAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _indirectStateFlags(MemorySegment src) { return _indirectStateFlagsAt(0L, src); }
+    public MemorySegment _indexTypeCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_indexTypeCount, index), LAYOUT_indexTypeCount); }
+    public MemorySegment _indexTypeCount() { return _indexTypeCountAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _indexTypeCountAt(long index, MemorySegment src) { _indexTypeCountAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _indexTypeCount(MemorySegment src) { return _indexTypeCountAt(0L, src); }
+    public MemorySegment _pIndexTypesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pIndexTypes, index), LAYOUT_pIndexTypes); }
+    public MemorySegment _pIndexTypes() { return _pIndexTypesAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _pIndexTypesAt(long index, MemorySegment src) { _pIndexTypesAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _pIndexTypes(MemorySegment src) { return _pIndexTypesAt(0L, src); }
+    public MemorySegment _pIndexTypeValuesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pIndexTypeValues, index), LAYOUT_pIndexTypeValues); }
+    public MemorySegment _pIndexTypeValues() { return _pIndexTypeValuesAt(0L); }
+    public VkIndirectCommandsLayoutTokenNV _pIndexTypeValuesAt(long index, MemorySegment src) { _pIndexTypeValuesAt(index).copyFrom(src); return this; }
+    public VkIndirectCommandsLayoutTokenNV _pIndexTypeValues(MemorySegment src) { return _pIndexTypeValuesAt(0L, src); }
 }

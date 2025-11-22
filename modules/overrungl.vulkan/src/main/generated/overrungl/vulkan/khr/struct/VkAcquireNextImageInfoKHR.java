@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,17 +12,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAcquireNextImageInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint64_t) VkSwapchainKHR swapchain;
+///     VkSwapchainKHR swapchain;
 ///     uint64_t timeout;
-///     (uint64_t) VkSemaphore semaphore;
-///     (uint64_t) VkFence fence;
+///     VkSemaphore semaphore;
+///     VkFence fence;
 ///     uint32_t deviceMask;
-/// };
+/// }
 /// ```
 public final class VkAcquireNextImageInfoKHR extends GroupType {
-    /// The struct layout of `VkAcquireNextImageInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -33,285 +31,99 @@ public final class VkAcquireNextImageInfoKHR extends GroupType {
         ValueLayout.JAVA_LONG.withName("fence"),
         ValueLayout.JAVA_INT.withName("deviceMask")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `swapchain`.
     public static final long OFFSET_swapchain = LAYOUT.byteOffset(PathElement.groupElement("swapchain"));
-    /// The memory layout of `swapchain`.
-    public static final MemoryLayout LAYOUT_swapchain = LAYOUT.select(PathElement.groupElement("swapchain"));
-    /// The [VarHandle] of `swapchain` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_swapchain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchain"));
-    /// The byte offset of `timeout`.
     public static final long OFFSET_timeout = LAYOUT.byteOffset(PathElement.groupElement("timeout"));
-    /// The memory layout of `timeout`.
-    public static final MemoryLayout LAYOUT_timeout = LAYOUT.select(PathElement.groupElement("timeout"));
-    /// The [VarHandle] of `timeout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_timeout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("timeout"));
-    /// The byte offset of `semaphore`.
     public static final long OFFSET_semaphore = LAYOUT.byteOffset(PathElement.groupElement("semaphore"));
-    /// The memory layout of `semaphore`.
-    public static final MemoryLayout LAYOUT_semaphore = LAYOUT.select(PathElement.groupElement("semaphore"));
-    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_semaphore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphore"));
-    /// The byte offset of `fence`.
     public static final long OFFSET_fence = LAYOUT.byteOffset(PathElement.groupElement("fence"));
-    /// The memory layout of `fence`.
-    public static final MemoryLayout LAYOUT_fence = LAYOUT.select(PathElement.groupElement("fence"));
-    /// The [VarHandle] of `fence` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_fence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fence"));
-    /// The byte offset of `deviceMask`.
     public static final long OFFSET_deviceMask = LAYOUT.byteOffset(PathElement.groupElement("deviceMask"));
-    /// The memory layout of `deviceMask`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_swapchain = LAYOUT.select(PathElement.groupElement("swapchain"));
+    public static final MemoryLayout LAYOUT_timeout = LAYOUT.select(PathElement.groupElement("timeout"));
+    public static final MemoryLayout LAYOUT_semaphore = LAYOUT.select(PathElement.groupElement("semaphore"));
+    public static final MemoryLayout LAYOUT_fence = LAYOUT.select(PathElement.groupElement("fence"));
     public static final MemoryLayout LAYOUT_deviceMask = LAYOUT.select(PathElement.groupElement("deviceMask"));
-    /// The [VarHandle] of `deviceMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_swapchain = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchain"));
+    public static final VarHandle VH_timeout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("timeout"));
+    public static final VarHandle VH_semaphore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphore"));
+    public static final VarHandle VH_fence = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fence"));
     public static final VarHandle VH_deviceMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMask"));
 
-    /// Creates `VkAcquireNextImageInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkAcquireNextImageInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkAcquireNextImageInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkAcquireNextImageInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAcquireNextImageInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkAcquireNextImageInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkAcquireNextImageInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAcquireNextImageInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkAcquireNextImageInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkAcquireNextImageInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAcquireNextImageInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkAcquireNextImageInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkAcquireNextImageInfoKHR`
     public static VkAcquireNextImageInfoKHR alloc(SegmentAllocator allocator) { return new VkAcquireNextImageInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkAcquireNextImageInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkAcquireNextImageInfoKHR`
     public static VkAcquireNextImageInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAcquireNextImageInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkAcquireNextImageInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRDeviceGroup.VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR); }
+    public static VkAcquireNextImageInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRDeviceGroup.VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR);
+        return s;
+    }
     public VkAcquireNextImageInfoKHR copyFrom(VkAcquireNextImageInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkAcquireNextImageInfoKHR reinterpret(long count) { return new VkAcquireNextImageInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `swapchain` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long swapchain(MemorySegment segment, long index) { return (long) VH_swapchain.get(segment, 0L, index); }
-    /// {@return `swapchain`}
-    public long swapchain() { return swapchain(this.segment(), 0L); }
-    /// Sets `swapchain` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void swapchain(MemorySegment segment, long index, long value) { VH_swapchain.set(segment, 0L, index, value); }
-    /// Sets `swapchain` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR swapchain(long value) { swapchain(this.segment(), 0L, value); return this; }
-
-    /// {@return `timeout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long timeout(MemorySegment segment, long index) { return (long) VH_timeout.get(segment, 0L, index); }
-    /// {@return `timeout`}
-    public long timeout() { return timeout(this.segment(), 0L); }
-    /// Sets `timeout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void timeout(MemorySegment segment, long index, long value) { VH_timeout.set(segment, 0L, index, value); }
-    /// Sets `timeout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR timeout(long value) { timeout(this.segment(), 0L, value); return this; }
-
-    /// {@return `semaphore` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long semaphore(MemorySegment segment, long index) { return (long) VH_semaphore.get(segment, 0L, index); }
-    /// {@return `semaphore`}
-    public long semaphore() { return semaphore(this.segment(), 0L); }
-    /// Sets `semaphore` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void semaphore(MemorySegment segment, long index, long value) { VH_semaphore.set(segment, 0L, index, value); }
-    /// Sets `semaphore` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR semaphore(long value) { semaphore(this.segment(), 0L, value); return this; }
-
-    /// {@return `fence` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long fence(MemorySegment segment, long index) { return (long) VH_fence.get(segment, 0L, index); }
-    /// {@return `fence`}
-    public long fence() { return fence(this.segment(), 0L); }
-    /// Sets `fence` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void fence(MemorySegment segment, long index, long value) { VH_fence.set(segment, 0L, index, value); }
-    /// Sets `fence` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR fence(long value) { fence(this.segment(), 0L, value); return this; }
-
-    /// {@return `deviceMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int deviceMask(MemorySegment segment, long index) { return (int) VH_deviceMask.get(segment, 0L, index); }
-    /// {@return `deviceMask`}
-    public int deviceMask() { return deviceMask(this.segment(), 0L); }
-    /// Sets `deviceMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void deviceMask(MemorySegment segment, long index, int value) { VH_deviceMask.set(segment, 0L, index, value); }
-    /// Sets `deviceMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR deviceMask(int value) { deviceMask(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkAcquireNextImageInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkAcquireNextImageInfoKHR`
     public VkAcquireNextImageInfoKHR asSlice(long index) { return new VkAcquireNextImageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkAcquireNextImageInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkAcquireNextImageInfoKHR`
     public VkAcquireNextImageInfoKHR asSlice(long index, long count) { return new VkAcquireNextImageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkAcquireNextImageInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkAcquireNextImageInfoKHR at(long index, Consumer<VkAcquireNextImageInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `swapchain` at the given index}
-    /// @param index the index of the struct buffer
-    public long swapchainAt(long index) { return swapchain(this.segment(), index); }
-    /// Sets `swapchain` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR swapchainAt(long index, long value) { swapchain(this.segment(), index, value); return this; }
-
-    /// {@return `timeout` at the given index}
-    /// @param index the index of the struct buffer
-    public long timeoutAt(long index) { return timeout(this.segment(), index); }
-    /// Sets `timeout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR timeoutAt(long index, long value) { timeout(this.segment(), index, value); return this; }
-
-    /// {@return `semaphore` at the given index}
-    /// @param index the index of the struct buffer
-    public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
-    /// Sets `semaphore` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
-
-    /// {@return `fence` at the given index}
-    /// @param index the index of the struct buffer
-    public long fenceAt(long index) { return fence(this.segment(), index); }
-    /// Sets `fence` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR fenceAt(long index, long value) { fence(this.segment(), index, value); return this; }
-
-    /// {@return `deviceMask` at the given index}
-    /// @param index the index of the struct buffer
-    public int deviceMaskAt(long index) { return deviceMask(this.segment(), index); }
-    /// Sets `deviceMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkAcquireNextImageInfoKHR deviceMaskAt(long index, int value) { deviceMask(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long swapchainAt(long index) { return (long) VH_swapchain.get(this.segment(), 0L, index); }
+    public long timeoutAt(long index) { return (long) VH_timeout.get(this.segment(), 0L, index); }
+    public long semaphoreAt(long index) { return (long) VH_semaphore.get(this.segment(), 0L, index); }
+    public long fenceAt(long index) { return (long) VH_fence.get(this.segment(), 0L, index); }
+    public int deviceMaskAt(long index) { return (int) VH_deviceMask.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long swapchain() { return (long) VH_swapchain.get(this.segment(), 0L, 0L); }
+    public long timeout() { return (long) VH_timeout.get(this.segment(), 0L, 0L); }
+    public long semaphore() { return (long) VH_semaphore.get(this.segment(), 0L, 0L); }
+    public long fence() { return (long) VH_fence.get(this.segment(), 0L, 0L); }
+    public int deviceMask() { return (int) VH_deviceMask.get(this.segment(), 0L, 0L); }
+    public VkAcquireNextImageInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkAcquireNextImageInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkAcquireNextImageInfoKHR swapchainAt(long index, long value) { VH_swapchain.set(this.segment(), 0L, index, value); return this; }
+    public VkAcquireNextImageInfoKHR timeoutAt(long index, long value) { VH_timeout.set(this.segment(), 0L, index, value); return this; }
+    public VkAcquireNextImageInfoKHR semaphoreAt(long index, long value) { VH_semaphore.set(this.segment(), 0L, index, value); return this; }
+    public VkAcquireNextImageInfoKHR fenceAt(long index, long value) { VH_fence.set(this.segment(), 0L, index, value); return this; }
+    public VkAcquireNextImageInfoKHR deviceMaskAt(long index, int value) { VH_deviceMask.set(this.segment(), 0L, index, value); return this; }
+    public VkAcquireNextImageInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAcquireNextImageInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAcquireNextImageInfoKHR swapchain(long value) { VH_swapchain.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAcquireNextImageInfoKHR timeout(long value) { VH_timeout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAcquireNextImageInfoKHR semaphore(long value) { VH_semaphore.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAcquireNextImageInfoKHR fence(long value) { VH_fence.set(this.segment(), 0L, 0L, value); return this; }
+    public VkAcquireNextImageInfoKHR deviceMask(int value) { VH_deviceMask.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkAcquireNextImageInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkAcquireNextImageInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkAcquireNextImageInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkAcquireNextImageInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _swapchainAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_swapchain, index), LAYOUT_swapchain); }
+    public MemorySegment _swapchain() { return _swapchainAt(0L); }
+    public VkAcquireNextImageInfoKHR _swapchainAt(long index, MemorySegment src) { _swapchainAt(index).copyFrom(src); return this; }
+    public VkAcquireNextImageInfoKHR _swapchain(MemorySegment src) { return _swapchainAt(0L, src); }
+    public MemorySegment _timeoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_timeout, index), LAYOUT_timeout); }
+    public MemorySegment _timeout() { return _timeoutAt(0L); }
+    public VkAcquireNextImageInfoKHR _timeoutAt(long index, MemorySegment src) { _timeoutAt(index).copyFrom(src); return this; }
+    public VkAcquireNextImageInfoKHR _timeout(MemorySegment src) { return _timeoutAt(0L, src); }
+    public MemorySegment _semaphoreAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_semaphore, index), LAYOUT_semaphore); }
+    public MemorySegment _semaphore() { return _semaphoreAt(0L); }
+    public VkAcquireNextImageInfoKHR _semaphoreAt(long index, MemorySegment src) { _semaphoreAt(index).copyFrom(src); return this; }
+    public VkAcquireNextImageInfoKHR _semaphore(MemorySegment src) { return _semaphoreAt(0L, src); }
+    public MemorySegment _fenceAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_fence, index), LAYOUT_fence); }
+    public MemorySegment _fence() { return _fenceAt(0L); }
+    public VkAcquireNextImageInfoKHR _fenceAt(long index, MemorySegment src) { _fenceAt(index).copyFrom(src); return this; }
+    public VkAcquireNextImageInfoKHR _fence(MemorySegment src) { return _fenceAt(0L, src); }
+    public MemorySegment _deviceMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_deviceMask, index), LAYOUT_deviceMask); }
+    public MemorySegment _deviceMask() { return _deviceMaskAt(0L); }
+    public VkAcquireNextImageInfoKHR _deviceMaskAt(long index, MemorySegment src) { _deviceMaskAt(index).copyFrom(src); return this; }
+    public VkAcquireNextImageInfoKHR _deviceMask(MemorySegment src) { return _deviceMaskAt(0L, src); }
 }

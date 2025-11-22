@@ -12,17 +12,16 @@ public final class VKQCOMTileProperties {
     public static final String VK_QCOM_TILE_PROPERTIES_EXTENSION_NAME = "VK_QCOM_tile_properties";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM = 1000484000;
     public static final int VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM = 1000484001;
+    private VKQCOMTileProperties() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetFramebufferTilePropertiesQCOM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetDynamicRenderingTilePropertiesQCOM = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKQCOMTileProperties() {}
-
     /// Invokes `vkGetFramebufferTilePropertiesQCOM`.
     /// ```
-    /// (int) VkResult vkGetFramebufferTilePropertiesQCOM((struct VkDevice*) VkDevice device, (uint64_t) VkFramebuffer framebuffer, uint32_t* pPropertiesCount, VkTilePropertiesQCOM* pProperties);
+    /// VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint32_t* pPropertiesCount, VkTilePropertiesQCOM* pProperties);
     /// ```
     public static int vkGetFramebufferTilePropertiesQCOM(@NonNull VkDevice device, long framebuffer, @NonNull MemorySegment pPropertiesCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFramebufferTilePropertiesQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetFramebufferTilePropertiesQCOM");
@@ -33,7 +32,7 @@ public final class VKQCOMTileProperties {
 
     /// Invokes `vkGetDynamicRenderingTilePropertiesQCOM`.
     /// ```
-    /// (int) VkResult vkGetDynamicRenderingTilePropertiesQCOM((struct VkDevice*) VkDevice device, const VkRenderingInfo* pRenderingInfo, VkTilePropertiesQCOM* pProperties);
+    /// VkResult vkGetDynamicRenderingTilePropertiesQCOM(VkDevice device, const VkRenderingInfo* pRenderingInfo, VkTilePropertiesQCOM* pProperties);
     /// ```
     public static int vkGetDynamicRenderingTilePropertiesQCOM(@NonNull VkDevice device, @NonNull MemorySegment pRenderingInfo, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDynamicRenderingTilePropertiesQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDynamicRenderingTilePropertiesQCOM");

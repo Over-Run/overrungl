@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,180 +12,661 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (struct VkPhysicalDeviceProperties2) VkPhysicalDeviceProperties2 properties;
-/// };
+///     VkPhysicalDeviceProperties2 properties;
+/// }
 /// ```
 public final class VkPhysicalDeviceLayeredApiVulkanPropertiesKHR extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkPhysicalDeviceProperties2.LAYOUT.withName("properties")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `properties`.
     public static final long OFFSET_properties = LAYOUT.byteOffset(PathElement.groupElement("properties"));
-    /// The memory layout of `properties`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_properties = LAYOUT.select(PathElement.groupElement("properties"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_properties$sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("sType"));
+    public static final VarHandle VH_properties$pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("pNext"));
+    public static final VarHandle VH_properties$properties$apiVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("apiVersion"));
+    public static final VarHandle VH_properties$properties$driverVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("driverVersion"));
+    public static final VarHandle VH_properties$properties$vendorID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("vendorID"));
+    public static final VarHandle VH_properties$properties$deviceID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("deviceID"));
+    public static final VarHandle VH_properties$properties$deviceType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("deviceType"));
+    public static final VarHandle VH_properties$properties$deviceName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("deviceName"), PathElement.sequenceElement());
+    public static final VarHandle VH_properties$properties$pipelineCacheUUID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("pipelineCacheUUID"), PathElement.sequenceElement());
+    public static final VarHandle VH_properties$properties$limits$maxImageDimension1D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxImageDimension1D"));
+    public static final VarHandle VH_properties$properties$limits$maxImageDimension2D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxImageDimension2D"));
+    public static final VarHandle VH_properties$properties$limits$maxImageDimension3D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxImageDimension3D"));
+    public static final VarHandle VH_properties$properties$limits$maxImageDimensionCube = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxImageDimensionCube"));
+    public static final VarHandle VH_properties$properties$limits$maxImageArrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxImageArrayLayers"));
+    public static final VarHandle VH_properties$properties$limits$maxTexelBufferElements = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTexelBufferElements"));
+    public static final VarHandle VH_properties$properties$limits$maxUniformBufferRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxUniformBufferRange"));
+    public static final VarHandle VH_properties$properties$limits$maxStorageBufferRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxStorageBufferRange"));
+    public static final VarHandle VH_properties$properties$limits$maxPushConstantsSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxPushConstantsSize"));
+    public static final VarHandle VH_properties$properties$limits$maxMemoryAllocationCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxMemoryAllocationCount"));
+    public static final VarHandle VH_properties$properties$limits$maxSamplerAllocationCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxSamplerAllocationCount"));
+    public static final VarHandle VH_properties$properties$limits$bufferImageGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("bufferImageGranularity"));
+    public static final VarHandle VH_properties$properties$limits$sparseAddressSpaceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("sparseAddressSpaceSize"));
+    public static final VarHandle VH_properties$properties$limits$maxBoundDescriptorSets = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxBoundDescriptorSets"));
+    public static final VarHandle VH_properties$properties$limits$maxPerStageDescriptorSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxPerStageDescriptorSamplers"));
+    public static final VarHandle VH_properties$properties$limits$maxPerStageDescriptorUniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxPerStageDescriptorUniformBuffers"));
+    public static final VarHandle VH_properties$properties$limits$maxPerStageDescriptorStorageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxPerStageDescriptorStorageBuffers"));
+    public static final VarHandle VH_properties$properties$limits$maxPerStageDescriptorSampledImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxPerStageDescriptorSampledImages"));
+    public static final VarHandle VH_properties$properties$limits$maxPerStageDescriptorStorageImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxPerStageDescriptorStorageImages"));
+    public static final VarHandle VH_properties$properties$limits$maxPerStageDescriptorInputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxPerStageDescriptorInputAttachments"));
+    public static final VarHandle VH_properties$properties$limits$maxPerStageResources = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxPerStageResources"));
+    public static final VarHandle VH_properties$properties$limits$maxDescriptorSetSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDescriptorSetSamplers"));
+    public static final VarHandle VH_properties$properties$limits$maxDescriptorSetUniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDescriptorSetUniformBuffers"));
+    public static final VarHandle VH_properties$properties$limits$maxDescriptorSetUniformBuffersDynamic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDescriptorSetUniformBuffersDynamic"));
+    public static final VarHandle VH_properties$properties$limits$maxDescriptorSetStorageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDescriptorSetStorageBuffers"));
+    public static final VarHandle VH_properties$properties$limits$maxDescriptorSetStorageBuffersDynamic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDescriptorSetStorageBuffersDynamic"));
+    public static final VarHandle VH_properties$properties$limits$maxDescriptorSetSampledImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDescriptorSetSampledImages"));
+    public static final VarHandle VH_properties$properties$limits$maxDescriptorSetStorageImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDescriptorSetStorageImages"));
+    public static final VarHandle VH_properties$properties$limits$maxDescriptorSetInputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDescriptorSetInputAttachments"));
+    public static final VarHandle VH_properties$properties$limits$maxVertexInputAttributes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxVertexInputAttributes"));
+    public static final VarHandle VH_properties$properties$limits$maxVertexInputBindings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxVertexInputBindings"));
+    public static final VarHandle VH_properties$properties$limits$maxVertexInputAttributeOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxVertexInputAttributeOffset"));
+    public static final VarHandle VH_properties$properties$limits$maxVertexInputBindingStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxVertexInputBindingStride"));
+    public static final VarHandle VH_properties$properties$limits$maxVertexOutputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxVertexOutputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxTessellationGenerationLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTessellationGenerationLevel"));
+    public static final VarHandle VH_properties$properties$limits$maxTessellationPatchSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTessellationPatchSize"));
+    public static final VarHandle VH_properties$properties$limits$maxTessellationControlPerVertexInputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTessellationControlPerVertexInputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxTessellationControlPerVertexOutputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTessellationControlPerVertexOutputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxTessellationControlPerPatchOutputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTessellationControlPerPatchOutputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxTessellationControlTotalOutputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTessellationControlTotalOutputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxTessellationEvaluationInputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTessellationEvaluationInputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxTessellationEvaluationOutputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTessellationEvaluationOutputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxGeometryShaderInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxGeometryShaderInvocations"));
+    public static final VarHandle VH_properties$properties$limits$maxGeometryInputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxGeometryInputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxGeometryOutputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxGeometryOutputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxGeometryOutputVertices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxGeometryOutputVertices"));
+    public static final VarHandle VH_properties$properties$limits$maxGeometryTotalOutputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxGeometryTotalOutputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxFragmentInputComponents = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxFragmentInputComponents"));
+    public static final VarHandle VH_properties$properties$limits$maxFragmentOutputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxFragmentOutputAttachments"));
+    public static final VarHandle VH_properties$properties$limits$maxFragmentDualSrcAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxFragmentDualSrcAttachments"));
+    public static final VarHandle VH_properties$properties$limits$maxFragmentCombinedOutputResources = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxFragmentCombinedOutputResources"));
+    public static final VarHandle VH_properties$properties$limits$maxComputeSharedMemorySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxComputeSharedMemorySize"));
+    public static final VarHandle VH_properties$properties$limits$maxComputeWorkGroupCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxComputeWorkGroupCount"), PathElement.sequenceElement());
+    public static final VarHandle VH_properties$properties$limits$maxComputeWorkGroupInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxComputeWorkGroupInvocations"));
+    public static final VarHandle VH_properties$properties$limits$maxComputeWorkGroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxComputeWorkGroupSize"), PathElement.sequenceElement());
+    public static final VarHandle VH_properties$properties$limits$subPixelPrecisionBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("subPixelPrecisionBits"));
+    public static final VarHandle VH_properties$properties$limits$subTexelPrecisionBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("subTexelPrecisionBits"));
+    public static final VarHandle VH_properties$properties$limits$mipmapPrecisionBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("mipmapPrecisionBits"));
+    public static final VarHandle VH_properties$properties$limits$maxDrawIndexedIndexValue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDrawIndexedIndexValue"));
+    public static final VarHandle VH_properties$properties$limits$maxDrawIndirectCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxDrawIndirectCount"));
+    public static final VarHandle VH_properties$properties$limits$maxSamplerLodBias = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxSamplerLodBias"));
+    public static final VarHandle VH_properties$properties$limits$maxSamplerAnisotropy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxSamplerAnisotropy"));
+    public static final VarHandle VH_properties$properties$limits$maxViewports = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxViewports"));
+    public static final VarHandle VH_properties$properties$limits$maxViewportDimensions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxViewportDimensions"), PathElement.sequenceElement());
+    public static final VarHandle VH_properties$properties$limits$viewportBoundsRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("viewportBoundsRange"), PathElement.sequenceElement());
+    public static final VarHandle VH_properties$properties$limits$viewportSubPixelBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("viewportSubPixelBits"));
+    public static final VarHandle VH_properties$properties$limits$minMemoryMapAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("minMemoryMapAlignment"));
+    public static final VarHandle VH_properties$properties$limits$minTexelBufferOffsetAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("minTexelBufferOffsetAlignment"));
+    public static final VarHandle VH_properties$properties$limits$minUniformBufferOffsetAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("minUniformBufferOffsetAlignment"));
+    public static final VarHandle VH_properties$properties$limits$minStorageBufferOffsetAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("minStorageBufferOffsetAlignment"));
+    public static final VarHandle VH_properties$properties$limits$minTexelOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("minTexelOffset"));
+    public static final VarHandle VH_properties$properties$limits$maxTexelOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTexelOffset"));
+    public static final VarHandle VH_properties$properties$limits$minTexelGatherOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("minTexelGatherOffset"));
+    public static final VarHandle VH_properties$properties$limits$maxTexelGatherOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxTexelGatherOffset"));
+    public static final VarHandle VH_properties$properties$limits$minInterpolationOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("minInterpolationOffset"));
+    public static final VarHandle VH_properties$properties$limits$maxInterpolationOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxInterpolationOffset"));
+    public static final VarHandle VH_properties$properties$limits$subPixelInterpolationOffsetBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("subPixelInterpolationOffsetBits"));
+    public static final VarHandle VH_properties$properties$limits$maxFramebufferWidth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxFramebufferWidth"));
+    public static final VarHandle VH_properties$properties$limits$maxFramebufferHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxFramebufferHeight"));
+    public static final VarHandle VH_properties$properties$limits$maxFramebufferLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxFramebufferLayers"));
+    public static final VarHandle VH_properties$properties$limits$framebufferColorSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("framebufferColorSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$framebufferDepthSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("framebufferDepthSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$framebufferStencilSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("framebufferStencilSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$framebufferNoAttachmentsSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("framebufferNoAttachmentsSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$maxColorAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxColorAttachments"));
+    public static final VarHandle VH_properties$properties$limits$sampledImageColorSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("sampledImageColorSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$sampledImageIntegerSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("sampledImageIntegerSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$sampledImageDepthSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("sampledImageDepthSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$sampledImageStencilSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("sampledImageStencilSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$storageImageSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("storageImageSampleCounts"));
+    public static final VarHandle VH_properties$properties$limits$maxSampleMaskWords = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxSampleMaskWords"));
+    public static final VarHandle VH_properties$properties$limits$timestampComputeAndGraphics = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("timestampComputeAndGraphics"));
+    public static final VarHandle VH_properties$properties$limits$timestampPeriod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("timestampPeriod"));
+    public static final VarHandle VH_properties$properties$limits$maxClipDistances = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxClipDistances"));
+    public static final VarHandle VH_properties$properties$limits$maxCullDistances = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxCullDistances"));
+    public static final VarHandle VH_properties$properties$limits$maxCombinedClipAndCullDistances = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("maxCombinedClipAndCullDistances"));
+    public static final VarHandle VH_properties$properties$limits$discreteQueuePriorities = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("discreteQueuePriorities"));
+    public static final VarHandle VH_properties$properties$limits$pointSizeRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("pointSizeRange"), PathElement.sequenceElement());
+    public static final VarHandle VH_properties$properties$limits$lineWidthRange = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("lineWidthRange"), PathElement.sequenceElement());
+    public static final VarHandle VH_properties$properties$limits$pointSizeGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("pointSizeGranularity"));
+    public static final VarHandle VH_properties$properties$limits$lineWidthGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("lineWidthGranularity"));
+    public static final VarHandle VH_properties$properties$limits$strictLines = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("strictLines"));
+    public static final VarHandle VH_properties$properties$limits$standardSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("standardSampleLocations"));
+    public static final VarHandle VH_properties$properties$limits$optimalBufferCopyOffsetAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("optimalBufferCopyOffsetAlignment"));
+    public static final VarHandle VH_properties$properties$limits$optimalBufferCopyRowPitchAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("optimalBufferCopyRowPitchAlignment"));
+    public static final VarHandle VH_properties$properties$limits$nonCoherentAtomSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("limits"), PathElement.groupElement("nonCoherentAtomSize"));
+    public static final VarHandle VH_properties$properties$sparseProperties$residencyStandard2DBlockShape = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("sparseProperties"), PathElement.groupElement("residencyStandard2DBlockShape"));
+    public static final VarHandle VH_properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShape = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("sparseProperties"), PathElement.groupElement("residencyStandard2DMultisampleBlockShape"));
+    public static final VarHandle VH_properties$properties$sparseProperties$residencyStandard3DBlockShape = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("sparseProperties"), PathElement.groupElement("residencyStandard3DBlockShape"));
+    public static final VarHandle VH_properties$properties$sparseProperties$residencyAlignedMipSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("sparseProperties"), PathElement.groupElement("residencyAlignedMipSize"));
+    public static final VarHandle VH_properties$properties$sparseProperties$residencyNonResidentStrict = LAYOUT.arrayElementVarHandle(PathElement.groupElement("properties"), PathElement.groupElement("properties"), PathElement.groupElement("sparseProperties"), PathElement.groupElement("residencyNonResidentStrict"));
 
-    /// Creates `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRMaintenance7.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR); }
+    public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRMaintenance7.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR);
+        return s;
+    }
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR copyFrom(VkPhysicalDeviceLayeredApiVulkanPropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR reinterpret(long count) { return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `properties` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment properties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_properties, index), LAYOUT_properties); }
-    /// {@return `properties`}
-    public MemorySegment properties() { return properties(this.segment(), 0L); }
-    /// Sets `properties` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void properties(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_properties, index), LAYOUT_properties.byteSize()); }
-    /// Sets `properties` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties(MemorySegment value) { properties(this.segment(), 0L, value); return this; }
-    /// Accepts `properties` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties(Consumer<overrungl.vulkan.struct.VkPhysicalDeviceProperties2> func) { func.accept(overrungl.vulkan.struct.VkPhysicalDeviceProperties2.of(properties())); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR asSlice(long index) { return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR asSlice(long index, long count) { return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR at(long index, Consumer<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `properties` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment propertiesAt(long index) { return properties(this.segment(), index); }
-    /// Sets `properties` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR propertiesAt(long index, MemorySegment value) { properties(this.segment(), index, value); return this; }
-    /// Accepts `properties` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR propertiesAt(long index, Consumer<overrungl.vulkan.struct.VkPhysicalDeviceProperties2> func) { func.accept(overrungl.vulkan.struct.VkPhysicalDeviceProperties2.of(propertiesAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int properties$sTypeAt(long index) { return (int) VH_properties$sType.get(this.segment(), 0L, index); }
+    public MemorySegment properties$pNextAt(long index) { return (MemorySegment) VH_properties$pNext.get(this.segment(), 0L, index); }
+    public int properties$properties$apiVersionAt(long index) { return (int) VH_properties$properties$apiVersion.get(this.segment(), 0L, index); }
+    public int properties$properties$driverVersionAt(long index) { return (int) VH_properties$properties$driverVersion.get(this.segment(), 0L, index); }
+    public int properties$properties$vendorIDAt(long index) { return (int) VH_properties$properties$vendorID.get(this.segment(), 0L, index); }
+    public int properties$properties$deviceIDAt(long index) { return (int) VH_properties$properties$deviceID.get(this.segment(), 0L, index); }
+    public int properties$properties$deviceTypeAt(long index) { return (int) VH_properties$properties$deviceType.get(this.segment(), 0L, index); }
+    public byte properties$properties$deviceNameAt(long index, long index0) { return (byte) VH_properties$properties$deviceName.get(this.segment(), 0L, index, index0); }
+    public byte properties$properties$pipelineCacheUUIDAt(long index, long index0) { return (byte) VH_properties$properties$pipelineCacheUUID.get(this.segment(), 0L, index, index0); }
+    public int properties$properties$limits$maxImageDimension1DAt(long index) { return (int) VH_properties$properties$limits$maxImageDimension1D.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxImageDimension2DAt(long index) { return (int) VH_properties$properties$limits$maxImageDimension2D.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxImageDimension3DAt(long index) { return (int) VH_properties$properties$limits$maxImageDimension3D.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxImageDimensionCubeAt(long index) { return (int) VH_properties$properties$limits$maxImageDimensionCube.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxImageArrayLayersAt(long index) { return (int) VH_properties$properties$limits$maxImageArrayLayers.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTexelBufferElementsAt(long index) { return (int) VH_properties$properties$limits$maxTexelBufferElements.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxUniformBufferRangeAt(long index) { return (int) VH_properties$properties$limits$maxUniformBufferRange.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxStorageBufferRangeAt(long index) { return (int) VH_properties$properties$limits$maxStorageBufferRange.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxPushConstantsSizeAt(long index) { return (int) VH_properties$properties$limits$maxPushConstantsSize.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxMemoryAllocationCountAt(long index) { return (int) VH_properties$properties$limits$maxMemoryAllocationCount.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxSamplerAllocationCountAt(long index) { return (int) VH_properties$properties$limits$maxSamplerAllocationCount.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$bufferImageGranularityAt(long index) { return (long) VH_properties$properties$limits$bufferImageGranularity.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$sparseAddressSpaceSizeAt(long index) { return (long) VH_properties$properties$limits$sparseAddressSpaceSize.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxBoundDescriptorSetsAt(long index) { return (int) VH_properties$properties$limits$maxBoundDescriptorSets.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxPerStageDescriptorSamplersAt(long index) { return (int) VH_properties$properties$limits$maxPerStageDescriptorSamplers.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxPerStageDescriptorUniformBuffersAt(long index) { return (int) VH_properties$properties$limits$maxPerStageDescriptorUniformBuffers.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxPerStageDescriptorStorageBuffersAt(long index) { return (int) VH_properties$properties$limits$maxPerStageDescriptorStorageBuffers.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxPerStageDescriptorSampledImagesAt(long index) { return (int) VH_properties$properties$limits$maxPerStageDescriptorSampledImages.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxPerStageDescriptorStorageImagesAt(long index) { return (int) VH_properties$properties$limits$maxPerStageDescriptorStorageImages.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxPerStageDescriptorInputAttachmentsAt(long index) { return (int) VH_properties$properties$limits$maxPerStageDescriptorInputAttachments.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxPerStageResourcesAt(long index) { return (int) VH_properties$properties$limits$maxPerStageResources.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDescriptorSetSamplersAt(long index) { return (int) VH_properties$properties$limits$maxDescriptorSetSamplers.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDescriptorSetUniformBuffersAt(long index) { return (int) VH_properties$properties$limits$maxDescriptorSetUniformBuffers.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDescriptorSetUniformBuffersDynamicAt(long index) { return (int) VH_properties$properties$limits$maxDescriptorSetUniformBuffersDynamic.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDescriptorSetStorageBuffersAt(long index) { return (int) VH_properties$properties$limits$maxDescriptorSetStorageBuffers.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDescriptorSetStorageBuffersDynamicAt(long index) { return (int) VH_properties$properties$limits$maxDescriptorSetStorageBuffersDynamic.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDescriptorSetSampledImagesAt(long index) { return (int) VH_properties$properties$limits$maxDescriptorSetSampledImages.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDescriptorSetStorageImagesAt(long index) { return (int) VH_properties$properties$limits$maxDescriptorSetStorageImages.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDescriptorSetInputAttachmentsAt(long index) { return (int) VH_properties$properties$limits$maxDescriptorSetInputAttachments.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxVertexInputAttributesAt(long index) { return (int) VH_properties$properties$limits$maxVertexInputAttributes.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxVertexInputBindingsAt(long index) { return (int) VH_properties$properties$limits$maxVertexInputBindings.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxVertexInputAttributeOffsetAt(long index) { return (int) VH_properties$properties$limits$maxVertexInputAttributeOffset.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxVertexInputBindingStrideAt(long index) { return (int) VH_properties$properties$limits$maxVertexInputBindingStride.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxVertexOutputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxVertexOutputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTessellationGenerationLevelAt(long index) { return (int) VH_properties$properties$limits$maxTessellationGenerationLevel.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTessellationPatchSizeAt(long index) { return (int) VH_properties$properties$limits$maxTessellationPatchSize.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTessellationControlPerVertexInputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxTessellationControlPerVertexInputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTessellationControlPerVertexOutputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxTessellationControlPerVertexOutputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTessellationControlPerPatchOutputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxTessellationControlPerPatchOutputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTessellationControlTotalOutputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxTessellationControlTotalOutputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTessellationEvaluationInputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxTessellationEvaluationInputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTessellationEvaluationOutputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxTessellationEvaluationOutputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxGeometryShaderInvocationsAt(long index) { return (int) VH_properties$properties$limits$maxGeometryShaderInvocations.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxGeometryInputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxGeometryInputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxGeometryOutputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxGeometryOutputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxGeometryOutputVerticesAt(long index) { return (int) VH_properties$properties$limits$maxGeometryOutputVertices.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxGeometryTotalOutputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxGeometryTotalOutputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxFragmentInputComponentsAt(long index) { return (int) VH_properties$properties$limits$maxFragmentInputComponents.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxFragmentOutputAttachmentsAt(long index) { return (int) VH_properties$properties$limits$maxFragmentOutputAttachments.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxFragmentDualSrcAttachmentsAt(long index) { return (int) VH_properties$properties$limits$maxFragmentDualSrcAttachments.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxFragmentCombinedOutputResourcesAt(long index) { return (int) VH_properties$properties$limits$maxFragmentCombinedOutputResources.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxComputeSharedMemorySizeAt(long index) { return (int) VH_properties$properties$limits$maxComputeSharedMemorySize.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxComputeWorkGroupCountAt(long index, long index0) { return (int) VH_properties$properties$limits$maxComputeWorkGroupCount.get(this.segment(), 0L, index, index0); }
+    public int properties$properties$limits$maxComputeWorkGroupInvocationsAt(long index) { return (int) VH_properties$properties$limits$maxComputeWorkGroupInvocations.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxComputeWorkGroupSizeAt(long index, long index0) { return (int) VH_properties$properties$limits$maxComputeWorkGroupSize.get(this.segment(), 0L, index, index0); }
+    public int properties$properties$limits$subPixelPrecisionBitsAt(long index) { return (int) VH_properties$properties$limits$subPixelPrecisionBits.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$subTexelPrecisionBitsAt(long index) { return (int) VH_properties$properties$limits$subTexelPrecisionBits.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$mipmapPrecisionBitsAt(long index) { return (int) VH_properties$properties$limits$mipmapPrecisionBits.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDrawIndexedIndexValueAt(long index) { return (int) VH_properties$properties$limits$maxDrawIndexedIndexValue.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxDrawIndirectCountAt(long index) { return (int) VH_properties$properties$limits$maxDrawIndirectCount.get(this.segment(), 0L, index); }
+    public float properties$properties$limits$maxSamplerLodBiasAt(long index) { return (float) VH_properties$properties$limits$maxSamplerLodBias.get(this.segment(), 0L, index); }
+    public float properties$properties$limits$maxSamplerAnisotropyAt(long index) { return (float) VH_properties$properties$limits$maxSamplerAnisotropy.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxViewportsAt(long index) { return (int) VH_properties$properties$limits$maxViewports.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxViewportDimensionsAt(long index, long index0) { return (int) VH_properties$properties$limits$maxViewportDimensions.get(this.segment(), 0L, index, index0); }
+    public float properties$properties$limits$viewportBoundsRangeAt(long index, long index0) { return (float) VH_properties$properties$limits$viewportBoundsRange.get(this.segment(), 0L, index, index0); }
+    public int properties$properties$limits$viewportSubPixelBitsAt(long index) { return (int) VH_properties$properties$limits$viewportSubPixelBits.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$minMemoryMapAlignmentAt(long index) { return (long) VH_properties$properties$limits$minMemoryMapAlignment.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$minTexelBufferOffsetAlignmentAt(long index) { return (long) VH_properties$properties$limits$minTexelBufferOffsetAlignment.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$minUniformBufferOffsetAlignmentAt(long index) { return (long) VH_properties$properties$limits$minUniformBufferOffsetAlignment.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$minStorageBufferOffsetAlignmentAt(long index) { return (long) VH_properties$properties$limits$minStorageBufferOffsetAlignment.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$minTexelOffsetAt(long index) { return (int) VH_properties$properties$limits$minTexelOffset.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTexelOffsetAt(long index) { return (int) VH_properties$properties$limits$maxTexelOffset.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$minTexelGatherOffsetAt(long index) { return (int) VH_properties$properties$limits$minTexelGatherOffset.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxTexelGatherOffsetAt(long index) { return (int) VH_properties$properties$limits$maxTexelGatherOffset.get(this.segment(), 0L, index); }
+    public float properties$properties$limits$minInterpolationOffsetAt(long index) { return (float) VH_properties$properties$limits$minInterpolationOffset.get(this.segment(), 0L, index); }
+    public float properties$properties$limits$maxInterpolationOffsetAt(long index) { return (float) VH_properties$properties$limits$maxInterpolationOffset.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$subPixelInterpolationOffsetBitsAt(long index) { return (int) VH_properties$properties$limits$subPixelInterpolationOffsetBits.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxFramebufferWidthAt(long index) { return (int) VH_properties$properties$limits$maxFramebufferWidth.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxFramebufferHeightAt(long index) { return (int) VH_properties$properties$limits$maxFramebufferHeight.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxFramebufferLayersAt(long index) { return (int) VH_properties$properties$limits$maxFramebufferLayers.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$framebufferColorSampleCountsAt(long index) { return (int) VH_properties$properties$limits$framebufferColorSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$framebufferDepthSampleCountsAt(long index) { return (int) VH_properties$properties$limits$framebufferDepthSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$framebufferStencilSampleCountsAt(long index) { return (int) VH_properties$properties$limits$framebufferStencilSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$framebufferNoAttachmentsSampleCountsAt(long index) { return (int) VH_properties$properties$limits$framebufferNoAttachmentsSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxColorAttachmentsAt(long index) { return (int) VH_properties$properties$limits$maxColorAttachments.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$sampledImageColorSampleCountsAt(long index) { return (int) VH_properties$properties$limits$sampledImageColorSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$sampledImageIntegerSampleCountsAt(long index) { return (int) VH_properties$properties$limits$sampledImageIntegerSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$sampledImageDepthSampleCountsAt(long index) { return (int) VH_properties$properties$limits$sampledImageDepthSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$sampledImageStencilSampleCountsAt(long index) { return (int) VH_properties$properties$limits$sampledImageStencilSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$storageImageSampleCountsAt(long index) { return (int) VH_properties$properties$limits$storageImageSampleCounts.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxSampleMaskWordsAt(long index) { return (int) VH_properties$properties$limits$maxSampleMaskWords.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$timestampComputeAndGraphicsAt(long index) { return (int) VH_properties$properties$limits$timestampComputeAndGraphics.get(this.segment(), 0L, index); }
+    public float properties$properties$limits$timestampPeriodAt(long index) { return (float) VH_properties$properties$limits$timestampPeriod.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxClipDistancesAt(long index) { return (int) VH_properties$properties$limits$maxClipDistances.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxCullDistancesAt(long index) { return (int) VH_properties$properties$limits$maxCullDistances.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$maxCombinedClipAndCullDistancesAt(long index) { return (int) VH_properties$properties$limits$maxCombinedClipAndCullDistances.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$discreteQueuePrioritiesAt(long index) { return (int) VH_properties$properties$limits$discreteQueuePriorities.get(this.segment(), 0L, index); }
+    public float properties$properties$limits$pointSizeRangeAt(long index, long index0) { return (float) VH_properties$properties$limits$pointSizeRange.get(this.segment(), 0L, index, index0); }
+    public float properties$properties$limits$lineWidthRangeAt(long index, long index0) { return (float) VH_properties$properties$limits$lineWidthRange.get(this.segment(), 0L, index, index0); }
+    public float properties$properties$limits$pointSizeGranularityAt(long index) { return (float) VH_properties$properties$limits$pointSizeGranularity.get(this.segment(), 0L, index); }
+    public float properties$properties$limits$lineWidthGranularityAt(long index) { return (float) VH_properties$properties$limits$lineWidthGranularity.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$strictLinesAt(long index) { return (int) VH_properties$properties$limits$strictLines.get(this.segment(), 0L, index); }
+    public int properties$properties$limits$standardSampleLocationsAt(long index) { return (int) VH_properties$properties$limits$standardSampleLocations.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$optimalBufferCopyOffsetAlignmentAt(long index) { return (long) VH_properties$properties$limits$optimalBufferCopyOffsetAlignment.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$optimalBufferCopyRowPitchAlignmentAt(long index) { return (long) VH_properties$properties$limits$optimalBufferCopyRowPitchAlignment.get(this.segment(), 0L, index); }
+    public long properties$properties$limits$nonCoherentAtomSizeAt(long index) { return (long) VH_properties$properties$limits$nonCoherentAtomSize.get(this.segment(), 0L, index); }
+    public int properties$properties$sparseProperties$residencyStandard2DBlockShapeAt(long index) { return (int) VH_properties$properties$sparseProperties$residencyStandard2DBlockShape.get(this.segment(), 0L, index); }
+    public int properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShapeAt(long index) { return (int) VH_properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShape.get(this.segment(), 0L, index); }
+    public int properties$properties$sparseProperties$residencyStandard3DBlockShapeAt(long index) { return (int) VH_properties$properties$sparseProperties$residencyStandard3DBlockShape.get(this.segment(), 0L, index); }
+    public int properties$properties$sparseProperties$residencyAlignedMipSizeAt(long index) { return (int) VH_properties$properties$sparseProperties$residencyAlignedMipSize.get(this.segment(), 0L, index); }
+    public int properties$properties$sparseProperties$residencyNonResidentStrictAt(long index) { return (int) VH_properties$properties$sparseProperties$residencyNonResidentStrict.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int properties$sType() { return (int) VH_properties$sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment properties$pNext() { return (MemorySegment) VH_properties$pNext.get(this.segment(), 0L, 0L); }
+    public int properties$properties$apiVersion() { return (int) VH_properties$properties$apiVersion.get(this.segment(), 0L, 0L); }
+    public int properties$properties$driverVersion() { return (int) VH_properties$properties$driverVersion.get(this.segment(), 0L, 0L); }
+    public int properties$properties$vendorID() { return (int) VH_properties$properties$vendorID.get(this.segment(), 0L, 0L); }
+    public int properties$properties$deviceID() { return (int) VH_properties$properties$deviceID.get(this.segment(), 0L, 0L); }
+    public int properties$properties$deviceType() { return (int) VH_properties$properties$deviceType.get(this.segment(), 0L, 0L); }
+    public byte properties$properties$deviceName(long index0) { return (byte) VH_properties$properties$deviceName.get(this.segment(), 0L, 0L, index0); }
+    public byte properties$properties$pipelineCacheUUID(long index0) { return (byte) VH_properties$properties$pipelineCacheUUID.get(this.segment(), 0L, 0L, index0); }
+    public int properties$properties$limits$maxImageDimension1D() { return (int) VH_properties$properties$limits$maxImageDimension1D.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxImageDimension2D() { return (int) VH_properties$properties$limits$maxImageDimension2D.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxImageDimension3D() { return (int) VH_properties$properties$limits$maxImageDimension3D.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxImageDimensionCube() { return (int) VH_properties$properties$limits$maxImageDimensionCube.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxImageArrayLayers() { return (int) VH_properties$properties$limits$maxImageArrayLayers.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTexelBufferElements() { return (int) VH_properties$properties$limits$maxTexelBufferElements.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxUniformBufferRange() { return (int) VH_properties$properties$limits$maxUniformBufferRange.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxStorageBufferRange() { return (int) VH_properties$properties$limits$maxStorageBufferRange.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxPushConstantsSize() { return (int) VH_properties$properties$limits$maxPushConstantsSize.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxMemoryAllocationCount() { return (int) VH_properties$properties$limits$maxMemoryAllocationCount.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxSamplerAllocationCount() { return (int) VH_properties$properties$limits$maxSamplerAllocationCount.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$bufferImageGranularity() { return (long) VH_properties$properties$limits$bufferImageGranularity.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$sparseAddressSpaceSize() { return (long) VH_properties$properties$limits$sparseAddressSpaceSize.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxBoundDescriptorSets() { return (int) VH_properties$properties$limits$maxBoundDescriptorSets.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxPerStageDescriptorSamplers() { return (int) VH_properties$properties$limits$maxPerStageDescriptorSamplers.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxPerStageDescriptorUniformBuffers() { return (int) VH_properties$properties$limits$maxPerStageDescriptorUniformBuffers.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxPerStageDescriptorStorageBuffers() { return (int) VH_properties$properties$limits$maxPerStageDescriptorStorageBuffers.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxPerStageDescriptorSampledImages() { return (int) VH_properties$properties$limits$maxPerStageDescriptorSampledImages.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxPerStageDescriptorStorageImages() { return (int) VH_properties$properties$limits$maxPerStageDescriptorStorageImages.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxPerStageDescriptorInputAttachments() { return (int) VH_properties$properties$limits$maxPerStageDescriptorInputAttachments.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxPerStageResources() { return (int) VH_properties$properties$limits$maxPerStageResources.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDescriptorSetSamplers() { return (int) VH_properties$properties$limits$maxDescriptorSetSamplers.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDescriptorSetUniformBuffers() { return (int) VH_properties$properties$limits$maxDescriptorSetUniformBuffers.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDescriptorSetUniformBuffersDynamic() { return (int) VH_properties$properties$limits$maxDescriptorSetUniformBuffersDynamic.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDescriptorSetStorageBuffers() { return (int) VH_properties$properties$limits$maxDescriptorSetStorageBuffers.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDescriptorSetStorageBuffersDynamic() { return (int) VH_properties$properties$limits$maxDescriptorSetStorageBuffersDynamic.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDescriptorSetSampledImages() { return (int) VH_properties$properties$limits$maxDescriptorSetSampledImages.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDescriptorSetStorageImages() { return (int) VH_properties$properties$limits$maxDescriptorSetStorageImages.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDescriptorSetInputAttachments() { return (int) VH_properties$properties$limits$maxDescriptorSetInputAttachments.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxVertexInputAttributes() { return (int) VH_properties$properties$limits$maxVertexInputAttributes.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxVertexInputBindings() { return (int) VH_properties$properties$limits$maxVertexInputBindings.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxVertexInputAttributeOffset() { return (int) VH_properties$properties$limits$maxVertexInputAttributeOffset.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxVertexInputBindingStride() { return (int) VH_properties$properties$limits$maxVertexInputBindingStride.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxVertexOutputComponents() { return (int) VH_properties$properties$limits$maxVertexOutputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTessellationGenerationLevel() { return (int) VH_properties$properties$limits$maxTessellationGenerationLevel.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTessellationPatchSize() { return (int) VH_properties$properties$limits$maxTessellationPatchSize.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTessellationControlPerVertexInputComponents() { return (int) VH_properties$properties$limits$maxTessellationControlPerVertexInputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTessellationControlPerVertexOutputComponents() { return (int) VH_properties$properties$limits$maxTessellationControlPerVertexOutputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTessellationControlPerPatchOutputComponents() { return (int) VH_properties$properties$limits$maxTessellationControlPerPatchOutputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTessellationControlTotalOutputComponents() { return (int) VH_properties$properties$limits$maxTessellationControlTotalOutputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTessellationEvaluationInputComponents() { return (int) VH_properties$properties$limits$maxTessellationEvaluationInputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTessellationEvaluationOutputComponents() { return (int) VH_properties$properties$limits$maxTessellationEvaluationOutputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxGeometryShaderInvocations() { return (int) VH_properties$properties$limits$maxGeometryShaderInvocations.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxGeometryInputComponents() { return (int) VH_properties$properties$limits$maxGeometryInputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxGeometryOutputComponents() { return (int) VH_properties$properties$limits$maxGeometryOutputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxGeometryOutputVertices() { return (int) VH_properties$properties$limits$maxGeometryOutputVertices.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxGeometryTotalOutputComponents() { return (int) VH_properties$properties$limits$maxGeometryTotalOutputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxFragmentInputComponents() { return (int) VH_properties$properties$limits$maxFragmentInputComponents.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxFragmentOutputAttachments() { return (int) VH_properties$properties$limits$maxFragmentOutputAttachments.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxFragmentDualSrcAttachments() { return (int) VH_properties$properties$limits$maxFragmentDualSrcAttachments.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxFragmentCombinedOutputResources() { return (int) VH_properties$properties$limits$maxFragmentCombinedOutputResources.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxComputeSharedMemorySize() { return (int) VH_properties$properties$limits$maxComputeSharedMemorySize.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxComputeWorkGroupCount(long index0) { return (int) VH_properties$properties$limits$maxComputeWorkGroupCount.get(this.segment(), 0L, 0L, index0); }
+    public int properties$properties$limits$maxComputeWorkGroupInvocations() { return (int) VH_properties$properties$limits$maxComputeWorkGroupInvocations.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxComputeWorkGroupSize(long index0) { return (int) VH_properties$properties$limits$maxComputeWorkGroupSize.get(this.segment(), 0L, 0L, index0); }
+    public int properties$properties$limits$subPixelPrecisionBits() { return (int) VH_properties$properties$limits$subPixelPrecisionBits.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$subTexelPrecisionBits() { return (int) VH_properties$properties$limits$subTexelPrecisionBits.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$mipmapPrecisionBits() { return (int) VH_properties$properties$limits$mipmapPrecisionBits.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDrawIndexedIndexValue() { return (int) VH_properties$properties$limits$maxDrawIndexedIndexValue.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxDrawIndirectCount() { return (int) VH_properties$properties$limits$maxDrawIndirectCount.get(this.segment(), 0L, 0L); }
+    public float properties$properties$limits$maxSamplerLodBias() { return (float) VH_properties$properties$limits$maxSamplerLodBias.get(this.segment(), 0L, 0L); }
+    public float properties$properties$limits$maxSamplerAnisotropy() { return (float) VH_properties$properties$limits$maxSamplerAnisotropy.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxViewports() { return (int) VH_properties$properties$limits$maxViewports.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxViewportDimensions(long index0) { return (int) VH_properties$properties$limits$maxViewportDimensions.get(this.segment(), 0L, 0L, index0); }
+    public float properties$properties$limits$viewportBoundsRange(long index0) { return (float) VH_properties$properties$limits$viewportBoundsRange.get(this.segment(), 0L, 0L, index0); }
+    public int properties$properties$limits$viewportSubPixelBits() { return (int) VH_properties$properties$limits$viewportSubPixelBits.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$minMemoryMapAlignment() { return (long) VH_properties$properties$limits$minMemoryMapAlignment.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$minTexelBufferOffsetAlignment() { return (long) VH_properties$properties$limits$minTexelBufferOffsetAlignment.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$minUniformBufferOffsetAlignment() { return (long) VH_properties$properties$limits$minUniformBufferOffsetAlignment.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$minStorageBufferOffsetAlignment() { return (long) VH_properties$properties$limits$minStorageBufferOffsetAlignment.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$minTexelOffset() { return (int) VH_properties$properties$limits$minTexelOffset.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTexelOffset() { return (int) VH_properties$properties$limits$maxTexelOffset.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$minTexelGatherOffset() { return (int) VH_properties$properties$limits$minTexelGatherOffset.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxTexelGatherOffset() { return (int) VH_properties$properties$limits$maxTexelGatherOffset.get(this.segment(), 0L, 0L); }
+    public float properties$properties$limits$minInterpolationOffset() { return (float) VH_properties$properties$limits$minInterpolationOffset.get(this.segment(), 0L, 0L); }
+    public float properties$properties$limits$maxInterpolationOffset() { return (float) VH_properties$properties$limits$maxInterpolationOffset.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$subPixelInterpolationOffsetBits() { return (int) VH_properties$properties$limits$subPixelInterpolationOffsetBits.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxFramebufferWidth() { return (int) VH_properties$properties$limits$maxFramebufferWidth.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxFramebufferHeight() { return (int) VH_properties$properties$limits$maxFramebufferHeight.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxFramebufferLayers() { return (int) VH_properties$properties$limits$maxFramebufferLayers.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$framebufferColorSampleCounts() { return (int) VH_properties$properties$limits$framebufferColorSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$framebufferDepthSampleCounts() { return (int) VH_properties$properties$limits$framebufferDepthSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$framebufferStencilSampleCounts() { return (int) VH_properties$properties$limits$framebufferStencilSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$framebufferNoAttachmentsSampleCounts() { return (int) VH_properties$properties$limits$framebufferNoAttachmentsSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxColorAttachments() { return (int) VH_properties$properties$limits$maxColorAttachments.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$sampledImageColorSampleCounts() { return (int) VH_properties$properties$limits$sampledImageColorSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$sampledImageIntegerSampleCounts() { return (int) VH_properties$properties$limits$sampledImageIntegerSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$sampledImageDepthSampleCounts() { return (int) VH_properties$properties$limits$sampledImageDepthSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$sampledImageStencilSampleCounts() { return (int) VH_properties$properties$limits$sampledImageStencilSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$storageImageSampleCounts() { return (int) VH_properties$properties$limits$storageImageSampleCounts.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxSampleMaskWords() { return (int) VH_properties$properties$limits$maxSampleMaskWords.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$timestampComputeAndGraphics() { return (int) VH_properties$properties$limits$timestampComputeAndGraphics.get(this.segment(), 0L, 0L); }
+    public float properties$properties$limits$timestampPeriod() { return (float) VH_properties$properties$limits$timestampPeriod.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxClipDistances() { return (int) VH_properties$properties$limits$maxClipDistances.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxCullDistances() { return (int) VH_properties$properties$limits$maxCullDistances.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$maxCombinedClipAndCullDistances() { return (int) VH_properties$properties$limits$maxCombinedClipAndCullDistances.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$discreteQueuePriorities() { return (int) VH_properties$properties$limits$discreteQueuePriorities.get(this.segment(), 0L, 0L); }
+    public float properties$properties$limits$pointSizeRange(long index0) { return (float) VH_properties$properties$limits$pointSizeRange.get(this.segment(), 0L, 0L, index0); }
+    public float properties$properties$limits$lineWidthRange(long index0) { return (float) VH_properties$properties$limits$lineWidthRange.get(this.segment(), 0L, 0L, index0); }
+    public float properties$properties$limits$pointSizeGranularity() { return (float) VH_properties$properties$limits$pointSizeGranularity.get(this.segment(), 0L, 0L); }
+    public float properties$properties$limits$lineWidthGranularity() { return (float) VH_properties$properties$limits$lineWidthGranularity.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$strictLines() { return (int) VH_properties$properties$limits$strictLines.get(this.segment(), 0L, 0L); }
+    public int properties$properties$limits$standardSampleLocations() { return (int) VH_properties$properties$limits$standardSampleLocations.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$optimalBufferCopyOffsetAlignment() { return (long) VH_properties$properties$limits$optimalBufferCopyOffsetAlignment.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$optimalBufferCopyRowPitchAlignment() { return (long) VH_properties$properties$limits$optimalBufferCopyRowPitchAlignment.get(this.segment(), 0L, 0L); }
+    public long properties$properties$limits$nonCoherentAtomSize() { return (long) VH_properties$properties$limits$nonCoherentAtomSize.get(this.segment(), 0L, 0L); }
+    public int properties$properties$sparseProperties$residencyStandard2DBlockShape() { return (int) VH_properties$properties$sparseProperties$residencyStandard2DBlockShape.get(this.segment(), 0L, 0L); }
+    public int properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShape() { return (int) VH_properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShape.get(this.segment(), 0L, 0L); }
+    public int properties$properties$sparseProperties$residencyStandard3DBlockShape() { return (int) VH_properties$properties$sparseProperties$residencyStandard3DBlockShape.get(this.segment(), 0L, 0L); }
+    public int properties$properties$sparseProperties$residencyAlignedMipSize() { return (int) VH_properties$properties$sparseProperties$residencyAlignedMipSize.get(this.segment(), 0L, 0L); }
+    public int properties$properties$sparseProperties$residencyNonResidentStrict() { return (int) VH_properties$properties$sparseProperties$residencyNonResidentStrict.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$sTypeAt(long index, int value) { VH_properties$sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$pNextAt(long index, MemorySegment value) { VH_properties$pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$apiVersionAt(long index, int value) { VH_properties$properties$apiVersion.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$driverVersionAt(long index, int value) { VH_properties$properties$driverVersion.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$vendorIDAt(long index, int value) { VH_properties$properties$vendorID.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$deviceIDAt(long index, int value) { VH_properties$properties$deviceID.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$deviceTypeAt(long index, int value) { VH_properties$properties$deviceType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$deviceNameAt(long index, long index0, byte value) { VH_properties$properties$deviceName.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$pipelineCacheUUIDAt(long index, long index0, byte value) { VH_properties$properties$pipelineCacheUUID.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageDimension1DAt(long index, int value) { VH_properties$properties$limits$maxImageDimension1D.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageDimension2DAt(long index, int value) { VH_properties$properties$limits$maxImageDimension2D.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageDimension3DAt(long index, int value) { VH_properties$properties$limits$maxImageDimension3D.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageDimensionCubeAt(long index, int value) { VH_properties$properties$limits$maxImageDimensionCube.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageArrayLayersAt(long index, int value) { VH_properties$properties$limits$maxImageArrayLayers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTexelBufferElementsAt(long index, int value) { VH_properties$properties$limits$maxTexelBufferElements.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxUniformBufferRangeAt(long index, int value) { VH_properties$properties$limits$maxUniformBufferRange.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxStorageBufferRangeAt(long index, int value) { VH_properties$properties$limits$maxStorageBufferRange.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPushConstantsSizeAt(long index, int value) { VH_properties$properties$limits$maxPushConstantsSize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxMemoryAllocationCountAt(long index, int value) { VH_properties$properties$limits$maxMemoryAllocationCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxSamplerAllocationCountAt(long index, int value) { VH_properties$properties$limits$maxSamplerAllocationCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$bufferImageGranularityAt(long index, long value) { VH_properties$properties$limits$bufferImageGranularity.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sparseAddressSpaceSizeAt(long index, long value) { VH_properties$properties$limits$sparseAddressSpaceSize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxBoundDescriptorSetsAt(long index, int value) { VH_properties$properties$limits$maxBoundDescriptorSets.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorSamplersAt(long index, int value) { VH_properties$properties$limits$maxPerStageDescriptorSamplers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorUniformBuffersAt(long index, int value) { VH_properties$properties$limits$maxPerStageDescriptorUniformBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorStorageBuffersAt(long index, int value) { VH_properties$properties$limits$maxPerStageDescriptorStorageBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorSampledImagesAt(long index, int value) { VH_properties$properties$limits$maxPerStageDescriptorSampledImages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorStorageImagesAt(long index, int value) { VH_properties$properties$limits$maxPerStageDescriptorStorageImages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorInputAttachmentsAt(long index, int value) { VH_properties$properties$limits$maxPerStageDescriptorInputAttachments.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageResourcesAt(long index, int value) { VH_properties$properties$limits$maxPerStageResources.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetSamplersAt(long index, int value) { VH_properties$properties$limits$maxDescriptorSetSamplers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetUniformBuffersAt(long index, int value) { VH_properties$properties$limits$maxDescriptorSetUniformBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetUniformBuffersDynamicAt(long index, int value) { VH_properties$properties$limits$maxDescriptorSetUniformBuffersDynamic.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetStorageBuffersAt(long index, int value) { VH_properties$properties$limits$maxDescriptorSetStorageBuffers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetStorageBuffersDynamicAt(long index, int value) { VH_properties$properties$limits$maxDescriptorSetStorageBuffersDynamic.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetSampledImagesAt(long index, int value) { VH_properties$properties$limits$maxDescriptorSetSampledImages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetStorageImagesAt(long index, int value) { VH_properties$properties$limits$maxDescriptorSetStorageImages.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetInputAttachmentsAt(long index, int value) { VH_properties$properties$limits$maxDescriptorSetInputAttachments.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexInputAttributesAt(long index, int value) { VH_properties$properties$limits$maxVertexInputAttributes.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexInputBindingsAt(long index, int value) { VH_properties$properties$limits$maxVertexInputBindings.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexInputAttributeOffsetAt(long index, int value) { VH_properties$properties$limits$maxVertexInputAttributeOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexInputBindingStrideAt(long index, int value) { VH_properties$properties$limits$maxVertexInputBindingStride.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexOutputComponentsAt(long index, int value) { VH_properties$properties$limits$maxVertexOutputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationGenerationLevelAt(long index, int value) { VH_properties$properties$limits$maxTessellationGenerationLevel.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationPatchSizeAt(long index, int value) { VH_properties$properties$limits$maxTessellationPatchSize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationControlPerVertexInputComponentsAt(long index, int value) { VH_properties$properties$limits$maxTessellationControlPerVertexInputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationControlPerVertexOutputComponentsAt(long index, int value) { VH_properties$properties$limits$maxTessellationControlPerVertexOutputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationControlPerPatchOutputComponentsAt(long index, int value) { VH_properties$properties$limits$maxTessellationControlPerPatchOutputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationControlTotalOutputComponentsAt(long index, int value) { VH_properties$properties$limits$maxTessellationControlTotalOutputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationEvaluationInputComponentsAt(long index, int value) { VH_properties$properties$limits$maxTessellationEvaluationInputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationEvaluationOutputComponentsAt(long index, int value) { VH_properties$properties$limits$maxTessellationEvaluationOutputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryShaderInvocationsAt(long index, int value) { VH_properties$properties$limits$maxGeometryShaderInvocations.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryInputComponentsAt(long index, int value) { VH_properties$properties$limits$maxGeometryInputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryOutputComponentsAt(long index, int value) { VH_properties$properties$limits$maxGeometryOutputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryOutputVerticesAt(long index, int value) { VH_properties$properties$limits$maxGeometryOutputVertices.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryTotalOutputComponentsAt(long index, int value) { VH_properties$properties$limits$maxGeometryTotalOutputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFragmentInputComponentsAt(long index, int value) { VH_properties$properties$limits$maxFragmentInputComponents.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFragmentOutputAttachmentsAt(long index, int value) { VH_properties$properties$limits$maxFragmentOutputAttachments.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFragmentDualSrcAttachmentsAt(long index, int value) { VH_properties$properties$limits$maxFragmentDualSrcAttachments.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFragmentCombinedOutputResourcesAt(long index, int value) { VH_properties$properties$limits$maxFragmentCombinedOutputResources.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxComputeSharedMemorySizeAt(long index, int value) { VH_properties$properties$limits$maxComputeSharedMemorySize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxComputeWorkGroupCountAt(long index, long index0, int value) { VH_properties$properties$limits$maxComputeWorkGroupCount.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxComputeWorkGroupInvocationsAt(long index, int value) { VH_properties$properties$limits$maxComputeWorkGroupInvocations.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxComputeWorkGroupSizeAt(long index, long index0, int value) { VH_properties$properties$limits$maxComputeWorkGroupSize.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$subPixelPrecisionBitsAt(long index, int value) { VH_properties$properties$limits$subPixelPrecisionBits.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$subTexelPrecisionBitsAt(long index, int value) { VH_properties$properties$limits$subTexelPrecisionBits.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$mipmapPrecisionBitsAt(long index, int value) { VH_properties$properties$limits$mipmapPrecisionBits.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDrawIndexedIndexValueAt(long index, int value) { VH_properties$properties$limits$maxDrawIndexedIndexValue.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDrawIndirectCountAt(long index, int value) { VH_properties$properties$limits$maxDrawIndirectCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxSamplerLodBiasAt(long index, float value) { VH_properties$properties$limits$maxSamplerLodBias.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxSamplerAnisotropyAt(long index, float value) { VH_properties$properties$limits$maxSamplerAnisotropy.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxViewportsAt(long index, int value) { VH_properties$properties$limits$maxViewports.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxViewportDimensionsAt(long index, long index0, int value) { VH_properties$properties$limits$maxViewportDimensions.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$viewportBoundsRangeAt(long index, long index0, float value) { VH_properties$properties$limits$viewportBoundsRange.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$viewportSubPixelBitsAt(long index, int value) { VH_properties$properties$limits$viewportSubPixelBits.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minMemoryMapAlignmentAt(long index, long value) { VH_properties$properties$limits$minMemoryMapAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minTexelBufferOffsetAlignmentAt(long index, long value) { VH_properties$properties$limits$minTexelBufferOffsetAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minUniformBufferOffsetAlignmentAt(long index, long value) { VH_properties$properties$limits$minUniformBufferOffsetAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minStorageBufferOffsetAlignmentAt(long index, long value) { VH_properties$properties$limits$minStorageBufferOffsetAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minTexelOffsetAt(long index, int value) { VH_properties$properties$limits$minTexelOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTexelOffsetAt(long index, int value) { VH_properties$properties$limits$maxTexelOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minTexelGatherOffsetAt(long index, int value) { VH_properties$properties$limits$minTexelGatherOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTexelGatherOffsetAt(long index, int value) { VH_properties$properties$limits$maxTexelGatherOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minInterpolationOffsetAt(long index, float value) { VH_properties$properties$limits$minInterpolationOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxInterpolationOffsetAt(long index, float value) { VH_properties$properties$limits$maxInterpolationOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$subPixelInterpolationOffsetBitsAt(long index, int value) { VH_properties$properties$limits$subPixelInterpolationOffsetBits.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFramebufferWidthAt(long index, int value) { VH_properties$properties$limits$maxFramebufferWidth.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFramebufferHeightAt(long index, int value) { VH_properties$properties$limits$maxFramebufferHeight.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFramebufferLayersAt(long index, int value) { VH_properties$properties$limits$maxFramebufferLayers.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$framebufferColorSampleCountsAt(long index, int value) { VH_properties$properties$limits$framebufferColorSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$framebufferDepthSampleCountsAt(long index, int value) { VH_properties$properties$limits$framebufferDepthSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$framebufferStencilSampleCountsAt(long index, int value) { VH_properties$properties$limits$framebufferStencilSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$framebufferNoAttachmentsSampleCountsAt(long index, int value) { VH_properties$properties$limits$framebufferNoAttachmentsSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxColorAttachmentsAt(long index, int value) { VH_properties$properties$limits$maxColorAttachments.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sampledImageColorSampleCountsAt(long index, int value) { VH_properties$properties$limits$sampledImageColorSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sampledImageIntegerSampleCountsAt(long index, int value) { VH_properties$properties$limits$sampledImageIntegerSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sampledImageDepthSampleCountsAt(long index, int value) { VH_properties$properties$limits$sampledImageDepthSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sampledImageStencilSampleCountsAt(long index, int value) { VH_properties$properties$limits$sampledImageStencilSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$storageImageSampleCountsAt(long index, int value) { VH_properties$properties$limits$storageImageSampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxSampleMaskWordsAt(long index, int value) { VH_properties$properties$limits$maxSampleMaskWords.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$timestampComputeAndGraphicsAt(long index, int value) { VH_properties$properties$limits$timestampComputeAndGraphics.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$timestampPeriodAt(long index, float value) { VH_properties$properties$limits$timestampPeriod.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxClipDistancesAt(long index, int value) { VH_properties$properties$limits$maxClipDistances.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxCullDistancesAt(long index, int value) { VH_properties$properties$limits$maxCullDistances.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxCombinedClipAndCullDistancesAt(long index, int value) { VH_properties$properties$limits$maxCombinedClipAndCullDistances.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$discreteQueuePrioritiesAt(long index, int value) { VH_properties$properties$limits$discreteQueuePriorities.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$pointSizeRangeAt(long index, long index0, float value) { VH_properties$properties$limits$pointSizeRange.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$lineWidthRangeAt(long index, long index0, float value) { VH_properties$properties$limits$lineWidthRange.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$pointSizeGranularityAt(long index, float value) { VH_properties$properties$limits$pointSizeGranularity.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$lineWidthGranularityAt(long index, float value) { VH_properties$properties$limits$lineWidthGranularity.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$strictLinesAt(long index, int value) { VH_properties$properties$limits$strictLines.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$standardSampleLocationsAt(long index, int value) { VH_properties$properties$limits$standardSampleLocations.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$optimalBufferCopyOffsetAlignmentAt(long index, long value) { VH_properties$properties$limits$optimalBufferCopyOffsetAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$optimalBufferCopyRowPitchAlignmentAt(long index, long value) { VH_properties$properties$limits$optimalBufferCopyRowPitchAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$nonCoherentAtomSizeAt(long index, long value) { VH_properties$properties$limits$nonCoherentAtomSize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyStandard2DBlockShapeAt(long index, int value) { VH_properties$properties$sparseProperties$residencyStandard2DBlockShape.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShapeAt(long index, int value) { VH_properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShape.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyStandard3DBlockShapeAt(long index, int value) { VH_properties$properties$sparseProperties$residencyStandard3DBlockShape.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyAlignedMipSizeAt(long index, int value) { VH_properties$properties$sparseProperties$residencyAlignedMipSize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyNonResidentStrictAt(long index, int value) { VH_properties$properties$sparseProperties$residencyNonResidentStrict.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$sType(int value) { VH_properties$sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$pNext(MemorySegment value) { VH_properties$pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$apiVersion(int value) { VH_properties$properties$apiVersion.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$driverVersion(int value) { VH_properties$properties$driverVersion.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$vendorID(int value) { VH_properties$properties$vendorID.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$deviceID(int value) { VH_properties$properties$deviceID.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$deviceType(int value) { VH_properties$properties$deviceType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$deviceName(long index0, byte value) { VH_properties$properties$deviceName.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$pipelineCacheUUID(long index0, byte value) { VH_properties$properties$pipelineCacheUUID.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageDimension1D(int value) { VH_properties$properties$limits$maxImageDimension1D.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageDimension2D(int value) { VH_properties$properties$limits$maxImageDimension2D.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageDimension3D(int value) { VH_properties$properties$limits$maxImageDimension3D.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageDimensionCube(int value) { VH_properties$properties$limits$maxImageDimensionCube.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxImageArrayLayers(int value) { VH_properties$properties$limits$maxImageArrayLayers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTexelBufferElements(int value) { VH_properties$properties$limits$maxTexelBufferElements.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxUniformBufferRange(int value) { VH_properties$properties$limits$maxUniformBufferRange.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxStorageBufferRange(int value) { VH_properties$properties$limits$maxStorageBufferRange.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPushConstantsSize(int value) { VH_properties$properties$limits$maxPushConstantsSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxMemoryAllocationCount(int value) { VH_properties$properties$limits$maxMemoryAllocationCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxSamplerAllocationCount(int value) { VH_properties$properties$limits$maxSamplerAllocationCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$bufferImageGranularity(long value) { VH_properties$properties$limits$bufferImageGranularity.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sparseAddressSpaceSize(long value) { VH_properties$properties$limits$sparseAddressSpaceSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxBoundDescriptorSets(int value) { VH_properties$properties$limits$maxBoundDescriptorSets.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorSamplers(int value) { VH_properties$properties$limits$maxPerStageDescriptorSamplers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorUniformBuffers(int value) { VH_properties$properties$limits$maxPerStageDescriptorUniformBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorStorageBuffers(int value) { VH_properties$properties$limits$maxPerStageDescriptorStorageBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorSampledImages(int value) { VH_properties$properties$limits$maxPerStageDescriptorSampledImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorStorageImages(int value) { VH_properties$properties$limits$maxPerStageDescriptorStorageImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageDescriptorInputAttachments(int value) { VH_properties$properties$limits$maxPerStageDescriptorInputAttachments.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxPerStageResources(int value) { VH_properties$properties$limits$maxPerStageResources.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetSamplers(int value) { VH_properties$properties$limits$maxDescriptorSetSamplers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetUniformBuffers(int value) { VH_properties$properties$limits$maxDescriptorSetUniformBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetUniformBuffersDynamic(int value) { VH_properties$properties$limits$maxDescriptorSetUniformBuffersDynamic.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetStorageBuffers(int value) { VH_properties$properties$limits$maxDescriptorSetStorageBuffers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetStorageBuffersDynamic(int value) { VH_properties$properties$limits$maxDescriptorSetStorageBuffersDynamic.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetSampledImages(int value) { VH_properties$properties$limits$maxDescriptorSetSampledImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetStorageImages(int value) { VH_properties$properties$limits$maxDescriptorSetStorageImages.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDescriptorSetInputAttachments(int value) { VH_properties$properties$limits$maxDescriptorSetInputAttachments.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexInputAttributes(int value) { VH_properties$properties$limits$maxVertexInputAttributes.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexInputBindings(int value) { VH_properties$properties$limits$maxVertexInputBindings.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexInputAttributeOffset(int value) { VH_properties$properties$limits$maxVertexInputAttributeOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexInputBindingStride(int value) { VH_properties$properties$limits$maxVertexInputBindingStride.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxVertexOutputComponents(int value) { VH_properties$properties$limits$maxVertexOutputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationGenerationLevel(int value) { VH_properties$properties$limits$maxTessellationGenerationLevel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationPatchSize(int value) { VH_properties$properties$limits$maxTessellationPatchSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationControlPerVertexInputComponents(int value) { VH_properties$properties$limits$maxTessellationControlPerVertexInputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationControlPerVertexOutputComponents(int value) { VH_properties$properties$limits$maxTessellationControlPerVertexOutputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationControlPerPatchOutputComponents(int value) { VH_properties$properties$limits$maxTessellationControlPerPatchOutputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationControlTotalOutputComponents(int value) { VH_properties$properties$limits$maxTessellationControlTotalOutputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationEvaluationInputComponents(int value) { VH_properties$properties$limits$maxTessellationEvaluationInputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTessellationEvaluationOutputComponents(int value) { VH_properties$properties$limits$maxTessellationEvaluationOutputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryShaderInvocations(int value) { VH_properties$properties$limits$maxGeometryShaderInvocations.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryInputComponents(int value) { VH_properties$properties$limits$maxGeometryInputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryOutputComponents(int value) { VH_properties$properties$limits$maxGeometryOutputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryOutputVertices(int value) { VH_properties$properties$limits$maxGeometryOutputVertices.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxGeometryTotalOutputComponents(int value) { VH_properties$properties$limits$maxGeometryTotalOutputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFragmentInputComponents(int value) { VH_properties$properties$limits$maxFragmentInputComponents.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFragmentOutputAttachments(int value) { VH_properties$properties$limits$maxFragmentOutputAttachments.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFragmentDualSrcAttachments(int value) { VH_properties$properties$limits$maxFragmentDualSrcAttachments.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFragmentCombinedOutputResources(int value) { VH_properties$properties$limits$maxFragmentCombinedOutputResources.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxComputeSharedMemorySize(int value) { VH_properties$properties$limits$maxComputeSharedMemorySize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxComputeWorkGroupCount(long index0, int value) { VH_properties$properties$limits$maxComputeWorkGroupCount.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxComputeWorkGroupInvocations(int value) { VH_properties$properties$limits$maxComputeWorkGroupInvocations.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxComputeWorkGroupSize(long index0, int value) { VH_properties$properties$limits$maxComputeWorkGroupSize.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$subPixelPrecisionBits(int value) { VH_properties$properties$limits$subPixelPrecisionBits.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$subTexelPrecisionBits(int value) { VH_properties$properties$limits$subTexelPrecisionBits.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$mipmapPrecisionBits(int value) { VH_properties$properties$limits$mipmapPrecisionBits.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDrawIndexedIndexValue(int value) { VH_properties$properties$limits$maxDrawIndexedIndexValue.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxDrawIndirectCount(int value) { VH_properties$properties$limits$maxDrawIndirectCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxSamplerLodBias(float value) { VH_properties$properties$limits$maxSamplerLodBias.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxSamplerAnisotropy(float value) { VH_properties$properties$limits$maxSamplerAnisotropy.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxViewports(int value) { VH_properties$properties$limits$maxViewports.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxViewportDimensions(long index0, int value) { VH_properties$properties$limits$maxViewportDimensions.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$viewportBoundsRange(long index0, float value) { VH_properties$properties$limits$viewportBoundsRange.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$viewportSubPixelBits(int value) { VH_properties$properties$limits$viewportSubPixelBits.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minMemoryMapAlignment(long value) { VH_properties$properties$limits$minMemoryMapAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minTexelBufferOffsetAlignment(long value) { VH_properties$properties$limits$minTexelBufferOffsetAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minUniformBufferOffsetAlignment(long value) { VH_properties$properties$limits$minUniformBufferOffsetAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minStorageBufferOffsetAlignment(long value) { VH_properties$properties$limits$minStorageBufferOffsetAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minTexelOffset(int value) { VH_properties$properties$limits$minTexelOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTexelOffset(int value) { VH_properties$properties$limits$maxTexelOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minTexelGatherOffset(int value) { VH_properties$properties$limits$minTexelGatherOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxTexelGatherOffset(int value) { VH_properties$properties$limits$maxTexelGatherOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$minInterpolationOffset(float value) { VH_properties$properties$limits$minInterpolationOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxInterpolationOffset(float value) { VH_properties$properties$limits$maxInterpolationOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$subPixelInterpolationOffsetBits(int value) { VH_properties$properties$limits$subPixelInterpolationOffsetBits.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFramebufferWidth(int value) { VH_properties$properties$limits$maxFramebufferWidth.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFramebufferHeight(int value) { VH_properties$properties$limits$maxFramebufferHeight.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxFramebufferLayers(int value) { VH_properties$properties$limits$maxFramebufferLayers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$framebufferColorSampleCounts(int value) { VH_properties$properties$limits$framebufferColorSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$framebufferDepthSampleCounts(int value) { VH_properties$properties$limits$framebufferDepthSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$framebufferStencilSampleCounts(int value) { VH_properties$properties$limits$framebufferStencilSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$framebufferNoAttachmentsSampleCounts(int value) { VH_properties$properties$limits$framebufferNoAttachmentsSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxColorAttachments(int value) { VH_properties$properties$limits$maxColorAttachments.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sampledImageColorSampleCounts(int value) { VH_properties$properties$limits$sampledImageColorSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sampledImageIntegerSampleCounts(int value) { VH_properties$properties$limits$sampledImageIntegerSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sampledImageDepthSampleCounts(int value) { VH_properties$properties$limits$sampledImageDepthSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$sampledImageStencilSampleCounts(int value) { VH_properties$properties$limits$sampledImageStencilSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$storageImageSampleCounts(int value) { VH_properties$properties$limits$storageImageSampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxSampleMaskWords(int value) { VH_properties$properties$limits$maxSampleMaskWords.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$timestampComputeAndGraphics(int value) { VH_properties$properties$limits$timestampComputeAndGraphics.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$timestampPeriod(float value) { VH_properties$properties$limits$timestampPeriod.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxClipDistances(int value) { VH_properties$properties$limits$maxClipDistances.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxCullDistances(int value) { VH_properties$properties$limits$maxCullDistances.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$maxCombinedClipAndCullDistances(int value) { VH_properties$properties$limits$maxCombinedClipAndCullDistances.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$discreteQueuePriorities(int value) { VH_properties$properties$limits$discreteQueuePriorities.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$pointSizeRange(long index0, float value) { VH_properties$properties$limits$pointSizeRange.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$lineWidthRange(long index0, float value) { VH_properties$properties$limits$lineWidthRange.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$pointSizeGranularity(float value) { VH_properties$properties$limits$pointSizeGranularity.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$lineWidthGranularity(float value) { VH_properties$properties$limits$lineWidthGranularity.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$strictLines(int value) { VH_properties$properties$limits$strictLines.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$standardSampleLocations(int value) { VH_properties$properties$limits$standardSampleLocations.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$optimalBufferCopyOffsetAlignment(long value) { VH_properties$properties$limits$optimalBufferCopyOffsetAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$optimalBufferCopyRowPitchAlignment(long value) { VH_properties$properties$limits$optimalBufferCopyRowPitchAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$limits$nonCoherentAtomSize(long value) { VH_properties$properties$limits$nonCoherentAtomSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyStandard2DBlockShape(int value) { VH_properties$properties$sparseProperties$residencyStandard2DBlockShape.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShape(int value) { VH_properties$properties$sparseProperties$residencyStandard2DMultisampleBlockShape.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyStandard3DBlockShape(int value) { VH_properties$properties$sparseProperties$residencyStandard3DBlockShape.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyAlignedMipSize(int value) { VH_properties$properties$sparseProperties$residencyAlignedMipSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties$properties$sparseProperties$residencyNonResidentStrict(int value) { VH_properties$properties$sparseProperties$residencyNonResidentStrict.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _propertiesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_properties, index), LAYOUT_properties); }
+    public MemorySegment _properties() { return _propertiesAt(0L); }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR _propertiesAt(long index, MemorySegment src) { _propertiesAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR _properties(MemorySegment src) { return _propertiesAt(0L, src); }
 }

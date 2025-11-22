@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,180 +12,96 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageFormatProperties2KHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (struct VkImageFormatProperties) VkImageFormatProperties imageFormatProperties;
-/// };
+///     VkImageFormatProperties imageFormatProperties;
+/// }
 /// ```
 public final class VkImageFormatProperties2KHR extends GroupType {
-    /// The struct layout of `VkImageFormatProperties2KHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkImageFormatProperties.LAYOUT.withName("imageFormatProperties")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `imageFormatProperties`.
     public static final long OFFSET_imageFormatProperties = LAYOUT.byteOffset(PathElement.groupElement("imageFormatProperties"));
-    /// The memory layout of `imageFormatProperties`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_imageFormatProperties = LAYOUT.select(PathElement.groupElement("imageFormatProperties"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_imageFormatProperties$maxExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormatProperties"), PathElement.groupElement("maxExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_imageFormatProperties$maxExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormatProperties"), PathElement.groupElement("maxExtent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_imageFormatProperties$maxExtent$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormatProperties"), PathElement.groupElement("maxExtent"), PathElement.groupElement("depth"));
+    public static final VarHandle VH_imageFormatProperties$maxMipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormatProperties"), PathElement.groupElement("maxMipLevels"));
+    public static final VarHandle VH_imageFormatProperties$maxArrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormatProperties"), PathElement.groupElement("maxArrayLayers"));
+    public static final VarHandle VH_imageFormatProperties$sampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormatProperties"), PathElement.groupElement("sampleCounts"));
+    public static final VarHandle VH_imageFormatProperties$maxResourceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageFormatProperties"), PathElement.groupElement("maxResourceSize"));
 
-    /// Creates `VkImageFormatProperties2KHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkImageFormatProperties2KHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkImageFormatProperties2KHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageFormatProperties2KHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatProperties2KHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkImageFormatProperties2KHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageFormatProperties2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatProperties2KHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkImageFormatProperties2KHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageFormatProperties2KHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatProperties2KHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkImageFormatProperties2KHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageFormatProperties2KHR`
     public static VkImageFormatProperties2KHR alloc(SegmentAllocator allocator) { return new VkImageFormatProperties2KHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkImageFormatProperties2KHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkImageFormatProperties2KHR`
     public static VkImageFormatProperties2KHR alloc(SegmentAllocator allocator, long count) { return new VkImageFormatProperties2KHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkImageFormatProperties2KHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2); }
+    public static VkImageFormatProperties2KHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2);
+        return s;
+    }
     public VkImageFormatProperties2KHR copyFrom(VkImageFormatProperties2KHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkImageFormatProperties2KHR reinterpret(long count) { return new VkImageFormatProperties2KHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatProperties2KHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatProperties2KHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageFormatProperties` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment imageFormatProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageFormatProperties, index), LAYOUT_imageFormatProperties); }
-    /// {@return `imageFormatProperties`}
-    public MemorySegment imageFormatProperties() { return imageFormatProperties(this.segment(), 0L); }
-    /// Sets `imageFormatProperties` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageFormatProperties(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageFormatProperties, index), LAYOUT_imageFormatProperties.byteSize()); }
-    /// Sets `imageFormatProperties` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatProperties2KHR imageFormatProperties(MemorySegment value) { imageFormatProperties(this.segment(), 0L, value); return this; }
-    /// Accepts `imageFormatProperties` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageFormatProperties2KHR imageFormatProperties(Consumer<overrungl.vulkan.struct.VkImageFormatProperties> func) { func.accept(overrungl.vulkan.struct.VkImageFormatProperties.of(imageFormatProperties())); return this; }
-
-    /// Creates a slice of `VkImageFormatProperties2KHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageFormatProperties2KHR`
     public VkImageFormatProperties2KHR asSlice(long index) { return new VkImageFormatProperties2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkImageFormatProperties2KHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageFormatProperties2KHR`
     public VkImageFormatProperties2KHR asSlice(long index, long count) { return new VkImageFormatProperties2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkImageFormatProperties2KHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkImageFormatProperties2KHR at(long index, Consumer<VkImageFormatProperties2KHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatProperties2KHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatProperties2KHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `imageFormatProperties` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment imageFormatPropertiesAt(long index) { return imageFormatProperties(this.segment(), index); }
-    /// Sets `imageFormatProperties` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageFormatProperties2KHR imageFormatPropertiesAt(long index, MemorySegment value) { imageFormatProperties(this.segment(), index, value); return this; }
-    /// Accepts `imageFormatProperties` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageFormatProperties2KHR imageFormatPropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkImageFormatProperties> func) { func.accept(overrungl.vulkan.struct.VkImageFormatProperties.of(imageFormatPropertiesAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int imageFormatProperties$maxExtent$widthAt(long index) { return (int) VH_imageFormatProperties$maxExtent$width.get(this.segment(), 0L, index); }
+    public int imageFormatProperties$maxExtent$heightAt(long index) { return (int) VH_imageFormatProperties$maxExtent$height.get(this.segment(), 0L, index); }
+    public int imageFormatProperties$maxExtent$depthAt(long index) { return (int) VH_imageFormatProperties$maxExtent$depth.get(this.segment(), 0L, index); }
+    public int imageFormatProperties$maxMipLevelsAt(long index) { return (int) VH_imageFormatProperties$maxMipLevels.get(this.segment(), 0L, index); }
+    public int imageFormatProperties$maxArrayLayersAt(long index) { return (int) VH_imageFormatProperties$maxArrayLayers.get(this.segment(), 0L, index); }
+    public int imageFormatProperties$sampleCountsAt(long index) { return (int) VH_imageFormatProperties$sampleCounts.get(this.segment(), 0L, index); }
+    public long imageFormatProperties$maxResourceSizeAt(long index) { return (long) VH_imageFormatProperties$maxResourceSize.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int imageFormatProperties$maxExtent$width() { return (int) VH_imageFormatProperties$maxExtent$width.get(this.segment(), 0L, 0L); }
+    public int imageFormatProperties$maxExtent$height() { return (int) VH_imageFormatProperties$maxExtent$height.get(this.segment(), 0L, 0L); }
+    public int imageFormatProperties$maxExtent$depth() { return (int) VH_imageFormatProperties$maxExtent$depth.get(this.segment(), 0L, 0L); }
+    public int imageFormatProperties$maxMipLevels() { return (int) VH_imageFormatProperties$maxMipLevels.get(this.segment(), 0L, 0L); }
+    public int imageFormatProperties$maxArrayLayers() { return (int) VH_imageFormatProperties$maxArrayLayers.get(this.segment(), 0L, 0L); }
+    public int imageFormatProperties$sampleCounts() { return (int) VH_imageFormatProperties$sampleCounts.get(this.segment(), 0L, 0L); }
+    public long imageFormatProperties$maxResourceSize() { return (long) VH_imageFormatProperties$maxResourceSize.get(this.segment(), 0L, 0L); }
+    public VkImageFormatProperties2KHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxExtent$widthAt(long index, int value) { VH_imageFormatProperties$maxExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxExtent$heightAt(long index, int value) { VH_imageFormatProperties$maxExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxExtent$depthAt(long index, int value) { VH_imageFormatProperties$maxExtent$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxMipLevelsAt(long index, int value) { VH_imageFormatProperties$maxMipLevels.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxArrayLayersAt(long index, int value) { VH_imageFormatProperties$maxArrayLayers.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$sampleCountsAt(long index, int value) { VH_imageFormatProperties$sampleCounts.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxResourceSizeAt(long index, long value) { VH_imageFormatProperties$maxResourceSize.set(this.segment(), 0L, index, value); return this; }
+    public VkImageFormatProperties2KHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatProperties2KHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxExtent$width(int value) { VH_imageFormatProperties$maxExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxExtent$height(int value) { VH_imageFormatProperties$maxExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxExtent$depth(int value) { VH_imageFormatProperties$maxExtent$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxMipLevels(int value) { VH_imageFormatProperties$maxMipLevels.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxArrayLayers(int value) { VH_imageFormatProperties$maxArrayLayers.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$sampleCounts(int value) { VH_imageFormatProperties$sampleCounts.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageFormatProperties2KHR imageFormatProperties$maxResourceSize(long value) { VH_imageFormatProperties$maxResourceSize.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkImageFormatProperties2KHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkImageFormatProperties2KHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkImageFormatProperties2KHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkImageFormatProperties2KHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _imageFormatPropertiesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageFormatProperties, index), LAYOUT_imageFormatProperties); }
+    public MemorySegment _imageFormatProperties() { return _imageFormatPropertiesAt(0L); }
+    public VkImageFormatProperties2KHR _imageFormatPropertiesAt(long index, MemorySegment src) { _imageFormatPropertiesAt(index).copyFrom(src); return this; }
+    public VkImageFormatProperties2KHR _imageFormatProperties(MemorySegment src) { return _imageFormatPropertiesAt(0L, src); }
 }

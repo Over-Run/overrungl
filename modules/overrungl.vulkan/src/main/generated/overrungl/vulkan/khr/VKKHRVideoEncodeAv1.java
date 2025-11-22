@@ -1,9 +1,15 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_video_encode_av1` - device extension
 public final class VKKHRVideoEncodeAv1 {
+    public static final int VK_KHR_VIDEO_ENCODE_AV1_SPEC_VERSION = 1;
+    public static final String VK_KHR_VIDEO_ENCODE_AV1_EXTENSION_NAME = "VK_KHR_video_encode_av1";
+    public static final int VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
     public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR = 0;
     public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR = 1;
     public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR = 2;
@@ -26,8 +32,6 @@ public final class VKKHRVideoEncodeAv1 {
     public static final int VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR = 0x00000002;
     public static final int VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR = 0x00000004;
     public static final int VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR = 0x00000008;
-    public static final int VK_KHR_VIDEO_ENCODE_AV1_SPEC_VERSION = 1;
-    public static final String VK_KHR_VIDEO_ENCODE_AV1_EXTENSION_NAME = "VK_KHR_video_encode_av1";
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_CAPABILITIES_KHR = 1000513000;
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000513001;
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PICTURE_INFO_KHR = 1000513002;
@@ -40,8 +44,5 @@ public final class VKKHRVideoEncodeAv1 {
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR = 1000513009;
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR = 1000513010;
     public static final int VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR = 0x00040000;
-    public static final int VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
-
     private VKKHRVideoEncodeAv1() {}
-
 }

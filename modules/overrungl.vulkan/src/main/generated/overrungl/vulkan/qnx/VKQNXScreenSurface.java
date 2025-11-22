@@ -11,17 +11,16 @@ public final class VKQNXScreenSurface {
     public static final int VK_QNX_SCREEN_SURFACE_SPEC_VERSION = 1;
     public static final String VK_QNX_SCREEN_SURFACE_EXTENSION_NAME = "VK_QNX_screen_surface";
     public static final int VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX = 1000378000;
+    private VKQNXScreenSurface() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateScreenSurfaceQNX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceScreenPresentationSupportQNX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKQNXScreenSurface() {}
-
     /// Invokes `vkCreateScreenSurfaceQNX`.
     /// ```
-    /// (int) VkResult vkCreateScreenSurfaceQNX((struct VkInstance*) VkInstance instance, const VkScreenSurfaceCreateInfoQNX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// VkResult vkCreateScreenSurfaceQNX(VkInstance instance, const VkScreenSurfaceCreateInfoQNX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateScreenSurfaceQNX(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateScreenSurfaceQNX)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateScreenSurfaceQNX");
@@ -32,7 +31,7 @@ public final class VKQNXScreenSurface {
 
     /// Invokes `vkGetPhysicalDeviceScreenPresentationSupportQNX`.
     /// ```
-    /// (uint32_t) VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, struct _screen_window * window);
+    /// VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, struct _screen_window* window);
     /// ```
     public static int vkGetPhysicalDeviceScreenPresentationSupportQNX(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment window) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceScreenPresentationSupportQNX");

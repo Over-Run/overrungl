@@ -8,10 +8,10 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_QCOM_tile_shading` - device extension
 public final class VKQCOMTileShading {
-    public static final int VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM = 0x00000001;
-    public static final int VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM = 0x00000002;
     public static final int VK_QCOM_TILE_SHADING_SPEC_VERSION = 2;
     public static final String VK_QCOM_TILE_SHADING_EXTENSION_NAME = "VK_QCOM_tile_shading";
+    public static final int VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM = 0x00000001;
+    public static final int VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM = 0x00000002;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM = 1000309000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM = 1000309001;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM = 1000309002;
@@ -21,6 +21,7 @@ public final class VKQCOMTileShading {
     public static final long VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM = 0x8000000000000L;
     public static final long VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM = 0x10000000000000L;
     public static final int VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM = 0x00000100;
+    private VKQCOMTileShading() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdDispatchTileQCOM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdBeginPerTileExecutionQCOM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -28,11 +29,9 @@ public final class VKQCOMTileShading {
         private Handles() {}
     }
 
-    private VKQCOMTileShading() {}
-
     /// Invokes `vkCmdDispatchTileQCOM`.
     /// ```
-    /// void vkCmdDispatchTileQCOM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDispatchTileInfoQCOM* pDispatchTileInfo);
+    /// void vkCmdDispatchTileQCOM(VkCommandBuffer commandBuffer, const VkDispatchTileInfoQCOM* pDispatchTileInfo);
     /// ```
     public static void vkCmdDispatchTileQCOM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pDispatchTileInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDispatchTileQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDispatchTileQCOM");
@@ -43,7 +42,7 @@ public final class VKQCOMTileShading {
 
     /// Invokes `vkCmdBeginPerTileExecutionQCOM`.
     /// ```
-    /// void vkCmdBeginPerTileExecutionQCOM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPerTileBeginInfoQCOM* pPerTileBeginInfo);
+    /// void vkCmdBeginPerTileExecutionQCOM(VkCommandBuffer commandBuffer, const VkPerTileBeginInfoQCOM* pPerTileBeginInfo);
     /// ```
     public static void vkCmdBeginPerTileExecutionQCOM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPerTileBeginInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginPerTileExecutionQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginPerTileExecutionQCOM");
@@ -54,7 +53,7 @@ public final class VKQCOMTileShading {
 
     /// Invokes `vkCmdEndPerTileExecutionQCOM`.
     /// ```
-    /// void vkCmdEndPerTileExecutionQCOM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPerTileEndInfoQCOM* pPerTileEndInfo);
+    /// void vkCmdEndPerTileExecutionQCOM(VkCommandBuffer commandBuffer, const VkPerTileEndInfoQCOM* pPerTileEndInfo);
     /// ```
     public static void vkCmdEndPerTileExecutionQCOM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPerTileEndInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndPerTileExecutionQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndPerTileExecutionQCOM");

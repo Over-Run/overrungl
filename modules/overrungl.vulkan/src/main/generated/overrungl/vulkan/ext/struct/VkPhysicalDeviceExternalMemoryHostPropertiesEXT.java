@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint64_t) VkDeviceSize minImportedHostPointerAlignment;
-/// };
+///     VkDeviceSize minImportedHostPointerAlignment;
+/// }
 /// ```
 public final class VkPhysicalDeviceExternalMemoryHostPropertiesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceExternalMemoryHostPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("minImportedHostPointerAlignment")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `minImportedHostPointerAlignment`.
     public static final long OFFSET_minImportedHostPointerAlignment = LAYOUT.byteOffset(PathElement.groupElement("minImportedHostPointerAlignment"));
-    /// The memory layout of `minImportedHostPointerAlignment`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_minImportedHostPointerAlignment = LAYOUT.select(PathElement.groupElement("minImportedHostPointerAlignment"));
-    /// The [VarHandle] of `minImportedHostPointerAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_minImportedHostPointerAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minImportedHostPointerAlignment"));
 
-    /// Creates `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceExternalMemoryHostPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceExternalMemoryHostPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceExternalMemoryHostPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceExternalMemoryHostPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceExternalMemoryHostPropertiesEXT`
     public static VkPhysicalDeviceExternalMemoryHostPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceExternalMemoryHostPropertiesEXT`
     public static VkPhysicalDeviceExternalMemoryHostPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceExternalMemoryHostPropertiesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTExternalMemoryHost.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT); }
+    public static VkPhysicalDeviceExternalMemoryHostPropertiesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTExternalMemoryHost.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT);
+        return s;
+    }
     public VkPhysicalDeviceExternalMemoryHostPropertiesEXT copyFrom(VkPhysicalDeviceExternalMemoryHostPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceExternalMemoryHostPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `minImportedHostPointerAlignment` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long minImportedHostPointerAlignment(MemorySegment segment, long index) { return (long) VH_minImportedHostPointerAlignment.get(segment, 0L, index); }
-    /// {@return `minImportedHostPointerAlignment`}
-    public long minImportedHostPointerAlignment() { return minImportedHostPointerAlignment(this.segment(), 0L); }
-    /// Sets `minImportedHostPointerAlignment` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minImportedHostPointerAlignment(MemorySegment segment, long index, long value) { VH_minImportedHostPointerAlignment.set(segment, 0L, index, value); }
-    /// Sets `minImportedHostPointerAlignment` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT minImportedHostPointerAlignment(long value) { minImportedHostPointerAlignment(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceExternalMemoryHostPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceExternalMemoryHostPropertiesEXT`
     public VkPhysicalDeviceExternalMemoryHostPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceExternalMemoryHostPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceExternalMemoryHostPropertiesEXT`
     public VkPhysicalDeviceExternalMemoryHostPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceExternalMemoryHostPropertiesEXT at(long index, Consumer<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `minImportedHostPointerAlignment` at the given index}
-    /// @param index the index of the struct buffer
-    public long minImportedHostPointerAlignmentAt(long index) { return minImportedHostPointerAlignment(this.segment(), index); }
-    /// Sets `minImportedHostPointerAlignment` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT minImportedHostPointerAlignmentAt(long index, long value) { minImportedHostPointerAlignment(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long minImportedHostPointerAlignmentAt(long index) { return (long) VH_minImportedHostPointerAlignment.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long minImportedHostPointerAlignment() { return (long) VH_minImportedHostPointerAlignment.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT minImportedHostPointerAlignmentAt(long index, long value) { VH_minImportedHostPointerAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT minImportedHostPointerAlignment(long value) { VH_minImportedHostPointerAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _minImportedHostPointerAlignmentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minImportedHostPointerAlignment, index), LAYOUT_minImportedHostPointerAlignment); }
+    public MemorySegment _minImportedHostPointerAlignment() { return _minImportedHostPointerAlignmentAt(0L); }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT _minImportedHostPointerAlignmentAt(long index, MemorySegment src) { _minImportedHostPointerAlignmentAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT _minImportedHostPointerAlignment(MemorySegment src) { return _minImportedHostPointerAlignmentAt(0L, src); }
 }

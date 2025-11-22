@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceGroupPresentInfoKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t swapchainCount;
 ///     const uint32_t* pDeviceMasks;
-///     (int) VkDeviceGroupPresentModeFlagBitsKHR mode;
-/// };
+///     VkDeviceGroupPresentModeFlagBitsKHR mode;
+/// }
 /// ```
 public final class VkDeviceGroupPresentInfoKHR extends GroupType {
-    /// The struct layout of `VkDeviceGroupPresentInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -29,223 +27,77 @@ public final class VkDeviceGroupPresentInfoKHR extends GroupType {
         ValueLayout.ADDRESS.withName("pDeviceMasks"),
         ValueLayout.JAVA_INT.withName("mode")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `swapchainCount`.
     public static final long OFFSET_swapchainCount = LAYOUT.byteOffset(PathElement.groupElement("swapchainCount"));
-    /// The memory layout of `swapchainCount`.
-    public static final MemoryLayout LAYOUT_swapchainCount = LAYOUT.select(PathElement.groupElement("swapchainCount"));
-    /// The [VarHandle] of `swapchainCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_swapchainCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainCount"));
-    /// The byte offset of `pDeviceMasks`.
     public static final long OFFSET_pDeviceMasks = LAYOUT.byteOffset(PathElement.groupElement("pDeviceMasks"));
-    /// The memory layout of `pDeviceMasks`.
-    public static final MemoryLayout LAYOUT_pDeviceMasks = LAYOUT.select(PathElement.groupElement("pDeviceMasks"));
-    /// The [VarHandle] of `pDeviceMasks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pDeviceMasks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceMasks"));
-    /// The byte offset of `mode`.
     public static final long OFFSET_mode = LAYOUT.byteOffset(PathElement.groupElement("mode"));
-    /// The memory layout of `mode`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_swapchainCount = LAYOUT.select(PathElement.groupElement("swapchainCount"));
+    public static final MemoryLayout LAYOUT_pDeviceMasks = LAYOUT.select(PathElement.groupElement("pDeviceMasks"));
     public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
-    /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_swapchainCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainCount"));
+    public static final VarHandle VH_pDeviceMasks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceMasks"));
     public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
 
-    /// Creates `VkDeviceGroupPresentInfoKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkDeviceGroupPresentInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkDeviceGroupPresentInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDeviceGroupPresentInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceGroupPresentInfoKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkDeviceGroupPresentInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDeviceGroupPresentInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceGroupPresentInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkDeviceGroupPresentInfoKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkDeviceGroupPresentInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceGroupPresentInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkDeviceGroupPresentInfoKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDeviceGroupPresentInfoKHR`
     public static VkDeviceGroupPresentInfoKHR alloc(SegmentAllocator allocator) { return new VkDeviceGroupPresentInfoKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkDeviceGroupPresentInfoKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkDeviceGroupPresentInfoKHR`
     public static VkDeviceGroupPresentInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupPresentInfoKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkDeviceGroupPresentInfoKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRDeviceGroup.VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR); }
+    public static VkDeviceGroupPresentInfoKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRDeviceGroup.VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR);
+        return s;
+    }
     public VkDeviceGroupPresentInfoKHR copyFrom(VkDeviceGroupPresentInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkDeviceGroupPresentInfoKHR reinterpret(long count) { return new VkDeviceGroupPresentInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `swapchainCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int swapchainCount(MemorySegment segment, long index) { return (int) VH_swapchainCount.get(segment, 0L, index); }
-    /// {@return `swapchainCount`}
-    public int swapchainCount() { return swapchainCount(this.segment(), 0L); }
-    /// Sets `swapchainCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void swapchainCount(MemorySegment segment, long index, int value) { VH_swapchainCount.set(segment, 0L, index, value); }
-    /// Sets `swapchainCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR swapchainCount(int value) { swapchainCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pDeviceMasks` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pDeviceMasks(MemorySegment segment, long index) { return (MemorySegment) VH_pDeviceMasks.get(segment, 0L, index); }
-    /// {@return `pDeviceMasks`}
-    public MemorySegment pDeviceMasks() { return pDeviceMasks(this.segment(), 0L); }
-    /// Sets `pDeviceMasks` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pDeviceMasks(MemorySegment segment, long index, MemorySegment value) { VH_pDeviceMasks.set(segment, 0L, index, value); }
-    /// Sets `pDeviceMasks` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR pDeviceMasks(MemorySegment value) { pDeviceMasks(this.segment(), 0L, value); return this; }
-
-    /// {@return `mode` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
-    /// {@return `mode`}
-    public int mode() { return mode(this.segment(), 0L); }
-    /// Sets `mode` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
-    /// Sets `mode` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR mode(int value) { mode(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkDeviceGroupPresentInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDeviceGroupPresentInfoKHR`
     public VkDeviceGroupPresentInfoKHR asSlice(long index) { return new VkDeviceGroupPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkDeviceGroupPresentInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDeviceGroupPresentInfoKHR`
     public VkDeviceGroupPresentInfoKHR asSlice(long index, long count) { return new VkDeviceGroupPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkDeviceGroupPresentInfoKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkDeviceGroupPresentInfoKHR at(long index, Consumer<VkDeviceGroupPresentInfoKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `swapchainCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int swapchainCountAt(long index) { return swapchainCount(this.segment(), index); }
-    /// Sets `swapchainCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR swapchainCountAt(long index, int value) { swapchainCount(this.segment(), index, value); return this; }
-
-    /// {@return `pDeviceMasks` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pDeviceMasksAt(long index) { return pDeviceMasks(this.segment(), index); }
-    /// Sets `pDeviceMasks` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR pDeviceMasksAt(long index, MemorySegment value) { pDeviceMasks(this.segment(), index, value); return this; }
-
-    /// {@return `mode` at the given index}
-    /// @param index the index of the struct buffer
-    public int modeAt(long index) { return mode(this.segment(), index); }
-    /// Sets `mode` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceGroupPresentInfoKHR modeAt(long index, int value) { mode(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int swapchainCountAt(long index) { return (int) VH_swapchainCount.get(this.segment(), 0L, index); }
+    public MemorySegment pDeviceMasksAt(long index) { return (MemorySegment) VH_pDeviceMasks.get(this.segment(), 0L, index); }
+    public int modeAt(long index) { return (int) VH_mode.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int swapchainCount() { return (int) VH_swapchainCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pDeviceMasks() { return (MemorySegment) VH_pDeviceMasks.get(this.segment(), 0L, 0L); }
+    public int mode() { return (int) VH_mode.get(this.segment(), 0L, 0L); }
+    public VkDeviceGroupPresentInfoKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkDeviceGroupPresentInfoKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkDeviceGroupPresentInfoKHR swapchainCountAt(long index, int value) { VH_swapchainCount.set(this.segment(), 0L, index, value); return this; }
+    public VkDeviceGroupPresentInfoKHR pDeviceMasksAt(long index, MemorySegment value) { VH_pDeviceMasks.set(this.segment(), 0L, index, value); return this; }
+    public VkDeviceGroupPresentInfoKHR modeAt(long index, int value) { VH_mode.set(this.segment(), 0L, index, value); return this; }
+    public VkDeviceGroupPresentInfoKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDeviceGroupPresentInfoKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDeviceGroupPresentInfoKHR swapchainCount(int value) { VH_swapchainCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDeviceGroupPresentInfoKHR pDeviceMasks(MemorySegment value) { VH_pDeviceMasks.set(this.segment(), 0L, 0L, value); return this; }
+    public VkDeviceGroupPresentInfoKHR mode(int value) { VH_mode.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkDeviceGroupPresentInfoKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkDeviceGroupPresentInfoKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkDeviceGroupPresentInfoKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkDeviceGroupPresentInfoKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _swapchainCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_swapchainCount, index), LAYOUT_swapchainCount); }
+    public MemorySegment _swapchainCount() { return _swapchainCountAt(0L); }
+    public VkDeviceGroupPresentInfoKHR _swapchainCountAt(long index, MemorySegment src) { _swapchainCountAt(index).copyFrom(src); return this; }
+    public VkDeviceGroupPresentInfoKHR _swapchainCount(MemorySegment src) { return _swapchainCountAt(0L, src); }
+    public MemorySegment _pDeviceMasksAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pDeviceMasks, index), LAYOUT_pDeviceMasks); }
+    public MemorySegment _pDeviceMasks() { return _pDeviceMasksAt(0L); }
+    public VkDeviceGroupPresentInfoKHR _pDeviceMasksAt(long index, MemorySegment src) { _pDeviceMasksAt(index).copyFrom(src); return this; }
+    public VkDeviceGroupPresentInfoKHR _pDeviceMasks(MemorySegment src) { return _pDeviceMasksAt(0L, src); }
+    public MemorySegment _modeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_mode, index), LAYOUT_mode); }
+    public MemorySegment _mode() { return _modeAt(0L); }
+    public VkDeviceGroupPresentInfoKHR _modeAt(long index, MemorySegment src) { _modeAt(index).copyFrom(src); return this; }
+    public VkDeviceGroupPresentInfoKHR _mode(MemorySegment src) { return _modeAt(0L, src); }
 }

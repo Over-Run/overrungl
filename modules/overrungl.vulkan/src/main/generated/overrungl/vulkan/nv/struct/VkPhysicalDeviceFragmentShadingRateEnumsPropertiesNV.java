@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (int) VkSampleCountFlagBits maxFragmentShadingRateInvocationCount;
-/// };
+///     VkSampleCountFlagBits maxFragmentShadingRateInvocationCount;
+/// }
 /// ```
 public final class VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maxFragmentShadingRateInvocationCount")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `maxFragmentShadingRateInvocationCount`.
     public static final long OFFSET_maxFragmentShadingRateInvocationCount = LAYOUT.byteOffset(PathElement.groupElement("maxFragmentShadingRateInvocationCount"));
-    /// The memory layout of `maxFragmentShadingRateInvocationCount`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_maxFragmentShadingRateInvocationCount = LAYOUT.select(PathElement.groupElement("maxFragmentShadingRateInvocationCount"));
-    /// The [VarHandle] of `maxFragmentShadingRateInvocationCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_maxFragmentShadingRateInvocationCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentShadingRateInvocationCount"));
 
-    /// Creates `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`
     public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`
     public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVFragmentShadingRateEnums.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV); }
+    public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVFragmentShadingRateEnums.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV);
+        return s;
+    }
     public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV copyFrom(VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV reinterpret(long count) { return new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxFragmentShadingRateInvocationCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxFragmentShadingRateInvocationCount(MemorySegment segment, long index) { return (int) VH_maxFragmentShadingRateInvocationCount.get(segment, 0L, index); }
-    /// {@return `maxFragmentShadingRateInvocationCount`}
-    public int maxFragmentShadingRateInvocationCount() { return maxFragmentShadingRateInvocationCount(this.segment(), 0L); }
-    /// Sets `maxFragmentShadingRateInvocationCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxFragmentShadingRateInvocationCount(MemorySegment segment, long index, int value) { VH_maxFragmentShadingRateInvocationCount.set(segment, 0L, index, value); }
-    /// Sets `maxFragmentShadingRateInvocationCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV maxFragmentShadingRateInvocationCount(int value) { maxFragmentShadingRateInvocationCount(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`
     public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`
     public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV at(long index, Consumer<VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `maxFragmentShadingRateInvocationCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxFragmentShadingRateInvocationCountAt(long index) { return maxFragmentShadingRateInvocationCount(this.segment(), index); }
-    /// Sets `maxFragmentShadingRateInvocationCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV maxFragmentShadingRateInvocationCountAt(long index, int value) { maxFragmentShadingRateInvocationCount(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int maxFragmentShadingRateInvocationCountAt(long index) { return (int) VH_maxFragmentShadingRateInvocationCount.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int maxFragmentShadingRateInvocationCount() { return (int) VH_maxFragmentShadingRateInvocationCount.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV maxFragmentShadingRateInvocationCountAt(long index, int value) { VH_maxFragmentShadingRateInvocationCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV maxFragmentShadingRateInvocationCount(int value) { VH_maxFragmentShadingRateInvocationCount.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _maxFragmentShadingRateInvocationCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxFragmentShadingRateInvocationCount, index), LAYOUT_maxFragmentShadingRateInvocationCount); }
+    public MemorySegment _maxFragmentShadingRateInvocationCount() { return _maxFragmentShadingRateInvocationCountAt(0L); }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV _maxFragmentShadingRateInvocationCountAt(long index, MemorySegment src) { _maxFragmentShadingRateInvocationCountAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV _maxFragmentShadingRateInvocationCount(MemorySegment src) { return _maxFragmentShadingRateInvocationCountAt(0L, src); }
 }

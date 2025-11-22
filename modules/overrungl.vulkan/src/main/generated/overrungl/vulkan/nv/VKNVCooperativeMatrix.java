@@ -28,16 +28,15 @@ public final class VKNVCooperativeMatrix {
     public static final int VK_COMPONENT_TYPE_UINT16_NV = 8;
     public static final int VK_COMPONENT_TYPE_UINT32_NV = 9;
     public static final int VK_COMPONENT_TYPE_UINT64_NV = 10;
+    private VKNVCooperativeMatrix() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKNVCooperativeMatrix() {}
-
     /// Invokes `vkGetPhysicalDeviceCooperativeMatrixPropertiesNV`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixPropertiesNV* pProperties);
+    /// VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixPropertiesNV* pProperties);
     /// ```
     public static int vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pPropertyCount, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");

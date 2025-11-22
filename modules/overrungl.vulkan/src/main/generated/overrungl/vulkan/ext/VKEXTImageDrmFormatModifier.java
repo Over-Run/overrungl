@@ -22,16 +22,15 @@ public final class VKEXTImageDrmFormatModifier {
     public static final int VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT = 0x00000200;
     public static final int VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT = 0x00000400;
     public static final int VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT = 1000158006;
+    private VKEXTImageDrmFormatModifier() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTImageDrmFormatModifier() {}
-
     /// Invokes `vkGetImageDrmFormatModifierPropertiesEXT`.
     /// ```
-    /// (int) VkResult vkGetImageDrmFormatModifierPropertiesEXT((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, VkImageDrmFormatModifierPropertiesEXT* pProperties);
+    /// VkResult vkGetImageDrmFormatModifierPropertiesEXT(VkDevice device, VkImage image, VkImageDrmFormatModifierPropertiesEXT* pProperties);
     /// ```
     public static int vkGetImageDrmFormatModifierPropertiesEXT(@NonNull VkDevice device, long image, @NonNull MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");

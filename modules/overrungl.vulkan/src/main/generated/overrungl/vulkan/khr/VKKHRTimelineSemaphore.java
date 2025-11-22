@@ -19,6 +19,7 @@ public final class VKKHRTimelineSemaphore {
     public static final int VK_SEMAPHORE_TYPE_BINARY_KHR = 0;
     public static final int VK_SEMAPHORE_TYPE_TIMELINE_KHR = 1;
     public static final int VK_SEMAPHORE_WAIT_ANY_BIT_KHR = 0x00000001;
+    private VKKHRTimelineSemaphore() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetSemaphoreCounterValueKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkWaitSemaphoresKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
@@ -26,11 +27,9 @@ public final class VKKHRTimelineSemaphore {
         private Handles() {}
     }
 
-    private VKKHRTimelineSemaphore() {}
-
     /// Invokes `vkGetSemaphoreCounterValueKHR`.
     /// ```
-    /// (int) VkResult vkGetSemaphoreCounterValueKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSemaphore semaphore, uint64_t* pValue);
+    /// VkResult vkGetSemaphoreCounterValueKHR(VkDevice device, VkSemaphore semaphore, uint64_t* pValue);
     /// ```
     public static int vkGetSemaphoreCounterValueKHR(@NonNull VkDevice device, long semaphore, @NonNull MemorySegment pValue) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreCounterValueKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreCounterValueKHR");
@@ -41,7 +40,7 @@ public final class VKKHRTimelineSemaphore {
 
     /// Invokes `vkWaitSemaphoresKHR`.
     /// ```
-    /// (int) VkResult vkWaitSemaphoresKHR((struct VkDevice*) VkDevice device, const VkSemaphoreWaitInfo* pWaitInfo, uint64_t timeout);
+    /// VkResult vkWaitSemaphoresKHR(VkDevice device, const VkSemaphoreWaitInfo* pWaitInfo, uint64_t timeout);
     /// ```
     public static int vkWaitSemaphoresKHR(@NonNull VkDevice device, @NonNull MemorySegment pWaitInfo, long timeout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitSemaphoresKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkWaitSemaphoresKHR");
@@ -52,7 +51,7 @@ public final class VKKHRTimelineSemaphore {
 
     /// Invokes `vkSignalSemaphoreKHR`.
     /// ```
-    /// (int) VkResult vkSignalSemaphoreKHR((struct VkDevice*) VkDevice device, const VkSemaphoreSignalInfo* pSignalInfo);
+    /// VkResult vkSignalSemaphoreKHR(VkDevice device, const VkSemaphoreSignalInfo* pSignalInfo);
     /// ```
     public static int vkSignalSemaphoreKHR(@NonNull VkDevice device, @NonNull MemorySegment pSignalInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSignalSemaphoreKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkSignalSemaphoreKHR");

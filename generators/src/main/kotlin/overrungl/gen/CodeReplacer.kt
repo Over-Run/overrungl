@@ -19,6 +19,10 @@ package overrungl.gen
 import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.exists
+import kotlin.io.path.invariantSeparatorsPathString
+
+private const val ACTUALLY_WRITE = true
+private val FILTER: Regex? = null
 
 fun replaceCode(originalCode: String, replacingCode: String): String {
     check(originalCode.indexOf(GENERATOR_BEGIN) != -1 && originalCode.indexOf(GENERATOR_END) != -1) { "Generator region not found" }
@@ -28,6 +32,9 @@ fun replaceCode(originalCode: String, replacingCode: String): String {
 
 // do not write if contents are equal
 fun writeString(path: Path, content: String) {
+    if (FILTER != null && !FILTER.matches(path.invariantSeparatorsPathString)) return
     if (path.exists() && Files.readString(path) == content) return
-    Files.writeString(path, content)
+    if (ACTUALLY_WRITE) {
+        Files.writeString(path, content)
+    }
 }

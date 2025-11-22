@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,235 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkShaderModuleIdentifierEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t identifierSize;
-///     uint8_t identifier[32];
-/// };
+///     uint8_t identifier[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT];
+/// }
 /// ```
 public final class VkShaderModuleIdentifierEXT extends GroupType {
-    /// The struct layout of `VkShaderModuleIdentifierEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("identifierSize"),
-        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_BYTE).withName("identifier")
+        MemoryLayout.sequenceLayout(overrungl.vulkan.ext.VKEXTShaderModuleIdentifier.VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT, ValueLayout.JAVA_BYTE).withName("identifier")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `identifierSize`.
     public static final long OFFSET_identifierSize = LAYOUT.byteOffset(PathElement.groupElement("identifierSize"));
-    /// The memory layout of `identifierSize`.
-    public static final MemoryLayout LAYOUT_identifierSize = LAYOUT.select(PathElement.groupElement("identifierSize"));
-    /// The [VarHandle] of `identifierSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_identifierSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("identifierSize"));
-    /// The byte offset of `identifier`.
     public static final long OFFSET_identifier = LAYOUT.byteOffset(PathElement.groupElement("identifier"));
-    /// The memory layout of `identifier`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_identifierSize = LAYOUT.select(PathElement.groupElement("identifierSize"));
     public static final MemoryLayout LAYOUT_identifier = LAYOUT.select(PathElement.groupElement("identifier"));
-    /// The [VarHandle] of `identifier` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_identifierSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("identifierSize"));
     public static final VarHandle VH_identifier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("identifier"), PathElement.sequenceElement());
 
-    /// Creates `VkShaderModuleIdentifierEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkShaderModuleIdentifierEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkShaderModuleIdentifierEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkShaderModuleIdentifierEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkShaderModuleIdentifierEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkShaderModuleIdentifierEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkShaderModuleIdentifierEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkShaderModuleIdentifierEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkShaderModuleIdentifierEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkShaderModuleIdentifierEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkShaderModuleIdentifierEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkShaderModuleIdentifierEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkShaderModuleIdentifierEXT`
     public static VkShaderModuleIdentifierEXT alloc(SegmentAllocator allocator) { return new VkShaderModuleIdentifierEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkShaderModuleIdentifierEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkShaderModuleIdentifierEXT`
     public static VkShaderModuleIdentifierEXT alloc(SegmentAllocator allocator, long count) { return new VkShaderModuleIdentifierEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkShaderModuleIdentifierEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTShaderModuleIdentifier.VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT); }
+    public static VkShaderModuleIdentifierEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTShaderModuleIdentifier.VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT);
+        return s;
+    }
     public VkShaderModuleIdentifierEXT copyFrom(VkShaderModuleIdentifierEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkShaderModuleIdentifierEXT reinterpret(long count) { return new VkShaderModuleIdentifierEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `identifierSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int identifierSize(MemorySegment segment, long index) { return (int) VH_identifierSize.get(segment, 0L, index); }
-    /// {@return `identifierSize`}
-    public int identifierSize() { return identifierSize(this.segment(), 0L); }
-    /// Sets `identifierSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void identifierSize(MemorySegment segment, long index, int value) { VH_identifierSize.set(segment, 0L, index, value); }
-    /// Sets `identifierSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT identifierSize(int value) { identifierSize(this.segment(), 0L, value); return this; }
-
-    /// {@return `identifier` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment identifier(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_identifier, index), LAYOUT_identifier); }
-    /// {@return `identifier` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    public static byte identifier(MemorySegment segment, long index, long index0) { return (byte) VH_identifier.get(segment, 0L, index, index0); }
-    /// {@return `identifier`}
-    public MemorySegment identifier() { return identifier(this.segment(), 0L); }
-    /// {@return `identifier`}
-    /// @param index0 the Index 0 of the array
-    public byte identifier(long index0) { return identifier(this.segment(), 0L, index0); }
-    /// Sets `identifier` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void identifier(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_identifier, index), LAYOUT_identifier.byteSize()); }
-    /// Sets `identifier` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    public static void identifier(MemorySegment segment, long index, long index0, byte value) { VH_identifier.set(segment, 0L, index, index0, value); }
-    /// Sets `identifier` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT identifier(MemorySegment value) { identifier(this.segment(), 0L, value); return this; }
-    /// Sets `identifier` with the given value.
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT identifier(long index0, byte value) { identifier(this.segment(), 0L, index0, value); return this; }
-
-    /// Creates a slice of `VkShaderModuleIdentifierEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkShaderModuleIdentifierEXT`
     public VkShaderModuleIdentifierEXT asSlice(long index) { return new VkShaderModuleIdentifierEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkShaderModuleIdentifierEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkShaderModuleIdentifierEXT`
     public VkShaderModuleIdentifierEXT asSlice(long index, long count) { return new VkShaderModuleIdentifierEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkShaderModuleIdentifierEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkShaderModuleIdentifierEXT at(long index, Consumer<VkShaderModuleIdentifierEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `identifierSize` at the given index}
-    /// @param index the index of the struct buffer
-    public int identifierSizeAt(long index) { return identifierSize(this.segment(), index); }
-    /// Sets `identifierSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT identifierSizeAt(long index, int value) { identifierSize(this.segment(), index, value); return this; }
-
-    /// {@return `identifier` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment identifierAt(long index) { return identifier(this.segment(), index); }
-    /// {@return `identifier` at the given index}
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-        public byte identifierAt(long index, long index0) { return identifier(this.segment(), index, index0); }
-    /// Sets `identifier` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT identifierAt(long index, MemorySegment value) { identifier(this.segment(), index, value); return this; }
-    /// Sets `identifier` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    /// @return `this`
-    public VkShaderModuleIdentifierEXT identifierAt(long index, long index0, byte value) { identifier(this.segment(), index, index0, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int identifierSizeAt(long index) { return (int) VH_identifierSize.get(this.segment(), 0L, index); }
+    public byte identifierAt(long index, long index0) { return (byte) VH_identifier.get(this.segment(), 0L, index, index0); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int identifierSize() { return (int) VH_identifierSize.get(this.segment(), 0L, 0L); }
+    public byte identifier(long index0) { return (byte) VH_identifier.get(this.segment(), 0L, 0L, index0); }
+    public VkShaderModuleIdentifierEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkShaderModuleIdentifierEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkShaderModuleIdentifierEXT identifierSizeAt(long index, int value) { VH_identifierSize.set(this.segment(), 0L, index, value); return this; }
+    public VkShaderModuleIdentifierEXT identifierAt(long index, long index0, byte value) { VH_identifier.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkShaderModuleIdentifierEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkShaderModuleIdentifierEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkShaderModuleIdentifierEXT identifierSize(int value) { VH_identifierSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkShaderModuleIdentifierEXT identifier(long index0, byte value) { VH_identifier.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkShaderModuleIdentifierEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkShaderModuleIdentifierEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkShaderModuleIdentifierEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkShaderModuleIdentifierEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _identifierSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_identifierSize, index), LAYOUT_identifierSize); }
+    public MemorySegment _identifierSize() { return _identifierSizeAt(0L); }
+    public VkShaderModuleIdentifierEXT _identifierSizeAt(long index, MemorySegment src) { _identifierSizeAt(index).copyFrom(src); return this; }
+    public VkShaderModuleIdentifierEXT _identifierSize(MemorySegment src) { return _identifierSizeAt(0L, src); }
+    public MemorySegment _identifierAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_identifier, index), LAYOUT_identifier); }
+    public MemorySegment _identifier() { return _identifierAt(0L); }
+    public VkShaderModuleIdentifierEXT _identifierAt(long index, MemorySegment src) { _identifierAt(index).copyFrom(src); return this; }
+    public VkShaderModuleIdentifierEXT _identifier(MemorySegment src) { return _identifierAt(0L, src); }
 }

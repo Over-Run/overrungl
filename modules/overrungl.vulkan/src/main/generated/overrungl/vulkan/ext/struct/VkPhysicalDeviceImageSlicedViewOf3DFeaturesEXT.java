@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,66 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (uint32_t) VkBool32 imageSlicedViewOf3D;
-/// };
+///     VkBool32 imageSlicedViewOf3D;
+/// }
 /// ```
 public final class VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("imageSlicedViewOf3D")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `imageSlicedViewOf3D`.
     public static final long OFFSET_imageSlicedViewOf3D = LAYOUT.byteOffset(PathElement.groupElement("imageSlicedViewOf3D"));
-    /// The memory layout of `imageSlicedViewOf3D`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_imageSlicedViewOf3D = LAYOUT.select(PathElement.groupElement("imageSlicedViewOf3D"));
-    /// The [VarHandle] of `imageSlicedViewOf3D` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     public static final VarHandle VH_imageSlicedViewOf3D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageSlicedViewOf3D"));
 
-    /// Creates `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`
     public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`
     public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTImageSlicedViewOf3d.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT); }
+    public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTImageSlicedViewOf3d.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT);
+        return s;
+    }
     public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT copyFrom(VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT reinterpret(long count) { return new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageSlicedViewOf3D` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int imageSlicedViewOf3D(MemorySegment segment, long index) { return (int) VH_imageSlicedViewOf3D.get(segment, 0L, index); }
-    /// {@return `imageSlicedViewOf3D`}
-    public int imageSlicedViewOf3D() { return imageSlicedViewOf3D(this.segment(), 0L); }
-    /// Sets `imageSlicedViewOf3D` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageSlicedViewOf3D(MemorySegment segment, long index, int value) { VH_imageSlicedViewOf3D.set(segment, 0L, index, value); }
-    /// Sets `imageSlicedViewOf3D` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT imageSlicedViewOf3D(int value) { imageSlicedViewOf3D(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`
     public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`
     public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT at(long index, Consumer<VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `imageSlicedViewOf3D` at the given index}
-    /// @param index the index of the struct buffer
-    public int imageSlicedViewOf3DAt(long index) { return imageSlicedViewOf3D(this.segment(), index); }
-    /// Sets `imageSlicedViewOf3D` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT imageSlicedViewOf3DAt(long index, int value) { imageSlicedViewOf3D(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int imageSlicedViewOf3DAt(long index) { return (int) VH_imageSlicedViewOf3D.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int imageSlicedViewOf3D() { return (int) VH_imageSlicedViewOf3D.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT imageSlicedViewOf3DAt(long index, int value) { VH_imageSlicedViewOf3D.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT imageSlicedViewOf3D(int value) { VH_imageSlicedViewOf3D.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _imageSlicedViewOf3DAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageSlicedViewOf3D, index), LAYOUT_imageSlicedViewOf3D); }
+    public MemorySegment _imageSlicedViewOf3D() { return _imageSlicedViewOf3DAt(0L); }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT _imageSlicedViewOf3DAt(long index, MemorySegment src) { _imageSlicedViewOf3DAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT _imageSlicedViewOf3D(MemorySegment src) { return _imageSlicedViewOf3DAt(0L, src); }
 }

@@ -18,16 +18,15 @@ public final class VKEXTToolingInfo {
     public static final int VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT_EXT = 0x00000010;
     public static final int VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT = 0x00000020;
     public static final int VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT = 0x00000040;
+    private VKEXTToolingInfo() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceToolPropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKEXTToolingInfo() {}
-
     /// Invokes `vkGetPhysicalDeviceToolPropertiesEXT`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceToolPropertiesEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties);
+    /// VkResult vkGetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint32_t* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties);
     /// ```
     public static int vkGetPhysicalDeviceToolPropertiesEXT(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pToolCount, @NonNull MemorySegment pToolProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolPropertiesEXT");

@@ -13,17 +13,16 @@ public final class VKKHRExternalMemoryFd {
     public static final int VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR = 1000074000;
     public static final int VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR = 1000074001;
     public static final int VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR = 1000074002;
+    private VKKHRExternalMemoryFd() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetMemoryFdKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetMemoryFdPropertiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRExternalMemoryFd() {}
-
     /// Invokes `vkGetMemoryFdKHR`.
     /// ```
-    /// (int) VkResult vkGetMemoryFdKHR((struct VkDevice*) VkDevice device, const VkMemoryGetFdInfoKHR* pGetFdInfo, int* pFd);
+    /// VkResult vkGetMemoryFdKHR(VkDevice device, const VkMemoryGetFdInfoKHR* pGetFdInfo, int* pFd);
     /// ```
     public static int vkGetMemoryFdKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetFdInfo, @NonNull MemorySegment pFd) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryFdKHR");
@@ -34,7 +33,7 @@ public final class VKKHRExternalMemoryFd {
 
     /// Invokes `vkGetMemoryFdPropertiesKHR`.
     /// ```
-    /// (int) VkResult vkGetMemoryFdPropertiesKHR((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, int fd, VkMemoryFdPropertiesKHR* pMemoryFdProperties);
+    /// VkResult vkGetMemoryFdPropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, int fd, VkMemoryFdPropertiesKHR* pMemoryFdProperties);
     /// ```
     public static int vkGetMemoryFdPropertiesKHR(@NonNull VkDevice device, int handleType, int fd, @NonNull MemorySegment pMemoryFdProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryFdPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryFdPropertiesKHR");

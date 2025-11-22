@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,180 +12,106 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSparseImageMemoryRequirements2 {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (struct VkSparseImageMemoryRequirements) VkSparseImageMemoryRequirements memoryRequirements;
-/// };
+///     VkSparseImageMemoryRequirements memoryRequirements;
+/// }
 /// ```
 public final class VkSparseImageMemoryRequirements2 extends GroupType {
-    /// The struct layout of `VkSparseImageMemoryRequirements2`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkSparseImageMemoryRequirements.LAYOUT.withName("memoryRequirements")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `memoryRequirements`.
     public static final long OFFSET_memoryRequirements = LAYOUT.byteOffset(PathElement.groupElement("memoryRequirements"));
-    /// The memory layout of `memoryRequirements`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_memoryRequirements = LAYOUT.select(PathElement.groupElement("memoryRequirements"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_memoryRequirements$formatProperties$aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("formatProperties"), PathElement.groupElement("aspectMask"));
+    public static final VarHandle VH_memoryRequirements$formatProperties$imageGranularity$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("formatProperties"), PathElement.groupElement("imageGranularity"), PathElement.groupElement("width"));
+    public static final VarHandle VH_memoryRequirements$formatProperties$imageGranularity$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("formatProperties"), PathElement.groupElement("imageGranularity"), PathElement.groupElement("height"));
+    public static final VarHandle VH_memoryRequirements$formatProperties$imageGranularity$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("formatProperties"), PathElement.groupElement("imageGranularity"), PathElement.groupElement("depth"));
+    public static final VarHandle VH_memoryRequirements$formatProperties$flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("formatProperties"), PathElement.groupElement("flags"));
+    public static final VarHandle VH_memoryRequirements$imageMipTailFirstLod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("imageMipTailFirstLod"));
+    public static final VarHandle VH_memoryRequirements$imageMipTailSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("imageMipTailSize"));
+    public static final VarHandle VH_memoryRequirements$imageMipTailOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("imageMipTailOffset"));
+    public static final VarHandle VH_memoryRequirements$imageMipTailStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryRequirements"), PathElement.groupElement("imageMipTailStride"));
 
-    /// Creates `VkSparseImageMemoryRequirements2` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkSparseImageMemoryRequirements2(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkSparseImageMemoryRequirements2` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSparseImageMemoryRequirements2 of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseImageMemoryRequirements2(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkSparseImageMemoryRequirements2` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSparseImageMemoryRequirements2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseImageMemoryRequirements2(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkSparseImageMemoryRequirements2` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSparseImageMemoryRequirements2 ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseImageMemoryRequirements2(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkSparseImageMemoryRequirements2` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSparseImageMemoryRequirements2`
     public static VkSparseImageMemoryRequirements2 alloc(SegmentAllocator allocator) { return new VkSparseImageMemoryRequirements2(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkSparseImageMemoryRequirements2` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkSparseImageMemoryRequirements2`
     public static VkSparseImageMemoryRequirements2 alloc(SegmentAllocator allocator, long count) { return new VkSparseImageMemoryRequirements2(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkSparseImageMemoryRequirements2 allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2); }
+    public static VkSparseImageMemoryRequirements2 allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2);
+        return s;
+    }
     public VkSparseImageMemoryRequirements2 copyFrom(VkSparseImageMemoryRequirements2 src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkSparseImageMemoryRequirements2 reinterpret(long count) { return new VkSparseImageMemoryRequirements2(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements2 sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements2 pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `memoryRequirements` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment memoryRequirements(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_memoryRequirements, index), LAYOUT_memoryRequirements); }
-    /// {@return `memoryRequirements`}
-    public MemorySegment memoryRequirements() { return memoryRequirements(this.segment(), 0L); }
-    /// Sets `memoryRequirements` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void memoryRequirements(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_memoryRequirements, index), LAYOUT_memoryRequirements.byteSize()); }
-    /// Sets `memoryRequirements` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements2 memoryRequirements(MemorySegment value) { memoryRequirements(this.segment(), 0L, value); return this; }
-    /// Accepts `memoryRequirements` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkSparseImageMemoryRequirements2 memoryRequirements(Consumer<overrungl.vulkan.struct.VkSparseImageMemoryRequirements> func) { func.accept(overrungl.vulkan.struct.VkSparseImageMemoryRequirements.of(memoryRequirements())); return this; }
-
-    /// Creates a slice of `VkSparseImageMemoryRequirements2`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSparseImageMemoryRequirements2`
     public VkSparseImageMemoryRequirements2 asSlice(long index) { return new VkSparseImageMemoryRequirements2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkSparseImageMemoryRequirements2`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSparseImageMemoryRequirements2`
     public VkSparseImageMemoryRequirements2 asSlice(long index, long count) { return new VkSparseImageMemoryRequirements2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkSparseImageMemoryRequirements2` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkSparseImageMemoryRequirements2 at(long index, Consumer<VkSparseImageMemoryRequirements2> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements2 sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements2 pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `memoryRequirements` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment memoryRequirementsAt(long index) { return memoryRequirements(this.segment(), index); }
-    /// Sets `memoryRequirements` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements2 memoryRequirementsAt(long index, MemorySegment value) { memoryRequirements(this.segment(), index, value); return this; }
-    /// Accepts `memoryRequirements` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkSparseImageMemoryRequirements2 memoryRequirementsAt(long index, Consumer<overrungl.vulkan.struct.VkSparseImageMemoryRequirements> func) { func.accept(overrungl.vulkan.struct.VkSparseImageMemoryRequirements.of(memoryRequirementsAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int memoryRequirements$formatProperties$aspectMaskAt(long index) { return (int) VH_memoryRequirements$formatProperties$aspectMask.get(this.segment(), 0L, index); }
+    public int memoryRequirements$formatProperties$imageGranularity$widthAt(long index) { return (int) VH_memoryRequirements$formatProperties$imageGranularity$width.get(this.segment(), 0L, index); }
+    public int memoryRequirements$formatProperties$imageGranularity$heightAt(long index) { return (int) VH_memoryRequirements$formatProperties$imageGranularity$height.get(this.segment(), 0L, index); }
+    public int memoryRequirements$formatProperties$imageGranularity$depthAt(long index) { return (int) VH_memoryRequirements$formatProperties$imageGranularity$depth.get(this.segment(), 0L, index); }
+    public int memoryRequirements$formatProperties$flagsAt(long index) { return (int) VH_memoryRequirements$formatProperties$flags.get(this.segment(), 0L, index); }
+    public int memoryRequirements$imageMipTailFirstLodAt(long index) { return (int) VH_memoryRequirements$imageMipTailFirstLod.get(this.segment(), 0L, index); }
+    public long memoryRequirements$imageMipTailSizeAt(long index) { return (long) VH_memoryRequirements$imageMipTailSize.get(this.segment(), 0L, index); }
+    public long memoryRequirements$imageMipTailOffsetAt(long index) { return (long) VH_memoryRequirements$imageMipTailOffset.get(this.segment(), 0L, index); }
+    public long memoryRequirements$imageMipTailStrideAt(long index) { return (long) VH_memoryRequirements$imageMipTailStride.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int memoryRequirements$formatProperties$aspectMask() { return (int) VH_memoryRequirements$formatProperties$aspectMask.get(this.segment(), 0L, 0L); }
+    public int memoryRequirements$formatProperties$imageGranularity$width() { return (int) VH_memoryRequirements$formatProperties$imageGranularity$width.get(this.segment(), 0L, 0L); }
+    public int memoryRequirements$formatProperties$imageGranularity$height() { return (int) VH_memoryRequirements$formatProperties$imageGranularity$height.get(this.segment(), 0L, 0L); }
+    public int memoryRequirements$formatProperties$imageGranularity$depth() { return (int) VH_memoryRequirements$formatProperties$imageGranularity$depth.get(this.segment(), 0L, 0L); }
+    public int memoryRequirements$formatProperties$flags() { return (int) VH_memoryRequirements$formatProperties$flags.get(this.segment(), 0L, 0L); }
+    public int memoryRequirements$imageMipTailFirstLod() { return (int) VH_memoryRequirements$imageMipTailFirstLod.get(this.segment(), 0L, 0L); }
+    public long memoryRequirements$imageMipTailSize() { return (long) VH_memoryRequirements$imageMipTailSize.get(this.segment(), 0L, 0L); }
+    public long memoryRequirements$imageMipTailOffset() { return (long) VH_memoryRequirements$imageMipTailOffset.get(this.segment(), 0L, 0L); }
+    public long memoryRequirements$imageMipTailStride() { return (long) VH_memoryRequirements$imageMipTailStride.get(this.segment(), 0L, 0L); }
+    public VkSparseImageMemoryRequirements2 sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$aspectMaskAt(long index, int value) { VH_memoryRequirements$formatProperties$aspectMask.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$imageGranularity$widthAt(long index, int value) { VH_memoryRequirements$formatProperties$imageGranularity$width.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$imageGranularity$heightAt(long index, int value) { VH_memoryRequirements$formatProperties$imageGranularity$height.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$imageGranularity$depthAt(long index, int value) { VH_memoryRequirements$formatProperties$imageGranularity$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$flagsAt(long index, int value) { VH_memoryRequirements$formatProperties$flags.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$imageMipTailFirstLodAt(long index, int value) { VH_memoryRequirements$imageMipTailFirstLod.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$imageMipTailSizeAt(long index, long value) { VH_memoryRequirements$imageMipTailSize.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$imageMipTailOffsetAt(long index, long value) { VH_memoryRequirements$imageMipTailOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$imageMipTailStrideAt(long index, long value) { VH_memoryRequirements$imageMipTailStride.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseImageMemoryRequirements2 sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$aspectMask(int value) { VH_memoryRequirements$formatProperties$aspectMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$imageGranularity$width(int value) { VH_memoryRequirements$formatProperties$imageGranularity$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$imageGranularity$height(int value) { VH_memoryRequirements$formatProperties$imageGranularity$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$imageGranularity$depth(int value) { VH_memoryRequirements$formatProperties$imageGranularity$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$formatProperties$flags(int value) { VH_memoryRequirements$formatProperties$flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$imageMipTailFirstLod(int value) { VH_memoryRequirements$imageMipTailFirstLod.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$imageMipTailSize(long value) { VH_memoryRequirements$imageMipTailSize.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$imageMipTailOffset(long value) { VH_memoryRequirements$imageMipTailOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseImageMemoryRequirements2 memoryRequirements$imageMipTailStride(long value) { VH_memoryRequirements$imageMipTailStride.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkSparseImageMemoryRequirements2 _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkSparseImageMemoryRequirements2 _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkSparseImageMemoryRequirements2 _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkSparseImageMemoryRequirements2 _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _memoryRequirementsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_memoryRequirements, index), LAYOUT_memoryRequirements); }
+    public MemorySegment _memoryRequirements() { return _memoryRequirementsAt(0L); }
+    public VkSparseImageMemoryRequirements2 _memoryRequirementsAt(long index, MemorySegment src) { _memoryRequirementsAt(index).copyFrom(src); return this; }
+    public VkSparseImageMemoryRequirements2 _memoryRequirements(MemorySegment src) { return _memoryRequirementsAt(0L, src); }
 }

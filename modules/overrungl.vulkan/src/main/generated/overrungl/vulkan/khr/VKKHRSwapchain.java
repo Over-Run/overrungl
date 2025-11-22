@@ -8,12 +8,12 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_swapchain` - device extension
 public final class VKKHRSwapchain {
+    public static final int VK_KHR_SWAPCHAIN_SPEC_VERSION = 70;
+    public static final String VK_KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain";
     public static final int VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR = 0x00000001;
     public static final int VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR = 0x00000002;
     public static final int VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR = 0x00000004;
     public static final int VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR = 0x00000008;
-    public static final int VK_KHR_SWAPCHAIN_SPEC_VERSION = 70;
-    public static final String VK_KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain";
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR = 1000001000;
     public static final int VK_STRUCTURE_TYPE_PRESENT_INFO_KHR = 1000001001;
     public static final int VK_IMAGE_LAYOUT_PRESENT_SRC_KHR = 1000001002;
@@ -28,6 +28,7 @@ public final class VKKHRSwapchain {
     public static final int VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR = 1000060012;
     public static final int VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR = 0x00000001;
     public static final int VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR = 0x00000002;
+    private VKKHRSwapchain() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateSwapchainKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroySwapchainKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -41,11 +42,9 @@ public final class VKKHRSwapchain {
         private Handles() {}
     }
 
-    private VKKHRSwapchain() {}
-
     /// Invokes `vkCreateSwapchainKHR`.
     /// ```
-    /// (int) VkResult vkCreateSwapchainKHR((struct VkDevice*) VkDevice device, const VkSwapchainCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain);
+    /// VkResult vkCreateSwapchainKHR(VkDevice device, const VkSwapchainCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain);
     /// ```
     public static int vkCreateSwapchainKHR(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSwapchain) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSwapchainKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSwapchainKHR");
@@ -56,7 +55,7 @@ public final class VKKHRSwapchain {
 
     /// Invokes `vkDestroySwapchainKHR`.
     /// ```
-    /// void vkDestroySwapchainKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroySwapchainKHR(@NonNull VkDevice device, long swapchain, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroySwapchainKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroySwapchainKHR");
@@ -67,7 +66,7 @@ public final class VKKHRSwapchain {
 
     /// Invokes `vkGetSwapchainImagesKHR`.
     /// ```
-    /// (int) VkResult vkGetSwapchainImagesKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, uint32_t* pSwapchainImageCount, VkImage* pSwapchainImages);
+    /// VkResult vkGetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, uint32_t* pSwapchainImageCount, VkImage* pSwapchainImages);
     /// ```
     public static int vkGetSwapchainImagesKHR(@NonNull VkDevice device, long swapchain, @NonNull MemorySegment pSwapchainImageCount, @NonNull MemorySegment pSwapchainImages) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainImagesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainImagesKHR");
@@ -78,7 +77,7 @@ public final class VKKHRSwapchain {
 
     /// Invokes `vkAcquireNextImageKHR`.
     /// ```
-    /// (int) VkResult vkAcquireNextImageKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, uint64_t timeout, (uint64_t) VkSemaphore semaphore, (uint64_t) VkFence fence, uint32_t* pImageIndex);
+    /// VkResult vkAcquireNextImageKHR(VkDevice device, VkSwapchainKHR swapchain, uint64_t timeout, VkSemaphore semaphore, VkFence fence, uint32_t* pImageIndex);
     /// ```
     public static int vkAcquireNextImageKHR(@NonNull VkDevice device, long swapchain, long timeout, long semaphore, long fence, @NonNull MemorySegment pImageIndex) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireNextImageKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireNextImageKHR");
@@ -89,7 +88,7 @@ public final class VKKHRSwapchain {
 
     /// Invokes `vkQueuePresentKHR`.
     /// ```
-    /// (int) VkResult vkQueuePresentKHR((struct VkQueue*) VkQueue queue, const VkPresentInfoKHR* pPresentInfo);
+    /// VkResult vkQueuePresentKHR(VkQueue queue, const VkPresentInfoKHR* pPresentInfo);
     /// ```
     public static int vkQueuePresentKHR(@NonNull VkQueue queue, @NonNull MemorySegment pPresentInfo) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueuePresentKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkQueuePresentKHR");
@@ -100,7 +99,7 @@ public final class VKKHRSwapchain {
 
     /// Invokes `vkGetDeviceGroupPresentCapabilitiesKHR`.
     /// ```
-    /// (int) VkResult vkGetDeviceGroupPresentCapabilitiesKHR((struct VkDevice*) VkDevice device, VkDeviceGroupPresentCapabilitiesKHR* pDeviceGroupPresentCapabilities);
+    /// VkResult vkGetDeviceGroupPresentCapabilitiesKHR(VkDevice device, VkDeviceGroupPresentCapabilitiesKHR* pDeviceGroupPresentCapabilities);
     /// ```
     public static int vkGetDeviceGroupPresentCapabilitiesKHR(@NonNull VkDevice device, @NonNull MemorySegment pDeviceGroupPresentCapabilities) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceGroupPresentCapabilitiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceGroupPresentCapabilitiesKHR");
@@ -111,7 +110,7 @@ public final class VKKHRSwapchain {
 
     /// Invokes `vkGetDeviceGroupSurfacePresentModesKHR`.
     /// ```
-    /// (int) VkResult vkGetDeviceGroupSurfacePresentModesKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSurfaceKHR surface, VkDeviceGroupPresentModeFlagsKHR* pModes);
+    /// VkResult vkGetDeviceGroupSurfacePresentModesKHR(VkDevice device, VkSurfaceKHR surface, VkDeviceGroupPresentModeFlagsKHR* pModes);
     /// ```
     public static int vkGetDeviceGroupSurfacePresentModesKHR(@NonNull VkDevice device, long surface, @NonNull MemorySegment pModes) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceGroupSurfacePresentModesKHR");
@@ -122,7 +121,7 @@ public final class VKKHRSwapchain {
 
     /// Invokes `vkGetPhysicalDevicePresentRectanglesKHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDevicePresentRectanglesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, uint32_t* pRectCount, VkRect2D* pRects);
+    /// VkResult vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pRectCount, VkRect2D* pRects);
     /// ```
     public static int vkGetPhysicalDevicePresentRectanglesKHR(@NonNull VkPhysicalDevice physicalDevice, long surface, @NonNull MemorySegment pRectCount, @NonNull MemorySegment pRects) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDevicePresentRectanglesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDevicePresentRectanglesKHR");
@@ -133,7 +132,7 @@ public final class VKKHRSwapchain {
 
     /// Invokes `vkAcquireNextImage2KHR`.
     /// ```
-    /// (int) VkResult vkAcquireNextImage2KHR((struct VkDevice*) VkDevice device, const VkAcquireNextImageInfoKHR* pAcquireInfo, uint32_t* pImageIndex);
+    /// VkResult vkAcquireNextImage2KHR(VkDevice device, const VkAcquireNextImageInfoKHR* pAcquireInfo, uint32_t* pImageIndex);
     /// ```
     public static int vkAcquireNextImage2KHR(@NonNull VkDevice device, @NonNull MemorySegment pAcquireInfo, @NonNull MemorySegment pImageIndex) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireNextImage2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireNextImage2KHR");

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,15 +12,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageResolve {
-///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers srcSubresource;
-///     (struct VkOffset3D) VkOffset3D srcOffset;
-///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers dstSubresource;
-///     (struct VkOffset3D) VkOffset3D dstOffset;
-///     (struct VkExtent3D) VkExtent3D extent;
-/// };
+///     VkImageSubresourceLayers srcSubresource;
+///     VkOffset3D srcOffset;
+///     VkImageSubresourceLayers dstSubresource;
+///     VkOffset3D dstOffset;
+///     VkExtent3D extent;
+/// }
 /// ```
 public final class VkImageResolve extends GroupType {
-    /// The struct layout of `VkImageResolve`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
         overrungl.vulkan.struct.VkOffset3D.LAYOUT.withName("srcOffset"),
@@ -29,258 +27,131 @@ public final class VkImageResolve extends GroupType {
         overrungl.vulkan.struct.VkOffset3D.LAYOUT.withName("dstOffset"),
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("extent")
     );
-    /// The byte offset of `srcSubresource`.
     public static final long OFFSET_srcSubresource = LAYOUT.byteOffset(PathElement.groupElement("srcSubresource"));
-    /// The memory layout of `srcSubresource`.
-    public static final MemoryLayout LAYOUT_srcSubresource = LAYOUT.select(PathElement.groupElement("srcSubresource"));
-    /// The byte offset of `srcOffset`.
     public static final long OFFSET_srcOffset = LAYOUT.byteOffset(PathElement.groupElement("srcOffset"));
-    /// The memory layout of `srcOffset`.
-    public static final MemoryLayout LAYOUT_srcOffset = LAYOUT.select(PathElement.groupElement("srcOffset"));
-    /// The byte offset of `dstSubresource`.
     public static final long OFFSET_dstSubresource = LAYOUT.byteOffset(PathElement.groupElement("dstSubresource"));
-    /// The memory layout of `dstSubresource`.
-    public static final MemoryLayout LAYOUT_dstSubresource = LAYOUT.select(PathElement.groupElement("dstSubresource"));
-    /// The byte offset of `dstOffset`.
     public static final long OFFSET_dstOffset = LAYOUT.byteOffset(PathElement.groupElement("dstOffset"));
-    /// The memory layout of `dstOffset`.
-    public static final MemoryLayout LAYOUT_dstOffset = LAYOUT.select(PathElement.groupElement("dstOffset"));
-    /// The byte offset of `extent`.
     public static final long OFFSET_extent = LAYOUT.byteOffset(PathElement.groupElement("extent"));
-    /// The memory layout of `extent`.
+    public static final MemoryLayout LAYOUT_srcSubresource = LAYOUT.select(PathElement.groupElement("srcSubresource"));
+    public static final MemoryLayout LAYOUT_srcOffset = LAYOUT.select(PathElement.groupElement("srcOffset"));
+    public static final MemoryLayout LAYOUT_dstSubresource = LAYOUT.select(PathElement.groupElement("dstSubresource"));
+    public static final MemoryLayout LAYOUT_dstOffset = LAYOUT.select(PathElement.groupElement("dstOffset"));
     public static final MemoryLayout LAYOUT_extent = LAYOUT.select(PathElement.groupElement("extent"));
+    public static final VarHandle VH_srcSubresource$aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcSubresource"), PathElement.groupElement("aspectMask"));
+    public static final VarHandle VH_srcSubresource$mipLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcSubresource"), PathElement.groupElement("mipLevel"));
+    public static final VarHandle VH_srcSubresource$baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcSubresource"), PathElement.groupElement("baseArrayLayer"));
+    public static final VarHandle VH_srcSubresource$layerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcSubresource"), PathElement.groupElement("layerCount"));
+    public static final VarHandle VH_srcOffset$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcOffset"), PathElement.groupElement("x"));
+    public static final VarHandle VH_srcOffset$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcOffset"), PathElement.groupElement("y"));
+    public static final VarHandle VH_srcOffset$z = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcOffset"), PathElement.groupElement("z"));
+    public static final VarHandle VH_dstSubresource$aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSubresource"), PathElement.groupElement("aspectMask"));
+    public static final VarHandle VH_dstSubresource$mipLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSubresource"), PathElement.groupElement("mipLevel"));
+    public static final VarHandle VH_dstSubresource$baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSubresource"), PathElement.groupElement("baseArrayLayer"));
+    public static final VarHandle VH_dstSubresource$layerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstSubresource"), PathElement.groupElement("layerCount"));
+    public static final VarHandle VH_dstOffset$x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstOffset"), PathElement.groupElement("x"));
+    public static final VarHandle VH_dstOffset$y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstOffset"), PathElement.groupElement("y"));
+    public static final VarHandle VH_dstOffset$z = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstOffset"), PathElement.groupElement("z"));
+    public static final VarHandle VH_extent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_extent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_extent$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extent"), PathElement.groupElement("depth"));
 
-    /// Creates `VkImageResolve` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkImageResolve(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkImageResolve` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageResolve of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageResolve(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkImageResolve` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageResolve ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageResolve(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkImageResolve` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageResolve ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageResolve(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkImageResolve` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageResolve`
     public static VkImageResolve alloc(SegmentAllocator allocator) { return new VkImageResolve(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkImageResolve` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkImageResolve`
     public static VkImageResolve alloc(SegmentAllocator allocator, long count) { return new VkImageResolve(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkImageResolve copyFrom(VkImageResolve src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkImageResolve reinterpret(long count) { return new VkImageResolve(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `srcSubresource` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment srcSubresource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_srcSubresource, index), LAYOUT_srcSubresource); }
-    /// {@return `srcSubresource`}
-    public MemorySegment srcSubresource() { return srcSubresource(this.segment(), 0L); }
-    /// Sets `srcSubresource` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcSubresource(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_srcSubresource, index), LAYOUT_srcSubresource.byteSize()); }
-    /// Sets `srcSubresource` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve srcSubresource(MemorySegment value) { srcSubresource(this.segment(), 0L, value); return this; }
-    /// Accepts `srcSubresource` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve srcSubresource(Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(srcSubresource())); return this; }
-
-    /// {@return `srcOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment srcOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_srcOffset, index), LAYOUT_srcOffset); }
-    /// {@return `srcOffset`}
-    public MemorySegment srcOffset() { return srcOffset(this.segment(), 0L); }
-    /// Sets `srcOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcOffset(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_srcOffset, index), LAYOUT_srcOffset.byteSize()); }
-    /// Sets `srcOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve srcOffset(MemorySegment value) { srcOffset(this.segment(), 0L, value); return this; }
-    /// Accepts `srcOffset` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve srcOffset(Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(srcOffset())); return this; }
-
-    /// {@return `dstSubresource` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment dstSubresource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstSubresource, index), LAYOUT_dstSubresource); }
-    /// {@return `dstSubresource`}
-    public MemorySegment dstSubresource() { return dstSubresource(this.segment(), 0L); }
-    /// Sets `dstSubresource` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstSubresource(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstSubresource, index), LAYOUT_dstSubresource.byteSize()); }
-    /// Sets `dstSubresource` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve dstSubresource(MemorySegment value) { dstSubresource(this.segment(), 0L, value); return this; }
-    /// Accepts `dstSubresource` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve dstSubresource(Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(dstSubresource())); return this; }
-
-    /// {@return `dstOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment dstOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstOffset, index), LAYOUT_dstOffset); }
-    /// {@return `dstOffset`}
-    public MemorySegment dstOffset() { return dstOffset(this.segment(), 0L); }
-    /// Sets `dstOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstOffset(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstOffset, index), LAYOUT_dstOffset.byteSize()); }
-    /// Sets `dstOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve dstOffset(MemorySegment value) { dstOffset(this.segment(), 0L, value); return this; }
-    /// Accepts `dstOffset` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve dstOffset(Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(dstOffset())); return this; }
-
-    /// {@return `extent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment extent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_extent, index), LAYOUT_extent); }
-    /// {@return `extent`}
-    public MemorySegment extent() { return extent(this.segment(), 0L); }
-    /// Sets `extent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void extent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_extent, index), LAYOUT_extent.byteSize()); }
-    /// Sets `extent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve extent(MemorySegment value) { extent(this.segment(), 0L, value); return this; }
-    /// Accepts `extent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve extent(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extent())); return this; }
-
-    /// Creates a slice of `VkImageResolve`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageResolve`
     public VkImageResolve asSlice(long index) { return new VkImageResolve(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkImageResolve`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageResolve`
     public VkImageResolve asSlice(long index, long count) { return new VkImageResolve(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkImageResolve` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkImageResolve at(long index, Consumer<VkImageResolve> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `srcSubresource` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment srcSubresourceAt(long index) { return srcSubresource(this.segment(), index); }
-    /// Sets `srcSubresource` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve srcSubresourceAt(long index, MemorySegment value) { srcSubresource(this.segment(), index, value); return this; }
-    /// Accepts `srcSubresource` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve srcSubresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(srcSubresourceAt(index))); return this; }
-
-    /// {@return `srcOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment srcOffsetAt(long index) { return srcOffset(this.segment(), index); }
-    /// Sets `srcOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve srcOffsetAt(long index, MemorySegment value) { srcOffset(this.segment(), index, value); return this; }
-    /// Accepts `srcOffset` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve srcOffsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(srcOffsetAt(index))); return this; }
-
-    /// {@return `dstSubresource` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment dstSubresourceAt(long index) { return dstSubresource(this.segment(), index); }
-    /// Sets `dstSubresource` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve dstSubresourceAt(long index, MemorySegment value) { dstSubresource(this.segment(), index, value); return this; }
-    /// Accepts `dstSubresource` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve dstSubresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(dstSubresourceAt(index))); return this; }
-
-    /// {@return `dstOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment dstOffsetAt(long index) { return dstOffset(this.segment(), index); }
-    /// Sets `dstOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve dstOffsetAt(long index, MemorySegment value) { dstOffset(this.segment(), index, value); return this; }
-    /// Accepts `dstOffset` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve dstOffsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(dstOffsetAt(index))); return this; }
-
-    /// {@return `extent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment extentAt(long index) { return extent(this.segment(), index); }
-    /// Sets `extent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
-    /// Accepts `extent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageResolve extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extentAt(index))); return this; }
-
+    public int srcSubresource$aspectMaskAt(long index) { return (int) VH_srcSubresource$aspectMask.get(this.segment(), 0L, index); }
+    public int srcSubresource$mipLevelAt(long index) { return (int) VH_srcSubresource$mipLevel.get(this.segment(), 0L, index); }
+    public int srcSubresource$baseArrayLayerAt(long index) { return (int) VH_srcSubresource$baseArrayLayer.get(this.segment(), 0L, index); }
+    public int srcSubresource$layerCountAt(long index) { return (int) VH_srcSubresource$layerCount.get(this.segment(), 0L, index); }
+    public int srcOffset$xAt(long index) { return (int) VH_srcOffset$x.get(this.segment(), 0L, index); }
+    public int srcOffset$yAt(long index) { return (int) VH_srcOffset$y.get(this.segment(), 0L, index); }
+    public int srcOffset$zAt(long index) { return (int) VH_srcOffset$z.get(this.segment(), 0L, index); }
+    public int dstSubresource$aspectMaskAt(long index) { return (int) VH_dstSubresource$aspectMask.get(this.segment(), 0L, index); }
+    public int dstSubresource$mipLevelAt(long index) { return (int) VH_dstSubresource$mipLevel.get(this.segment(), 0L, index); }
+    public int dstSubresource$baseArrayLayerAt(long index) { return (int) VH_dstSubresource$baseArrayLayer.get(this.segment(), 0L, index); }
+    public int dstSubresource$layerCountAt(long index) { return (int) VH_dstSubresource$layerCount.get(this.segment(), 0L, index); }
+    public int dstOffset$xAt(long index) { return (int) VH_dstOffset$x.get(this.segment(), 0L, index); }
+    public int dstOffset$yAt(long index) { return (int) VH_dstOffset$y.get(this.segment(), 0L, index); }
+    public int dstOffset$zAt(long index) { return (int) VH_dstOffset$z.get(this.segment(), 0L, index); }
+    public int extent$widthAt(long index) { return (int) VH_extent$width.get(this.segment(), 0L, index); }
+    public int extent$heightAt(long index) { return (int) VH_extent$height.get(this.segment(), 0L, index); }
+    public int extent$depthAt(long index) { return (int) VH_extent$depth.get(this.segment(), 0L, index); }
+    public int srcSubresource$aspectMask() { return (int) VH_srcSubresource$aspectMask.get(this.segment(), 0L, 0L); }
+    public int srcSubresource$mipLevel() { return (int) VH_srcSubresource$mipLevel.get(this.segment(), 0L, 0L); }
+    public int srcSubresource$baseArrayLayer() { return (int) VH_srcSubresource$baseArrayLayer.get(this.segment(), 0L, 0L); }
+    public int srcSubresource$layerCount() { return (int) VH_srcSubresource$layerCount.get(this.segment(), 0L, 0L); }
+    public int srcOffset$x() { return (int) VH_srcOffset$x.get(this.segment(), 0L, 0L); }
+    public int srcOffset$y() { return (int) VH_srcOffset$y.get(this.segment(), 0L, 0L); }
+    public int srcOffset$z() { return (int) VH_srcOffset$z.get(this.segment(), 0L, 0L); }
+    public int dstSubresource$aspectMask() { return (int) VH_dstSubresource$aspectMask.get(this.segment(), 0L, 0L); }
+    public int dstSubresource$mipLevel() { return (int) VH_dstSubresource$mipLevel.get(this.segment(), 0L, 0L); }
+    public int dstSubresource$baseArrayLayer() { return (int) VH_dstSubresource$baseArrayLayer.get(this.segment(), 0L, 0L); }
+    public int dstSubresource$layerCount() { return (int) VH_dstSubresource$layerCount.get(this.segment(), 0L, 0L); }
+    public int dstOffset$x() { return (int) VH_dstOffset$x.get(this.segment(), 0L, 0L); }
+    public int dstOffset$y() { return (int) VH_dstOffset$y.get(this.segment(), 0L, 0L); }
+    public int dstOffset$z() { return (int) VH_dstOffset$z.get(this.segment(), 0L, 0L); }
+    public int extent$width() { return (int) VH_extent$width.get(this.segment(), 0L, 0L); }
+    public int extent$height() { return (int) VH_extent$height.get(this.segment(), 0L, 0L); }
+    public int extent$depth() { return (int) VH_extent$depth.get(this.segment(), 0L, 0L); }
+    public VkImageResolve srcSubresource$aspectMaskAt(long index, int value) { VH_srcSubresource$aspectMask.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve srcSubresource$mipLevelAt(long index, int value) { VH_srcSubresource$mipLevel.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve srcSubresource$baseArrayLayerAt(long index, int value) { VH_srcSubresource$baseArrayLayer.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve srcSubresource$layerCountAt(long index, int value) { VH_srcSubresource$layerCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve srcOffset$xAt(long index, int value) { VH_srcOffset$x.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve srcOffset$yAt(long index, int value) { VH_srcOffset$y.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve srcOffset$zAt(long index, int value) { VH_srcOffset$z.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve dstSubresource$aspectMaskAt(long index, int value) { VH_dstSubresource$aspectMask.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve dstSubresource$mipLevelAt(long index, int value) { VH_dstSubresource$mipLevel.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve dstSubresource$baseArrayLayerAt(long index, int value) { VH_dstSubresource$baseArrayLayer.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve dstSubresource$layerCountAt(long index, int value) { VH_dstSubresource$layerCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve dstOffset$xAt(long index, int value) { VH_dstOffset$x.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve dstOffset$yAt(long index, int value) { VH_dstOffset$y.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve dstOffset$zAt(long index, int value) { VH_dstOffset$z.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve extent$widthAt(long index, int value) { VH_extent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve extent$heightAt(long index, int value) { VH_extent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve extent$depthAt(long index, int value) { VH_extent$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkImageResolve srcSubresource$aspectMask(int value) { VH_srcSubresource$aspectMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve srcSubresource$mipLevel(int value) { VH_srcSubresource$mipLevel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve srcSubresource$baseArrayLayer(int value) { VH_srcSubresource$baseArrayLayer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve srcSubresource$layerCount(int value) { VH_srcSubresource$layerCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve srcOffset$x(int value) { VH_srcOffset$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve srcOffset$y(int value) { VH_srcOffset$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve srcOffset$z(int value) { VH_srcOffset$z.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve dstSubresource$aspectMask(int value) { VH_dstSubresource$aspectMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve dstSubresource$mipLevel(int value) { VH_dstSubresource$mipLevel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve dstSubresource$baseArrayLayer(int value) { VH_dstSubresource$baseArrayLayer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve dstSubresource$layerCount(int value) { VH_dstSubresource$layerCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve dstOffset$x(int value) { VH_dstOffset$x.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve dstOffset$y(int value) { VH_dstOffset$y.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve dstOffset$z(int value) { VH_dstOffset$z.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve extent$width(int value) { VH_extent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve extent$height(int value) { VH_extent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageResolve extent$depth(int value) { VH_extent$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _srcSubresourceAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcSubresource, index), LAYOUT_srcSubresource); }
+    public MemorySegment _srcSubresource() { return _srcSubresourceAt(0L); }
+    public VkImageResolve _srcSubresourceAt(long index, MemorySegment src) { _srcSubresourceAt(index).copyFrom(src); return this; }
+    public VkImageResolve _srcSubresource(MemorySegment src) { return _srcSubresourceAt(0L, src); }
+    public MemorySegment _srcOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcOffset, index), LAYOUT_srcOffset); }
+    public MemorySegment _srcOffset() { return _srcOffsetAt(0L); }
+    public VkImageResolve _srcOffsetAt(long index, MemorySegment src) { _srcOffsetAt(index).copyFrom(src); return this; }
+    public VkImageResolve _srcOffset(MemorySegment src) { return _srcOffsetAt(0L, src); }
+    public MemorySegment _dstSubresourceAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstSubresource, index), LAYOUT_dstSubresource); }
+    public MemorySegment _dstSubresource() { return _dstSubresourceAt(0L); }
+    public VkImageResolve _dstSubresourceAt(long index, MemorySegment src) { _dstSubresourceAt(index).copyFrom(src); return this; }
+    public VkImageResolve _dstSubresource(MemorySegment src) { return _dstSubresourceAt(0L, src); }
+    public MemorySegment _dstOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstOffset, index), LAYOUT_dstOffset); }
+    public MemorySegment _dstOffset() { return _dstOffsetAt(0L); }
+    public VkImageResolve _dstOffsetAt(long index, MemorySegment src) { _dstOffsetAt(index).copyFrom(src); return this; }
+    public VkImageResolve _dstOffset(MemorySegment src) { return _dstOffsetAt(0L, src); }
+    public MemorySegment _extentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_extent, index), LAYOUT_extent); }
+    public MemorySegment _extent() { return _extentAt(0L); }
+    public VkImageResolve _extentAt(long index, MemorySegment src) { _extentAt(index).copyFrom(src); return this; }
+    public VkImageResolve _extent(MemorySegment src) { return _extentAt(0L, src); }
 }

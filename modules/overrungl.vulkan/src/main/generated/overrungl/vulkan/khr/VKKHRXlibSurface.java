@@ -11,17 +11,16 @@ public final class VKKHRXlibSurface {
     public static final int VK_KHR_XLIB_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_XLIB_SURFACE_EXTENSION_NAME = "VK_KHR_xlib_surface";
     public static final int VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR = 1000004000;
+    private VKKHRXlibSurface() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateXlibSurfaceKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetPhysicalDeviceXlibPresentationSupportKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, CanonicalTypes.C_LONG));
+        public static final MethodHandle MH_vkGetPhysicalDeviceXlibPresentationSupportKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
-    private VKKHRXlibSurface() {}
-
     /// Invokes `vkCreateXlibSurfaceKHR`.
     /// ```
-    /// (int) VkResult vkCreateXlibSurfaceKHR((struct VkInstance*) VkInstance instance, const VkXlibSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// VkResult vkCreateXlibSurfaceKHR(VkInstance instance, const VkXlibSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateXlibSurfaceKHR(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateXlibSurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateXlibSurfaceKHR");
@@ -32,12 +31,12 @@ public final class VKKHRXlibSurface {
 
     /// Invokes `vkGetPhysicalDeviceXlibPresentationSupportKHR`.
     /// ```
-    /// (uint32_t) VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, Display* dpy, ((unsigned long) XID) VisualID visualID);
+    /// VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, Display* dpy, VisualID visualID);
     /// ```
-    public static int vkGetPhysicalDeviceXlibPresentationSupportKHR(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment dpy, long visualID) {
+    public static int vkGetPhysicalDeviceXlibPresentationSupportKHR(@NonNull VkPhysicalDevice physicalDevice, int queueFamilyIndex, @NonNull MemorySegment dpy, int visualID) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXlibPresentationSupportKHR");
         try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceXlibPresentationSupportKHR", physicalDevice, queueFamilyIndex, dpy, visualID); }
-        return (int) Handles.MH_vkGetPhysicalDeviceXlibPresentationSupportKHR.invoke(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR, physicalDevice.segment(), queueFamilyIndex, dpy, MemoryUtil.narrowingLong(CanonicalTypes.C_LONG, visualID)); }
+        return (int) Handles.MH_vkGetPhysicalDeviceXlibPresentationSupportKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR, physicalDevice.segment(), queueFamilyIndex, dpy, visualID); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceXlibPresentationSupportKHR", e); }
     }
 

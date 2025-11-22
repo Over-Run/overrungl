@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,21 +12,20 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoCapabilitiesKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     ((uint32_t) VkFlags) VkVideoCapabilityFlagsKHR flags;
-///     (uint64_t) VkDeviceSize minBitstreamBufferOffsetAlignment;
-///     (uint64_t) VkDeviceSize minBitstreamBufferSizeAlignment;
-///     (struct VkExtent2D) VkExtent2D pictureAccessGranularity;
-///     (struct VkExtent2D) VkExtent2D minCodedExtent;
-///     (struct VkExtent2D) VkExtent2D maxCodedExtent;
+///     VkVideoCapabilityFlagsKHR flags;
+///     VkDeviceSize minBitstreamBufferOffsetAlignment;
+///     VkDeviceSize minBitstreamBufferSizeAlignment;
+///     VkExtent2D pictureAccessGranularity;
+///     VkExtent2D minCodedExtent;
+///     VkExtent2D maxCodedExtent;
 ///     uint32_t maxDpbSlots;
 ///     uint32_t maxActiveReferencePictures;
-///     (struct VkExtensionProperties) VkExtensionProperties stdHeaderVersion;
-/// };
+///     VkExtensionProperties stdHeaderVersion;
+/// }
 /// ```
 public final class VkVideoCapabilitiesKHR extends GroupType {
-    /// The struct layout of `VkVideoCapabilitiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -41,437 +39,163 @@ public final class VkVideoCapabilitiesKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("maxActiveReferencePictures"),
         overrungl.vulkan.struct.VkExtensionProperties.LAYOUT.withName("stdHeaderVersion")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
-    /// The memory layout of `flags`.
-    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The byte offset of `minBitstreamBufferOffsetAlignment`.
     public static final long OFFSET_minBitstreamBufferOffsetAlignment = LAYOUT.byteOffset(PathElement.groupElement("minBitstreamBufferOffsetAlignment"));
-    /// The memory layout of `minBitstreamBufferOffsetAlignment`.
-    public static final MemoryLayout LAYOUT_minBitstreamBufferOffsetAlignment = LAYOUT.select(PathElement.groupElement("minBitstreamBufferOffsetAlignment"));
-    /// The [VarHandle] of `minBitstreamBufferOffsetAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minBitstreamBufferOffsetAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBitstreamBufferOffsetAlignment"));
-    /// The byte offset of `minBitstreamBufferSizeAlignment`.
     public static final long OFFSET_minBitstreamBufferSizeAlignment = LAYOUT.byteOffset(PathElement.groupElement("minBitstreamBufferSizeAlignment"));
-    /// The memory layout of `minBitstreamBufferSizeAlignment`.
-    public static final MemoryLayout LAYOUT_minBitstreamBufferSizeAlignment = LAYOUT.select(PathElement.groupElement("minBitstreamBufferSizeAlignment"));
-    /// The [VarHandle] of `minBitstreamBufferSizeAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_minBitstreamBufferSizeAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBitstreamBufferSizeAlignment"));
-    /// The byte offset of `pictureAccessGranularity`.
     public static final long OFFSET_pictureAccessGranularity = LAYOUT.byteOffset(PathElement.groupElement("pictureAccessGranularity"));
-    /// The memory layout of `pictureAccessGranularity`.
-    public static final MemoryLayout LAYOUT_pictureAccessGranularity = LAYOUT.select(PathElement.groupElement("pictureAccessGranularity"));
-    /// The byte offset of `minCodedExtent`.
     public static final long OFFSET_minCodedExtent = LAYOUT.byteOffset(PathElement.groupElement("minCodedExtent"));
-    /// The memory layout of `minCodedExtent`.
-    public static final MemoryLayout LAYOUT_minCodedExtent = LAYOUT.select(PathElement.groupElement("minCodedExtent"));
-    /// The byte offset of `maxCodedExtent`.
     public static final long OFFSET_maxCodedExtent = LAYOUT.byteOffset(PathElement.groupElement("maxCodedExtent"));
-    /// The memory layout of `maxCodedExtent`.
-    public static final MemoryLayout LAYOUT_maxCodedExtent = LAYOUT.select(PathElement.groupElement("maxCodedExtent"));
-    /// The byte offset of `maxDpbSlots`.
     public static final long OFFSET_maxDpbSlots = LAYOUT.byteOffset(PathElement.groupElement("maxDpbSlots"));
-    /// The memory layout of `maxDpbSlots`.
-    public static final MemoryLayout LAYOUT_maxDpbSlots = LAYOUT.select(PathElement.groupElement("maxDpbSlots"));
-    /// The [VarHandle] of `maxDpbSlots` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDpbSlots = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDpbSlots"));
-    /// The byte offset of `maxActiveReferencePictures`.
     public static final long OFFSET_maxActiveReferencePictures = LAYOUT.byteOffset(PathElement.groupElement("maxActiveReferencePictures"));
-    /// The memory layout of `maxActiveReferencePictures`.
-    public static final MemoryLayout LAYOUT_maxActiveReferencePictures = LAYOUT.select(PathElement.groupElement("maxActiveReferencePictures"));
-    /// The [VarHandle] of `maxActiveReferencePictures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxActiveReferencePictures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxActiveReferencePictures"));
-    /// The byte offset of `stdHeaderVersion`.
     public static final long OFFSET_stdHeaderVersion = LAYOUT.byteOffset(PathElement.groupElement("stdHeaderVersion"));
-    /// The memory layout of `stdHeaderVersion`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    public static final MemoryLayout LAYOUT_minBitstreamBufferOffsetAlignment = LAYOUT.select(PathElement.groupElement("minBitstreamBufferOffsetAlignment"));
+    public static final MemoryLayout LAYOUT_minBitstreamBufferSizeAlignment = LAYOUT.select(PathElement.groupElement("minBitstreamBufferSizeAlignment"));
+    public static final MemoryLayout LAYOUT_pictureAccessGranularity = LAYOUT.select(PathElement.groupElement("pictureAccessGranularity"));
+    public static final MemoryLayout LAYOUT_minCodedExtent = LAYOUT.select(PathElement.groupElement("minCodedExtent"));
+    public static final MemoryLayout LAYOUT_maxCodedExtent = LAYOUT.select(PathElement.groupElement("maxCodedExtent"));
+    public static final MemoryLayout LAYOUT_maxDpbSlots = LAYOUT.select(PathElement.groupElement("maxDpbSlots"));
+    public static final MemoryLayout LAYOUT_maxActiveReferencePictures = LAYOUT.select(PathElement.groupElement("maxActiveReferencePictures"));
     public static final MemoryLayout LAYOUT_stdHeaderVersion = LAYOUT.select(PathElement.groupElement("stdHeaderVersion"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    public static final VarHandle VH_minBitstreamBufferOffsetAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBitstreamBufferOffsetAlignment"));
+    public static final VarHandle VH_minBitstreamBufferSizeAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBitstreamBufferSizeAlignment"));
+    public static final VarHandle VH_pictureAccessGranularity$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pictureAccessGranularity"), PathElement.groupElement("width"));
+    public static final VarHandle VH_pictureAccessGranularity$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pictureAccessGranularity"), PathElement.groupElement("height"));
+    public static final VarHandle VH_minCodedExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minCodedExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_minCodedExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minCodedExtent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_maxCodedExtent$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCodedExtent"), PathElement.groupElement("width"));
+    public static final VarHandle VH_maxCodedExtent$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCodedExtent"), PathElement.groupElement("height"));
+    public static final VarHandle VH_maxDpbSlots = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDpbSlots"));
+    public static final VarHandle VH_maxActiveReferencePictures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxActiveReferencePictures"));
+    public static final VarHandle VH_stdHeaderVersion$extensionName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdHeaderVersion"), PathElement.groupElement("extensionName"), PathElement.sequenceElement());
+    public static final VarHandle VH_stdHeaderVersion$specVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdHeaderVersion"), PathElement.groupElement("specVersion"));
 
-    /// Creates `VkVideoCapabilitiesKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkVideoCapabilitiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkVideoCapabilitiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoCapabilitiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoCapabilitiesKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkVideoCapabilitiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoCapabilitiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkVideoCapabilitiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkVideoCapabilitiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoCapabilitiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkVideoCapabilitiesKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoCapabilitiesKHR`
     public static VkVideoCapabilitiesKHR alloc(SegmentAllocator allocator) { return new VkVideoCapabilitiesKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkVideoCapabilitiesKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkVideoCapabilitiesKHR`
     public static VkVideoCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoCapabilitiesKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkVideoCapabilitiesKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRVideoQueue.VK_STRUCTURE_TYPE_VIDEO_CAPABILITIES_KHR); }
+    public static VkVideoCapabilitiesKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRVideoQueue.VK_STRUCTURE_TYPE_VIDEO_CAPABILITIES_KHR);
+        return s;
+    }
     public VkVideoCapabilitiesKHR copyFrom(VkVideoCapabilitiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkVideoCapabilitiesKHR reinterpret(long count) { return new VkVideoCapabilitiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
-    /// {@return `flags`}
-    public int flags() { return flags(this.segment(), 0L); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR flags(int value) { flags(this.segment(), 0L, value); return this; }
-
-    /// {@return `minBitstreamBufferOffsetAlignment` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long minBitstreamBufferOffsetAlignment(MemorySegment segment, long index) { return (long) VH_minBitstreamBufferOffsetAlignment.get(segment, 0L, index); }
-    /// {@return `minBitstreamBufferOffsetAlignment`}
-    public long minBitstreamBufferOffsetAlignment() { return minBitstreamBufferOffsetAlignment(this.segment(), 0L); }
-    /// Sets `minBitstreamBufferOffsetAlignment` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minBitstreamBufferOffsetAlignment(MemorySegment segment, long index, long value) { VH_minBitstreamBufferOffsetAlignment.set(segment, 0L, index, value); }
-    /// Sets `minBitstreamBufferOffsetAlignment` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR minBitstreamBufferOffsetAlignment(long value) { minBitstreamBufferOffsetAlignment(this.segment(), 0L, value); return this; }
-
-    /// {@return `minBitstreamBufferSizeAlignment` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long minBitstreamBufferSizeAlignment(MemorySegment segment, long index) { return (long) VH_minBitstreamBufferSizeAlignment.get(segment, 0L, index); }
-    /// {@return `minBitstreamBufferSizeAlignment`}
-    public long minBitstreamBufferSizeAlignment() { return minBitstreamBufferSizeAlignment(this.segment(), 0L); }
-    /// Sets `minBitstreamBufferSizeAlignment` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minBitstreamBufferSizeAlignment(MemorySegment segment, long index, long value) { VH_minBitstreamBufferSizeAlignment.set(segment, 0L, index, value); }
-    /// Sets `minBitstreamBufferSizeAlignment` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR minBitstreamBufferSizeAlignment(long value) { minBitstreamBufferSizeAlignment(this.segment(), 0L, value); return this; }
-
-    /// {@return `pictureAccessGranularity` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pictureAccessGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pictureAccessGranularity, index), LAYOUT_pictureAccessGranularity); }
-    /// {@return `pictureAccessGranularity`}
-    public MemorySegment pictureAccessGranularity() { return pictureAccessGranularity(this.segment(), 0L); }
-    /// Sets `pictureAccessGranularity` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pictureAccessGranularity(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pictureAccessGranularity, index), LAYOUT_pictureAccessGranularity.byteSize()); }
-    /// Sets `pictureAccessGranularity` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR pictureAccessGranularity(MemorySegment value) { pictureAccessGranularity(this.segment(), 0L, value); return this; }
-    /// Accepts `pictureAccessGranularity` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoCapabilitiesKHR pictureAccessGranularity(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(pictureAccessGranularity())); return this; }
-
-    /// {@return `minCodedExtent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment minCodedExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minCodedExtent, index), LAYOUT_minCodedExtent); }
-    /// {@return `minCodedExtent`}
-    public MemorySegment minCodedExtent() { return minCodedExtent(this.segment(), 0L); }
-    /// Sets `minCodedExtent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minCodedExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minCodedExtent, index), LAYOUT_minCodedExtent.byteSize()); }
-    /// Sets `minCodedExtent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR minCodedExtent(MemorySegment value) { minCodedExtent(this.segment(), 0L, value); return this; }
-    /// Accepts `minCodedExtent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoCapabilitiesKHR minCodedExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minCodedExtent())); return this; }
-
-    /// {@return `maxCodedExtent` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment maxCodedExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxCodedExtent, index), LAYOUT_maxCodedExtent); }
-    /// {@return `maxCodedExtent`}
-    public MemorySegment maxCodedExtent() { return maxCodedExtent(this.segment(), 0L); }
-    /// Sets `maxCodedExtent` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxCodedExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxCodedExtent, index), LAYOUT_maxCodedExtent.byteSize()); }
-    /// Sets `maxCodedExtent` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR maxCodedExtent(MemorySegment value) { maxCodedExtent(this.segment(), 0L, value); return this; }
-    /// Accepts `maxCodedExtent` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoCapabilitiesKHR maxCodedExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxCodedExtent())); return this; }
-
-    /// {@return `maxDpbSlots` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDpbSlots(MemorySegment segment, long index) { return (int) VH_maxDpbSlots.get(segment, 0L, index); }
-    /// {@return `maxDpbSlots`}
-    public int maxDpbSlots() { return maxDpbSlots(this.segment(), 0L); }
-    /// Sets `maxDpbSlots` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDpbSlots(MemorySegment segment, long index, int value) { VH_maxDpbSlots.set(segment, 0L, index, value); }
-    /// Sets `maxDpbSlots` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR maxDpbSlots(int value) { maxDpbSlots(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxActiveReferencePictures` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxActiveReferencePictures(MemorySegment segment, long index) { return (int) VH_maxActiveReferencePictures.get(segment, 0L, index); }
-    /// {@return `maxActiveReferencePictures`}
-    public int maxActiveReferencePictures() { return maxActiveReferencePictures(this.segment(), 0L); }
-    /// Sets `maxActiveReferencePictures` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxActiveReferencePictures(MemorySegment segment, long index, int value) { VH_maxActiveReferencePictures.set(segment, 0L, index, value); }
-    /// Sets `maxActiveReferencePictures` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR maxActiveReferencePictures(int value) { maxActiveReferencePictures(this.segment(), 0L, value); return this; }
-
-    /// {@return `stdHeaderVersion` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment stdHeaderVersion(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_stdHeaderVersion, index), LAYOUT_stdHeaderVersion); }
-    /// {@return `stdHeaderVersion`}
-    public MemorySegment stdHeaderVersion() { return stdHeaderVersion(this.segment(), 0L); }
-    /// Sets `stdHeaderVersion` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void stdHeaderVersion(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_stdHeaderVersion, index), LAYOUT_stdHeaderVersion.byteSize()); }
-    /// Sets `stdHeaderVersion` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR stdHeaderVersion(MemorySegment value) { stdHeaderVersion(this.segment(), 0L, value); return this; }
-    /// Accepts `stdHeaderVersion` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkVideoCapabilitiesKHR stdHeaderVersion(Consumer<overrungl.vulkan.struct.VkExtensionProperties> func) { func.accept(overrungl.vulkan.struct.VkExtensionProperties.of(stdHeaderVersion())); return this; }
-
-    /// Creates a slice of `VkVideoCapabilitiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoCapabilitiesKHR`
     public VkVideoCapabilitiesKHR asSlice(long index) { return new VkVideoCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkVideoCapabilitiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoCapabilitiesKHR`
     public VkVideoCapabilitiesKHR asSlice(long index, long count) { return new VkVideoCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkVideoCapabilitiesKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkVideoCapabilitiesKHR at(long index, Consumer<VkVideoCapabilitiesKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `flags` at the given index}
-    /// @param index the index of the struct buffer
-    public int flagsAt(long index) { return flags(this.segment(), index); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    /// {@return `minBitstreamBufferOffsetAlignment` at the given index}
-    /// @param index the index of the struct buffer
-    public long minBitstreamBufferOffsetAlignmentAt(long index) { return minBitstreamBufferOffsetAlignment(this.segment(), index); }
-    /// Sets `minBitstreamBufferOffsetAlignment` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR minBitstreamBufferOffsetAlignmentAt(long index, long value) { minBitstreamBufferOffsetAlignment(this.segment(), index, value); return this; }
-
-    /// {@return `minBitstreamBufferSizeAlignment` at the given index}
-    /// @param index the index of the struct buffer
-    public long minBitstreamBufferSizeAlignmentAt(long index) { return minBitstreamBufferSizeAlignment(this.segment(), index); }
-    /// Sets `minBitstreamBufferSizeAlignment` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR minBitstreamBufferSizeAlignmentAt(long index, long value) { minBitstreamBufferSizeAlignment(this.segment(), index, value); return this; }
-
-    /// {@return `pictureAccessGranularity` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pictureAccessGranularityAt(long index) { return pictureAccessGranularity(this.segment(), index); }
-    /// Sets `pictureAccessGranularity` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR pictureAccessGranularityAt(long index, MemorySegment value) { pictureAccessGranularity(this.segment(), index, value); return this; }
-    /// Accepts `pictureAccessGranularity` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoCapabilitiesKHR pictureAccessGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(pictureAccessGranularityAt(index))); return this; }
-
-    /// {@return `minCodedExtent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment minCodedExtentAt(long index) { return minCodedExtent(this.segment(), index); }
-    /// Sets `minCodedExtent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR minCodedExtentAt(long index, MemorySegment value) { minCodedExtent(this.segment(), index, value); return this; }
-    /// Accepts `minCodedExtent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoCapabilitiesKHR minCodedExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minCodedExtentAt(index))); return this; }
-
-    /// {@return `maxCodedExtent` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment maxCodedExtentAt(long index) { return maxCodedExtent(this.segment(), index); }
-    /// Sets `maxCodedExtent` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR maxCodedExtentAt(long index, MemorySegment value) { maxCodedExtent(this.segment(), index, value); return this; }
-    /// Accepts `maxCodedExtent` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoCapabilitiesKHR maxCodedExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxCodedExtentAt(index))); return this; }
-
-    /// {@return `maxDpbSlots` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDpbSlotsAt(long index) { return maxDpbSlots(this.segment(), index); }
-    /// Sets `maxDpbSlots` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR maxDpbSlotsAt(long index, int value) { maxDpbSlots(this.segment(), index, value); return this; }
-
-    /// {@return `maxActiveReferencePictures` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxActiveReferencePicturesAt(long index) { return maxActiveReferencePictures(this.segment(), index); }
-    /// Sets `maxActiveReferencePictures` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR maxActiveReferencePicturesAt(long index, int value) { maxActiveReferencePictures(this.segment(), index, value); return this; }
-
-    /// {@return `stdHeaderVersion` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment stdHeaderVersionAt(long index) { return stdHeaderVersion(this.segment(), index); }
-    /// Sets `stdHeaderVersion` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkVideoCapabilitiesKHR stdHeaderVersionAt(long index, MemorySegment value) { stdHeaderVersion(this.segment(), index, value); return this; }
-    /// Accepts `stdHeaderVersion` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkVideoCapabilitiesKHR stdHeaderVersionAt(long index, Consumer<overrungl.vulkan.struct.VkExtensionProperties> func) { func.accept(overrungl.vulkan.struct.VkExtensionProperties.of(stdHeaderVersionAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int flagsAt(long index) { return (int) VH_flags.get(this.segment(), 0L, index); }
+    public long minBitstreamBufferOffsetAlignmentAt(long index) { return (long) VH_minBitstreamBufferOffsetAlignment.get(this.segment(), 0L, index); }
+    public long minBitstreamBufferSizeAlignmentAt(long index) { return (long) VH_minBitstreamBufferSizeAlignment.get(this.segment(), 0L, index); }
+    public int pictureAccessGranularity$widthAt(long index) { return (int) VH_pictureAccessGranularity$width.get(this.segment(), 0L, index); }
+    public int pictureAccessGranularity$heightAt(long index) { return (int) VH_pictureAccessGranularity$height.get(this.segment(), 0L, index); }
+    public int minCodedExtent$widthAt(long index) { return (int) VH_minCodedExtent$width.get(this.segment(), 0L, index); }
+    public int minCodedExtent$heightAt(long index) { return (int) VH_minCodedExtent$height.get(this.segment(), 0L, index); }
+    public int maxCodedExtent$widthAt(long index) { return (int) VH_maxCodedExtent$width.get(this.segment(), 0L, index); }
+    public int maxCodedExtent$heightAt(long index) { return (int) VH_maxCodedExtent$height.get(this.segment(), 0L, index); }
+    public int maxDpbSlotsAt(long index) { return (int) VH_maxDpbSlots.get(this.segment(), 0L, index); }
+    public int maxActiveReferencePicturesAt(long index) { return (int) VH_maxActiveReferencePictures.get(this.segment(), 0L, index); }
+    public byte stdHeaderVersion$extensionNameAt(long index, long index0) { return (byte) VH_stdHeaderVersion$extensionName.get(this.segment(), 0L, index, index0); }
+    public int stdHeaderVersion$specVersionAt(long index) { return (int) VH_stdHeaderVersion$specVersion.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int flags() { return (int) VH_flags.get(this.segment(), 0L, 0L); }
+    public long minBitstreamBufferOffsetAlignment() { return (long) VH_minBitstreamBufferOffsetAlignment.get(this.segment(), 0L, 0L); }
+    public long minBitstreamBufferSizeAlignment() { return (long) VH_minBitstreamBufferSizeAlignment.get(this.segment(), 0L, 0L); }
+    public int pictureAccessGranularity$width() { return (int) VH_pictureAccessGranularity$width.get(this.segment(), 0L, 0L); }
+    public int pictureAccessGranularity$height() { return (int) VH_pictureAccessGranularity$height.get(this.segment(), 0L, 0L); }
+    public int minCodedExtent$width() { return (int) VH_minCodedExtent$width.get(this.segment(), 0L, 0L); }
+    public int minCodedExtent$height() { return (int) VH_minCodedExtent$height.get(this.segment(), 0L, 0L); }
+    public int maxCodedExtent$width() { return (int) VH_maxCodedExtent$width.get(this.segment(), 0L, 0L); }
+    public int maxCodedExtent$height() { return (int) VH_maxCodedExtent$height.get(this.segment(), 0L, 0L); }
+    public int maxDpbSlots() { return (int) VH_maxDpbSlots.get(this.segment(), 0L, 0L); }
+    public int maxActiveReferencePictures() { return (int) VH_maxActiveReferencePictures.get(this.segment(), 0L, 0L); }
+    public byte stdHeaderVersion$extensionName(long index0) { return (byte) VH_stdHeaderVersion$extensionName.get(this.segment(), 0L, 0L, index0); }
+    public int stdHeaderVersion$specVersion() { return (int) VH_stdHeaderVersion$specVersion.get(this.segment(), 0L, 0L); }
+    public VkVideoCapabilitiesKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR flagsAt(long index, int value) { VH_flags.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR minBitstreamBufferOffsetAlignmentAt(long index, long value) { VH_minBitstreamBufferOffsetAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR minBitstreamBufferSizeAlignmentAt(long index, long value) { VH_minBitstreamBufferSizeAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR pictureAccessGranularity$widthAt(long index, int value) { VH_pictureAccessGranularity$width.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR pictureAccessGranularity$heightAt(long index, int value) { VH_pictureAccessGranularity$height.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR minCodedExtent$widthAt(long index, int value) { VH_minCodedExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR minCodedExtent$heightAt(long index, int value) { VH_minCodedExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR maxCodedExtent$widthAt(long index, int value) { VH_maxCodedExtent$width.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR maxCodedExtent$heightAt(long index, int value) { VH_maxCodedExtent$height.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR maxDpbSlotsAt(long index, int value) { VH_maxDpbSlots.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR maxActiveReferencePicturesAt(long index, int value) { VH_maxActiveReferencePictures.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR stdHeaderVersion$extensionNameAt(long index, long index0, byte value) { VH_stdHeaderVersion$extensionName.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkVideoCapabilitiesKHR stdHeaderVersion$specVersionAt(long index, int value) { VH_stdHeaderVersion$specVersion.set(this.segment(), 0L, index, value); return this; }
+    public VkVideoCapabilitiesKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR flags(int value) { VH_flags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR minBitstreamBufferOffsetAlignment(long value) { VH_minBitstreamBufferOffsetAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR minBitstreamBufferSizeAlignment(long value) { VH_minBitstreamBufferSizeAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR pictureAccessGranularity$width(int value) { VH_pictureAccessGranularity$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR pictureAccessGranularity$height(int value) { VH_pictureAccessGranularity$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR minCodedExtent$width(int value) { VH_minCodedExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR minCodedExtent$height(int value) { VH_minCodedExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR maxCodedExtent$width(int value) { VH_maxCodedExtent$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR maxCodedExtent$height(int value) { VH_maxCodedExtent$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR maxDpbSlots(int value) { VH_maxDpbSlots.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR maxActiveReferencePictures(int value) { VH_maxActiveReferencePictures.set(this.segment(), 0L, 0L, value); return this; }
+    public VkVideoCapabilitiesKHR stdHeaderVersion$extensionName(long index0, byte value) { VH_stdHeaderVersion$extensionName.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkVideoCapabilitiesKHR stdHeaderVersion$specVersion(int value) { VH_stdHeaderVersion$specVersion.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkVideoCapabilitiesKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkVideoCapabilitiesKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _flagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
+    public MemorySegment _flags() { return _flagsAt(0L); }
+    public VkVideoCapabilitiesKHR _flagsAt(long index, MemorySegment src) { _flagsAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _flags(MemorySegment src) { return _flagsAt(0L, src); }
+    public MemorySegment _minBitstreamBufferOffsetAlignmentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minBitstreamBufferOffsetAlignment, index), LAYOUT_minBitstreamBufferOffsetAlignment); }
+    public MemorySegment _minBitstreamBufferOffsetAlignment() { return _minBitstreamBufferOffsetAlignmentAt(0L); }
+    public VkVideoCapabilitiesKHR _minBitstreamBufferOffsetAlignmentAt(long index, MemorySegment src) { _minBitstreamBufferOffsetAlignmentAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _minBitstreamBufferOffsetAlignment(MemorySegment src) { return _minBitstreamBufferOffsetAlignmentAt(0L, src); }
+    public MemorySegment _minBitstreamBufferSizeAlignmentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minBitstreamBufferSizeAlignment, index), LAYOUT_minBitstreamBufferSizeAlignment); }
+    public MemorySegment _minBitstreamBufferSizeAlignment() { return _minBitstreamBufferSizeAlignmentAt(0L); }
+    public VkVideoCapabilitiesKHR _minBitstreamBufferSizeAlignmentAt(long index, MemorySegment src) { _minBitstreamBufferSizeAlignmentAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _minBitstreamBufferSizeAlignment(MemorySegment src) { return _minBitstreamBufferSizeAlignmentAt(0L, src); }
+    public MemorySegment _pictureAccessGranularityAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pictureAccessGranularity, index), LAYOUT_pictureAccessGranularity); }
+    public MemorySegment _pictureAccessGranularity() { return _pictureAccessGranularityAt(0L); }
+    public VkVideoCapabilitiesKHR _pictureAccessGranularityAt(long index, MemorySegment src) { _pictureAccessGranularityAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _pictureAccessGranularity(MemorySegment src) { return _pictureAccessGranularityAt(0L, src); }
+    public MemorySegment _minCodedExtentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minCodedExtent, index), LAYOUT_minCodedExtent); }
+    public MemorySegment _minCodedExtent() { return _minCodedExtentAt(0L); }
+    public VkVideoCapabilitiesKHR _minCodedExtentAt(long index, MemorySegment src) { _minCodedExtentAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _minCodedExtent(MemorySegment src) { return _minCodedExtentAt(0L, src); }
+    public MemorySegment _maxCodedExtentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxCodedExtent, index), LAYOUT_maxCodedExtent); }
+    public MemorySegment _maxCodedExtent() { return _maxCodedExtentAt(0L); }
+    public VkVideoCapabilitiesKHR _maxCodedExtentAt(long index, MemorySegment src) { _maxCodedExtentAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _maxCodedExtent(MemorySegment src) { return _maxCodedExtentAt(0L, src); }
+    public MemorySegment _maxDpbSlotsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDpbSlots, index), LAYOUT_maxDpbSlots); }
+    public MemorySegment _maxDpbSlots() { return _maxDpbSlotsAt(0L); }
+    public VkVideoCapabilitiesKHR _maxDpbSlotsAt(long index, MemorySegment src) { _maxDpbSlotsAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _maxDpbSlots(MemorySegment src) { return _maxDpbSlotsAt(0L, src); }
+    public MemorySegment _maxActiveReferencePicturesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxActiveReferencePictures, index), LAYOUT_maxActiveReferencePictures); }
+    public MemorySegment _maxActiveReferencePictures() { return _maxActiveReferencePicturesAt(0L); }
+    public VkVideoCapabilitiesKHR _maxActiveReferencePicturesAt(long index, MemorySegment src) { _maxActiveReferencePicturesAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _maxActiveReferencePictures(MemorySegment src) { return _maxActiveReferencePicturesAt(0L, src); }
+    public MemorySegment _stdHeaderVersionAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_stdHeaderVersion, index), LAYOUT_stdHeaderVersion); }
+    public MemorySegment _stdHeaderVersion() { return _stdHeaderVersionAt(0L); }
+    public VkVideoCapabilitiesKHR _stdHeaderVersionAt(long index, MemorySegment src) { _stdHeaderVersionAt(index).copyFrom(src); return this; }
+    public VkVideoCapabilitiesKHR _stdHeaderVersion(MemorySegment src) { return _stdHeaderVersionAt(0L, src); }
 }

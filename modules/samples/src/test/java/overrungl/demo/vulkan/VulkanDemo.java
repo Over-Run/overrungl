@@ -45,6 +45,7 @@ import static overrungl.glfw.GLFW.*;
 import static overrungl.shaderc.Shaderc.*;
 import static overrungl.vulkan.VK10.*;
 import static overrungl.vulkan.VK11.vkEnumerateInstanceVersion;
+import static overrungl.vulkan.VK14.VK_API_VERSION_1_4;
 import static overrungl.vulkan.khr.VKKHRSurface.*;
 import static overrungl.vulkan.khr.VKKHRSwapchain.*;
 
@@ -144,7 +145,7 @@ public class VulkanDemo {
             vkEnumerateInstanceLayerProperties(pCount.segment(), properties.segment());
             System.out.println("===== Instance layer properties =====");
             for (int i = 0; i < count; i++) {
-                String layerName = MemoryUtil.nativeString(properties.layerNameAt(i));
+                String layerName = MemoryUtil.nativeString(properties._layerNameAt(i));
                 instanceLayerNames[i + 1] = layerName;
                 printLayerProperty(properties, i);
             }
@@ -222,8 +223,8 @@ public class VulkanDemo {
                 int vendorID = properties.vendorID();
                 int deviceID = properties.deviceID();
                 int deviceType = properties.deviceType();
-                String deviceName = MemoryUtil.nativeString(properties.deviceName());
-                UUID pipelineCacheUUID = UUID.nameUUIDFromBytes(MemoryUtil.asByteArray(properties.pipelineCacheUUID()));
+                String deviceName = MemoryUtil.nativeString(properties._deviceName());
+                UUID pipelineCacheUUID = UUID.nameUUIDFromBytes(MemoryUtil.asByteArray(properties._pipelineCacheUUID()));
 
                 System.out.println("===== Physical device properties for handle 0x" + Long.toHexString(physicalDevice.segment().address()) + " =====");
                 System.out.println("API version: " + versionString(apiVersion));
@@ -259,7 +260,7 @@ public class VulkanDemo {
                 String[] array = new String[count + 1];
                 physicalDeviceLayerNames.put(physicalDevice.segment(), array);
                 for (int i = 0; i < count; i++) {
-                    String layerName = MemoryUtil.nativeString(properties.layerNameAt(i));
+                    String layerName = MemoryUtil.nativeString(properties._layerNameAt(i));
                     array[i + 1] = layerName;
                     printLayerProperty(properties, i);
                 }
@@ -396,7 +397,7 @@ public class VulkanDemo {
                 .minImageCount(imageCount)
                 .imageFormat(imageFormat)
                 .imageColorSpace(imageColorSpace)
-                .imageExtent(imageExtent.segment())
+                ._imageExtent(imageExtent.segment())
                 .imageArrayLayers(1)
                 .imageUsage(VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT)
                 .imageSharingMode(VK_SHARING_MODE_EXCLUSIVE)
@@ -430,18 +431,15 @@ public class VulkanDemo {
                     .image(image)
                     .viewType(VK_IMAGE_VIEW_TYPE_2D)
                     .format(swapChainImageFormat)
-                    .components(vkComponentMapping -> vkComponentMapping
-                        .r(VK_COMPONENT_SWIZZLE_IDENTITY)
-                        .g(VK_COMPONENT_SWIZZLE_IDENTITY)
-                        .b(VK_COMPONENT_SWIZZLE_IDENTITY)
-                        .a(VK_COMPONENT_SWIZZLE_IDENTITY))
-                    .subresourceRange(VkImageSubresourceRange.alloc(stack)
-                        .aspectMask(VK_IMAGE_ASPECT_COLOR_BIT)
-                        .baseMipLevel(0)
-                        .levelCount(1)
-                        .baseArrayLayer(0)
-                        .layerCount(1)
-                        .segment());
+                    .components$r(VK_COMPONENT_SWIZZLE_IDENTITY)
+                    .components$g(VK_COMPONENT_SWIZZLE_IDENTITY)
+                    .components$b(VK_COMPONENT_SWIZZLE_IDENTITY)
+                    .components$a(VK_COMPONENT_SWIZZLE_IDENTITY)
+                    .subresourceRange$aspectMask(VK_IMAGE_ASPECT_COLOR_BIT)
+                    .subresourceRange$baseMipLevel(0)
+                    .subresourceRange$levelCount(1)
+                    .subresourceRange$baseArrayLayer(0)
+                    .subresourceRange$layerCount(1);
                 LongPtr pView = stack.allocLongPtr();
                 vkCreateImageView(device, createInfo.segment(), MemorySegment.NULL, pView.segment());
                 swapChainImageViews.add(pView.value());
@@ -707,17 +705,17 @@ public class VulkanDemo {
                 .sType(VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO)
                 .renderPass(renderPass)
                 .framebuffer(framebuffers.get(imageIndex))
-                .renderArea(vkRect2D -> vkRect2D
-                    .offset(vkOffset2D -> vkOffset2D.x(0).y(0))
-                    .extent(vkExtent2D -> vkExtent2D.width(swapChainWidth).height(swapChainHeight)))
+                .renderArea$offset$x(0)
+                .renderArea$offset$y(0)
+                .renderArea$extent$width(swapChainWidth)
+                .renderArea$extent$height(swapChainHeight)
                 .clearValueCount(1)
                 .pClearValues(VkClearValue.alloc(stack)
-                    .color(clearColorValue -> clearColorValue
-                        .float32(0, 0.0f)
-                        .float32(1, 0.0f)
-                        .float32(2, 0.0f)
-                        .float32(3, 1.0f)
-                    ).segment());
+                    .color$float32(0, 0.0f)
+                    .color$float32(1, 0.0f)
+                    .color$float32(2, 0.0f)
+                    .color$float32(3, 1.0f)
+                    .segment());
             vkCmdBeginRenderPass(commandBuffer, beginInfo.segment(), VK_SUBPASS_CONTENTS_INLINE);
         }
         vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
@@ -730,8 +728,10 @@ public class VulkanDemo {
                 .minDepth(0.0f)
                 .maxDepth(1.0f);
             var scissor = VkRect2D.alloc(stack)
-                .offset(vkOffset2D -> vkOffset2D.x(0).y(0))
-                .extent(vkExtent2D -> vkExtent2D.width(swapChainWidth).height(swapChainHeight));
+                .offset$x(0)
+                .offset$y(0)
+                .extent$width(swapChainWidth)
+                .extent$height(swapChainHeight);
             vkCmdSetViewport(commandBuffer, 0, 1, viewport.segment());
             vkCmdSetScissor(commandBuffer, 0, 1, scissor.segment());
         }
@@ -822,10 +822,10 @@ public class VulkanDemo {
     }
 
     private static void printLayerProperty(VkLayerProperties properties, int i) {
-        String layerName = MemoryUtil.nativeString(properties.layerNameAt(i));
+        String layerName = MemoryUtil.nativeString(properties._layerNameAt(i));
         int specVersion = properties.specVersionAt(i);
         int implementationVersion = properties.implementationVersionAt(i);
-        String description = MemoryUtil.nativeString(properties.descriptionAt(i));
+        String description = MemoryUtil.nativeString(properties._descriptionAt(i));
         System.out.println("==========");
         System.out.println("Layer name: " + layerName);
         System.out.println("Spec version: " + versionString(specVersion));
@@ -835,7 +835,7 @@ public class VulkanDemo {
 
     private static void printExtensionProperties(VkExtensionProperties properties, int count) {
         for (int i = 0; i < count; i++) {
-            String extensionName = MemoryUtil.nativeString(properties.extensionNameAt(i));
+            String extensionName = MemoryUtil.nativeString(properties._extensionNameAt(i));
             int specVersion = properties.specVersionAt(i);
             System.out.println(extensionName + ": " + specVersion);
         }

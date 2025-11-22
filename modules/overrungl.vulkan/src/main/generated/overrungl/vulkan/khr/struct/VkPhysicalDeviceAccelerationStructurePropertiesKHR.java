@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,7 +12,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceAccelerationStructurePropertiesKHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint64_t maxGeometryCount;
 ///     uint64_t maxInstanceCount;
@@ -23,10 +22,9 @@ import overrungl.util.*;
 ///     uint32_t maxDescriptorSetAccelerationStructures;
 ///     uint32_t maxDescriptorSetUpdateAfterBindAccelerationStructures;
 ///     uint32_t minAccelerationStructureScratchOffsetAlignment;
-/// };
+/// }
 /// ```
 public final class VkPhysicalDeviceAccelerationStructurePropertiesKHR extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceAccelerationStructurePropertiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -39,378 +37,132 @@ public final class VkPhysicalDeviceAccelerationStructurePropertiesKHR extends Gr
         ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindAccelerationStructures"),
         ValueLayout.JAVA_INT.withName("minAccelerationStructureScratchOffsetAlignment")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `maxGeometryCount`.
     public static final long OFFSET_maxGeometryCount = LAYOUT.byteOffset(PathElement.groupElement("maxGeometryCount"));
-    /// The memory layout of `maxGeometryCount`.
-    public static final MemoryLayout LAYOUT_maxGeometryCount = LAYOUT.select(PathElement.groupElement("maxGeometryCount"));
-    /// The [VarHandle] of `maxGeometryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxGeometryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxGeometryCount"));
-    /// The byte offset of `maxInstanceCount`.
     public static final long OFFSET_maxInstanceCount = LAYOUT.byteOffset(PathElement.groupElement("maxInstanceCount"));
-    /// The memory layout of `maxInstanceCount`.
-    public static final MemoryLayout LAYOUT_maxInstanceCount = LAYOUT.select(PathElement.groupElement("maxInstanceCount"));
-    /// The [VarHandle] of `maxInstanceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxInstanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInstanceCount"));
-    /// The byte offset of `maxPrimitiveCount`.
     public static final long OFFSET_maxPrimitiveCount = LAYOUT.byteOffset(PathElement.groupElement("maxPrimitiveCount"));
-    /// The memory layout of `maxPrimitiveCount`.
-    public static final MemoryLayout LAYOUT_maxPrimitiveCount = LAYOUT.select(PathElement.groupElement("maxPrimitiveCount"));
-    /// The [VarHandle] of `maxPrimitiveCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPrimitiveCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPrimitiveCount"));
-    /// The byte offset of `maxPerStageDescriptorAccelerationStructures`.
     public static final long OFFSET_maxPerStageDescriptorAccelerationStructures = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorAccelerationStructures"));
-    /// The memory layout of `maxPerStageDescriptorAccelerationStructures`.
-    public static final MemoryLayout LAYOUT_maxPerStageDescriptorAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorAccelerationStructures"));
-    /// The [VarHandle] of `maxPerStageDescriptorAccelerationStructures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorAccelerationStructures"));
-    /// The byte offset of `maxPerStageDescriptorUpdateAfterBindAccelerationStructures`.
     public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindAccelerationStructures"));
-    /// The memory layout of `maxPerStageDescriptorUpdateAfterBindAccelerationStructures`.
-    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindAccelerationStructures"));
-    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindAccelerationStructures"));
-    /// The byte offset of `maxDescriptorSetAccelerationStructures`.
     public static final long OFFSET_maxDescriptorSetAccelerationStructures = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetAccelerationStructures"));
-    /// The memory layout of `maxDescriptorSetAccelerationStructures`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxDescriptorSetAccelerationStructures"));
-    /// The [VarHandle] of `maxDescriptorSetAccelerationStructures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetAccelerationStructures"));
-    /// The byte offset of `maxDescriptorSetUpdateAfterBindAccelerationStructures`.
     public static final long OFFSET_maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindAccelerationStructures"));
-    /// The memory layout of `maxDescriptorSetUpdateAfterBindAccelerationStructures`.
-    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindAccelerationStructures"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindAccelerationStructures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindAccelerationStructures"));
-    /// The byte offset of `minAccelerationStructureScratchOffsetAlignment`.
     public static final long OFFSET_minAccelerationStructureScratchOffsetAlignment = LAYOUT.byteOffset(PathElement.groupElement("minAccelerationStructureScratchOffsetAlignment"));
-    /// The memory layout of `minAccelerationStructureScratchOffsetAlignment`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_maxGeometryCount = LAYOUT.select(PathElement.groupElement("maxGeometryCount"));
+    public static final MemoryLayout LAYOUT_maxInstanceCount = LAYOUT.select(PathElement.groupElement("maxInstanceCount"));
+    public static final MemoryLayout LAYOUT_maxPrimitiveCount = LAYOUT.select(PathElement.groupElement("maxPrimitiveCount"));
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorAccelerationStructures"));
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindAccelerationStructures"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxDescriptorSetAccelerationStructures"));
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindAccelerationStructures"));
     public static final MemoryLayout LAYOUT_minAccelerationStructureScratchOffsetAlignment = LAYOUT.select(PathElement.groupElement("minAccelerationStructureScratchOffsetAlignment"));
-    /// The [VarHandle] of `minAccelerationStructureScratchOffsetAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_maxGeometryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxGeometryCount"));
+    public static final VarHandle VH_maxInstanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInstanceCount"));
+    public static final VarHandle VH_maxPrimitiveCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPrimitiveCount"));
+    public static final VarHandle VH_maxPerStageDescriptorAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorAccelerationStructures"));
+    public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindAccelerationStructures"));
+    public static final VarHandle VH_maxDescriptorSetAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetAccelerationStructures"));
+    public static final VarHandle VH_maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindAccelerationStructures"));
     public static final VarHandle VH_minAccelerationStructureScratchOffsetAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minAccelerationStructureScratchOffsetAlignment"));
 
-    /// Creates `VkPhysicalDeviceAccelerationStructurePropertiesKHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceAccelerationStructurePropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceAccelerationStructurePropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAccelerationStructurePropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAccelerationStructurePropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceAccelerationStructurePropertiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAccelerationStructurePropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAccelerationStructurePropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceAccelerationStructurePropertiesKHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceAccelerationStructurePropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAccelerationStructurePropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceAccelerationStructurePropertiesKHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceAccelerationStructurePropertiesKHR`
     public static VkPhysicalDeviceAccelerationStructurePropertiesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceAccelerationStructurePropertiesKHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceAccelerationStructurePropertiesKHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceAccelerationStructurePropertiesKHR`
     public static VkPhysicalDeviceAccelerationStructurePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceAccelerationStructurePropertiesKHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceAccelerationStructurePropertiesKHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.khr.VKKHRAccelerationStructure.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR); }
+    public static VkPhysicalDeviceAccelerationStructurePropertiesKHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.khr.VKKHRAccelerationStructure.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR);
+        return s;
+    }
     public VkPhysicalDeviceAccelerationStructurePropertiesKHR copyFrom(VkPhysicalDeviceAccelerationStructurePropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceAccelerationStructurePropertiesKHR reinterpret(long count) { return new VkPhysicalDeviceAccelerationStructurePropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxGeometryCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long maxGeometryCount(MemorySegment segment, long index) { return (long) VH_maxGeometryCount.get(segment, 0L, index); }
-    /// {@return `maxGeometryCount`}
-    public long maxGeometryCount() { return maxGeometryCount(this.segment(), 0L); }
-    /// Sets `maxGeometryCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxGeometryCount(MemorySegment segment, long index, long value) { VH_maxGeometryCount.set(segment, 0L, index, value); }
-    /// Sets `maxGeometryCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxGeometryCount(long value) { maxGeometryCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxInstanceCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long maxInstanceCount(MemorySegment segment, long index) { return (long) VH_maxInstanceCount.get(segment, 0L, index); }
-    /// {@return `maxInstanceCount`}
-    public long maxInstanceCount() { return maxInstanceCount(this.segment(), 0L); }
-    /// Sets `maxInstanceCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxInstanceCount(MemorySegment segment, long index, long value) { VH_maxInstanceCount.set(segment, 0L, index, value); }
-    /// Sets `maxInstanceCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxInstanceCount(long value) { maxInstanceCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPrimitiveCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long maxPrimitiveCount(MemorySegment segment, long index) { return (long) VH_maxPrimitiveCount.get(segment, 0L, index); }
-    /// {@return `maxPrimitiveCount`}
-    public long maxPrimitiveCount() { return maxPrimitiveCount(this.segment(), 0L); }
-    /// Sets `maxPrimitiveCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPrimitiveCount(MemorySegment segment, long index, long value) { VH_maxPrimitiveCount.set(segment, 0L, index, value); }
-    /// Sets `maxPrimitiveCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPrimitiveCount(long value) { maxPrimitiveCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageDescriptorAccelerationStructures` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorAccelerationStructures(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorAccelerationStructures.get(segment, 0L, index); }
-    /// {@return `maxPerStageDescriptorAccelerationStructures`}
-    public int maxPerStageDescriptorAccelerationStructures() { return maxPerStageDescriptorAccelerationStructures(this.segment(), 0L); }
-    /// Sets `maxPerStageDescriptorAccelerationStructures` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageDescriptorAccelerationStructures(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorAccelerationStructures.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorAccelerationStructures` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorAccelerationStructures(int value) { maxPerStageDescriptorAccelerationStructures(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerStageDescriptorUpdateAfterBindAccelerationStructures(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindAccelerationStructures.get(segment, 0L, index); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindAccelerationStructures`}
-    public int maxPerStageDescriptorUpdateAfterBindAccelerationStructures() { return maxPerStageDescriptorUpdateAfterBindAccelerationStructures(this.segment(), 0L); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerStageDescriptorUpdateAfterBindAccelerationStructures(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindAccelerationStructures.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorUpdateAfterBindAccelerationStructures(int value) { maxPerStageDescriptorUpdateAfterBindAccelerationStructures(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetAccelerationStructures` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetAccelerationStructures(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetAccelerationStructures.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetAccelerationStructures`}
-    public int maxDescriptorSetAccelerationStructures() { return maxDescriptorSetAccelerationStructures(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetAccelerationStructures` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetAccelerationStructures(MemorySegment segment, long index, int value) { VH_maxDescriptorSetAccelerationStructures.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetAccelerationStructures` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetAccelerationStructures(int value) { maxDescriptorSetAccelerationStructures(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindAccelerationStructures` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxDescriptorSetUpdateAfterBindAccelerationStructures(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindAccelerationStructures.get(segment, 0L, index); }
-    /// {@return `maxDescriptorSetUpdateAfterBindAccelerationStructures`}
-    public int maxDescriptorSetUpdateAfterBindAccelerationStructures() { return maxDescriptorSetUpdateAfterBindAccelerationStructures(this.segment(), 0L); }
-    /// Sets `maxDescriptorSetUpdateAfterBindAccelerationStructures` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxDescriptorSetUpdateAfterBindAccelerationStructures(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindAccelerationStructures.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindAccelerationStructures` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetUpdateAfterBindAccelerationStructures(int value) { maxDescriptorSetUpdateAfterBindAccelerationStructures(this.segment(), 0L, value); return this; }
-
-    /// {@return `minAccelerationStructureScratchOffsetAlignment` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int minAccelerationStructureScratchOffsetAlignment(MemorySegment segment, long index) { return (int) VH_minAccelerationStructureScratchOffsetAlignment.get(segment, 0L, index); }
-    /// {@return `minAccelerationStructureScratchOffsetAlignment`}
-    public int minAccelerationStructureScratchOffsetAlignment() { return minAccelerationStructureScratchOffsetAlignment(this.segment(), 0L); }
-    /// Sets `minAccelerationStructureScratchOffsetAlignment` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void minAccelerationStructureScratchOffsetAlignment(MemorySegment segment, long index, int value) { VH_minAccelerationStructureScratchOffsetAlignment.set(segment, 0L, index, value); }
-    /// Sets `minAccelerationStructureScratchOffsetAlignment` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR minAccelerationStructureScratchOffsetAlignment(int value) { minAccelerationStructureScratchOffsetAlignment(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceAccelerationStructurePropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceAccelerationStructurePropertiesKHR`
     public VkPhysicalDeviceAccelerationStructurePropertiesKHR asSlice(long index) { return new VkPhysicalDeviceAccelerationStructurePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceAccelerationStructurePropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceAccelerationStructurePropertiesKHR`
     public VkPhysicalDeviceAccelerationStructurePropertiesKHR asSlice(long index, long count) { return new VkPhysicalDeviceAccelerationStructurePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceAccelerationStructurePropertiesKHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceAccelerationStructurePropertiesKHR at(long index, Consumer<VkPhysicalDeviceAccelerationStructurePropertiesKHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `maxGeometryCount` at the given index}
-    /// @param index the index of the struct buffer
-    public long maxGeometryCountAt(long index) { return maxGeometryCount(this.segment(), index); }
-    /// Sets `maxGeometryCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxGeometryCountAt(long index, long value) { maxGeometryCount(this.segment(), index, value); return this; }
-
-    /// {@return `maxInstanceCount` at the given index}
-    /// @param index the index of the struct buffer
-    public long maxInstanceCountAt(long index) { return maxInstanceCount(this.segment(), index); }
-    /// Sets `maxInstanceCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxInstanceCountAt(long index, long value) { maxInstanceCount(this.segment(), index, value); return this; }
-
-    /// {@return `maxPrimitiveCount` at the given index}
-    /// @param index the index of the struct buffer
-    public long maxPrimitiveCountAt(long index) { return maxPrimitiveCount(this.segment(), index); }
-    /// Sets `maxPrimitiveCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPrimitiveCountAt(long index, long value) { maxPrimitiveCount(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageDescriptorAccelerationStructures` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageDescriptorAccelerationStructuresAt(long index) { return maxPerStageDescriptorAccelerationStructures(this.segment(), index); }
-    /// Sets `maxPerStageDescriptorAccelerationStructures` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorAccelerationStructuresAt(long index, int value) { maxPerStageDescriptorAccelerationStructures(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(long index) { return maxPerStageDescriptorUpdateAfterBindAccelerationStructures(this.segment(), index); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindAccelerationStructures(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetAccelerationStructures` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetAccelerationStructuresAt(long index) { return maxDescriptorSetAccelerationStructures(this.segment(), index); }
-    /// Sets `maxDescriptorSetAccelerationStructures` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetAccelerationStructuresAt(long index, int value) { maxDescriptorSetAccelerationStructures(this.segment(), index, value); return this; }
-
-    /// {@return `maxDescriptorSetUpdateAfterBindAccelerationStructures` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(long index) { return maxDescriptorSetUpdateAfterBindAccelerationStructures(this.segment(), index); }
-    /// Sets `maxDescriptorSetUpdateAfterBindAccelerationStructures` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(long index, int value) { maxDescriptorSetUpdateAfterBindAccelerationStructures(this.segment(), index, value); return this; }
-
-    /// {@return `minAccelerationStructureScratchOffsetAlignment` at the given index}
-    /// @param index the index of the struct buffer
-    public int minAccelerationStructureScratchOffsetAlignmentAt(long index) { return minAccelerationStructureScratchOffsetAlignment(this.segment(), index); }
-    /// Sets `minAccelerationStructureScratchOffsetAlignment` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR minAccelerationStructureScratchOffsetAlignmentAt(long index, int value) { minAccelerationStructureScratchOffsetAlignment(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long maxGeometryCountAt(long index) { return (long) VH_maxGeometryCount.get(this.segment(), 0L, index); }
+    public long maxInstanceCountAt(long index) { return (long) VH_maxInstanceCount.get(this.segment(), 0L, index); }
+    public long maxPrimitiveCountAt(long index) { return (long) VH_maxPrimitiveCount.get(this.segment(), 0L, index); }
+    public int maxPerStageDescriptorAccelerationStructuresAt(long index) { return (int) VH_maxPerStageDescriptorAccelerationStructures.get(this.segment(), 0L, index); }
+    public int maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindAccelerationStructures.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetAccelerationStructuresAt(long index) { return (int) VH_maxDescriptorSetAccelerationStructures.get(this.segment(), 0L, index); }
+    public int maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(long index) { return (int) VH_maxDescriptorSetUpdateAfterBindAccelerationStructures.get(this.segment(), 0L, index); }
+    public int minAccelerationStructureScratchOffsetAlignmentAt(long index) { return (int) VH_minAccelerationStructureScratchOffsetAlignment.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long maxGeometryCount() { return (long) VH_maxGeometryCount.get(this.segment(), 0L, 0L); }
+    public long maxInstanceCount() { return (long) VH_maxInstanceCount.get(this.segment(), 0L, 0L); }
+    public long maxPrimitiveCount() { return (long) VH_maxPrimitiveCount.get(this.segment(), 0L, 0L); }
+    public int maxPerStageDescriptorAccelerationStructures() { return (int) VH_maxPerStageDescriptorAccelerationStructures.get(this.segment(), 0L, 0L); }
+    public int maxPerStageDescriptorUpdateAfterBindAccelerationStructures() { return (int) VH_maxPerStageDescriptorUpdateAfterBindAccelerationStructures.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetAccelerationStructures() { return (int) VH_maxDescriptorSetAccelerationStructures.get(this.segment(), 0L, 0L); }
+    public int maxDescriptorSetUpdateAfterBindAccelerationStructures() { return (int) VH_maxDescriptorSetUpdateAfterBindAccelerationStructures.get(this.segment(), 0L, 0L); }
+    public int minAccelerationStructureScratchOffsetAlignment() { return (int) VH_minAccelerationStructureScratchOffsetAlignment.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxGeometryCountAt(long index, long value) { VH_maxGeometryCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxInstanceCountAt(long index, long value) { VH_maxInstanceCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPrimitiveCountAt(long index, long value) { VH_maxPrimitiveCount.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorAccelerationStructuresAt(long index, int value) { VH_maxPerStageDescriptorAccelerationStructures.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindAccelerationStructures.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetAccelerationStructuresAt(long index, int value) { VH_maxDescriptorSetAccelerationStructures.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(long index, int value) { VH_maxDescriptorSetUpdateAfterBindAccelerationStructures.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR minAccelerationStructureScratchOffsetAlignmentAt(long index, int value) { VH_minAccelerationStructureScratchOffsetAlignment.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxGeometryCount(long value) { VH_maxGeometryCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxInstanceCount(long value) { VH_maxInstanceCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPrimitiveCount(long value) { VH_maxPrimitiveCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorAccelerationStructures(int value) { VH_maxPerStageDescriptorAccelerationStructures.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorUpdateAfterBindAccelerationStructures(int value) { VH_maxPerStageDescriptorUpdateAfterBindAccelerationStructures.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetAccelerationStructures(int value) { VH_maxDescriptorSetAccelerationStructures.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetUpdateAfterBindAccelerationStructures(int value) { VH_maxDescriptorSetUpdateAfterBindAccelerationStructures.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR minAccelerationStructureScratchOffsetAlignment(int value) { VH_minAccelerationStructureScratchOffsetAlignment.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _maxGeometryCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxGeometryCount, index), LAYOUT_maxGeometryCount); }
+    public MemorySegment _maxGeometryCount() { return _maxGeometryCountAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxGeometryCountAt(long index, MemorySegment src) { _maxGeometryCountAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxGeometryCount(MemorySegment src) { return _maxGeometryCountAt(0L, src); }
+    public MemorySegment _maxInstanceCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxInstanceCount, index), LAYOUT_maxInstanceCount); }
+    public MemorySegment _maxInstanceCount() { return _maxInstanceCountAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxInstanceCountAt(long index, MemorySegment src) { _maxInstanceCountAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxInstanceCount(MemorySegment src) { return _maxInstanceCountAt(0L, src); }
+    public MemorySegment _maxPrimitiveCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPrimitiveCount, index), LAYOUT_maxPrimitiveCount); }
+    public MemorySegment _maxPrimitiveCount() { return _maxPrimitiveCountAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxPrimitiveCountAt(long index, MemorySegment src) { _maxPrimitiveCountAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxPrimitiveCount(MemorySegment src) { return _maxPrimitiveCountAt(0L, src); }
+    public MemorySegment _maxPerStageDescriptorAccelerationStructuresAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageDescriptorAccelerationStructures, index), LAYOUT_maxPerStageDescriptorAccelerationStructures); }
+    public MemorySegment _maxPerStageDescriptorAccelerationStructures() { return _maxPerStageDescriptorAccelerationStructuresAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxPerStageDescriptorAccelerationStructuresAt(long index, MemorySegment src) { _maxPerStageDescriptorAccelerationStructuresAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxPerStageDescriptorAccelerationStructures(MemorySegment src) { return _maxPerStageDescriptorAccelerationStructuresAt(0L, src); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerStageDescriptorUpdateAfterBindAccelerationStructures, index), LAYOUT_maxPerStageDescriptorUpdateAfterBindAccelerationStructures); }
+    public MemorySegment _maxPerStageDescriptorUpdateAfterBindAccelerationStructures() { return _maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(long index, MemorySegment src) { _maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxPerStageDescriptorUpdateAfterBindAccelerationStructures(MemorySegment src) { return _maxPerStageDescriptorUpdateAfterBindAccelerationStructuresAt(0L, src); }
+    public MemorySegment _maxDescriptorSetAccelerationStructuresAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetAccelerationStructures, index), LAYOUT_maxDescriptorSetAccelerationStructures); }
+    public MemorySegment _maxDescriptorSetAccelerationStructures() { return _maxDescriptorSetAccelerationStructuresAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxDescriptorSetAccelerationStructuresAt(long index, MemorySegment src) { _maxDescriptorSetAccelerationStructuresAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxDescriptorSetAccelerationStructures(MemorySegment src) { return _maxDescriptorSetAccelerationStructuresAt(0L, src); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxDescriptorSetUpdateAfterBindAccelerationStructures, index), LAYOUT_maxDescriptorSetUpdateAfterBindAccelerationStructures); }
+    public MemorySegment _maxDescriptorSetUpdateAfterBindAccelerationStructures() { return _maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(long index, MemorySegment src) { _maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _maxDescriptorSetUpdateAfterBindAccelerationStructures(MemorySegment src) { return _maxDescriptorSetUpdateAfterBindAccelerationStructuresAt(0L, src); }
+    public MemorySegment _minAccelerationStructureScratchOffsetAlignmentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_minAccelerationStructureScratchOffsetAlignment, index), LAYOUT_minAccelerationStructureScratchOffsetAlignment); }
+    public MemorySegment _minAccelerationStructureScratchOffsetAlignment() { return _minAccelerationStructureScratchOffsetAlignmentAt(0L); }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _minAccelerationStructureScratchOffsetAlignmentAt(long index, MemorySegment src) { _minAccelerationStructureScratchOffsetAlignmentAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR _minAccelerationStructureScratchOffsetAlignment(MemorySegment src) { return _minAccelerationStructureScratchOffsetAlignmentAt(0L, src); }
 }

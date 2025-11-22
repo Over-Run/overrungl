@@ -10,17 +10,16 @@ import static overrungl.internal.RuntimeHelper.*;
 public final class VKNVAcquireWinrtDisplay {
     public static final int VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME = "VK_NV_acquire_winrt_display";
+    private VKNVAcquireWinrtDisplay() {}
     public static final class Handles {
         public static final MethodHandle MH_vkAcquireWinrtDisplayNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_vkGetWinrtDisplayNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKNVAcquireWinrtDisplay() {}
-
     /// Invokes `vkAcquireWinrtDisplayNV`.
     /// ```
-    /// (int) VkResult vkAcquireWinrtDisplayNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkDisplayKHR display);
+    /// VkResult vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, VkDisplayKHR display);
     /// ```
     public static int vkAcquireWinrtDisplayNV(@NonNull VkPhysicalDevice physicalDevice, long display) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireWinrtDisplayNV)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireWinrtDisplayNV");
@@ -31,7 +30,7 @@ public final class VKNVAcquireWinrtDisplay {
 
     /// Invokes `vkGetWinrtDisplayNV`.
     /// ```
-    /// (int) VkResult vkGetWinrtDisplayNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t deviceRelativeId, VkDisplayKHR* pDisplay);
+    /// VkResult vkGetWinrtDisplayNV(VkPhysicalDevice physicalDevice, uint32_t deviceRelativeId, VkDisplayKHR* pDisplay);
     /// ```
     public static int vkGetWinrtDisplayNV(@NonNull VkPhysicalDevice physicalDevice, int deviceRelativeId, @NonNull MemorySegment pDisplay) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetWinrtDisplayNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetWinrtDisplayNV");

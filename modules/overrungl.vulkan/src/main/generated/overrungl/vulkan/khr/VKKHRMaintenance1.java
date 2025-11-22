@@ -16,16 +16,15 @@ public final class VKKHRMaintenance1 {
     public static final int VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR = 0x00004000;
     public static final int VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR = 0x00008000;
     public static final int VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR = 0x00000020;
+    private VKKHRMaintenance1() {}
     public static final class Handles {
         public static final MethodHandle MH_vkTrimCommandPoolKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
-    private VKKHRMaintenance1() {}
-
     /// Invokes `vkTrimCommandPoolKHR`.
     /// ```
-    /// void vkTrimCommandPoolKHR((struct VkDevice*) VkDevice device, (uint64_t) VkCommandPool commandPool, ((uint32_t) VkFlags) VkCommandPoolTrimFlags flags);
+    /// void vkTrimCommandPoolKHR(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags);
     /// ```
     public static void vkTrimCommandPoolKHR(@NonNull VkDevice device, long commandPool, int flags) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkTrimCommandPoolKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkTrimCommandPoolKHR");

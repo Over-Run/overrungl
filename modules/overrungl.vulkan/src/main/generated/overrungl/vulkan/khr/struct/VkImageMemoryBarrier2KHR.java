@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,22 +12,21 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageMemoryBarrier2KHR {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint64_t) VkFlags64) VkPipelineStageFlags2 srcStageMask;
-///     ((uint64_t) VkFlags64) VkAccessFlags2 srcAccessMask;
-///     ((uint64_t) VkFlags64) VkPipelineStageFlags2 dstStageMask;
-///     ((uint64_t) VkFlags64) VkAccessFlags2 dstAccessMask;
-///     (int) VkImageLayout oldLayout;
-///     (int) VkImageLayout newLayout;
+///     VkPipelineStageFlags2 srcStageMask;
+///     VkAccessFlags2 srcAccessMask;
+///     VkPipelineStageFlags2 dstStageMask;
+///     VkAccessFlags2 dstAccessMask;
+///     VkImageLayout oldLayout;
+///     VkImageLayout newLayout;
 ///     uint32_t srcQueueFamilyIndex;
 ///     uint32_t dstQueueFamilyIndex;
-///     (uint64_t) VkImage image;
-///     (struct VkImageSubresourceRange) VkImageSubresourceRange subresourceRange;
-/// };
+///     VkImage image;
+///     VkImageSubresourceRange subresourceRange;
+/// }
 /// ```
 public final class VkImageMemoryBarrier2KHR extends GroupType {
-    /// The struct layout of `VkImageMemoryBarrier2KHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -43,447 +41,174 @@ public final class VkImageMemoryBarrier2KHR extends GroupType {
         ValueLayout.JAVA_LONG.withName("image"),
         overrungl.vulkan.struct.VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `srcStageMask`.
     public static final long OFFSET_srcStageMask = LAYOUT.byteOffset(PathElement.groupElement("srcStageMask"));
-    /// The memory layout of `srcStageMask`.
-    public static final MemoryLayout LAYOUT_srcStageMask = LAYOUT.select(PathElement.groupElement("srcStageMask"));
-    /// The [VarHandle] of `srcStageMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcStageMask"));
-    /// The byte offset of `srcAccessMask`.
     public static final long OFFSET_srcAccessMask = LAYOUT.byteOffset(PathElement.groupElement("srcAccessMask"));
-    /// The memory layout of `srcAccessMask`.
-    public static final MemoryLayout LAYOUT_srcAccessMask = LAYOUT.select(PathElement.groupElement("srcAccessMask"));
-    /// The [VarHandle] of `srcAccessMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccessMask"));
-    /// The byte offset of `dstStageMask`.
     public static final long OFFSET_dstStageMask = LAYOUT.byteOffset(PathElement.groupElement("dstStageMask"));
-    /// The memory layout of `dstStageMask`.
-    public static final MemoryLayout LAYOUT_dstStageMask = LAYOUT.select(PathElement.groupElement("dstStageMask"));
-    /// The [VarHandle] of `dstStageMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstStageMask"));
-    /// The byte offset of `dstAccessMask`.
     public static final long OFFSET_dstAccessMask = LAYOUT.byteOffset(PathElement.groupElement("dstAccessMask"));
-    /// The memory layout of `dstAccessMask`.
-    public static final MemoryLayout LAYOUT_dstAccessMask = LAYOUT.select(PathElement.groupElement("dstAccessMask"));
-    /// The [VarHandle] of `dstAccessMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccessMask"));
-    /// The byte offset of `oldLayout`.
     public static final long OFFSET_oldLayout = LAYOUT.byteOffset(PathElement.groupElement("oldLayout"));
-    /// The memory layout of `oldLayout`.
-    public static final MemoryLayout LAYOUT_oldLayout = LAYOUT.select(PathElement.groupElement("oldLayout"));
-    /// The [VarHandle] of `oldLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_oldLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("oldLayout"));
-    /// The byte offset of `newLayout`.
     public static final long OFFSET_newLayout = LAYOUT.byteOffset(PathElement.groupElement("newLayout"));
-    /// The memory layout of `newLayout`.
-    public static final MemoryLayout LAYOUT_newLayout = LAYOUT.select(PathElement.groupElement("newLayout"));
-    /// The [VarHandle] of `newLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_newLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("newLayout"));
-    /// The byte offset of `srcQueueFamilyIndex`.
     public static final long OFFSET_srcQueueFamilyIndex = LAYOUT.byteOffset(PathElement.groupElement("srcQueueFamilyIndex"));
-    /// The memory layout of `srcQueueFamilyIndex`.
-    public static final MemoryLayout LAYOUT_srcQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("srcQueueFamilyIndex"));
-    /// The [VarHandle] of `srcQueueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_srcQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcQueueFamilyIndex"));
-    /// The byte offset of `dstQueueFamilyIndex`.
     public static final long OFFSET_dstQueueFamilyIndex = LAYOUT.byteOffset(PathElement.groupElement("dstQueueFamilyIndex"));
-    /// The memory layout of `dstQueueFamilyIndex`.
-    public static final MemoryLayout LAYOUT_dstQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("dstQueueFamilyIndex"));
-    /// The [VarHandle] of `dstQueueFamilyIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_dstQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstQueueFamilyIndex"));
-    /// The byte offset of `image`.
     public static final long OFFSET_image = LAYOUT.byteOffset(PathElement.groupElement("image"));
-    /// The memory layout of `image`.
-    public static final MemoryLayout LAYOUT_image = LAYOUT.select(PathElement.groupElement("image"));
-    /// The [VarHandle] of `image` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_image = LAYOUT.arrayElementVarHandle(PathElement.groupElement("image"));
-    /// The byte offset of `subresourceRange`.
     public static final long OFFSET_subresourceRange = LAYOUT.byteOffset(PathElement.groupElement("subresourceRange"));
-    /// The memory layout of `subresourceRange`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_srcStageMask = LAYOUT.select(PathElement.groupElement("srcStageMask"));
+    public static final MemoryLayout LAYOUT_srcAccessMask = LAYOUT.select(PathElement.groupElement("srcAccessMask"));
+    public static final MemoryLayout LAYOUT_dstStageMask = LAYOUT.select(PathElement.groupElement("dstStageMask"));
+    public static final MemoryLayout LAYOUT_dstAccessMask = LAYOUT.select(PathElement.groupElement("dstAccessMask"));
+    public static final MemoryLayout LAYOUT_oldLayout = LAYOUT.select(PathElement.groupElement("oldLayout"));
+    public static final MemoryLayout LAYOUT_newLayout = LAYOUT.select(PathElement.groupElement("newLayout"));
+    public static final MemoryLayout LAYOUT_srcQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("srcQueueFamilyIndex"));
+    public static final MemoryLayout LAYOUT_dstQueueFamilyIndex = LAYOUT.select(PathElement.groupElement("dstQueueFamilyIndex"));
+    public static final MemoryLayout LAYOUT_image = LAYOUT.select(PathElement.groupElement("image"));
     public static final MemoryLayout LAYOUT_subresourceRange = LAYOUT.select(PathElement.groupElement("subresourceRange"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_srcStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcStageMask"));
+    public static final VarHandle VH_srcAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAccessMask"));
+    public static final VarHandle VH_dstStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstStageMask"));
+    public static final VarHandle VH_dstAccessMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAccessMask"));
+    public static final VarHandle VH_oldLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("oldLayout"));
+    public static final VarHandle VH_newLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("newLayout"));
+    public static final VarHandle VH_srcQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcQueueFamilyIndex"));
+    public static final VarHandle VH_dstQueueFamilyIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstQueueFamilyIndex"));
+    public static final VarHandle VH_image = LAYOUT.arrayElementVarHandle(PathElement.groupElement("image"));
+    public static final VarHandle VH_subresourceRange$aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceRange"), PathElement.groupElement("aspectMask"));
+    public static final VarHandle VH_subresourceRange$baseMipLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceRange"), PathElement.groupElement("baseMipLevel"));
+    public static final VarHandle VH_subresourceRange$levelCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceRange"), PathElement.groupElement("levelCount"));
+    public static final VarHandle VH_subresourceRange$baseArrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceRange"), PathElement.groupElement("baseArrayLayer"));
+    public static final VarHandle VH_subresourceRange$layerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subresourceRange"), PathElement.groupElement("layerCount"));
 
-    /// Creates `VkImageMemoryBarrier2KHR` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkImageMemoryBarrier2KHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkImageMemoryBarrier2KHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageMemoryBarrier2KHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageMemoryBarrier2KHR(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkImageMemoryBarrier2KHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageMemoryBarrier2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageMemoryBarrier2KHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkImageMemoryBarrier2KHR` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkImageMemoryBarrier2KHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageMemoryBarrier2KHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkImageMemoryBarrier2KHR` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageMemoryBarrier2KHR`
     public static VkImageMemoryBarrier2KHR alloc(SegmentAllocator allocator) { return new VkImageMemoryBarrier2KHR(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkImageMemoryBarrier2KHR` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkImageMemoryBarrier2KHR`
     public static VkImageMemoryBarrier2KHR alloc(SegmentAllocator allocator, long count) { return new VkImageMemoryBarrier2KHR(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkImageMemoryBarrier2KHR allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2); }
+    public static VkImageMemoryBarrier2KHR allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2);
+        return s;
+    }
     public VkImageMemoryBarrier2KHR copyFrom(VkImageMemoryBarrier2KHR src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkImageMemoryBarrier2KHR reinterpret(long count) { return new VkImageMemoryBarrier2KHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcStageMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long srcStageMask(MemorySegment segment, long index) { return (long) VH_srcStageMask.get(segment, 0L, index); }
-    /// {@return `srcStageMask`}
-    public long srcStageMask() { return srcStageMask(this.segment(), 0L); }
-    /// Sets `srcStageMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcStageMask(MemorySegment segment, long index, long value) { VH_srcStageMask.set(segment, 0L, index, value); }
-    /// Sets `srcStageMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR srcStageMask(long value) { srcStageMask(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcAccessMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long srcAccessMask(MemorySegment segment, long index) { return (long) VH_srcAccessMask.get(segment, 0L, index); }
-    /// {@return `srcAccessMask`}
-    public long srcAccessMask() { return srcAccessMask(this.segment(), 0L); }
-    /// Sets `srcAccessMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcAccessMask(MemorySegment segment, long index, long value) { VH_srcAccessMask.set(segment, 0L, index, value); }
-    /// Sets `srcAccessMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR srcAccessMask(long value) { srcAccessMask(this.segment(), 0L, value); return this; }
-
-    /// {@return `dstStageMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long dstStageMask(MemorySegment segment, long index) { return (long) VH_dstStageMask.get(segment, 0L, index); }
-    /// {@return `dstStageMask`}
-    public long dstStageMask() { return dstStageMask(this.segment(), 0L); }
-    /// Sets `dstStageMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstStageMask(MemorySegment segment, long index, long value) { VH_dstStageMask.set(segment, 0L, index, value); }
-    /// Sets `dstStageMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR dstStageMask(long value) { dstStageMask(this.segment(), 0L, value); return this; }
-
-    /// {@return `dstAccessMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long dstAccessMask(MemorySegment segment, long index) { return (long) VH_dstAccessMask.get(segment, 0L, index); }
-    /// {@return `dstAccessMask`}
-    public long dstAccessMask() { return dstAccessMask(this.segment(), 0L); }
-    /// Sets `dstAccessMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstAccessMask(MemorySegment segment, long index, long value) { VH_dstAccessMask.set(segment, 0L, index, value); }
-    /// Sets `dstAccessMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR dstAccessMask(long value) { dstAccessMask(this.segment(), 0L, value); return this; }
-
-    /// {@return `oldLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int oldLayout(MemorySegment segment, long index) { return (int) VH_oldLayout.get(segment, 0L, index); }
-    /// {@return `oldLayout`}
-    public int oldLayout() { return oldLayout(this.segment(), 0L); }
-    /// Sets `oldLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void oldLayout(MemorySegment segment, long index, int value) { VH_oldLayout.set(segment, 0L, index, value); }
-    /// Sets `oldLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR oldLayout(int value) { oldLayout(this.segment(), 0L, value); return this; }
-
-    /// {@return `newLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int newLayout(MemorySegment segment, long index) { return (int) VH_newLayout.get(segment, 0L, index); }
-    /// {@return `newLayout`}
-    public int newLayout() { return newLayout(this.segment(), 0L); }
-    /// Sets `newLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void newLayout(MemorySegment segment, long index, int value) { VH_newLayout.set(segment, 0L, index, value); }
-    /// Sets `newLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR newLayout(int value) { newLayout(this.segment(), 0L, value); return this; }
-
-    /// {@return `srcQueueFamilyIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int srcQueueFamilyIndex(MemorySegment segment, long index) { return (int) VH_srcQueueFamilyIndex.get(segment, 0L, index); }
-    /// {@return `srcQueueFamilyIndex`}
-    public int srcQueueFamilyIndex() { return srcQueueFamilyIndex(this.segment(), 0L); }
-    /// Sets `srcQueueFamilyIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void srcQueueFamilyIndex(MemorySegment segment, long index, int value) { VH_srcQueueFamilyIndex.set(segment, 0L, index, value); }
-    /// Sets `srcQueueFamilyIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR srcQueueFamilyIndex(int value) { srcQueueFamilyIndex(this.segment(), 0L, value); return this; }
-
-    /// {@return `dstQueueFamilyIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int dstQueueFamilyIndex(MemorySegment segment, long index) { return (int) VH_dstQueueFamilyIndex.get(segment, 0L, index); }
-    /// {@return `dstQueueFamilyIndex`}
-    public int dstQueueFamilyIndex() { return dstQueueFamilyIndex(this.segment(), 0L); }
-    /// Sets `dstQueueFamilyIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void dstQueueFamilyIndex(MemorySegment segment, long index, int value) { VH_dstQueueFamilyIndex.set(segment, 0L, index, value); }
-    /// Sets `dstQueueFamilyIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR dstQueueFamilyIndex(int value) { dstQueueFamilyIndex(this.segment(), 0L, value); return this; }
-
-    /// {@return `image` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long image(MemorySegment segment, long index) { return (long) VH_image.get(segment, 0L, index); }
-    /// {@return `image`}
-    public long image() { return image(this.segment(), 0L); }
-    /// Sets `image` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void image(MemorySegment segment, long index, long value) { VH_image.set(segment, 0L, index, value); }
-    /// Sets `image` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR image(long value) { image(this.segment(), 0L, value); return this; }
-
-    /// {@return `subresourceRange` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment subresourceRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_subresourceRange, index), LAYOUT_subresourceRange); }
-    /// {@return `subresourceRange`}
-    public MemorySegment subresourceRange() { return subresourceRange(this.segment(), 0L); }
-    /// Sets `subresourceRange` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void subresourceRange(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_subresourceRange, index), LAYOUT_subresourceRange.byteSize()); }
-    /// Sets `subresourceRange` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR subresourceRange(MemorySegment value) { subresourceRange(this.segment(), 0L, value); return this; }
-    /// Accepts `subresourceRange` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR subresourceRange(Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRange())); return this; }
-
-    /// Creates a slice of `VkImageMemoryBarrier2KHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageMemoryBarrier2KHR`
     public VkImageMemoryBarrier2KHR asSlice(long index) { return new VkImageMemoryBarrier2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkImageMemoryBarrier2KHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageMemoryBarrier2KHR`
     public VkImageMemoryBarrier2KHR asSlice(long index, long count) { return new VkImageMemoryBarrier2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkImageMemoryBarrier2KHR` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkImageMemoryBarrier2KHR at(long index, Consumer<VkImageMemoryBarrier2KHR> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `srcStageMask` at the given index}
-    /// @param index the index of the struct buffer
-    public long srcStageMaskAt(long index) { return srcStageMask(this.segment(), index); }
-    /// Sets `srcStageMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR srcStageMaskAt(long index, long value) { srcStageMask(this.segment(), index, value); return this; }
-
-    /// {@return `srcAccessMask` at the given index}
-    /// @param index the index of the struct buffer
-    public long srcAccessMaskAt(long index) { return srcAccessMask(this.segment(), index); }
-    /// Sets `srcAccessMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR srcAccessMaskAt(long index, long value) { srcAccessMask(this.segment(), index, value); return this; }
-
-    /// {@return `dstStageMask` at the given index}
-    /// @param index the index of the struct buffer
-    public long dstStageMaskAt(long index) { return dstStageMask(this.segment(), index); }
-    /// Sets `dstStageMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR dstStageMaskAt(long index, long value) { dstStageMask(this.segment(), index, value); return this; }
-
-    /// {@return `dstAccessMask` at the given index}
-    /// @param index the index of the struct buffer
-    public long dstAccessMaskAt(long index) { return dstAccessMask(this.segment(), index); }
-    /// Sets `dstAccessMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR dstAccessMaskAt(long index, long value) { dstAccessMask(this.segment(), index, value); return this; }
-
-    /// {@return `oldLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public int oldLayoutAt(long index) { return oldLayout(this.segment(), index); }
-    /// Sets `oldLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR oldLayoutAt(long index, int value) { oldLayout(this.segment(), index, value); return this; }
-
-    /// {@return `newLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public int newLayoutAt(long index) { return newLayout(this.segment(), index); }
-    /// Sets `newLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR newLayoutAt(long index, int value) { newLayout(this.segment(), index, value); return this; }
-
-    /// {@return `srcQueueFamilyIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int srcQueueFamilyIndexAt(long index) { return srcQueueFamilyIndex(this.segment(), index); }
-    /// Sets `srcQueueFamilyIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR srcQueueFamilyIndexAt(long index, int value) { srcQueueFamilyIndex(this.segment(), index, value); return this; }
-
-    /// {@return `dstQueueFamilyIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int dstQueueFamilyIndexAt(long index) { return dstQueueFamilyIndex(this.segment(), index); }
-    /// Sets `dstQueueFamilyIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR dstQueueFamilyIndexAt(long index, int value) { dstQueueFamilyIndex(this.segment(), index, value); return this; }
-
-    /// {@return `image` at the given index}
-    /// @param index the index of the struct buffer
-    public long imageAt(long index) { return image(this.segment(), index); }
-    /// Sets `image` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR imageAt(long index, long value) { image(this.segment(), index, value); return this; }
-
-    /// {@return `subresourceRange` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment subresourceRangeAt(long index) { return subresourceRange(this.segment(), index); }
-    /// Sets `subresourceRange` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR subresourceRangeAt(long index, MemorySegment value) { subresourceRange(this.segment(), index, value); return this; }
-    /// Accepts `subresourceRange` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkImageMemoryBarrier2KHR subresourceRangeAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRangeAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long srcStageMaskAt(long index) { return (long) VH_srcStageMask.get(this.segment(), 0L, index); }
+    public long srcAccessMaskAt(long index) { return (long) VH_srcAccessMask.get(this.segment(), 0L, index); }
+    public long dstStageMaskAt(long index) { return (long) VH_dstStageMask.get(this.segment(), 0L, index); }
+    public long dstAccessMaskAt(long index) { return (long) VH_dstAccessMask.get(this.segment(), 0L, index); }
+    public int oldLayoutAt(long index) { return (int) VH_oldLayout.get(this.segment(), 0L, index); }
+    public int newLayoutAt(long index) { return (int) VH_newLayout.get(this.segment(), 0L, index); }
+    public int srcQueueFamilyIndexAt(long index) { return (int) VH_srcQueueFamilyIndex.get(this.segment(), 0L, index); }
+    public int dstQueueFamilyIndexAt(long index) { return (int) VH_dstQueueFamilyIndex.get(this.segment(), 0L, index); }
+    public long imageAt(long index) { return (long) VH_image.get(this.segment(), 0L, index); }
+    public int subresourceRange$aspectMaskAt(long index) { return (int) VH_subresourceRange$aspectMask.get(this.segment(), 0L, index); }
+    public int subresourceRange$baseMipLevelAt(long index) { return (int) VH_subresourceRange$baseMipLevel.get(this.segment(), 0L, index); }
+    public int subresourceRange$levelCountAt(long index) { return (int) VH_subresourceRange$levelCount.get(this.segment(), 0L, index); }
+    public int subresourceRange$baseArrayLayerAt(long index) { return (int) VH_subresourceRange$baseArrayLayer.get(this.segment(), 0L, index); }
+    public int subresourceRange$layerCountAt(long index) { return (int) VH_subresourceRange$layerCount.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long srcStageMask() { return (long) VH_srcStageMask.get(this.segment(), 0L, 0L); }
+    public long srcAccessMask() { return (long) VH_srcAccessMask.get(this.segment(), 0L, 0L); }
+    public long dstStageMask() { return (long) VH_dstStageMask.get(this.segment(), 0L, 0L); }
+    public long dstAccessMask() { return (long) VH_dstAccessMask.get(this.segment(), 0L, 0L); }
+    public int oldLayout() { return (int) VH_oldLayout.get(this.segment(), 0L, 0L); }
+    public int newLayout() { return (int) VH_newLayout.get(this.segment(), 0L, 0L); }
+    public int srcQueueFamilyIndex() { return (int) VH_srcQueueFamilyIndex.get(this.segment(), 0L, 0L); }
+    public int dstQueueFamilyIndex() { return (int) VH_dstQueueFamilyIndex.get(this.segment(), 0L, 0L); }
+    public long image() { return (long) VH_image.get(this.segment(), 0L, 0L); }
+    public int subresourceRange$aspectMask() { return (int) VH_subresourceRange$aspectMask.get(this.segment(), 0L, 0L); }
+    public int subresourceRange$baseMipLevel() { return (int) VH_subresourceRange$baseMipLevel.get(this.segment(), 0L, 0L); }
+    public int subresourceRange$levelCount() { return (int) VH_subresourceRange$levelCount.get(this.segment(), 0L, 0L); }
+    public int subresourceRange$baseArrayLayer() { return (int) VH_subresourceRange$baseArrayLayer.get(this.segment(), 0L, 0L); }
+    public int subresourceRange$layerCount() { return (int) VH_subresourceRange$layerCount.get(this.segment(), 0L, 0L); }
+    public VkImageMemoryBarrier2KHR sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR srcStageMaskAt(long index, long value) { VH_srcStageMask.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR srcAccessMaskAt(long index, long value) { VH_srcAccessMask.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR dstStageMaskAt(long index, long value) { VH_dstStageMask.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR dstAccessMaskAt(long index, long value) { VH_dstAccessMask.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR oldLayoutAt(long index, int value) { VH_oldLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR newLayoutAt(long index, int value) { VH_newLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR srcQueueFamilyIndexAt(long index, int value) { VH_srcQueueFamilyIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR dstQueueFamilyIndexAt(long index, int value) { VH_dstQueueFamilyIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR imageAt(long index, long value) { VH_image.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$aspectMaskAt(long index, int value) { VH_subresourceRange$aspectMask.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$baseMipLevelAt(long index, int value) { VH_subresourceRange$baseMipLevel.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$levelCountAt(long index, int value) { VH_subresourceRange$levelCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$baseArrayLayerAt(long index, int value) { VH_subresourceRange$baseArrayLayer.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$layerCountAt(long index, int value) { VH_subresourceRange$layerCount.set(this.segment(), 0L, index, value); return this; }
+    public VkImageMemoryBarrier2KHR sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR srcStageMask(long value) { VH_srcStageMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR srcAccessMask(long value) { VH_srcAccessMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR dstStageMask(long value) { VH_dstStageMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR dstAccessMask(long value) { VH_dstAccessMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR oldLayout(int value) { VH_oldLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR newLayout(int value) { VH_newLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR srcQueueFamilyIndex(int value) { VH_srcQueueFamilyIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR dstQueueFamilyIndex(int value) { VH_dstQueueFamilyIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR image(long value) { VH_image.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$aspectMask(int value) { VH_subresourceRange$aspectMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$baseMipLevel(int value) { VH_subresourceRange$baseMipLevel.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$levelCount(int value) { VH_subresourceRange$levelCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$baseArrayLayer(int value) { VH_subresourceRange$baseArrayLayer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkImageMemoryBarrier2KHR subresourceRange$layerCount(int value) { VH_subresourceRange$layerCount.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkImageMemoryBarrier2KHR _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkImageMemoryBarrier2KHR _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _srcStageMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcStageMask, index), LAYOUT_srcStageMask); }
+    public MemorySegment _srcStageMask() { return _srcStageMaskAt(0L); }
+    public VkImageMemoryBarrier2KHR _srcStageMaskAt(long index, MemorySegment src) { _srcStageMaskAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _srcStageMask(MemorySegment src) { return _srcStageMaskAt(0L, src); }
+    public MemorySegment _srcAccessMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcAccessMask, index), LAYOUT_srcAccessMask); }
+    public MemorySegment _srcAccessMask() { return _srcAccessMaskAt(0L); }
+    public VkImageMemoryBarrier2KHR _srcAccessMaskAt(long index, MemorySegment src) { _srcAccessMaskAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _srcAccessMask(MemorySegment src) { return _srcAccessMaskAt(0L, src); }
+    public MemorySegment _dstStageMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstStageMask, index), LAYOUT_dstStageMask); }
+    public MemorySegment _dstStageMask() { return _dstStageMaskAt(0L); }
+    public VkImageMemoryBarrier2KHR _dstStageMaskAt(long index, MemorySegment src) { _dstStageMaskAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _dstStageMask(MemorySegment src) { return _dstStageMaskAt(0L, src); }
+    public MemorySegment _dstAccessMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstAccessMask, index), LAYOUT_dstAccessMask); }
+    public MemorySegment _dstAccessMask() { return _dstAccessMaskAt(0L); }
+    public VkImageMemoryBarrier2KHR _dstAccessMaskAt(long index, MemorySegment src) { _dstAccessMaskAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _dstAccessMask(MemorySegment src) { return _dstAccessMaskAt(0L, src); }
+    public MemorySegment _oldLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_oldLayout, index), LAYOUT_oldLayout); }
+    public MemorySegment _oldLayout() { return _oldLayoutAt(0L); }
+    public VkImageMemoryBarrier2KHR _oldLayoutAt(long index, MemorySegment src) { _oldLayoutAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _oldLayout(MemorySegment src) { return _oldLayoutAt(0L, src); }
+    public MemorySegment _newLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_newLayout, index), LAYOUT_newLayout); }
+    public MemorySegment _newLayout() { return _newLayoutAt(0L); }
+    public VkImageMemoryBarrier2KHR _newLayoutAt(long index, MemorySegment src) { _newLayoutAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _newLayout(MemorySegment src) { return _newLayoutAt(0L, src); }
+    public MemorySegment _srcQueueFamilyIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_srcQueueFamilyIndex, index), LAYOUT_srcQueueFamilyIndex); }
+    public MemorySegment _srcQueueFamilyIndex() { return _srcQueueFamilyIndexAt(0L); }
+    public VkImageMemoryBarrier2KHR _srcQueueFamilyIndexAt(long index, MemorySegment src) { _srcQueueFamilyIndexAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _srcQueueFamilyIndex(MemorySegment src) { return _srcQueueFamilyIndexAt(0L, src); }
+    public MemorySegment _dstQueueFamilyIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_dstQueueFamilyIndex, index), LAYOUT_dstQueueFamilyIndex); }
+    public MemorySegment _dstQueueFamilyIndex() { return _dstQueueFamilyIndexAt(0L); }
+    public VkImageMemoryBarrier2KHR _dstQueueFamilyIndexAt(long index, MemorySegment src) { _dstQueueFamilyIndexAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _dstQueueFamilyIndex(MemorySegment src) { return _dstQueueFamilyIndexAt(0L, src); }
+    public MemorySegment _imageAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_image, index), LAYOUT_image); }
+    public MemorySegment _image() { return _imageAt(0L); }
+    public VkImageMemoryBarrier2KHR _imageAt(long index, MemorySegment src) { _imageAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _image(MemorySegment src) { return _imageAt(0L, src); }
+    public MemorySegment _subresourceRangeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_subresourceRange, index), LAYOUT_subresourceRange); }
+    public MemorySegment _subresourceRange() { return _subresourceRangeAt(0L); }
+    public VkImageMemoryBarrier2KHR _subresourceRangeAt(long index, MemorySegment src) { _subresourceRangeAt(index).copyFrom(src); return this; }
+    public VkImageMemoryBarrier2KHR _subresourceRange(MemorySegment src) { return _subresourceRangeAt(0L, src); }
 }

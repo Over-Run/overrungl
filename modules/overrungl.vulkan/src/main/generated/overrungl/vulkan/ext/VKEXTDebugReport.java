@@ -8,6 +8,8 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_debug_report` - instance extension
 public final class VKEXTDebugReport {
+    public static final int VK_EXT_DEBUG_REPORT_SPEC_VERSION = 10;
+    public static final String VK_EXT_DEBUG_REPORT_EXTENSION_NAME = "VK_EXT_debug_report";
     public static final int VK_DEBUG_REPORT_INFORMATION_BIT_EXT = 0x00000001;
     public static final int VK_DEBUG_REPORT_WARNING_BIT_EXT = 0x00000002;
     public static final int VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT = 0x00000004;
@@ -47,14 +49,13 @@ public final class VKEXTDebugReport {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT = 30;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT = 33;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT = 33;
-    public static final int VK_EXT_DEBUG_REPORT_SPEC_VERSION = 10;
-    public static final String VK_EXT_DEBUG_REPORT_EXTENSION_NAME = "VK_EXT_debug_report";
     public static final int VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT = 1000011000;
     public static final int VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = 1000011000;
     public static final int VK_ERROR_VALIDATION_FAILED_EXT = -1000011001;
     public static final int VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT = 1000011000;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT = 1000156000;
-    public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT = 1000011000;
+    public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT = 1000085000;
+    private VKEXTDebugReport() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateDebugReportCallbackEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroyDebugReportCallbackEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -62,11 +63,9 @@ public final class VKEXTDebugReport {
         private Handles() {}
     }
 
-    private VKEXTDebugReport() {}
-
     /// Invokes `vkCreateDebugReportCallbackEXT`.
     /// ```
-    /// (int) VkResult vkCreateDebugReportCallbackEXT((struct VkInstance*) VkInstance instance, const VkDebugReportCallbackCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback);
+    /// VkResult vkCreateDebugReportCallbackEXT(VkInstance instance, const VkDebugReportCallbackCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback);
     /// ```
     public static int vkCreateDebugReportCallbackEXT(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pCallback) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDebugReportCallbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDebugReportCallbackEXT");
@@ -77,7 +76,7 @@ public final class VKEXTDebugReport {
 
     /// Invokes `vkDestroyDebugReportCallbackEXT`.
     /// ```
-    /// void vkDestroyDebugReportCallbackEXT((struct VkInstance*) VkInstance instance, (uint64_t) VkDebugReportCallbackEXT callback, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyDebugReportCallbackEXT(@NonNull VkInstance instance, long callback, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroyDebugReportCallbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDebugReportCallbackEXT");
@@ -88,7 +87,7 @@ public final class VKEXTDebugReport {
 
     /// Invokes `vkDebugReportMessageEXT`.
     /// ```
-    /// void vkDebugReportMessageEXT((struct VkInstance*) VkInstance instance, ((uint32_t) VkFlags) VkDebugReportFlagsEXT flags, (int) VkDebugReportObjectTypeEXT objectType, uint64_t object, size_t location, int32_t messageCode, const char* pLayerPrefix, const char* pMessage);
+    /// void vkDebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, uint64_t object, size_t location, int32_t messageCode, const char* pLayerPrefix, const char* pMessage);
     /// ```
     public static void vkDebugReportMessageEXT(@NonNull VkInstance instance, int flags, int objectType, long object, long location, int messageCode, @NonNull MemorySegment pLayerPrefix, @NonNull MemorySegment pMessage) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDebugReportMessageEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDebugReportMessageEXT");

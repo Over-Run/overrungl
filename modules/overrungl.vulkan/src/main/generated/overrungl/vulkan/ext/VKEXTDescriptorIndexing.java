@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_descriptor_indexing` - device extension
 public final class VKEXTDescriptorIndexing {
     public static final int VK_EXT_DESCRIPTOR_INDEXING_SPEC_VERSION = 2;
@@ -18,7 +21,5 @@ public final class VKEXTDescriptorIndexing {
     public static final int VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT = 0x00000002;
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT = 0x00000002;
     public static final int VK_ERROR_FRAGMENTATION_EXT = -1000161000;
-
     private VKEXTDescriptorIndexing() {}
-
 }

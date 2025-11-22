@@ -20,6 +20,7 @@ public final class VKEXTTransformFeedback {
     public static final int VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT = 0x04000000;
     public static final int VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT = 0x08000000;
     public static final int VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT = 0x01000000;
+    private VKEXTTransformFeedback() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdBindTransformFeedbackBuffersEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdBeginTransformFeedbackEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -30,11 +31,9 @@ public final class VKEXTTransformFeedback {
         private Handles() {}
     }
 
-    private VKEXTTransformFeedback() {}
-
     /// Invokes `vkCmdBindTransformFeedbackBuffersEXT`.
     /// ```
-    /// void vkCmdBindTransformFeedbackBuffersEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstBinding, uint32_t bindingCount, const VkBuffer* pBuffers, const VkDeviceSize* pOffsets, const VkDeviceSize* pSizes);
+    /// void vkCmdBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint32_t firstBinding, uint32_t bindingCount, const VkBuffer* pBuffers, const VkDeviceSize* pOffsets, const VkDeviceSize* pSizes);
     /// ```
     public static void vkCmdBindTransformFeedbackBuffersEXT(@NonNull VkCommandBuffer commandBuffer, int firstBinding, int bindingCount, @NonNull MemorySegment pBuffers, @NonNull MemorySegment pOffsets, @NonNull MemorySegment pSizes) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindTransformFeedbackBuffersEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindTransformFeedbackBuffersEXT");
@@ -45,7 +44,7 @@ public final class VKEXTTransformFeedback {
 
     /// Invokes `vkCmdBeginTransformFeedbackEXT`.
     /// ```
-    /// void vkCmdBeginTransformFeedbackEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstCounterBuffer, uint32_t counterBufferCount, const VkBuffer* pCounterBuffers, const VkDeviceSize* pCounterBufferOffsets);
+    /// void vkCmdBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint32_t firstCounterBuffer, uint32_t counterBufferCount, const VkBuffer* pCounterBuffers, const VkDeviceSize* pCounterBufferOffsets);
     /// ```
     public static void vkCmdBeginTransformFeedbackEXT(@NonNull VkCommandBuffer commandBuffer, int firstCounterBuffer, int counterBufferCount, @NonNull MemorySegment pCounterBuffers, @NonNull MemorySegment pCounterBufferOffsets) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginTransformFeedbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginTransformFeedbackEXT");
@@ -56,7 +55,7 @@ public final class VKEXTTransformFeedback {
 
     /// Invokes `vkCmdEndTransformFeedbackEXT`.
     /// ```
-    /// void vkCmdEndTransformFeedbackEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstCounterBuffer, uint32_t counterBufferCount, const VkBuffer* pCounterBuffers, const VkDeviceSize* pCounterBufferOffsets);
+    /// void vkCmdEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint32_t firstCounterBuffer, uint32_t counterBufferCount, const VkBuffer* pCounterBuffers, const VkDeviceSize* pCounterBufferOffsets);
     /// ```
     public static void vkCmdEndTransformFeedbackEXT(@NonNull VkCommandBuffer commandBuffer, int firstCounterBuffer, int counterBufferCount, @NonNull MemorySegment pCounterBuffers, @NonNull MemorySegment pCounterBufferOffsets) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndTransformFeedbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndTransformFeedbackEXT");
@@ -67,7 +66,7 @@ public final class VKEXTTransformFeedback {
 
     /// Invokes `vkCmdBeginQueryIndexedEXT`.
     /// ```
-    /// void vkCmdBeginQueryIndexedEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkQueryPool queryPool, uint32_t query, ((uint32_t) VkFlags) VkQueryControlFlags flags, uint32_t index);
+    /// void vkCmdBeginQueryIndexedEXT(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint32_t query, VkQueryControlFlags flags, uint32_t index);
     /// ```
     public static void vkCmdBeginQueryIndexedEXT(@NonNull VkCommandBuffer commandBuffer, long queryPool, int query, int flags, int index) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginQueryIndexedEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginQueryIndexedEXT");
@@ -78,7 +77,7 @@ public final class VKEXTTransformFeedback {
 
     /// Invokes `vkCmdEndQueryIndexedEXT`.
     /// ```
-    /// void vkCmdEndQueryIndexedEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkQueryPool queryPool, uint32_t query, uint32_t index);
+    /// void vkCmdEndQueryIndexedEXT(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint32_t query, uint32_t index);
     /// ```
     public static void vkCmdEndQueryIndexedEXT(@NonNull VkCommandBuffer commandBuffer, long queryPool, int query, int index) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndQueryIndexedEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndQueryIndexedEXT");
@@ -89,7 +88,7 @@ public final class VKEXTTransformFeedback {
 
     /// Invokes `vkCmdDrawIndirectByteCountEXT`.
     /// ```
-    /// void vkCmdDrawIndirectByteCountEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t instanceCount, uint32_t firstInstance, (uint64_t) VkBuffer counterBuffer, (uint64_t) VkDeviceSize counterBufferOffset, uint32_t counterOffset, uint32_t vertexStride);
+    /// void vkCmdDrawIndirectByteCountEXT(VkCommandBuffer commandBuffer, uint32_t instanceCount, uint32_t firstInstance, VkBuffer counterBuffer, VkDeviceSize counterBufferOffset, uint32_t counterOffset, uint32_t vertexStride);
     /// ```
     public static void vkCmdDrawIndirectByteCountEXT(@NonNull VkCommandBuffer commandBuffer, int instanceCount, int firstInstance, long counterBuffer, long counterBufferOffset, int counterOffset, int vertexStride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectByteCountEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndirectByteCountEXT");

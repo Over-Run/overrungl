@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_swapchain_colorspace` - instance extension
 public final class VKEXTSwapchainColorspace {
     public static final int VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 5;
@@ -21,7 +24,5 @@ public final class VKEXTSwapchainColorspace {
     public static final int VK_COLOR_SPACE_PASS_THROUGH_EXT = 1000104013;
     public static final int VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT = 1000104014;
     public static final int VK_COLOR_SPACE_DCI_P3_LINEAR_EXT = 1000104003;
-
     private VKEXTSwapchainColorspace() {}
-
 }

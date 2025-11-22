@@ -13,17 +13,16 @@ public final class VKKHRGetSurfaceCapabilities2 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR = 1000119000;
     public static final int VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR = 1000119001;
     public static final int VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR = 1000119002;
+    private VKKHRGetSurfaceCapabilities2() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilities2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceFormats2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRGetSurfaceCapabilities2() {}
-
     /// Invokes `vkGetPhysicalDeviceSurfaceCapabilities2KHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceSurfaceCapabilities2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, VkSurfaceCapabilities2KHR* pSurfaceCapabilities);
+    /// VkResult vkGetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, VkSurfaceCapabilities2KHR* pSurfaceCapabilities);
     /// ```
     public static int vkGetPhysicalDeviceSurfaceCapabilities2KHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pSurfaceInfo, @NonNull MemorySegment pSurfaceCapabilities) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceCapabilities2KHR");
@@ -34,7 +33,7 @@ public final class VKKHRGetSurfaceCapabilities2 {
 
     /// Invokes `vkGetPhysicalDeviceSurfaceFormats2KHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceSurfaceFormats2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, uint32_t* pSurfaceFormatCount, VkSurfaceFormat2KHR* pSurfaceFormats);
+    /// VkResult vkGetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, uint32_t* pSurfaceFormatCount, VkSurfaceFormat2KHR* pSurfaceFormats);
     /// ```
     public static int vkGetPhysicalDeviceSurfaceFormats2KHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pSurfaceInfo, @NonNull MemorySegment pSurfaceFormatCount, @NonNull MemorySegment pSurfaceFormats) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceFormats2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceFormats2KHR");

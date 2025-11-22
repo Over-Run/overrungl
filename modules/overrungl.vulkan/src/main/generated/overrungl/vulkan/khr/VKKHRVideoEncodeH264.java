@@ -1,9 +1,14 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_video_encode_h264` - device extension
 public final class VKKHRVideoEncodeH264 {
+    public static final int VK_KHR_VIDEO_ENCODE_H264_SPEC_VERSION = 14;
+    public static final String VK_KHR_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_KHR_video_encode_h264";
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_KHR = 0x00000001;
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR = 0x00000002;
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_KHR = 0x00000004;
@@ -38,8 +43,6 @@ public final class VKKHRVideoEncodeH264 {
     public static final int VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR = 0x00000004;
     public static final int VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR = 0x00000008;
     public static final int VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR = 0x00000010;
-    public static final int VK_KHR_VIDEO_ENCODE_H264_SPEC_VERSION = 14;
-    public static final String VK_KHR_VIDEO_ENCODE_H264_EXTENSION_NAME = "VK_KHR_video_encode_h264";
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR = 1000038000;
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000038001;
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR = 1000038002;
@@ -55,7 +58,5 @@ public final class VKKHRVideoEncodeH264 {
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR = 1000038012;
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000038013;
     public static final int VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR = 0x00010000;
-
     private VKKHRVideoEncodeH264() {}
-
 }

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,140 +12,47 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryType {
-///     ((uint32_t) VkFlags) VkMemoryPropertyFlags propertyFlags;
+///     VkMemoryPropertyFlags propertyFlags;
 ///     uint32_t heapIndex;
-/// };
+/// }
 /// ```
 public final class VkMemoryType extends GroupType {
-    /// The struct layout of `VkMemoryType`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("propertyFlags"),
         ValueLayout.JAVA_INT.withName("heapIndex")
     );
-    /// The byte offset of `propertyFlags`.
     public static final long OFFSET_propertyFlags = LAYOUT.byteOffset(PathElement.groupElement("propertyFlags"));
-    /// The memory layout of `propertyFlags`.
-    public static final MemoryLayout LAYOUT_propertyFlags = LAYOUT.select(PathElement.groupElement("propertyFlags"));
-    /// The [VarHandle] of `propertyFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_propertyFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("propertyFlags"));
-    /// The byte offset of `heapIndex`.
     public static final long OFFSET_heapIndex = LAYOUT.byteOffset(PathElement.groupElement("heapIndex"));
-    /// The memory layout of `heapIndex`.
+    public static final MemoryLayout LAYOUT_propertyFlags = LAYOUT.select(PathElement.groupElement("propertyFlags"));
     public static final MemoryLayout LAYOUT_heapIndex = LAYOUT.select(PathElement.groupElement("heapIndex"));
-    /// The [VarHandle] of `heapIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_propertyFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("propertyFlags"));
     public static final VarHandle VH_heapIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("heapIndex"));
 
-    /// Creates `VkMemoryType` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkMemoryType(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkMemoryType` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMemoryType of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMemoryType(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkMemoryType` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMemoryType ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMemoryType(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkMemoryType` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMemoryType ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkMemoryType(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkMemoryType` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkMemoryType`
     public static VkMemoryType alloc(SegmentAllocator allocator) { return new VkMemoryType(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkMemoryType` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkMemoryType`
     public static VkMemoryType alloc(SegmentAllocator allocator, long count) { return new VkMemoryType(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkMemoryType copyFrom(VkMemoryType src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkMemoryType reinterpret(long count) { return new VkMemoryType(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `propertyFlags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int propertyFlags(MemorySegment segment, long index) { return (int) VH_propertyFlags.get(segment, 0L, index); }
-    /// {@return `propertyFlags`}
-    public int propertyFlags() { return propertyFlags(this.segment(), 0L); }
-    /// Sets `propertyFlags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void propertyFlags(MemorySegment segment, long index, int value) { VH_propertyFlags.set(segment, 0L, index, value); }
-    /// Sets `propertyFlags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryType propertyFlags(int value) { propertyFlags(this.segment(), 0L, value); return this; }
-
-    /// {@return `heapIndex` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int heapIndex(MemorySegment segment, long index) { return (int) VH_heapIndex.get(segment, 0L, index); }
-    /// {@return `heapIndex`}
-    public int heapIndex() { return heapIndex(this.segment(), 0L); }
-    /// Sets `heapIndex` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void heapIndex(MemorySegment segment, long index, int value) { VH_heapIndex.set(segment, 0L, index, value); }
-    /// Sets `heapIndex` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryType heapIndex(int value) { heapIndex(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkMemoryType`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkMemoryType`
     public VkMemoryType asSlice(long index) { return new VkMemoryType(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkMemoryType`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkMemoryType`
     public VkMemoryType asSlice(long index, long count) { return new VkMemoryType(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkMemoryType` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkMemoryType at(long index, Consumer<VkMemoryType> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `propertyFlags` at the given index}
-    /// @param index the index of the struct buffer
-    public int propertyFlagsAt(long index) { return propertyFlags(this.segment(), index); }
-    /// Sets `propertyFlags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryType propertyFlagsAt(long index, int value) { propertyFlags(this.segment(), index, value); return this; }
-
-    /// {@return `heapIndex` at the given index}
-    /// @param index the index of the struct buffer
-    public int heapIndexAt(long index) { return heapIndex(this.segment(), index); }
-    /// Sets `heapIndex` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryType heapIndexAt(long index, int value) { heapIndex(this.segment(), index, value); return this; }
-
+    public int propertyFlagsAt(long index) { return (int) VH_propertyFlags.get(this.segment(), 0L, index); }
+    public int heapIndexAt(long index) { return (int) VH_heapIndex.get(this.segment(), 0L, index); }
+    public int propertyFlags() { return (int) VH_propertyFlags.get(this.segment(), 0L, 0L); }
+    public int heapIndex() { return (int) VH_heapIndex.get(this.segment(), 0L, 0L); }
+    public VkMemoryType propertyFlagsAt(long index, int value) { VH_propertyFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkMemoryType heapIndexAt(long index, int value) { VH_heapIndex.set(this.segment(), 0L, index, value); return this; }
+    public VkMemoryType propertyFlags(int value) { VH_propertyFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMemoryType heapIndex(int value) { VH_heapIndex.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _propertyFlagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_propertyFlags, index), LAYOUT_propertyFlags); }
+    public MemorySegment _propertyFlags() { return _propertyFlagsAt(0L); }
+    public VkMemoryType _propertyFlagsAt(long index, MemorySegment src) { _propertyFlagsAt(index).copyFrom(src); return this; }
+    public VkMemoryType _propertyFlags(MemorySegment src) { return _propertyFlagsAt(0L, src); }
+    public MemorySegment _heapIndexAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_heapIndex, index), LAYOUT_heapIndex); }
+    public MemorySegment _heapIndex() { return _heapIndexAt(0L); }
+    public VkMemoryType _heapIndexAt(long index, MemorySegment src) { _heapIndexAt(index).copyFrom(src); return this; }
+    public VkMemoryType _heapIndex(MemorySegment src) { return _heapIndexAt(0L, src); }
 }

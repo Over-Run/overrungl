@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,18 +12,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMicromapCreateInfoEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkMicromapCreateFlagsEXT createFlags;
-///     (uint64_t) VkBuffer buffer;
-///     (uint64_t) VkDeviceSize offset;
-///     (uint64_t) VkDeviceSize size;
-///     (int) VkMicromapTypeEXT type;
-///     (uint64_t) VkDeviceAddress deviceAddress;
-/// };
+///     VkMicromapCreateFlagsEXT createFlags;
+///     VkBuffer buffer;
+///     VkDeviceSize offset;
+///     VkDeviceSize size;
+///     VkMicromapTypeEXT type;
+///     VkDeviceAddress deviceAddress;
+/// }
 /// ```
 public final class VkMicromapCreateInfoEXT extends GroupType {
-    /// The struct layout of `VkMicromapCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -35,316 +33,110 @@ public final class VkMicromapCreateInfoEXT extends GroupType {
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_LONG.withName("deviceAddress")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `createFlags`.
     public static final long OFFSET_createFlags = LAYOUT.byteOffset(PathElement.groupElement("createFlags"));
-    /// The memory layout of `createFlags`.
-    public static final MemoryLayout LAYOUT_createFlags = LAYOUT.select(PathElement.groupElement("createFlags"));
-    /// The [VarHandle] of `createFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_createFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("createFlags"));
-    /// The byte offset of `buffer`.
     public static final long OFFSET_buffer = LAYOUT.byteOffset(PathElement.groupElement("buffer"));
-    /// The memory layout of `buffer`.
-    public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
-    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
-    /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
-    /// The memory layout of `offset`.
-    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
-    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
-    /// The byte offset of `size`.
     public static final long OFFSET_size = LAYOUT.byteOffset(PathElement.groupElement("size"));
-    /// The memory layout of `size`.
-    public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
-    /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
-    /// The byte offset of `type`.
     public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
-    /// The memory layout of `type`.
-    public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
-    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
-    /// The byte offset of `deviceAddress`.
     public static final long OFFSET_deviceAddress = LAYOUT.byteOffset(PathElement.groupElement("deviceAddress"));
-    /// The memory layout of `deviceAddress`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_createFlags = LAYOUT.select(PathElement.groupElement("createFlags"));
+    public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
+    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
+    public static final MemoryLayout LAYOUT_size = LAYOUT.select(PathElement.groupElement("size"));
+    public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
     public static final MemoryLayout LAYOUT_deviceAddress = LAYOUT.select(PathElement.groupElement("deviceAddress"));
-    /// The [VarHandle] of `deviceAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_createFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("createFlags"));
+    public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
+    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
+    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
+    public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
     public static final VarHandle VH_deviceAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceAddress"));
 
-    /// Creates `VkMicromapCreateInfoEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkMicromapCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkMicromapCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMicromapCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkMicromapCreateInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMicromapCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkMicromapCreateInfoEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkMicromapCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkMicromapCreateInfoEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkMicromapCreateInfoEXT`
     public static VkMicromapCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkMicromapCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkMicromapCreateInfoEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkMicromapCreateInfoEXT`
     public static VkMicromapCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMicromapCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkMicromapCreateInfoEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTOpacityMicromap.VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT); }
+    public static VkMicromapCreateInfoEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTOpacityMicromap.VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT);
+        return s;
+    }
     public VkMicromapCreateInfoEXT copyFrom(VkMicromapCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkMicromapCreateInfoEXT reinterpret(long count) { return new VkMicromapCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `createFlags` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int createFlags(MemorySegment segment, long index) { return (int) VH_createFlags.get(segment, 0L, index); }
-    /// {@return `createFlags`}
-    public int createFlags() { return createFlags(this.segment(), 0L); }
-    /// Sets `createFlags` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void createFlags(MemorySegment segment, long index, int value) { VH_createFlags.set(segment, 0L, index, value); }
-    /// Sets `createFlags` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT createFlags(int value) { createFlags(this.segment(), 0L, value); return this; }
-
-    /// {@return `buffer` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long buffer(MemorySegment segment, long index) { return (long) VH_buffer.get(segment, 0L, index); }
-    /// {@return `buffer`}
-    public long buffer() { return buffer(this.segment(), 0L); }
-    /// Sets `buffer` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void buffer(MemorySegment segment, long index, long value) { VH_buffer.set(segment, 0L, index, value); }
-    /// Sets `buffer` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT buffer(long value) { buffer(this.segment(), 0L, value); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
-    /// {@return `offset`}
-    public long offset() { return offset(this.segment(), 0L); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void offset(MemorySegment segment, long index, long value) { VH_offset.set(segment, 0L, index, value); }
-    /// Sets `offset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT offset(long value) { offset(this.segment(), 0L, value); return this; }
-
-    /// {@return `size` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long size(MemorySegment segment, long index) { return (long) VH_size.get(segment, 0L, index); }
-    /// {@return `size`}
-    public long size() { return size(this.segment(), 0L); }
-    /// Sets `size` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void size(MemorySegment segment, long index, long value) { VH_size.set(segment, 0L, index, value); }
-    /// Sets `size` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT size(long value) { size(this.segment(), 0L, value); return this; }
-
-    /// {@return `type` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
-    /// {@return `type`}
-    public int type() { return type(this.segment(), 0L); }
-    /// Sets `type` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
-    /// Sets `type` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT type(int value) { type(this.segment(), 0L, value); return this; }
-
-    /// {@return `deviceAddress` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long deviceAddress(MemorySegment segment, long index) { return (long) VH_deviceAddress.get(segment, 0L, index); }
-    /// {@return `deviceAddress`}
-    public long deviceAddress() { return deviceAddress(this.segment(), 0L); }
-    /// Sets `deviceAddress` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void deviceAddress(MemorySegment segment, long index, long value) { VH_deviceAddress.set(segment, 0L, index, value); }
-    /// Sets `deviceAddress` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT deviceAddress(long value) { deviceAddress(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkMicromapCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkMicromapCreateInfoEXT`
     public VkMicromapCreateInfoEXT asSlice(long index) { return new VkMicromapCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkMicromapCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkMicromapCreateInfoEXT`
     public VkMicromapCreateInfoEXT asSlice(long index, long count) { return new VkMicromapCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkMicromapCreateInfoEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkMicromapCreateInfoEXT at(long index, Consumer<VkMicromapCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `createFlags` at the given index}
-    /// @param index the index of the struct buffer
-    public int createFlagsAt(long index) { return createFlags(this.segment(), index); }
-    /// Sets `createFlags` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT createFlagsAt(long index, int value) { createFlags(this.segment(), index, value); return this; }
-
-    /// {@return `buffer` at the given index}
-    /// @param index the index of the struct buffer
-    public long bufferAt(long index) { return buffer(this.segment(), index); }
-    /// Sets `buffer` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
-
-    /// {@return `offset` at the given index}
-    /// @param index the index of the struct buffer
-    public long offsetAt(long index) { return offset(this.segment(), index); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT offsetAt(long index, long value) { offset(this.segment(), index, value); return this; }
-
-    /// {@return `size` at the given index}
-    /// @param index the index of the struct buffer
-    public long sizeAt(long index) { return size(this.segment(), index); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT sizeAt(long index, long value) { size(this.segment(), index, value); return this; }
-
-    /// {@return `type` at the given index}
-    /// @param index the index of the struct buffer
-    public int typeAt(long index) { return type(this.segment(), index); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT typeAt(long index, int value) { type(this.segment(), index, value); return this; }
-
-    /// {@return `deviceAddress` at the given index}
-    /// @param index the index of the struct buffer
-    public long deviceAddressAt(long index) { return deviceAddress(this.segment(), index); }
-    /// Sets `deviceAddress` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapCreateInfoEXT deviceAddressAt(long index, long value) { deviceAddress(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int createFlagsAt(long index) { return (int) VH_createFlags.get(this.segment(), 0L, index); }
+    public long bufferAt(long index) { return (long) VH_buffer.get(this.segment(), 0L, index); }
+    public long offsetAt(long index) { return (long) VH_offset.get(this.segment(), 0L, index); }
+    public long sizeAt(long index) { return (long) VH_size.get(this.segment(), 0L, index); }
+    public int typeAt(long index) { return (int) VH_type.get(this.segment(), 0L, index); }
+    public long deviceAddressAt(long index) { return (long) VH_deviceAddress.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int createFlags() { return (int) VH_createFlags.get(this.segment(), 0L, 0L); }
+    public long buffer() { return (long) VH_buffer.get(this.segment(), 0L, 0L); }
+    public long offset() { return (long) VH_offset.get(this.segment(), 0L, 0L); }
+    public long size() { return (long) VH_size.get(this.segment(), 0L, 0L); }
+    public int type() { return (int) VH_type.get(this.segment(), 0L, 0L); }
+    public long deviceAddress() { return (long) VH_deviceAddress.get(this.segment(), 0L, 0L); }
+    public VkMicromapCreateInfoEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkMicromapCreateInfoEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkMicromapCreateInfoEXT createFlagsAt(long index, int value) { VH_createFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkMicromapCreateInfoEXT bufferAt(long index, long value) { VH_buffer.set(this.segment(), 0L, index, value); return this; }
+    public VkMicromapCreateInfoEXT offsetAt(long index, long value) { VH_offset.set(this.segment(), 0L, index, value); return this; }
+    public VkMicromapCreateInfoEXT sizeAt(long index, long value) { VH_size.set(this.segment(), 0L, index, value); return this; }
+    public VkMicromapCreateInfoEXT typeAt(long index, int value) { VH_type.set(this.segment(), 0L, index, value); return this; }
+    public VkMicromapCreateInfoEXT deviceAddressAt(long index, long value) { VH_deviceAddress.set(this.segment(), 0L, index, value); return this; }
+    public VkMicromapCreateInfoEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMicromapCreateInfoEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMicromapCreateInfoEXT createFlags(int value) { VH_createFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMicromapCreateInfoEXT buffer(long value) { VH_buffer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMicromapCreateInfoEXT offset(long value) { VH_offset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMicromapCreateInfoEXT size(long value) { VH_size.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMicromapCreateInfoEXT type(int value) { VH_type.set(this.segment(), 0L, 0L, value); return this; }
+    public VkMicromapCreateInfoEXT deviceAddress(long value) { VH_deviceAddress.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkMicromapCreateInfoEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkMicromapCreateInfoEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkMicromapCreateInfoEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkMicromapCreateInfoEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _createFlagsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_createFlags, index), LAYOUT_createFlags); }
+    public MemorySegment _createFlags() { return _createFlagsAt(0L); }
+    public VkMicromapCreateInfoEXT _createFlagsAt(long index, MemorySegment src) { _createFlagsAt(index).copyFrom(src); return this; }
+    public VkMicromapCreateInfoEXT _createFlags(MemorySegment src) { return _createFlagsAt(0L, src); }
+    public MemorySegment _bufferAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_buffer, index), LAYOUT_buffer); }
+    public MemorySegment _buffer() { return _bufferAt(0L); }
+    public VkMicromapCreateInfoEXT _bufferAt(long index, MemorySegment src) { _bufferAt(index).copyFrom(src); return this; }
+    public VkMicromapCreateInfoEXT _buffer(MemorySegment src) { return _bufferAt(0L, src); }
+    public MemorySegment _offsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_offset, index), LAYOUT_offset); }
+    public MemorySegment _offset() { return _offsetAt(0L); }
+    public VkMicromapCreateInfoEXT _offsetAt(long index, MemorySegment src) { _offsetAt(index).copyFrom(src); return this; }
+    public VkMicromapCreateInfoEXT _offset(MemorySegment src) { return _offsetAt(0L, src); }
+    public MemorySegment _sizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_size, index), LAYOUT_size); }
+    public MemorySegment _size() { return _sizeAt(0L); }
+    public VkMicromapCreateInfoEXT _sizeAt(long index, MemorySegment src) { _sizeAt(index).copyFrom(src); return this; }
+    public VkMicromapCreateInfoEXT _size(MemorySegment src) { return _sizeAt(0L, src); }
+    public MemorySegment _typeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_type, index), LAYOUT_type); }
+    public MemorySegment _type() { return _typeAt(0L); }
+    public VkMicromapCreateInfoEXT _typeAt(long index, MemorySegment src) { _typeAt(index).copyFrom(src); return this; }
+    public VkMicromapCreateInfoEXT _type(MemorySegment src) { return _typeAt(0L, src); }
+    public MemorySegment _deviceAddressAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_deviceAddress, index), LAYOUT_deviceAddress); }
+    public MemorySegment _deviceAddress() { return _deviceAddressAt(0L); }
+    public VkMicromapCreateInfoEXT _deviceAddressAt(long index, MemorySegment src) { _deviceAddressAt(index).copyFrom(src); return this; }
+    public VkMicromapCreateInfoEXT _deviceAddress(MemorySegment src) { return _deviceAddressAt(0L, src); }
 }

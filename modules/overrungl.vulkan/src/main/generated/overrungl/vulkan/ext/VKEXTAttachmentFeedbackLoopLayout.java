@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_EXT_attachment_feedback_loop_layout` - device extension
 public final class VKEXTAttachmentFeedbackLoopLayout {
     public static final int VK_EXT_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_SPEC_VERSION = 2;
@@ -12,7 +15,5 @@ public final class VKEXTAttachmentFeedbackLoopLayout {
     public static final int VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT = 0x02000000;
     public static final int VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT = 0x04000000;
     public static final int VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT = 0x00000008;
-
     private VKEXTAttachmentFeedbackLoopLayout() {}
-
 }

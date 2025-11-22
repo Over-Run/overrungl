@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,20 +12,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderingAttachmentInfo {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint64_t) VkImageView imageView;
-///     (int) VkImageLayout imageLayout;
-///     (int) VkResolveModeFlagBits resolveMode;
-///     (uint64_t) VkImageView resolveImageView;
-///     (int) VkImageLayout resolveImageLayout;
-///     (int) VkAttachmentLoadOp loadOp;
-///     (int) VkAttachmentStoreOp storeOp;
-///     (union VkClearValue) VkClearValue clearValue;
-/// };
+///     VkImageView imageView;
+///     VkImageLayout imageLayout;
+///     VkResolveModeFlagBits resolveMode;
+///     VkImageView resolveImageView;
+///     VkImageLayout resolveImageLayout;
+///     VkAttachmentLoadOp loadOp;
+///     VkAttachmentStoreOp storeOp;
+///     VkClearValue clearValue;
+/// }
 /// ```
 public final class VkRenderingAttachmentInfo extends GroupType {
-    /// The struct layout of `VkRenderingAttachmentInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -39,385 +37,152 @@ public final class VkRenderingAttachmentInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("storeOp"),
         overrungl.vulkan.union.VkClearValue.LAYOUT.withName("clearValue")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `imageView`.
     public static final long OFFSET_imageView = LAYOUT.byteOffset(PathElement.groupElement("imageView"));
-    /// The memory layout of `imageView`.
-    public static final MemoryLayout LAYOUT_imageView = LAYOUT.select(PathElement.groupElement("imageView"));
-    /// The [VarHandle] of `imageView` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageView"));
-    /// The byte offset of `imageLayout`.
     public static final long OFFSET_imageLayout = LAYOUT.byteOffset(PathElement.groupElement("imageLayout"));
-    /// The memory layout of `imageLayout`.
-    public static final MemoryLayout LAYOUT_imageLayout = LAYOUT.select(PathElement.groupElement("imageLayout"));
-    /// The [VarHandle] of `imageLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_imageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageLayout"));
-    /// The byte offset of `resolveMode`.
     public static final long OFFSET_resolveMode = LAYOUT.byteOffset(PathElement.groupElement("resolveMode"));
-    /// The memory layout of `resolveMode`.
-    public static final MemoryLayout LAYOUT_resolveMode = LAYOUT.select(PathElement.groupElement("resolveMode"));
-    /// The [VarHandle] of `resolveMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_resolveMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveMode"));
-    /// The byte offset of `resolveImageView`.
     public static final long OFFSET_resolveImageView = LAYOUT.byteOffset(PathElement.groupElement("resolveImageView"));
-    /// The memory layout of `resolveImageView`.
-    public static final MemoryLayout LAYOUT_resolveImageView = LAYOUT.select(PathElement.groupElement("resolveImageView"));
-    /// The [VarHandle] of `resolveImageView` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_resolveImageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveImageView"));
-    /// The byte offset of `resolveImageLayout`.
     public static final long OFFSET_resolveImageLayout = LAYOUT.byteOffset(PathElement.groupElement("resolveImageLayout"));
-    /// The memory layout of `resolveImageLayout`.
-    public static final MemoryLayout LAYOUT_resolveImageLayout = LAYOUT.select(PathElement.groupElement("resolveImageLayout"));
-    /// The [VarHandle] of `resolveImageLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_resolveImageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveImageLayout"));
-    /// The byte offset of `loadOp`.
     public static final long OFFSET_loadOp = LAYOUT.byteOffset(PathElement.groupElement("loadOp"));
-    /// The memory layout of `loadOp`.
-    public static final MemoryLayout LAYOUT_loadOp = LAYOUT.select(PathElement.groupElement("loadOp"));
-    /// The [VarHandle] of `loadOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_loadOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loadOp"));
-    /// The byte offset of `storeOp`.
     public static final long OFFSET_storeOp = LAYOUT.byteOffset(PathElement.groupElement("storeOp"));
-    /// The memory layout of `storeOp`.
-    public static final MemoryLayout LAYOUT_storeOp = LAYOUT.select(PathElement.groupElement("storeOp"));
-    /// The [VarHandle] of `storeOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_storeOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storeOp"));
-    /// The byte offset of `clearValue`.
     public static final long OFFSET_clearValue = LAYOUT.byteOffset(PathElement.groupElement("clearValue"));
-    /// The memory layout of `clearValue`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_imageView = LAYOUT.select(PathElement.groupElement("imageView"));
+    public static final MemoryLayout LAYOUT_imageLayout = LAYOUT.select(PathElement.groupElement("imageLayout"));
+    public static final MemoryLayout LAYOUT_resolveMode = LAYOUT.select(PathElement.groupElement("resolveMode"));
+    public static final MemoryLayout LAYOUT_resolveImageView = LAYOUT.select(PathElement.groupElement("resolveImageView"));
+    public static final MemoryLayout LAYOUT_resolveImageLayout = LAYOUT.select(PathElement.groupElement("resolveImageLayout"));
+    public static final MemoryLayout LAYOUT_loadOp = LAYOUT.select(PathElement.groupElement("loadOp"));
+    public static final MemoryLayout LAYOUT_storeOp = LAYOUT.select(PathElement.groupElement("storeOp"));
     public static final MemoryLayout LAYOUT_clearValue = LAYOUT.select(PathElement.groupElement("clearValue"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_imageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageView"));
+    public static final VarHandle VH_imageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageLayout"));
+    public static final VarHandle VH_resolveMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveMode"));
+    public static final VarHandle VH_resolveImageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveImageView"));
+    public static final VarHandle VH_resolveImageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveImageLayout"));
+    public static final VarHandle VH_loadOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loadOp"));
+    public static final VarHandle VH_storeOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storeOp"));
+    public static final VarHandle VH_clearValue$color$float32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("color"), PathElement.groupElement("float32"), PathElement.sequenceElement());
+    public static final VarHandle VH_clearValue$color$int32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("color"), PathElement.groupElement("int32"), PathElement.sequenceElement());
+    public static final VarHandle VH_clearValue$color$uint32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("color"), PathElement.groupElement("uint32"), PathElement.sequenceElement());
+    public static final VarHandle VH_clearValue$depthStencil$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("depthStencil"), PathElement.groupElement("depth"));
+    public static final VarHandle VH_clearValue$depthStencil$stencil = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("depthStencil"), PathElement.groupElement("stencil"));
 
-    /// Creates `VkRenderingAttachmentInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkRenderingAttachmentInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkRenderingAttachmentInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderingAttachmentInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderingAttachmentInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkRenderingAttachmentInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderingAttachmentInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderingAttachmentInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkRenderingAttachmentInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkRenderingAttachmentInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderingAttachmentInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkRenderingAttachmentInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRenderingAttachmentInfo`
     public static VkRenderingAttachmentInfo alloc(SegmentAllocator allocator) { return new VkRenderingAttachmentInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkRenderingAttachmentInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkRenderingAttachmentInfo`
     public static VkRenderingAttachmentInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderingAttachmentInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkRenderingAttachmentInfo allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO); }
+    public static VkRenderingAttachmentInfo allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK13.VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO);
+        return s;
+    }
     public VkRenderingAttachmentInfo copyFrom(VkRenderingAttachmentInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkRenderingAttachmentInfo reinterpret(long count) { return new VkRenderingAttachmentInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageView` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long imageView(MemorySegment segment, long index) { return (long) VH_imageView.get(segment, 0L, index); }
-    /// {@return `imageView`}
-    public long imageView() { return imageView(this.segment(), 0L); }
-    /// Sets `imageView` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageView(MemorySegment segment, long index, long value) { VH_imageView.set(segment, 0L, index, value); }
-    /// Sets `imageView` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo imageView(long value) { imageView(this.segment(), 0L, value); return this; }
-
-    /// {@return `imageLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int imageLayout(MemorySegment segment, long index) { return (int) VH_imageLayout.get(segment, 0L, index); }
-    /// {@return `imageLayout`}
-    public int imageLayout() { return imageLayout(this.segment(), 0L); }
-    /// Sets `imageLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void imageLayout(MemorySegment segment, long index, int value) { VH_imageLayout.set(segment, 0L, index, value); }
-    /// Sets `imageLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo imageLayout(int value) { imageLayout(this.segment(), 0L, value); return this; }
-
-    /// {@return `resolveMode` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int resolveMode(MemorySegment segment, long index) { return (int) VH_resolveMode.get(segment, 0L, index); }
-    /// {@return `resolveMode`}
-    public int resolveMode() { return resolveMode(this.segment(), 0L); }
-    /// Sets `resolveMode` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void resolveMode(MemorySegment segment, long index, int value) { VH_resolveMode.set(segment, 0L, index, value); }
-    /// Sets `resolveMode` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo resolveMode(int value) { resolveMode(this.segment(), 0L, value); return this; }
-
-    /// {@return `resolveImageView` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long resolveImageView(MemorySegment segment, long index) { return (long) VH_resolveImageView.get(segment, 0L, index); }
-    /// {@return `resolveImageView`}
-    public long resolveImageView() { return resolveImageView(this.segment(), 0L); }
-    /// Sets `resolveImageView` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void resolveImageView(MemorySegment segment, long index, long value) { VH_resolveImageView.set(segment, 0L, index, value); }
-    /// Sets `resolveImageView` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo resolveImageView(long value) { resolveImageView(this.segment(), 0L, value); return this; }
-
-    /// {@return `resolveImageLayout` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int resolveImageLayout(MemorySegment segment, long index) { return (int) VH_resolveImageLayout.get(segment, 0L, index); }
-    /// {@return `resolveImageLayout`}
-    public int resolveImageLayout() { return resolveImageLayout(this.segment(), 0L); }
-    /// Sets `resolveImageLayout` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void resolveImageLayout(MemorySegment segment, long index, int value) { VH_resolveImageLayout.set(segment, 0L, index, value); }
-    /// Sets `resolveImageLayout` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo resolveImageLayout(int value) { resolveImageLayout(this.segment(), 0L, value); return this; }
-
-    /// {@return `loadOp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int loadOp(MemorySegment segment, long index) { return (int) VH_loadOp.get(segment, 0L, index); }
-    /// {@return `loadOp`}
-    public int loadOp() { return loadOp(this.segment(), 0L); }
-    /// Sets `loadOp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void loadOp(MemorySegment segment, long index, int value) { VH_loadOp.set(segment, 0L, index, value); }
-    /// Sets `loadOp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo loadOp(int value) { loadOp(this.segment(), 0L, value); return this; }
-
-    /// {@return `storeOp` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int storeOp(MemorySegment segment, long index) { return (int) VH_storeOp.get(segment, 0L, index); }
-    /// {@return `storeOp`}
-    public int storeOp() { return storeOp(this.segment(), 0L); }
-    /// Sets `storeOp` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void storeOp(MemorySegment segment, long index, int value) { VH_storeOp.set(segment, 0L, index, value); }
-    /// Sets `storeOp` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo storeOp(int value) { storeOp(this.segment(), 0L, value); return this; }
-
-    /// {@return `clearValue` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment clearValue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_clearValue, index), LAYOUT_clearValue); }
-    /// {@return `clearValue`}
-    public MemorySegment clearValue() { return clearValue(this.segment(), 0L); }
-    /// Sets `clearValue` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void clearValue(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_clearValue, index), LAYOUT_clearValue.byteSize()); }
-    /// Sets `clearValue` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo clearValue(MemorySegment value) { clearValue(this.segment(), 0L, value); return this; }
-    /// Accepts `clearValue` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkRenderingAttachmentInfo clearValue(Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValue())); return this; }
-
-    /// Creates a slice of `VkRenderingAttachmentInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderingAttachmentInfo`
     public VkRenderingAttachmentInfo asSlice(long index) { return new VkRenderingAttachmentInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkRenderingAttachmentInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderingAttachmentInfo`
     public VkRenderingAttachmentInfo asSlice(long index, long count) { return new VkRenderingAttachmentInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkRenderingAttachmentInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkRenderingAttachmentInfo at(long index, Consumer<VkRenderingAttachmentInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `imageView` at the given index}
-    /// @param index the index of the struct buffer
-    public long imageViewAt(long index) { return imageView(this.segment(), index); }
-    /// Sets `imageView` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo imageViewAt(long index, long value) { imageView(this.segment(), index, value); return this; }
-
-    /// {@return `imageLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public int imageLayoutAt(long index) { return imageLayout(this.segment(), index); }
-    /// Sets `imageLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo imageLayoutAt(long index, int value) { imageLayout(this.segment(), index, value); return this; }
-
-    /// {@return `resolveMode` at the given index}
-    /// @param index the index of the struct buffer
-    public int resolveModeAt(long index) { return resolveMode(this.segment(), index); }
-    /// Sets `resolveMode` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo resolveModeAt(long index, int value) { resolveMode(this.segment(), index, value); return this; }
-
-    /// {@return `resolveImageView` at the given index}
-    /// @param index the index of the struct buffer
-    public long resolveImageViewAt(long index) { return resolveImageView(this.segment(), index); }
-    /// Sets `resolveImageView` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo resolveImageViewAt(long index, long value) { resolveImageView(this.segment(), index, value); return this; }
-
-    /// {@return `resolveImageLayout` at the given index}
-    /// @param index the index of the struct buffer
-    public int resolveImageLayoutAt(long index) { return resolveImageLayout(this.segment(), index); }
-    /// Sets `resolveImageLayout` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo resolveImageLayoutAt(long index, int value) { resolveImageLayout(this.segment(), index, value); return this; }
-
-    /// {@return `loadOp` at the given index}
-    /// @param index the index of the struct buffer
-    public int loadOpAt(long index) { return loadOp(this.segment(), index); }
-    /// Sets `loadOp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo loadOpAt(long index, int value) { loadOp(this.segment(), index, value); return this; }
-
-    /// {@return `storeOp` at the given index}
-    /// @param index the index of the struct buffer
-    public int storeOpAt(long index) { return storeOp(this.segment(), index); }
-    /// Sets `storeOp` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo storeOpAt(long index, int value) { storeOp(this.segment(), index, value); return this; }
-
-    /// {@return `clearValue` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment clearValueAt(long index) { return clearValue(this.segment(), index); }
-    /// Sets `clearValue` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentInfo clearValueAt(long index, MemorySegment value) { clearValue(this.segment(), index, value); return this; }
-    /// Accepts `clearValue` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkRenderingAttachmentInfo clearValueAt(long index, Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValueAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long imageViewAt(long index) { return (long) VH_imageView.get(this.segment(), 0L, index); }
+    public int imageLayoutAt(long index) { return (int) VH_imageLayout.get(this.segment(), 0L, index); }
+    public int resolveModeAt(long index) { return (int) VH_resolveMode.get(this.segment(), 0L, index); }
+    public long resolveImageViewAt(long index) { return (long) VH_resolveImageView.get(this.segment(), 0L, index); }
+    public int resolveImageLayoutAt(long index) { return (int) VH_resolveImageLayout.get(this.segment(), 0L, index); }
+    public int loadOpAt(long index) { return (int) VH_loadOp.get(this.segment(), 0L, index); }
+    public int storeOpAt(long index) { return (int) VH_storeOp.get(this.segment(), 0L, index); }
+    public float clearValue$color$float32At(long index, long index0) { return (float) VH_clearValue$color$float32.get(this.segment(), 0L, index, index0); }
+    public int clearValue$color$int32At(long index, long index0) { return (int) VH_clearValue$color$int32.get(this.segment(), 0L, index, index0); }
+    public int clearValue$color$uint32At(long index, long index0) { return (int) VH_clearValue$color$uint32.get(this.segment(), 0L, index, index0); }
+    public float clearValue$depthStencil$depthAt(long index) { return (float) VH_clearValue$depthStencil$depth.get(this.segment(), 0L, index); }
+    public int clearValue$depthStencil$stencilAt(long index) { return (int) VH_clearValue$depthStencil$stencil.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long imageView() { return (long) VH_imageView.get(this.segment(), 0L, 0L); }
+    public int imageLayout() { return (int) VH_imageLayout.get(this.segment(), 0L, 0L); }
+    public int resolveMode() { return (int) VH_resolveMode.get(this.segment(), 0L, 0L); }
+    public long resolveImageView() { return (long) VH_resolveImageView.get(this.segment(), 0L, 0L); }
+    public int resolveImageLayout() { return (int) VH_resolveImageLayout.get(this.segment(), 0L, 0L); }
+    public int loadOp() { return (int) VH_loadOp.get(this.segment(), 0L, 0L); }
+    public int storeOp() { return (int) VH_storeOp.get(this.segment(), 0L, 0L); }
+    public float clearValue$color$float32(long index0) { return (float) VH_clearValue$color$float32.get(this.segment(), 0L, 0L, index0); }
+    public int clearValue$color$int32(long index0) { return (int) VH_clearValue$color$int32.get(this.segment(), 0L, 0L, index0); }
+    public int clearValue$color$uint32(long index0) { return (int) VH_clearValue$color$uint32.get(this.segment(), 0L, 0L, index0); }
+    public float clearValue$depthStencil$depth() { return (float) VH_clearValue$depthStencil$depth.get(this.segment(), 0L, 0L); }
+    public int clearValue$depthStencil$stencil() { return (int) VH_clearValue$depthStencil$stencil.get(this.segment(), 0L, 0L); }
+    public VkRenderingAttachmentInfo sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo imageViewAt(long index, long value) { VH_imageView.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo imageLayoutAt(long index, int value) { VH_imageLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo resolveModeAt(long index, int value) { VH_resolveMode.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo resolveImageViewAt(long index, long value) { VH_resolveImageView.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo resolveImageLayoutAt(long index, int value) { VH_resolveImageLayout.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo loadOpAt(long index, int value) { VH_loadOp.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo storeOpAt(long index, int value) { VH_storeOp.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$color$float32At(long index, long index0, float value) { VH_clearValue$color$float32.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$color$int32At(long index, long index0, int value) { VH_clearValue$color$int32.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$color$uint32At(long index, long index0, int value) { VH_clearValue$color$uint32.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$depthStencil$depthAt(long index, float value) { VH_clearValue$depthStencil$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$depthStencil$stencilAt(long index, int value) { VH_clearValue$depthStencil$stencil.set(this.segment(), 0L, index, value); return this; }
+    public VkRenderingAttachmentInfo sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo imageView(long value) { VH_imageView.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo imageLayout(int value) { VH_imageLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo resolveMode(int value) { VH_resolveMode.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo resolveImageView(long value) { VH_resolveImageView.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo resolveImageLayout(int value) { VH_resolveImageLayout.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo loadOp(int value) { VH_loadOp.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo storeOp(int value) { VH_storeOp.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$color$float32(long index0, float value) { VH_clearValue$color$float32.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$color$int32(long index0, int value) { VH_clearValue$color$int32.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$color$uint32(long index0, int value) { VH_clearValue$color$uint32.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$depthStencil$depth(float value) { VH_clearValue$depthStencil$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public VkRenderingAttachmentInfo clearValue$depthStencil$stencil(int value) { VH_clearValue$depthStencil$stencil.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkRenderingAttachmentInfo _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkRenderingAttachmentInfo _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _imageViewAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageView, index), LAYOUT_imageView); }
+    public MemorySegment _imageView() { return _imageViewAt(0L); }
+    public VkRenderingAttachmentInfo _imageViewAt(long index, MemorySegment src) { _imageViewAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _imageView(MemorySegment src) { return _imageViewAt(0L, src); }
+    public MemorySegment _imageLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_imageLayout, index), LAYOUT_imageLayout); }
+    public MemorySegment _imageLayout() { return _imageLayoutAt(0L); }
+    public VkRenderingAttachmentInfo _imageLayoutAt(long index, MemorySegment src) { _imageLayoutAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _imageLayout(MemorySegment src) { return _imageLayoutAt(0L, src); }
+    public MemorySegment _resolveModeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_resolveMode, index), LAYOUT_resolveMode); }
+    public MemorySegment _resolveMode() { return _resolveModeAt(0L); }
+    public VkRenderingAttachmentInfo _resolveModeAt(long index, MemorySegment src) { _resolveModeAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _resolveMode(MemorySegment src) { return _resolveModeAt(0L, src); }
+    public MemorySegment _resolveImageViewAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_resolveImageView, index), LAYOUT_resolveImageView); }
+    public MemorySegment _resolveImageView() { return _resolveImageViewAt(0L); }
+    public VkRenderingAttachmentInfo _resolveImageViewAt(long index, MemorySegment src) { _resolveImageViewAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _resolveImageView(MemorySegment src) { return _resolveImageViewAt(0L, src); }
+    public MemorySegment _resolveImageLayoutAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_resolveImageLayout, index), LAYOUT_resolveImageLayout); }
+    public MemorySegment _resolveImageLayout() { return _resolveImageLayoutAt(0L); }
+    public VkRenderingAttachmentInfo _resolveImageLayoutAt(long index, MemorySegment src) { _resolveImageLayoutAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _resolveImageLayout(MemorySegment src) { return _resolveImageLayoutAt(0L, src); }
+    public MemorySegment _loadOpAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_loadOp, index), LAYOUT_loadOp); }
+    public MemorySegment _loadOp() { return _loadOpAt(0L); }
+    public VkRenderingAttachmentInfo _loadOpAt(long index, MemorySegment src) { _loadOpAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _loadOp(MemorySegment src) { return _loadOpAt(0L, src); }
+    public MemorySegment _storeOpAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_storeOp, index), LAYOUT_storeOp); }
+    public MemorySegment _storeOp() { return _storeOpAt(0L); }
+    public VkRenderingAttachmentInfo _storeOpAt(long index, MemorySegment src) { _storeOpAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _storeOp(MemorySegment src) { return _storeOpAt(0L, src); }
+    public MemorySegment _clearValueAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_clearValue, index), LAYOUT_clearValue); }
+    public MemorySegment _clearValue() { return _clearValueAt(0L); }
+    public VkRenderingAttachmentInfo _clearValueAt(long index, MemorySegment src) { _clearValueAt(index).copyFrom(src); return this; }
+    public VkRenderingAttachmentInfo _clearValue(MemorySegment src) { return _clearValueAt(0L, src); }
 }

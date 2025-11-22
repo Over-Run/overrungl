@@ -35,6 +35,7 @@ public final class VKEXTDescriptorBuffer {
     public static final long VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT = 0x20000000000L;
     public static final int VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT = 0x20000000;
     public static final int VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT = 1000316009;
+    private VKEXTDescriptorBuffer() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetDescriptorSetLayoutSizeEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetDescriptorSetLayoutBindingOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
@@ -50,11 +51,9 @@ public final class VKEXTDescriptorBuffer {
         private Handles() {}
     }
 
-    private VKEXTDescriptorBuffer() {}
-
     /// Invokes `vkGetDescriptorSetLayoutSizeEXT`.
     /// ```
-    /// void vkGetDescriptorSetLayoutSizeEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDescriptorSetLayout layout, VkDeviceSize* pLayoutSizeInBytes);
+    /// void vkGetDescriptorSetLayoutSizeEXT(VkDevice device, VkDescriptorSetLayout layout, VkDeviceSize* pLayoutSizeInBytes);
     /// ```
     public static void vkGetDescriptorSetLayoutSizeEXT(@NonNull VkDevice device, long layout, @NonNull MemorySegment pLayoutSizeInBytes) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutSizeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSizeEXT");
@@ -65,7 +64,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkGetDescriptorSetLayoutBindingOffsetEXT`.
     /// ```
-    /// void vkGetDescriptorSetLayoutBindingOffsetEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDescriptorSetLayout layout, uint32_t binding, VkDeviceSize* pOffset);
+    /// void vkGetDescriptorSetLayoutBindingOffsetEXT(VkDevice device, VkDescriptorSetLayout layout, uint32_t binding, VkDeviceSize* pOffset);
     /// ```
     public static void vkGetDescriptorSetLayoutBindingOffsetEXT(@NonNull VkDevice device, long layout, int binding, @NonNull MemorySegment pOffset) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutBindingOffsetEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutBindingOffsetEXT");
@@ -76,7 +75,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkGetDescriptorEXT`.
     /// ```
-    /// void vkGetDescriptorEXT((struct VkDevice*) VkDevice device, const VkDescriptorGetInfoEXT* pDescriptorInfo, size_t dataSize, void* pDescriptor);
+    /// void vkGetDescriptorEXT(VkDevice device, const VkDescriptorGetInfoEXT* pDescriptorInfo, size_t dataSize, void* pDescriptor);
     /// ```
     public static void vkGetDescriptorEXT(@NonNull VkDevice device, @NonNull MemorySegment pDescriptorInfo, long dataSize, @NonNull MemorySegment pDescriptor) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorEXT");
@@ -87,7 +86,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkCmdBindDescriptorBuffersEXT`.
     /// ```
-    /// void vkCmdBindDescriptorBuffersEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t bufferCount, const VkDescriptorBufferBindingInfoEXT* pBindingInfos);
+    /// void vkCmdBindDescriptorBuffersEXT(VkCommandBuffer commandBuffer, uint32_t bufferCount, const VkDescriptorBufferBindingInfoEXT* pBindingInfos);
     /// ```
     public static void vkCmdBindDescriptorBuffersEXT(@NonNull VkCommandBuffer commandBuffer, int bufferCount, @NonNull MemorySegment pBindingInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBuffersEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorBuffersEXT");
@@ -98,7 +97,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkCmdSetDescriptorBufferOffsetsEXT`.
     /// ```
-    /// void vkCmdSetDescriptorBufferOffsetsEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineBindPoint pipelineBindPoint, (uint64_t) VkPipelineLayout layout, uint32_t firstSet, uint32_t setCount, const uint32_t* pBufferIndices, const VkDeviceSize* pOffsets);
+    /// void vkCmdSetDescriptorBufferOffsetsEXT(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint32_t firstSet, uint32_t setCount, const uint32_t* pBufferIndices, const VkDeviceSize* pOffsets);
     /// ```
     public static void vkCmdSetDescriptorBufferOffsetsEXT(@NonNull VkCommandBuffer commandBuffer, int pipelineBindPoint, long layout, int firstSet, int setCount, @NonNull MemorySegment pBufferIndices, @NonNull MemorySegment pOffsets) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsetsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDescriptorBufferOffsetsEXT");
@@ -109,7 +108,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkCmdBindDescriptorBufferEmbeddedSamplersEXT`.
     /// ```
-    /// void vkCmdBindDescriptorBufferEmbeddedSamplersEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineBindPoint pipelineBindPoint, (uint64_t) VkPipelineLayout layout, uint32_t set);
+    /// void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint32_t set);
     /// ```
     public static void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(@NonNull VkCommandBuffer commandBuffer, int pipelineBindPoint, long layout, int set) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplersEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorBufferEmbeddedSamplersEXT");
@@ -120,7 +119,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkGetBufferOpaqueCaptureDescriptorDataEXT`.
     /// ```
-    /// (int) VkResult vkGetBufferOpaqueCaptureDescriptorDataEXT((struct VkDevice*) VkDevice device, const VkBufferCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+    /// VkResult vkGetBufferOpaqueCaptureDescriptorDataEXT(VkDevice device, const VkBufferCaptureDescriptorDataInfoEXT* pInfo, void* pData);
     /// ```
     public static int vkGetBufferOpaqueCaptureDescriptorDataEXT(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureDescriptorDataEXT");
@@ -131,7 +130,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkGetImageOpaqueCaptureDescriptorDataEXT`.
     /// ```
-    /// (int) VkResult vkGetImageOpaqueCaptureDescriptorDataEXT((struct VkDevice*) VkDevice device, const VkImageCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+    /// VkResult vkGetImageOpaqueCaptureDescriptorDataEXT(VkDevice device, const VkImageCaptureDescriptorDataInfoEXT* pInfo, void* pData);
     /// ```
     public static int vkGetImageOpaqueCaptureDescriptorDataEXT(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageOpaqueCaptureDescriptorDataEXT");
@@ -142,7 +141,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkGetImageViewOpaqueCaptureDescriptorDataEXT`.
     /// ```
-    /// (int) VkResult vkGetImageViewOpaqueCaptureDescriptorDataEXT((struct VkDevice*) VkDevice device, const VkImageViewCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+    /// VkResult vkGetImageViewOpaqueCaptureDescriptorDataEXT(VkDevice device, const VkImageViewCaptureDescriptorDataInfoEXT* pInfo, void* pData);
     /// ```
     public static int vkGetImageViewOpaqueCaptureDescriptorDataEXT(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageViewOpaqueCaptureDescriptorDataEXT");
@@ -153,7 +152,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkGetSamplerOpaqueCaptureDescriptorDataEXT`.
     /// ```
-    /// (int) VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXT((struct VkDevice*) VkDevice device, const VkSamplerCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+    /// VkResult vkGetSamplerOpaqueCaptureDescriptorDataEXT(VkDevice device, const VkSamplerCaptureDescriptorDataInfoEXT* pInfo, void* pData);
     /// ```
     public static int vkGetSamplerOpaqueCaptureDescriptorDataEXT(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSamplerOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSamplerOpaqueCaptureDescriptorDataEXT");
@@ -164,7 +163,7 @@ public final class VKEXTDescriptorBuffer {
 
     /// Invokes `vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT`.
     /// ```
-    /// (int) VkResult vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT((struct VkDevice*) VkDevice device, const VkAccelerationStructureCaptureDescriptorDataInfoEXT* pInfo, void* pData);
+    /// VkResult vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(VkDevice device, const VkAccelerationStructureCaptureDescriptorDataInfoEXT* pInfo, void* pData);
     /// ```
     public static int vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(@NonNull VkDevice device, @NonNull MemorySegment pInfo, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT");

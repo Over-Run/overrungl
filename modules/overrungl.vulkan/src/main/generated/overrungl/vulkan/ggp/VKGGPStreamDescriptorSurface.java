@@ -11,16 +11,15 @@ public final class VKGGPStreamDescriptorSurface {
     public static final int VK_GGP_STREAM_DESCRIPTOR_SURFACE_SPEC_VERSION = 1;
     public static final String VK_GGP_STREAM_DESCRIPTOR_SURFACE_EXTENSION_NAME = "VK_GGP_stream_descriptor_surface";
     public static final int VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP = 1000049000;
+    private VKGGPStreamDescriptorSurface() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateStreamDescriptorSurfaceGGP = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKGGPStreamDescriptorSurface() {}
-
     /// Invokes `vkCreateStreamDescriptorSurfaceGGP`.
     /// ```
-    /// (int) VkResult vkCreateStreamDescriptorSurfaceGGP((struct VkInstance*) VkInstance instance, const VkStreamDescriptorSurfaceCreateInfoGGP* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// VkResult vkCreateStreamDescriptorSurfaceGGP(VkInstance instance, const VkStreamDescriptorSurfaceCreateInfoGGP* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateStreamDescriptorSurfaceGGP(@NonNull VkInstance instance, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateStreamDescriptorSurfaceGGP)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateStreamDescriptorSurfaceGGP");

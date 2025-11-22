@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,180 +12,80 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkClearAttachment {
-///     ((uint32_t) VkFlags) VkImageAspectFlags aspectMask;
+///     VkImageAspectFlags aspectMask;
 ///     uint32_t colorAttachment;
-///     (union VkClearValue) VkClearValue clearValue;
-/// };
+///     VkClearValue clearValue;
+/// }
 /// ```
 public final class VkClearAttachment extends GroupType {
-    /// The struct layout of `VkClearAttachment`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("aspectMask"),
         ValueLayout.JAVA_INT.withName("colorAttachment"),
         overrungl.vulkan.union.VkClearValue.LAYOUT.withName("clearValue")
     );
-    /// The byte offset of `aspectMask`.
     public static final long OFFSET_aspectMask = LAYOUT.byteOffset(PathElement.groupElement("aspectMask"));
-    /// The memory layout of `aspectMask`.
-    public static final MemoryLayout LAYOUT_aspectMask = LAYOUT.select(PathElement.groupElement("aspectMask"));
-    /// The [VarHandle] of `aspectMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask"));
-    /// The byte offset of `colorAttachment`.
     public static final long OFFSET_colorAttachment = LAYOUT.byteOffset(PathElement.groupElement("colorAttachment"));
-    /// The memory layout of `colorAttachment`.
-    public static final MemoryLayout LAYOUT_colorAttachment = LAYOUT.select(PathElement.groupElement("colorAttachment"));
-    /// The [VarHandle] of `colorAttachment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_colorAttachment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachment"));
-    /// The byte offset of `clearValue`.
     public static final long OFFSET_clearValue = LAYOUT.byteOffset(PathElement.groupElement("clearValue"));
-    /// The memory layout of `clearValue`.
+    public static final MemoryLayout LAYOUT_aspectMask = LAYOUT.select(PathElement.groupElement("aspectMask"));
+    public static final MemoryLayout LAYOUT_colorAttachment = LAYOUT.select(PathElement.groupElement("colorAttachment"));
     public static final MemoryLayout LAYOUT_clearValue = LAYOUT.select(PathElement.groupElement("clearValue"));
+    public static final VarHandle VH_aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask"));
+    public static final VarHandle VH_colorAttachment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachment"));
+    public static final VarHandle VH_clearValue$color$float32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("color"), PathElement.groupElement("float32"), PathElement.sequenceElement());
+    public static final VarHandle VH_clearValue$color$int32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("color"), PathElement.groupElement("int32"), PathElement.sequenceElement());
+    public static final VarHandle VH_clearValue$color$uint32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("color"), PathElement.groupElement("uint32"), PathElement.sequenceElement());
+    public static final VarHandle VH_clearValue$depthStencil$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("depthStencil"), PathElement.groupElement("depth"));
+    public static final VarHandle VH_clearValue$depthStencil$stencil = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clearValue"), PathElement.groupElement("depthStencil"), PathElement.groupElement("stencil"));
 
-    /// Creates `VkClearAttachment` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkClearAttachment(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkClearAttachment` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClearAttachment of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearAttachment(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkClearAttachment` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClearAttachment ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearAttachment(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkClearAttachment` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkClearAttachment ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearAttachment(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkClearAttachment` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkClearAttachment`
     public static VkClearAttachment alloc(SegmentAllocator allocator) { return new VkClearAttachment(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkClearAttachment` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkClearAttachment`
     public static VkClearAttachment alloc(SegmentAllocator allocator, long count) { return new VkClearAttachment(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkClearAttachment copyFrom(VkClearAttachment src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkClearAttachment reinterpret(long count) { return new VkClearAttachment(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `aspectMask` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get(segment, 0L, index); }
-    /// {@return `aspectMask`}
-    public int aspectMask() { return aspectMask(this.segment(), 0L); }
-    /// Sets `aspectMask` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void aspectMask(MemorySegment segment, long index, int value) { VH_aspectMask.set(segment, 0L, index, value); }
-    /// Sets `aspectMask` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClearAttachment aspectMask(int value) { aspectMask(this.segment(), 0L, value); return this; }
-
-    /// {@return `colorAttachment` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int colorAttachment(MemorySegment segment, long index) { return (int) VH_colorAttachment.get(segment, 0L, index); }
-    /// {@return `colorAttachment`}
-    public int colorAttachment() { return colorAttachment(this.segment(), 0L); }
-    /// Sets `colorAttachment` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void colorAttachment(MemorySegment segment, long index, int value) { VH_colorAttachment.set(segment, 0L, index, value); }
-    /// Sets `colorAttachment` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClearAttachment colorAttachment(int value) { colorAttachment(this.segment(), 0L, value); return this; }
-
-    /// {@return `clearValue` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment clearValue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_clearValue, index), LAYOUT_clearValue); }
-    /// {@return `clearValue`}
-    public MemorySegment clearValue() { return clearValue(this.segment(), 0L); }
-    /// Sets `clearValue` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void clearValue(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_clearValue, index), LAYOUT_clearValue.byteSize()); }
-    /// Sets `clearValue` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkClearAttachment clearValue(MemorySegment value) { clearValue(this.segment(), 0L, value); return this; }
-    /// Accepts `clearValue` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkClearAttachment clearValue(Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValue())); return this; }
-
-    /// Creates a slice of `VkClearAttachment`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkClearAttachment`
     public VkClearAttachment asSlice(long index) { return new VkClearAttachment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkClearAttachment`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkClearAttachment`
     public VkClearAttachment asSlice(long index, long count) { return new VkClearAttachment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkClearAttachment` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkClearAttachment at(long index, Consumer<VkClearAttachment> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `aspectMask` at the given index}
-    /// @param index the index of the struct buffer
-    public int aspectMaskAt(long index) { return aspectMask(this.segment(), index); }
-    /// Sets `aspectMask` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClearAttachment aspectMaskAt(long index, int value) { aspectMask(this.segment(), index, value); return this; }
-
-    /// {@return `colorAttachment` at the given index}
-    /// @param index the index of the struct buffer
-    public int colorAttachmentAt(long index) { return colorAttachment(this.segment(), index); }
-    /// Sets `colorAttachment` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClearAttachment colorAttachmentAt(long index, int value) { colorAttachment(this.segment(), index, value); return this; }
-
-    /// {@return `clearValue` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment clearValueAt(long index) { return clearValue(this.segment(), index); }
-    /// Sets `clearValue` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkClearAttachment clearValueAt(long index, MemorySegment value) { clearValue(this.segment(), index, value); return this; }
-    /// Accepts `clearValue` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkClearAttachment clearValueAt(long index, Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValueAt(index))); return this; }
-
+    public int aspectMaskAt(long index) { return (int) VH_aspectMask.get(this.segment(), 0L, index); }
+    public int colorAttachmentAt(long index) { return (int) VH_colorAttachment.get(this.segment(), 0L, index); }
+    public float clearValue$color$float32At(long index, long index0) { return (float) VH_clearValue$color$float32.get(this.segment(), 0L, index, index0); }
+    public int clearValue$color$int32At(long index, long index0) { return (int) VH_clearValue$color$int32.get(this.segment(), 0L, index, index0); }
+    public int clearValue$color$uint32At(long index, long index0) { return (int) VH_clearValue$color$uint32.get(this.segment(), 0L, index, index0); }
+    public float clearValue$depthStencil$depthAt(long index) { return (float) VH_clearValue$depthStencil$depth.get(this.segment(), 0L, index); }
+    public int clearValue$depthStencil$stencilAt(long index) { return (int) VH_clearValue$depthStencil$stencil.get(this.segment(), 0L, index); }
+    public int aspectMask() { return (int) VH_aspectMask.get(this.segment(), 0L, 0L); }
+    public int colorAttachment() { return (int) VH_colorAttachment.get(this.segment(), 0L, 0L); }
+    public float clearValue$color$float32(long index0) { return (float) VH_clearValue$color$float32.get(this.segment(), 0L, 0L, index0); }
+    public int clearValue$color$int32(long index0) { return (int) VH_clearValue$color$int32.get(this.segment(), 0L, 0L, index0); }
+    public int clearValue$color$uint32(long index0) { return (int) VH_clearValue$color$uint32.get(this.segment(), 0L, 0L, index0); }
+    public float clearValue$depthStencil$depth() { return (float) VH_clearValue$depthStencil$depth.get(this.segment(), 0L, 0L); }
+    public int clearValue$depthStencil$stencil() { return (int) VH_clearValue$depthStencil$stencil.get(this.segment(), 0L, 0L); }
+    public VkClearAttachment aspectMaskAt(long index, int value) { VH_aspectMask.set(this.segment(), 0L, index, value); return this; }
+    public VkClearAttachment colorAttachmentAt(long index, int value) { VH_colorAttachment.set(this.segment(), 0L, index, value); return this; }
+    public VkClearAttachment clearValue$color$float32At(long index, long index0, float value) { VH_clearValue$color$float32.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkClearAttachment clearValue$color$int32At(long index, long index0, int value) { VH_clearValue$color$int32.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkClearAttachment clearValue$color$uint32At(long index, long index0, int value) { VH_clearValue$color$uint32.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkClearAttachment clearValue$depthStencil$depthAt(long index, float value) { VH_clearValue$depthStencil$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkClearAttachment clearValue$depthStencil$stencilAt(long index, int value) { VH_clearValue$depthStencil$stencil.set(this.segment(), 0L, index, value); return this; }
+    public VkClearAttachment aspectMask(int value) { VH_aspectMask.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClearAttachment colorAttachment(int value) { VH_colorAttachment.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClearAttachment clearValue$color$float32(long index0, float value) { VH_clearValue$color$float32.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkClearAttachment clearValue$color$int32(long index0, int value) { VH_clearValue$color$int32.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkClearAttachment clearValue$color$uint32(long index0, int value) { VH_clearValue$color$uint32.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkClearAttachment clearValue$depthStencil$depth(float value) { VH_clearValue$depthStencil$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public VkClearAttachment clearValue$depthStencil$stencil(int value) { VH_clearValue$depthStencil$stencil.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _aspectMaskAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_aspectMask, index), LAYOUT_aspectMask); }
+    public MemorySegment _aspectMask() { return _aspectMaskAt(0L); }
+    public VkClearAttachment _aspectMaskAt(long index, MemorySegment src) { _aspectMaskAt(index).copyFrom(src); return this; }
+    public VkClearAttachment _aspectMask(MemorySegment src) { return _aspectMaskAt(0L, src); }
+    public MemorySegment _colorAttachmentAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_colorAttachment, index), LAYOUT_colorAttachment); }
+    public MemorySegment _colorAttachment() { return _colorAttachmentAt(0L); }
+    public VkClearAttachment _colorAttachmentAt(long index, MemorySegment src) { _colorAttachmentAt(index).copyFrom(src); return this; }
+    public VkClearAttachment _colorAttachment(MemorySegment src) { return _colorAttachmentAt(0L, src); }
+    public MemorySegment _clearValueAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_clearValue, index), LAYOUT_clearValue); }
+    public MemorySegment _clearValue() { return _clearValueAt(0L); }
+    public VkClearAttachment _clearValueAt(long index, MemorySegment src) { _clearValueAt(index).copyFrom(src); return this; }
+    public VkClearAttachment _clearValue(MemorySegment src) { return _clearValueAt(0L, src); }
 }

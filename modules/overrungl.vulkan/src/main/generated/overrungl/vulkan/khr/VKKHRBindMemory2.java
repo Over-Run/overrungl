@@ -13,17 +13,16 @@ public final class VKKHRBindMemory2 {
     public static final int VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO_KHR = 1000157000;
     public static final int VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO_KHR = 1000157001;
     public static final int VK_IMAGE_CREATE_ALIAS_BIT_KHR = 0x00000400;
+    private VKKHRBindMemory2() {}
     public static final class Handles {
         public static final MethodHandle MH_vkBindBufferMemory2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkBindImageMemory2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRBindMemory2() {}
-
     /// Invokes `vkBindBufferMemory2KHR`.
     /// ```
-    /// (int) VkResult vkBindBufferMemory2KHR((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindBufferMemoryInfo* pBindInfos);
+    /// VkResult vkBindBufferMemory2KHR(VkDevice device, uint32_t bindInfoCount, const VkBindBufferMemoryInfo* pBindInfos);
     /// ```
     public static int vkBindBufferMemory2KHR(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindBufferMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBindBufferMemory2KHR");
@@ -34,7 +33,7 @@ public final class VKKHRBindMemory2 {
 
     /// Invokes `vkBindImageMemory2KHR`.
     /// ```
-    /// (int) VkResult vkBindImageMemory2KHR((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindImageMemoryInfo* pBindInfos);
+    /// VkResult vkBindImageMemory2KHR(VkDevice device, uint32_t bindInfoCount, const VkBindImageMemoryInfo* pBindInfos);
     /// ```
     public static int vkBindImageMemory2KHR(@NonNull VkDevice device, int bindInfoCount, @NonNull MemorySegment pBindInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindImageMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBindImageMemory2KHR");

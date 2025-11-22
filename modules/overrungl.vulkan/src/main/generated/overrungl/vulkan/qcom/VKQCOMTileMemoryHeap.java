@@ -19,16 +19,15 @@ public final class VKQCOMTileMemoryHeap {
     public static final int VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM = 1000547002;
     public static final int VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM = 1000547003;
     public static final int VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM = 1000547004;
+    private VKQCOMTileMemoryHeap() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdBindTileMemoryQCOM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKQCOMTileMemoryHeap() {}
-
     /// Invokes `vkCmdBindTileMemoryQCOM`.
     /// ```
-    /// void vkCmdBindTileMemoryQCOM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkTileMemoryBindInfoQCOM* pTileMemoryBindInfo);
+    /// void vkCmdBindTileMemoryQCOM(VkCommandBuffer commandBuffer, const VkTileMemoryBindInfoQCOM* pTileMemoryBindInfo);
     /// ```
     public static void vkCmdBindTileMemoryQCOM(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pTileMemoryBindInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindTileMemoryQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindTileMemoryQCOM");

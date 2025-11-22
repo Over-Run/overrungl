@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.arm;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_ARM_format_pack` - device extension
 public final class VKARMFormatPack {
     public static final int VK_ARM_FORMAT_PACK_SPEC_VERSION = 1;
@@ -21,7 +24,5 @@ public final class VKARMFormatPack {
     public static final int VK_FORMAT_R14X2G14X2B14X2A14X2_UNORM_4PACK16_ARM = 1000609011;
     public static final int VK_FORMAT_G14X2_B14X2R14X2_2PLANE_420_UNORM_3PACK16_ARM = 1000609012;
     public static final int VK_FORMAT_G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM = 1000609013;
-
     private VKARMFormatPack() {}
-
 }

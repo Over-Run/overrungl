@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,235 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderObjectPropertiesEXT {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     uint8_t shaderBinaryUUID[16];
+///     uint8_t shaderBinaryUUID[VK_UUID_SIZE];
 ///     uint32_t shaderBinaryVersion;
-/// };
+/// }
 /// ```
 public final class VkPhysicalDeviceShaderObjectPropertiesEXT extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceShaderObjectPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("shaderBinaryUUID"),
+        MemoryLayout.sequenceLayout(overrungl.vulkan.VK10.VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("shaderBinaryUUID"),
         ValueLayout.JAVA_INT.withName("shaderBinaryVersion")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `shaderBinaryUUID`.
     public static final long OFFSET_shaderBinaryUUID = LAYOUT.byteOffset(PathElement.groupElement("shaderBinaryUUID"));
-    /// The memory layout of `shaderBinaryUUID`.
-    public static final MemoryLayout LAYOUT_shaderBinaryUUID = LAYOUT.select(PathElement.groupElement("shaderBinaryUUID"));
-    /// The [VarHandle] of `shaderBinaryUUID` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
-    public static final VarHandle VH_shaderBinaryUUID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBinaryUUID"), PathElement.sequenceElement());
-    /// The byte offset of `shaderBinaryVersion`.
     public static final long OFFSET_shaderBinaryVersion = LAYOUT.byteOffset(PathElement.groupElement("shaderBinaryVersion"));
-    /// The memory layout of `shaderBinaryVersion`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_shaderBinaryUUID = LAYOUT.select(PathElement.groupElement("shaderBinaryUUID"));
     public static final MemoryLayout LAYOUT_shaderBinaryVersion = LAYOUT.select(PathElement.groupElement("shaderBinaryVersion"));
-    /// The [VarHandle] of `shaderBinaryVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_shaderBinaryUUID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBinaryUUID"), PathElement.sequenceElement());
     public static final VarHandle VH_shaderBinaryVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderBinaryVersion"));
 
-    /// Creates `VkPhysicalDeviceShaderObjectPropertiesEXT` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceShaderObjectPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceShaderObjectPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderObjectPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderObjectPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceShaderObjectPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderObjectPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderObjectPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceShaderObjectPropertiesEXT` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderObjectPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderObjectPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceShaderObjectPropertiesEXT` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceShaderObjectPropertiesEXT`
     public static VkPhysicalDeviceShaderObjectPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderObjectPropertiesEXT(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceShaderObjectPropertiesEXT` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceShaderObjectPropertiesEXT`
     public static VkPhysicalDeviceShaderObjectPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderObjectPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceShaderObjectPropertiesEXT allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.ext.VKEXTShaderObject.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT); }
+    public static VkPhysicalDeviceShaderObjectPropertiesEXT allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.ext.VKEXTShaderObject.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT);
+        return s;
+    }
     public VkPhysicalDeviceShaderObjectPropertiesEXT copyFrom(VkPhysicalDeviceShaderObjectPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceShaderObjectPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceShaderObjectPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `shaderBinaryUUID` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment shaderBinaryUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_shaderBinaryUUID, index), LAYOUT_shaderBinaryUUID); }
-    /// {@return `shaderBinaryUUID` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    public static byte shaderBinaryUUID(MemorySegment segment, long index, long index0) { return (byte) VH_shaderBinaryUUID.get(segment, 0L, index, index0); }
-    /// {@return `shaderBinaryUUID`}
-    public MemorySegment shaderBinaryUUID() { return shaderBinaryUUID(this.segment(), 0L); }
-    /// {@return `shaderBinaryUUID`}
-    /// @param index0 the Index 0 of the array
-    public byte shaderBinaryUUID(long index0) { return shaderBinaryUUID(this.segment(), 0L, index0); }
-    /// Sets `shaderBinaryUUID` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderBinaryUUID(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_shaderBinaryUUID, index), LAYOUT_shaderBinaryUUID.byteSize()); }
-    /// Sets `shaderBinaryUUID` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    public static void shaderBinaryUUID(MemorySegment segment, long index, long index0, byte value) { VH_shaderBinaryUUID.set(segment, 0L, index, index0, value); }
-    /// Sets `shaderBinaryUUID` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUID(MemorySegment value) { shaderBinaryUUID(this.segment(), 0L, value); return this; }
-    /// Sets `shaderBinaryUUID` with the given value.
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUID(long index0, byte value) { shaderBinaryUUID(this.segment(), 0L, index0, value); return this; }
-
-    /// {@return `shaderBinaryVersion` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int shaderBinaryVersion(MemorySegment segment, long index) { return (int) VH_shaderBinaryVersion.get(segment, 0L, index); }
-    /// {@return `shaderBinaryVersion`}
-    public int shaderBinaryVersion() { return shaderBinaryVersion(this.segment(), 0L); }
-    /// Sets `shaderBinaryVersion` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void shaderBinaryVersion(MemorySegment segment, long index, int value) { VH_shaderBinaryVersion.set(segment, 0L, index, value); }
-    /// Sets `shaderBinaryVersion` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryVersion(int value) { shaderBinaryVersion(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceShaderObjectPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceShaderObjectPropertiesEXT`
     public VkPhysicalDeviceShaderObjectPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceShaderObjectPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceShaderObjectPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceShaderObjectPropertiesEXT`
     public VkPhysicalDeviceShaderObjectPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceShaderObjectPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceShaderObjectPropertiesEXT` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceShaderObjectPropertiesEXT at(long index, Consumer<VkPhysicalDeviceShaderObjectPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `shaderBinaryUUID` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment shaderBinaryUUIDAt(long index) { return shaderBinaryUUID(this.segment(), index); }
-    /// {@return `shaderBinaryUUID` at the given index}
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-        public byte shaderBinaryUUIDAt(long index, long index0) { return shaderBinaryUUID(this.segment(), index, index0); }
-    /// Sets `shaderBinaryUUID` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUIDAt(long index, MemorySegment value) { shaderBinaryUUID(this.segment(), index, value); return this; }
-    /// Sets `shaderBinaryUUID` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param index0 the Index 0 of the array
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUIDAt(long index, long index0, byte value) { shaderBinaryUUID(this.segment(), index, index0, value); return this; }
-
-    /// {@return `shaderBinaryVersion` at the given index}
-    /// @param index the index of the struct buffer
-    public int shaderBinaryVersionAt(long index) { return shaderBinaryVersion(this.segment(), index); }
-    /// Sets `shaderBinaryVersion` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryVersionAt(long index, int value) { shaderBinaryVersion(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public byte shaderBinaryUUIDAt(long index, long index0) { return (byte) VH_shaderBinaryUUID.get(this.segment(), 0L, index, index0); }
+    public int shaderBinaryVersionAt(long index) { return (int) VH_shaderBinaryVersion.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public byte shaderBinaryUUID(long index0) { return (byte) VH_shaderBinaryUUID.get(this.segment(), 0L, 0L, index0); }
+    public int shaderBinaryVersion() { return (int) VH_shaderBinaryVersion.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUIDAt(long index, long index0, byte value) { VH_shaderBinaryUUID.set(this.segment(), 0L, index, index0, value); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryVersionAt(long index, int value) { VH_shaderBinaryVersion.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUID(long index0, byte value) { VH_shaderBinaryUUID.set(this.segment(), 0L, 0L, index0, value); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryVersion(int value) { VH_shaderBinaryVersion.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _shaderBinaryUUIDAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderBinaryUUID, index), LAYOUT_shaderBinaryUUID); }
+    public MemorySegment _shaderBinaryUUID() { return _shaderBinaryUUIDAt(0L); }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT _shaderBinaryUUIDAt(long index, MemorySegment src) { _shaderBinaryUUIDAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT _shaderBinaryUUID(MemorySegment src) { return _shaderBinaryUUIDAt(0L, src); }
+    public MemorySegment _shaderBinaryVersionAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_shaderBinaryVersion, index), LAYOUT_shaderBinaryVersion); }
+    public MemorySegment _shaderBinaryVersion() { return _shaderBinaryVersionAt(0L); }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT _shaderBinaryVersionAt(long index, MemorySegment src) { _shaderBinaryVersionAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceShaderObjectPropertiesEXT _shaderBinaryVersion(MemorySegment src) { return _shaderBinaryVersionAt(0L, src); }
 }

@@ -14,17 +14,16 @@ public final class VKFUCHSIAExternalMemory {
     public static final int VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA = 1000364001;
     public static final int VK_STRUCTURE_TYPE_MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA = 1000364002;
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA = 0x00000800;
+    private VKFUCHSIAExternalMemory() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetMemoryZirconHandleFUCHSIA = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetMemoryZirconHandlePropertiesFUCHSIA = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKFUCHSIAExternalMemory() {}
-
     /// Invokes `vkGetMemoryZirconHandleFUCHSIA`.
     /// ```
-    /// (int) VkResult vkGetMemoryZirconHandleFUCHSIA((struct VkDevice*) VkDevice device, const VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, zx_handle_t* pZirconHandle);
+    /// VkResult vkGetMemoryZirconHandleFUCHSIA(VkDevice device, const VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, zx_handle_t* pZirconHandle);
     /// ```
     public static int vkGetMemoryZirconHandleFUCHSIA(@NonNull VkDevice device, @NonNull MemorySegment pGetZirconHandleInfo, @NonNull MemorySegment pZirconHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryZirconHandleFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandleFUCHSIA");
@@ -35,7 +34,7 @@ public final class VKFUCHSIAExternalMemory {
 
     /// Invokes `vkGetMemoryZirconHandlePropertiesFUCHSIA`.
     /// ```
-    /// (int) VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, (int32_t) zx_handle_t zirconHandle, VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties);
+    /// VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, zx_handle_t zirconHandle, VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties);
     /// ```
     public static int vkGetMemoryZirconHandlePropertiesFUCHSIA(@NonNull VkDevice device, int handleType, int zirconHandle, @NonNull MemorySegment pMemoryZirconHandleProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandlePropertiesFUCHSIA");

@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,173 +12,60 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSparseBufferMemoryBindInfo {
-///     (uint64_t) VkBuffer buffer;
+///     VkBuffer buffer;
 ///     uint32_t bindCount;
 ///     const VkSparseMemoryBind* pBinds;
-/// };
+/// }
 /// ```
 public final class VkSparseBufferMemoryBindInfo extends GroupType {
-    /// The struct layout of `VkSparseBufferMemoryBindInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("buffer"),
         ValueLayout.JAVA_INT.withName("bindCount"),
         ValueLayout.ADDRESS.withName("pBinds")
     );
-    /// The byte offset of `buffer`.
     public static final long OFFSET_buffer = LAYOUT.byteOffset(PathElement.groupElement("buffer"));
-    /// The memory layout of `buffer`.
-    public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
-    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
-    /// The byte offset of `bindCount`.
     public static final long OFFSET_bindCount = LAYOUT.byteOffset(PathElement.groupElement("bindCount"));
-    /// The memory layout of `bindCount`.
-    public static final MemoryLayout LAYOUT_bindCount = LAYOUT.select(PathElement.groupElement("bindCount"));
-    /// The [VarHandle] of `bindCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_bindCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindCount"));
-    /// The byte offset of `pBinds`.
     public static final long OFFSET_pBinds = LAYOUT.byteOffset(PathElement.groupElement("pBinds"));
-    /// The memory layout of `pBinds`.
+    public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
+    public static final MemoryLayout LAYOUT_bindCount = LAYOUT.select(PathElement.groupElement("bindCount"));
     public static final MemoryLayout LAYOUT_pBinds = LAYOUT.select(PathElement.groupElement("pBinds"));
-    /// The [VarHandle] of `pBinds` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
+    public static final VarHandle VH_bindCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bindCount"));
     public static final VarHandle VH_pBinds = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBinds"));
 
-    /// Creates `VkSparseBufferMemoryBindInfo` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkSparseBufferMemoryBindInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkSparseBufferMemoryBindInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSparseBufferMemoryBindInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseBufferMemoryBindInfo(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkSparseBufferMemoryBindInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSparseBufferMemoryBindInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseBufferMemoryBindInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkSparseBufferMemoryBindInfo` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkSparseBufferMemoryBindInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseBufferMemoryBindInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkSparseBufferMemoryBindInfo` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSparseBufferMemoryBindInfo`
     public static VkSparseBufferMemoryBindInfo alloc(SegmentAllocator allocator) { return new VkSparseBufferMemoryBindInfo(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkSparseBufferMemoryBindInfo` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkSparseBufferMemoryBindInfo`
     public static VkSparseBufferMemoryBindInfo alloc(SegmentAllocator allocator, long count) { return new VkSparseBufferMemoryBindInfo(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
     public VkSparseBufferMemoryBindInfo copyFrom(VkSparseBufferMemoryBindInfo src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkSparseBufferMemoryBindInfo reinterpret(long count) { return new VkSparseBufferMemoryBindInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `buffer` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long buffer(MemorySegment segment, long index) { return (long) VH_buffer.get(segment, 0L, index); }
-    /// {@return `buffer`}
-    public long buffer() { return buffer(this.segment(), 0L); }
-    /// Sets `buffer` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void buffer(MemorySegment segment, long index, long value) { VH_buffer.set(segment, 0L, index, value); }
-    /// Sets `buffer` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSparseBufferMemoryBindInfo buffer(long value) { buffer(this.segment(), 0L, value); return this; }
-
-    /// {@return `bindCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int bindCount(MemorySegment segment, long index) { return (int) VH_bindCount.get(segment, 0L, index); }
-    /// {@return `bindCount`}
-    public int bindCount() { return bindCount(this.segment(), 0L); }
-    /// Sets `bindCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void bindCount(MemorySegment segment, long index, int value) { VH_bindCount.set(segment, 0L, index, value); }
-    /// Sets `bindCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSparseBufferMemoryBindInfo bindCount(int value) { bindCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `pBinds` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pBinds(MemorySegment segment, long index) { return (MemorySegment) VH_pBinds.get(segment, 0L, index); }
-    /// {@return `pBinds`}
-    public MemorySegment pBinds() { return pBinds(this.segment(), 0L); }
-    /// Sets `pBinds` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pBinds(MemorySegment segment, long index, MemorySegment value) { VH_pBinds.set(segment, 0L, index, value); }
-    /// Sets `pBinds` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkSparseBufferMemoryBindInfo pBinds(MemorySegment value) { pBinds(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkSparseBufferMemoryBindInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSparseBufferMemoryBindInfo`
     public VkSparseBufferMemoryBindInfo asSlice(long index) { return new VkSparseBufferMemoryBindInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkSparseBufferMemoryBindInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSparseBufferMemoryBindInfo`
     public VkSparseBufferMemoryBindInfo asSlice(long index, long count) { return new VkSparseBufferMemoryBindInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkSparseBufferMemoryBindInfo` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkSparseBufferMemoryBindInfo at(long index, Consumer<VkSparseBufferMemoryBindInfo> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `buffer` at the given index}
-    /// @param index the index of the struct buffer
-    public long bufferAt(long index) { return buffer(this.segment(), index); }
-    /// Sets `buffer` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSparseBufferMemoryBindInfo bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
-
-    /// {@return `bindCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int bindCountAt(long index) { return bindCount(this.segment(), index); }
-    /// Sets `bindCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSparseBufferMemoryBindInfo bindCountAt(long index, int value) { bindCount(this.segment(), index, value); return this; }
-
-    /// {@return `pBinds` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pBindsAt(long index) { return pBinds(this.segment(), index); }
-    /// Sets `pBinds` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkSparseBufferMemoryBindInfo pBindsAt(long index, MemorySegment value) { pBinds(this.segment(), index, value); return this; }
-
+    public long bufferAt(long index) { return (long) VH_buffer.get(this.segment(), 0L, index); }
+    public int bindCountAt(long index) { return (int) VH_bindCount.get(this.segment(), 0L, index); }
+    public MemorySegment pBindsAt(long index) { return (MemorySegment) VH_pBinds.get(this.segment(), 0L, index); }
+    public long buffer() { return (long) VH_buffer.get(this.segment(), 0L, 0L); }
+    public int bindCount() { return (int) VH_bindCount.get(this.segment(), 0L, 0L); }
+    public MemorySegment pBinds() { return (MemorySegment) VH_pBinds.get(this.segment(), 0L, 0L); }
+    public VkSparseBufferMemoryBindInfo bufferAt(long index, long value) { VH_buffer.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseBufferMemoryBindInfo bindCountAt(long index, int value) { VH_bindCount.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseBufferMemoryBindInfo pBindsAt(long index, MemorySegment value) { VH_pBinds.set(this.segment(), 0L, index, value); return this; }
+    public VkSparseBufferMemoryBindInfo buffer(long value) { VH_buffer.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseBufferMemoryBindInfo bindCount(int value) { VH_bindCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkSparseBufferMemoryBindInfo pBinds(MemorySegment value) { VH_pBinds.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _bufferAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_buffer, index), LAYOUT_buffer); }
+    public MemorySegment _buffer() { return _bufferAt(0L); }
+    public VkSparseBufferMemoryBindInfo _bufferAt(long index, MemorySegment src) { _bufferAt(index).copyFrom(src); return this; }
+    public VkSparseBufferMemoryBindInfo _buffer(MemorySegment src) { return _bufferAt(0L, src); }
+    public MemorySegment _bindCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_bindCount, index), LAYOUT_bindCount); }
+    public MemorySegment _bindCount() { return _bindCountAt(0L); }
+    public VkSparseBufferMemoryBindInfo _bindCountAt(long index, MemorySegment src) { _bindCountAt(index).copyFrom(src); return this; }
+    public VkSparseBufferMemoryBindInfo _bindCount(MemorySegment src) { return _bindCountAt(0L, src); }
+    public MemorySegment _pBindsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pBinds, index), LAYOUT_pBinds); }
+    public MemorySegment _pBinds() { return _pBindsAt(0L); }
+    public VkSparseBufferMemoryBindInfo _pBindsAt(long index, MemorySegment src) { _pBindsAt(index).copyFrom(src); return this; }
+    public VkSparseBufferMemoryBindInfo _pBinds(MemorySegment src) { return _pBindsAt(0L, src); }
 }

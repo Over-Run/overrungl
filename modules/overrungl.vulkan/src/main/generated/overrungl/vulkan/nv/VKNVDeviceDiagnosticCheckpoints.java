@@ -12,8 +12,9 @@ public final class VKNVDeviceDiagnosticCheckpoints {
     public static final String VK_NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_EXTENSION_NAME = "VK_NV_device_diagnostic_checkpoints";
     public static final int VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV = 1000206000;
     public static final int VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV = 1000206001;
-    public static final int VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV = 1000206008;
-    public static final int VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV = 1000206009;
+    public static final int VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV = 1000314008;
+    public static final int VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV = 1000314009;
+    private VKNVDeviceDiagnosticCheckpoints() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetCheckpointNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetQueueCheckpointDataNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -21,11 +22,9 @@ public final class VKNVDeviceDiagnosticCheckpoints {
         private Handles() {}
     }
 
-    private VKNVDeviceDiagnosticCheckpoints() {}
-
     /// Invokes `vkCmdSetCheckpointNV`.
     /// ```
-    /// void vkCmdSetCheckpointNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const void* pCheckpointMarker);
+    /// void vkCmdSetCheckpointNV(VkCommandBuffer commandBuffer, const void* pCheckpointMarker);
     /// ```
     public static void vkCmdSetCheckpointNV(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pCheckpointMarker) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCheckpointNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCheckpointNV");
@@ -36,7 +35,7 @@ public final class VKNVDeviceDiagnosticCheckpoints {
 
     /// Invokes `vkGetQueueCheckpointDataNV`.
     /// ```
-    /// void vkGetQueueCheckpointDataNV((struct VkQueue*) VkQueue queue, uint32_t* pCheckpointDataCount, VkCheckpointDataNV* pCheckpointData);
+    /// void vkGetQueueCheckpointDataNV(VkQueue queue, uint32_t* pCheckpointDataCount, VkCheckpointDataNV* pCheckpointData);
     /// ```
     public static void vkGetQueueCheckpointDataNV(@NonNull VkQueue queue, @NonNull MemorySegment pCheckpointDataCount, @NonNull MemorySegment pCheckpointData) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkGetQueueCheckpointDataNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetQueueCheckpointDataNV");
@@ -47,7 +46,7 @@ public final class VKNVDeviceDiagnosticCheckpoints {
 
     /// Invokes `vkGetQueueCheckpointData2NV`.
     /// ```
-    /// void vkGetQueueCheckpointData2NV((struct VkQueue*) VkQueue queue, uint32_t* pCheckpointDataCount, VkCheckpointData2NV* pCheckpointData);
+    /// void vkGetQueueCheckpointData2NV(VkQueue queue, uint32_t* pCheckpointDataCount, VkCheckpointData2NV* pCheckpointData);
     /// ```
     public static void vkGetQueueCheckpointData2NV(@NonNull VkQueue queue, @NonNull MemorySegment pCheckpointDataCount, @NonNull MemorySegment pCheckpointData) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkGetQueueCheckpointData2NV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetQueueCheckpointData2NV");

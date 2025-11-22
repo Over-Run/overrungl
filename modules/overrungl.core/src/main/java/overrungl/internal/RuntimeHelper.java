@@ -160,6 +160,16 @@ public final class RuntimeHelper {
         return builder.toString();
     }
 
+    /// Converts upcall target name to `name*`, where `*` is a character describing the return layout
+    ///
+    /// @param name       the original name
+    /// @param descriptor the descriptor
+    /// @return the converted name
+    /// @since 0.2.0
+    public static String upcallTarget2(String name, FunctionDescriptor descriptor) {
+        return name + descriptor.returnLayout().map(RuntimeHelper::descriptorLayoutToChar).orElse('V');
+    }
+
     private static char descriptorLayoutToChar(MemoryLayout layout) {
         if (!(layout instanceof ValueLayout valueLayout)) {
             throw new IllegalArgumentException("Not a value layout: " + layout);

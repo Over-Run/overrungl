@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,23 +12,22 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeometryTrianglesNV {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     const void* pNext;
-///     (uint64_t) VkBuffer vertexData;
-///     (uint64_t) VkDeviceSize vertexOffset;
+///     VkBuffer vertexData;
+///     VkDeviceSize vertexOffset;
 ///     uint32_t vertexCount;
-///     (uint64_t) VkDeviceSize vertexStride;
-///     (int) VkFormat vertexFormat;
-///     (uint64_t) VkBuffer indexData;
-///     (uint64_t) VkDeviceSize indexOffset;
+///     VkDeviceSize vertexStride;
+///     VkFormat vertexFormat;
+///     VkBuffer indexData;
+///     VkDeviceSize indexOffset;
 ///     uint32_t indexCount;
-///     (int) VkIndexType indexType;
-///     (uint64_t) VkBuffer transformData;
-///     (uint64_t) VkDeviceSize transformOffset;
-/// };
+///     VkIndexType indexType;
+///     VkBuffer transformData;
+///     VkDeviceSize transformOffset;
+/// }
 /// ```
 public final class VkGeometryTrianglesNV extends GroupType {
-    /// The struct layout of `VkGeometryTrianglesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
@@ -45,471 +43,165 @@ public final class VkGeometryTrianglesNV extends GroupType {
         ValueLayout.JAVA_LONG.withName("transformData"),
         ValueLayout.JAVA_LONG.withName("transformOffset")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `vertexData`.
     public static final long OFFSET_vertexData = LAYOUT.byteOffset(PathElement.groupElement("vertexData"));
-    /// The memory layout of `vertexData`.
-    public static final MemoryLayout LAYOUT_vertexData = LAYOUT.select(PathElement.groupElement("vertexData"));
-    /// The [VarHandle] of `vertexData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexData"));
-    /// The byte offset of `vertexOffset`.
     public static final long OFFSET_vertexOffset = LAYOUT.byteOffset(PathElement.groupElement("vertexOffset"));
-    /// The memory layout of `vertexOffset`.
-    public static final MemoryLayout LAYOUT_vertexOffset = LAYOUT.select(PathElement.groupElement("vertexOffset"));
-    /// The [VarHandle] of `vertexOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexOffset"));
-    /// The byte offset of `vertexCount`.
     public static final long OFFSET_vertexCount = LAYOUT.byteOffset(PathElement.groupElement("vertexCount"));
-    /// The memory layout of `vertexCount`.
-    public static final MemoryLayout LAYOUT_vertexCount = LAYOUT.select(PathElement.groupElement("vertexCount"));
-    /// The [VarHandle] of `vertexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexCount"));
-    /// The byte offset of `vertexStride`.
     public static final long OFFSET_vertexStride = LAYOUT.byteOffset(PathElement.groupElement("vertexStride"));
-    /// The memory layout of `vertexStride`.
-    public static final MemoryLayout LAYOUT_vertexStride = LAYOUT.select(PathElement.groupElement("vertexStride"));
-    /// The [VarHandle] of `vertexStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexStride"));
-    /// The byte offset of `vertexFormat`.
     public static final long OFFSET_vertexFormat = LAYOUT.byteOffset(PathElement.groupElement("vertexFormat"));
-    /// The memory layout of `vertexFormat`.
-    public static final MemoryLayout LAYOUT_vertexFormat = LAYOUT.select(PathElement.groupElement("vertexFormat"));
-    /// The [VarHandle] of `vertexFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_vertexFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexFormat"));
-    /// The byte offset of `indexData`.
     public static final long OFFSET_indexData = LAYOUT.byteOffset(PathElement.groupElement("indexData"));
-    /// The memory layout of `indexData`.
-    public static final MemoryLayout LAYOUT_indexData = LAYOUT.select(PathElement.groupElement("indexData"));
-    /// The [VarHandle] of `indexData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexData"));
-    /// The byte offset of `indexOffset`.
     public static final long OFFSET_indexOffset = LAYOUT.byteOffset(PathElement.groupElement("indexOffset"));
-    /// The memory layout of `indexOffset`.
-    public static final MemoryLayout LAYOUT_indexOffset = LAYOUT.select(PathElement.groupElement("indexOffset"));
-    /// The [VarHandle] of `indexOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexOffset"));
-    /// The byte offset of `indexCount`.
     public static final long OFFSET_indexCount = LAYOUT.byteOffset(PathElement.groupElement("indexCount"));
-    /// The memory layout of `indexCount`.
-    public static final MemoryLayout LAYOUT_indexCount = LAYOUT.select(PathElement.groupElement("indexCount"));
-    /// The [VarHandle] of `indexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexCount"));
-    /// The byte offset of `indexType`.
     public static final long OFFSET_indexType = LAYOUT.byteOffset(PathElement.groupElement("indexType"));
-    /// The memory layout of `indexType`.
-    public static final MemoryLayout LAYOUT_indexType = LAYOUT.select(PathElement.groupElement("indexType"));
-    /// The [VarHandle] of `indexType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_indexType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexType"));
-    /// The byte offset of `transformData`.
     public static final long OFFSET_transformData = LAYOUT.byteOffset(PathElement.groupElement("transformData"));
-    /// The memory layout of `transformData`.
-    public static final MemoryLayout LAYOUT_transformData = LAYOUT.select(PathElement.groupElement("transformData"));
-    /// The [VarHandle] of `transformData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_transformData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformData"));
-    /// The byte offset of `transformOffset`.
     public static final long OFFSET_transformOffset = LAYOUT.byteOffset(PathElement.groupElement("transformOffset"));
-    /// The memory layout of `transformOffset`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_vertexData = LAYOUT.select(PathElement.groupElement("vertexData"));
+    public static final MemoryLayout LAYOUT_vertexOffset = LAYOUT.select(PathElement.groupElement("vertexOffset"));
+    public static final MemoryLayout LAYOUT_vertexCount = LAYOUT.select(PathElement.groupElement("vertexCount"));
+    public static final MemoryLayout LAYOUT_vertexStride = LAYOUT.select(PathElement.groupElement("vertexStride"));
+    public static final MemoryLayout LAYOUT_vertexFormat = LAYOUT.select(PathElement.groupElement("vertexFormat"));
+    public static final MemoryLayout LAYOUT_indexData = LAYOUT.select(PathElement.groupElement("indexData"));
+    public static final MemoryLayout LAYOUT_indexOffset = LAYOUT.select(PathElement.groupElement("indexOffset"));
+    public static final MemoryLayout LAYOUT_indexCount = LAYOUT.select(PathElement.groupElement("indexCount"));
+    public static final MemoryLayout LAYOUT_indexType = LAYOUT.select(PathElement.groupElement("indexType"));
+    public static final MemoryLayout LAYOUT_transformData = LAYOUT.select(PathElement.groupElement("transformData"));
     public static final MemoryLayout LAYOUT_transformOffset = LAYOUT.select(PathElement.groupElement("transformOffset"));
-    /// The [VarHandle] of `transformOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_vertexData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexData"));
+    public static final VarHandle VH_vertexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexOffset"));
+    public static final VarHandle VH_vertexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexCount"));
+    public static final VarHandle VH_vertexStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexStride"));
+    public static final VarHandle VH_vertexFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexFormat"));
+    public static final VarHandle VH_indexData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexData"));
+    public static final VarHandle VH_indexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexOffset"));
+    public static final VarHandle VH_indexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexCount"));
+    public static final VarHandle VH_indexType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexType"));
+    public static final VarHandle VH_transformData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformData"));
     public static final VarHandle VH_transformOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformOffset"));
 
-    /// Creates `VkGeometryTrianglesNV` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkGeometryTrianglesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkGeometryTrianglesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkGeometryTrianglesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkGeometryTrianglesNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkGeometryTrianglesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkGeometryTrianglesNV` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkGeometryTrianglesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkGeometryTrianglesNV`
     public static VkGeometryTrianglesNV alloc(SegmentAllocator allocator) { return new VkGeometryTrianglesNV(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkGeometryTrianglesNV`
     public static VkGeometryTrianglesNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryTrianglesNV(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.nv.VKNVRayTracing.VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV); }
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.nv.VKNVRayTracing.VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV);
+        return s;
+    }
     public VkGeometryTrianglesNV copyFrom(VkGeometryTrianglesNV src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkGeometryTrianglesNV reinterpret(long count) { return new VkGeometryTrianglesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `vertexData` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long vertexData(MemorySegment segment, long index) { return (long) VH_vertexData.get(segment, 0L, index); }
-    /// {@return `vertexData`}
-    public long vertexData() { return vertexData(this.segment(), 0L); }
-    /// Sets `vertexData` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void vertexData(MemorySegment segment, long index, long value) { VH_vertexData.set(segment, 0L, index, value); }
-    /// Sets `vertexData` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexData(long value) { vertexData(this.segment(), 0L, value); return this; }
-
-    /// {@return `vertexOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long vertexOffset(MemorySegment segment, long index) { return (long) VH_vertexOffset.get(segment, 0L, index); }
-    /// {@return `vertexOffset`}
-    public long vertexOffset() { return vertexOffset(this.segment(), 0L); }
-    /// Sets `vertexOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void vertexOffset(MemorySegment segment, long index, long value) { VH_vertexOffset.set(segment, 0L, index, value); }
-    /// Sets `vertexOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexOffset(long value) { vertexOffset(this.segment(), 0L, value); return this; }
-
-    /// {@return `vertexCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int vertexCount(MemorySegment segment, long index) { return (int) VH_vertexCount.get(segment, 0L, index); }
-    /// {@return `vertexCount`}
-    public int vertexCount() { return vertexCount(this.segment(), 0L); }
-    /// Sets `vertexCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void vertexCount(MemorySegment segment, long index, int value) { VH_vertexCount.set(segment, 0L, index, value); }
-    /// Sets `vertexCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexCount(int value) { vertexCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `vertexStride` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long vertexStride(MemorySegment segment, long index) { return (long) VH_vertexStride.get(segment, 0L, index); }
-    /// {@return `vertexStride`}
-    public long vertexStride() { return vertexStride(this.segment(), 0L); }
-    /// Sets `vertexStride` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void vertexStride(MemorySegment segment, long index, long value) { VH_vertexStride.set(segment, 0L, index, value); }
-    /// Sets `vertexStride` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexStride(long value) { vertexStride(this.segment(), 0L, value); return this; }
-
-    /// {@return `vertexFormat` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int vertexFormat(MemorySegment segment, long index) { return (int) VH_vertexFormat.get(segment, 0L, index); }
-    /// {@return `vertexFormat`}
-    public int vertexFormat() { return vertexFormat(this.segment(), 0L); }
-    /// Sets `vertexFormat` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void vertexFormat(MemorySegment segment, long index, int value) { VH_vertexFormat.set(segment, 0L, index, value); }
-    /// Sets `vertexFormat` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexFormat(int value) { vertexFormat(this.segment(), 0L, value); return this; }
-
-    /// {@return `indexData` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long indexData(MemorySegment segment, long index) { return (long) VH_indexData.get(segment, 0L, index); }
-    /// {@return `indexData`}
-    public long indexData() { return indexData(this.segment(), 0L); }
-    /// Sets `indexData` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void indexData(MemorySegment segment, long index, long value) { VH_indexData.set(segment, 0L, index, value); }
-    /// Sets `indexData` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexData(long value) { indexData(this.segment(), 0L, value); return this; }
-
-    /// {@return `indexOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long indexOffset(MemorySegment segment, long index) { return (long) VH_indexOffset.get(segment, 0L, index); }
-    /// {@return `indexOffset`}
-    public long indexOffset() { return indexOffset(this.segment(), 0L); }
-    /// Sets `indexOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void indexOffset(MemorySegment segment, long index, long value) { VH_indexOffset.set(segment, 0L, index, value); }
-    /// Sets `indexOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexOffset(long value) { indexOffset(this.segment(), 0L, value); return this; }
-
-    /// {@return `indexCount` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int indexCount(MemorySegment segment, long index) { return (int) VH_indexCount.get(segment, 0L, index); }
-    /// {@return `indexCount`}
-    public int indexCount() { return indexCount(this.segment(), 0L); }
-    /// Sets `indexCount` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void indexCount(MemorySegment segment, long index, int value) { VH_indexCount.set(segment, 0L, index, value); }
-    /// Sets `indexCount` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexCount(int value) { indexCount(this.segment(), 0L, value); return this; }
-
-    /// {@return `indexType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int indexType(MemorySegment segment, long index) { return (int) VH_indexType.get(segment, 0L, index); }
-    /// {@return `indexType`}
-    public int indexType() { return indexType(this.segment(), 0L); }
-    /// Sets `indexType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void indexType(MemorySegment segment, long index, int value) { VH_indexType.set(segment, 0L, index, value); }
-    /// Sets `indexType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexType(int value) { indexType(this.segment(), 0L, value); return this; }
-
-    /// {@return `transformData` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long transformData(MemorySegment segment, long index) { return (long) VH_transformData.get(segment, 0L, index); }
-    /// {@return `transformData`}
-    public long transformData() { return transformData(this.segment(), 0L); }
-    /// Sets `transformData` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void transformData(MemorySegment segment, long index, long value) { VH_transformData.set(segment, 0L, index, value); }
-    /// Sets `transformData` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV transformData(long value) { transformData(this.segment(), 0L, value); return this; }
-
-    /// {@return `transformOffset` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long transformOffset(MemorySegment segment, long index) { return (long) VH_transformOffset.get(segment, 0L, index); }
-    /// {@return `transformOffset`}
-    public long transformOffset() { return transformOffset(this.segment(), 0L); }
-    /// Sets `transformOffset` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void transformOffset(MemorySegment segment, long index, long value) { VH_transformOffset.set(segment, 0L, index, value); }
-    /// Sets `transformOffset` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV transformOffset(long value) { transformOffset(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkGeometryTrianglesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkGeometryTrianglesNV`
     public VkGeometryTrianglesNV asSlice(long index) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkGeometryTrianglesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkGeometryTrianglesNV`
     public VkGeometryTrianglesNV asSlice(long index, long count) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkGeometryTrianglesNV` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkGeometryTrianglesNV at(long index, Consumer<VkGeometryTrianglesNV> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `vertexData` at the given index}
-    /// @param index the index of the struct buffer
-    public long vertexDataAt(long index) { return vertexData(this.segment(), index); }
-    /// Sets `vertexData` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexDataAt(long index, long value) { vertexData(this.segment(), index, value); return this; }
-
-    /// {@return `vertexOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public long vertexOffsetAt(long index) { return vertexOffset(this.segment(), index); }
-    /// Sets `vertexOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexOffsetAt(long index, long value) { vertexOffset(this.segment(), index, value); return this; }
-
-    /// {@return `vertexCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int vertexCountAt(long index) { return vertexCount(this.segment(), index); }
-    /// Sets `vertexCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexCountAt(long index, int value) { vertexCount(this.segment(), index, value); return this; }
-
-    /// {@return `vertexStride` at the given index}
-    /// @param index the index of the struct buffer
-    public long vertexStrideAt(long index) { return vertexStride(this.segment(), index); }
-    /// Sets `vertexStride` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexStrideAt(long index, long value) { vertexStride(this.segment(), index, value); return this; }
-
-    /// {@return `vertexFormat` at the given index}
-    /// @param index the index of the struct buffer
-    public int vertexFormatAt(long index) { return vertexFormat(this.segment(), index); }
-    /// Sets `vertexFormat` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexFormatAt(long index, int value) { vertexFormat(this.segment(), index, value); return this; }
-
-    /// {@return `indexData` at the given index}
-    /// @param index the index of the struct buffer
-    public long indexDataAt(long index) { return indexData(this.segment(), index); }
-    /// Sets `indexData` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexDataAt(long index, long value) { indexData(this.segment(), index, value); return this; }
-
-    /// {@return `indexOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public long indexOffsetAt(long index) { return indexOffset(this.segment(), index); }
-    /// Sets `indexOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexOffsetAt(long index, long value) { indexOffset(this.segment(), index, value); return this; }
-
-    /// {@return `indexCount` at the given index}
-    /// @param index the index of the struct buffer
-    public int indexCountAt(long index) { return indexCount(this.segment(), index); }
-    /// Sets `indexCount` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexCountAt(long index, int value) { indexCount(this.segment(), index, value); return this; }
-
-    /// {@return `indexType` at the given index}
-    /// @param index the index of the struct buffer
-    public int indexTypeAt(long index) { return indexType(this.segment(), index); }
-    /// Sets `indexType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
-
-    /// {@return `transformData` at the given index}
-    /// @param index the index of the struct buffer
-    public long transformDataAt(long index) { return transformData(this.segment(), index); }
-    /// Sets `transformData` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV transformDataAt(long index, long value) { transformData(this.segment(), index, value); return this; }
-
-    /// {@return `transformOffset` at the given index}
-    /// @param index the index of the struct buffer
-    public long transformOffsetAt(long index) { return transformOffset(this.segment(), index); }
-    /// Sets `transformOffset` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV transformOffsetAt(long index, long value) { transformOffset(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public long vertexDataAt(long index) { return (long) VH_vertexData.get(this.segment(), 0L, index); }
+    public long vertexOffsetAt(long index) { return (long) VH_vertexOffset.get(this.segment(), 0L, index); }
+    public int vertexCountAt(long index) { return (int) VH_vertexCount.get(this.segment(), 0L, index); }
+    public long vertexStrideAt(long index) { return (long) VH_vertexStride.get(this.segment(), 0L, index); }
+    public int vertexFormatAt(long index) { return (int) VH_vertexFormat.get(this.segment(), 0L, index); }
+    public long indexDataAt(long index) { return (long) VH_indexData.get(this.segment(), 0L, index); }
+    public long indexOffsetAt(long index) { return (long) VH_indexOffset.get(this.segment(), 0L, index); }
+    public int indexCountAt(long index) { return (int) VH_indexCount.get(this.segment(), 0L, index); }
+    public int indexTypeAt(long index) { return (int) VH_indexType.get(this.segment(), 0L, index); }
+    public long transformDataAt(long index) { return (long) VH_transformData.get(this.segment(), 0L, index); }
+    public long transformOffsetAt(long index) { return (long) VH_transformOffset.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public long vertexData() { return (long) VH_vertexData.get(this.segment(), 0L, 0L); }
+    public long vertexOffset() { return (long) VH_vertexOffset.get(this.segment(), 0L, 0L); }
+    public int vertexCount() { return (int) VH_vertexCount.get(this.segment(), 0L, 0L); }
+    public long vertexStride() { return (long) VH_vertexStride.get(this.segment(), 0L, 0L); }
+    public int vertexFormat() { return (int) VH_vertexFormat.get(this.segment(), 0L, 0L); }
+    public long indexData() { return (long) VH_indexData.get(this.segment(), 0L, 0L); }
+    public long indexOffset() { return (long) VH_indexOffset.get(this.segment(), 0L, 0L); }
+    public int indexCount() { return (int) VH_indexCount.get(this.segment(), 0L, 0L); }
+    public int indexType() { return (int) VH_indexType.get(this.segment(), 0L, 0L); }
+    public long transformData() { return (long) VH_transformData.get(this.segment(), 0L, 0L); }
+    public long transformOffset() { return (long) VH_transformOffset.get(this.segment(), 0L, 0L); }
+    public VkGeometryTrianglesNV sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV vertexDataAt(long index, long value) { VH_vertexData.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV vertexOffsetAt(long index, long value) { VH_vertexOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV vertexCountAt(long index, int value) { VH_vertexCount.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV vertexStrideAt(long index, long value) { VH_vertexStride.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV vertexFormatAt(long index, int value) { VH_vertexFormat.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV indexDataAt(long index, long value) { VH_indexData.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV indexOffsetAt(long index, long value) { VH_indexOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV indexCountAt(long index, int value) { VH_indexCount.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV indexTypeAt(long index, int value) { VH_indexType.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV transformDataAt(long index, long value) { VH_transformData.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV transformOffsetAt(long index, long value) { VH_transformOffset.set(this.segment(), 0L, index, value); return this; }
+    public VkGeometryTrianglesNV sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV vertexData(long value) { VH_vertexData.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV vertexOffset(long value) { VH_vertexOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV vertexCount(int value) { VH_vertexCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV vertexStride(long value) { VH_vertexStride.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV vertexFormat(int value) { VH_vertexFormat.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV indexData(long value) { VH_indexData.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV indexOffset(long value) { VH_indexOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV indexCount(int value) { VH_indexCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV indexType(int value) { VH_indexType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV transformData(long value) { VH_transformData.set(this.segment(), 0L, 0L, value); return this; }
+    public VkGeometryTrianglesNV transformOffset(long value) { VH_transformOffset.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkGeometryTrianglesNV _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkGeometryTrianglesNV _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _vertexDataAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_vertexData, index), LAYOUT_vertexData); }
+    public MemorySegment _vertexData() { return _vertexDataAt(0L); }
+    public VkGeometryTrianglesNV _vertexDataAt(long index, MemorySegment src) { _vertexDataAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _vertexData(MemorySegment src) { return _vertexDataAt(0L, src); }
+    public MemorySegment _vertexOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_vertexOffset, index), LAYOUT_vertexOffset); }
+    public MemorySegment _vertexOffset() { return _vertexOffsetAt(0L); }
+    public VkGeometryTrianglesNV _vertexOffsetAt(long index, MemorySegment src) { _vertexOffsetAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _vertexOffset(MemorySegment src) { return _vertexOffsetAt(0L, src); }
+    public MemorySegment _vertexCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_vertexCount, index), LAYOUT_vertexCount); }
+    public MemorySegment _vertexCount() { return _vertexCountAt(0L); }
+    public VkGeometryTrianglesNV _vertexCountAt(long index, MemorySegment src) { _vertexCountAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _vertexCount(MemorySegment src) { return _vertexCountAt(0L, src); }
+    public MemorySegment _vertexStrideAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_vertexStride, index), LAYOUT_vertexStride); }
+    public MemorySegment _vertexStride() { return _vertexStrideAt(0L); }
+    public VkGeometryTrianglesNV _vertexStrideAt(long index, MemorySegment src) { _vertexStrideAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _vertexStride(MemorySegment src) { return _vertexStrideAt(0L, src); }
+    public MemorySegment _vertexFormatAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_vertexFormat, index), LAYOUT_vertexFormat); }
+    public MemorySegment _vertexFormat() { return _vertexFormatAt(0L); }
+    public VkGeometryTrianglesNV _vertexFormatAt(long index, MemorySegment src) { _vertexFormatAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _vertexFormat(MemorySegment src) { return _vertexFormatAt(0L, src); }
+    public MemorySegment _indexDataAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_indexData, index), LAYOUT_indexData); }
+    public MemorySegment _indexData() { return _indexDataAt(0L); }
+    public VkGeometryTrianglesNV _indexDataAt(long index, MemorySegment src) { _indexDataAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _indexData(MemorySegment src) { return _indexDataAt(0L, src); }
+    public MemorySegment _indexOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_indexOffset, index), LAYOUT_indexOffset); }
+    public MemorySegment _indexOffset() { return _indexOffsetAt(0L); }
+    public VkGeometryTrianglesNV _indexOffsetAt(long index, MemorySegment src) { _indexOffsetAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _indexOffset(MemorySegment src) { return _indexOffsetAt(0L, src); }
+    public MemorySegment _indexCountAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_indexCount, index), LAYOUT_indexCount); }
+    public MemorySegment _indexCount() { return _indexCountAt(0L); }
+    public VkGeometryTrianglesNV _indexCountAt(long index, MemorySegment src) { _indexCountAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _indexCount(MemorySegment src) { return _indexCountAt(0L, src); }
+    public MemorySegment _indexTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_indexType, index), LAYOUT_indexType); }
+    public MemorySegment _indexType() { return _indexTypeAt(0L); }
+    public VkGeometryTrianglesNV _indexTypeAt(long index, MemorySegment src) { _indexTypeAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _indexType(MemorySegment src) { return _indexTypeAt(0L, src); }
+    public MemorySegment _transformDataAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_transformData, index), LAYOUT_transformData); }
+    public MemorySegment _transformData() { return _transformDataAt(0L); }
+    public VkGeometryTrianglesNV _transformDataAt(long index, MemorySegment src) { _transformDataAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _transformData(MemorySegment src) { return _transformDataAt(0L, src); }
+    public MemorySegment _transformOffsetAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_transformOffset, index), LAYOUT_transformOffset); }
+    public MemorySegment _transformOffset() { return _transformOffsetAt(0L); }
+    public VkGeometryTrianglesNV _transformOffsetAt(long index, MemorySegment src) { _transformOffsetAt(index).copyFrom(src); return this; }
+    public VkGeometryTrianglesNV _transformOffset(MemorySegment src) { return _transformOffsetAt(0L, src); }
 }

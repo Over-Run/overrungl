@@ -14,16 +14,15 @@ public final class VKKHRSharedPresentableImage {
     public static final int VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR = 1000111000;
     public static final int VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR = 1000111001;
     public static final int VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR = 1000111000;
+    private VKKHRSharedPresentableImage() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetSwapchainStatusKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         private Handles() {}
     }
 
-    private VKKHRSharedPresentableImage() {}
-
     /// Invokes `vkGetSwapchainStatusKHR`.
     /// ```
-    /// (int) VkResult vkGetSwapchainStatusKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain);
+    /// VkResult vkGetSwapchainStatusKHR(VkDevice device, VkSwapchainKHR swapchain);
     /// ```
     public static int vkGetSwapchainStatusKHR(@NonNull VkDevice device, long swapchain) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainStatusKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainStatusKHR");

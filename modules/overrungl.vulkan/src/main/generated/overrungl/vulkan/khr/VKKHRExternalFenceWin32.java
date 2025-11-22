@@ -13,17 +13,16 @@ public final class VKKHRExternalFenceWin32 {
     public static final int VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR = 1000114000;
     public static final int VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR = 1000114001;
     public static final int VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR = 1000114002;
+    private VKKHRExternalFenceWin32() {}
     public static final class Handles {
         public static final MethodHandle MH_vkImportFenceWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetFenceWin32HandleKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRExternalFenceWin32() {}
-
     /// Invokes `vkImportFenceWin32HandleKHR`.
     /// ```
-    /// (int) VkResult vkImportFenceWin32HandleKHR((struct VkDevice*) VkDevice device, const VkImportFenceWin32HandleInfoKHR* pImportFenceWin32HandleInfo);
+    /// VkResult vkImportFenceWin32HandleKHR(VkDevice device, const VkImportFenceWin32HandleInfoKHR* pImportFenceWin32HandleInfo);
     /// ```
     public static int vkImportFenceWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pImportFenceWin32HandleInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportFenceWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportFenceWin32HandleKHR");
@@ -34,7 +33,7 @@ public final class VKKHRExternalFenceWin32 {
 
     /// Invokes `vkGetFenceWin32HandleKHR`.
     /// ```
-    /// (int) VkResult vkGetFenceWin32HandleKHR((struct VkDevice*) VkDevice device, const VkFenceGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
+    /// VkResult vkGetFenceWin32HandleKHR(VkDevice device, const VkFenceGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
     /// ```
     public static int vkGetFenceWin32HandleKHR(@NonNull VkDevice device, @NonNull MemorySegment pGetWin32HandleInfo, @NonNull MemorySegment pHandle) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFenceWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetFenceWin32HandleKHR");

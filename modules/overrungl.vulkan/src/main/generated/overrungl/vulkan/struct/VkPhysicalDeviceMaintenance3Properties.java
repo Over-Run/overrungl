@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,206 +12,79 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance3Properties {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxPerSetDescriptors;
-///     (uint64_t) VkDeviceSize maxMemoryAllocationSize;
-/// };
+///     VkDeviceSize maxMemoryAllocationSize;
+/// }
 /// ```
 public final class VkPhysicalDeviceMaintenance3Properties extends GroupType {
-    /// The struct layout of `VkPhysicalDeviceMaintenance3Properties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maxPerSetDescriptors"),
         ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `maxPerSetDescriptors`.
     public static final long OFFSET_maxPerSetDescriptors = LAYOUT.byteOffset(PathElement.groupElement("maxPerSetDescriptors"));
-    /// The memory layout of `maxPerSetDescriptors`.
-    public static final MemoryLayout LAYOUT_maxPerSetDescriptors = LAYOUT.select(PathElement.groupElement("maxPerSetDescriptors"));
-    /// The [VarHandle] of `maxPerSetDescriptors` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_maxPerSetDescriptors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerSetDescriptors"));
-    /// The byte offset of `maxMemoryAllocationSize`.
     public static final long OFFSET_maxMemoryAllocationSize = LAYOUT.byteOffset(PathElement.groupElement("maxMemoryAllocationSize"));
-    /// The memory layout of `maxMemoryAllocationSize`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    public static final MemoryLayout LAYOUT_maxPerSetDescriptors = LAYOUT.select(PathElement.groupElement("maxPerSetDescriptors"));
     public static final MemoryLayout LAYOUT_maxMemoryAllocationSize = LAYOUT.select(PathElement.groupElement("maxMemoryAllocationSize"));
-    /// The [VarHandle] of `maxMemoryAllocationSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_maxPerSetDescriptors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerSetDescriptors"));
     public static final VarHandle VH_maxMemoryAllocationSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMemoryAllocationSize"));
 
-    /// Creates `VkPhysicalDeviceMaintenance3Properties` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkPhysicalDeviceMaintenance3Properties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkPhysicalDeviceMaintenance3Properties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMaintenance3Properties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance3Properties(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkPhysicalDeviceMaintenance3Properties` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMaintenance3Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance3Properties(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkPhysicalDeviceMaintenance3Properties` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceMaintenance3Properties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance3Properties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance3Properties` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceMaintenance3Properties`
     public static VkPhysicalDeviceMaintenance3Properties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMaintenance3Properties(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance3Properties` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkPhysicalDeviceMaintenance3Properties`
     public static VkPhysicalDeviceMaintenance3Properties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance3Properties(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkPhysicalDeviceMaintenance3Properties allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES); }
+    public static VkPhysicalDeviceMaintenance3Properties allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES);
+        return s;
+    }
     public VkPhysicalDeviceMaintenance3Properties copyFrom(VkPhysicalDeviceMaintenance3Properties src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkPhysicalDeviceMaintenance3Properties reinterpret(long count) { return new VkPhysicalDeviceMaintenance3Properties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance3Properties sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance3Properties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxPerSetDescriptors` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int maxPerSetDescriptors(MemorySegment segment, long index) { return (int) VH_maxPerSetDescriptors.get(segment, 0L, index); }
-    /// {@return `maxPerSetDescriptors`}
-    public int maxPerSetDescriptors() { return maxPerSetDescriptors(this.segment(), 0L); }
-    /// Sets `maxPerSetDescriptors` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxPerSetDescriptors(MemorySegment segment, long index, int value) { VH_maxPerSetDescriptors.set(segment, 0L, index, value); }
-    /// Sets `maxPerSetDescriptors` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance3Properties maxPerSetDescriptors(int value) { maxPerSetDescriptors(this.segment(), 0L, value); return this; }
-
-    /// {@return `maxMemoryAllocationSize` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static long maxMemoryAllocationSize(MemorySegment segment, long index) { return (long) VH_maxMemoryAllocationSize.get(segment, 0L, index); }
-    /// {@return `maxMemoryAllocationSize`}
-    public long maxMemoryAllocationSize() { return maxMemoryAllocationSize(this.segment(), 0L); }
-    /// Sets `maxMemoryAllocationSize` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void maxMemoryAllocationSize(MemorySegment segment, long index, long value) { VH_maxMemoryAllocationSize.set(segment, 0L, index, value); }
-    /// Sets `maxMemoryAllocationSize` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance3Properties maxMemoryAllocationSize(long value) { maxMemoryAllocationSize(this.segment(), 0L, value); return this; }
-
-    /// Creates a slice of `VkPhysicalDeviceMaintenance3Properties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceMaintenance3Properties`
     public VkPhysicalDeviceMaintenance3Properties asSlice(long index) { return new VkPhysicalDeviceMaintenance3Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkPhysicalDeviceMaintenance3Properties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceMaintenance3Properties`
     public VkPhysicalDeviceMaintenance3Properties asSlice(long index, long count) { return new VkPhysicalDeviceMaintenance3Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkPhysicalDeviceMaintenance3Properties` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkPhysicalDeviceMaintenance3Properties at(long index, Consumer<VkPhysicalDeviceMaintenance3Properties> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance3Properties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance3Properties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `maxPerSetDescriptors` at the given index}
-    /// @param index the index of the struct buffer
-    public int maxPerSetDescriptorsAt(long index) { return maxPerSetDescriptors(this.segment(), index); }
-    /// Sets `maxPerSetDescriptors` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance3Properties maxPerSetDescriptorsAt(long index, int value) { maxPerSetDescriptors(this.segment(), index, value); return this; }
-
-    /// {@return `maxMemoryAllocationSize` at the given index}
-    /// @param index the index of the struct buffer
-    public long maxMemoryAllocationSizeAt(long index) { return maxMemoryAllocationSize(this.segment(), index); }
-    /// Sets `maxMemoryAllocationSize` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMaintenance3Properties maxMemoryAllocationSizeAt(long index, long value) { maxMemoryAllocationSize(this.segment(), index, value); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int maxPerSetDescriptorsAt(long index) { return (int) VH_maxPerSetDescriptors.get(this.segment(), 0L, index); }
+    public long maxMemoryAllocationSizeAt(long index) { return (long) VH_maxMemoryAllocationSize.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int maxPerSetDescriptors() { return (int) VH_maxPerSetDescriptors.get(this.segment(), 0L, 0L); }
+    public long maxMemoryAllocationSize() { return (long) VH_maxMemoryAllocationSize.get(this.segment(), 0L, 0L); }
+    public VkPhysicalDeviceMaintenance3Properties sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance3Properties pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance3Properties maxPerSetDescriptorsAt(long index, int value) { VH_maxPerSetDescriptors.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance3Properties maxMemoryAllocationSizeAt(long index, long value) { VH_maxMemoryAllocationSize.set(this.segment(), 0L, index, value); return this; }
+    public VkPhysicalDeviceMaintenance3Properties sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMaintenance3Properties pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMaintenance3Properties maxPerSetDescriptors(int value) { VH_maxPerSetDescriptors.set(this.segment(), 0L, 0L, value); return this; }
+    public VkPhysicalDeviceMaintenance3Properties maxMemoryAllocationSize(long value) { VH_maxMemoryAllocationSize.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkPhysicalDeviceMaintenance3Properties _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance3Properties _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkPhysicalDeviceMaintenance3Properties _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance3Properties _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _maxPerSetDescriptorsAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxPerSetDescriptors, index), LAYOUT_maxPerSetDescriptors); }
+    public MemorySegment _maxPerSetDescriptors() { return _maxPerSetDescriptorsAt(0L); }
+    public VkPhysicalDeviceMaintenance3Properties _maxPerSetDescriptorsAt(long index, MemorySegment src) { _maxPerSetDescriptorsAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance3Properties _maxPerSetDescriptors(MemorySegment src) { return _maxPerSetDescriptorsAt(0L, src); }
+    public MemorySegment _maxMemoryAllocationSizeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_maxMemoryAllocationSize, index), LAYOUT_maxMemoryAllocationSize); }
+    public MemorySegment _maxMemoryAllocationSize() { return _maxMemoryAllocationSizeAt(0L); }
+    public VkPhysicalDeviceMaintenance3Properties _maxMemoryAllocationSizeAt(long index, MemorySegment src) { _maxMemoryAllocationSizeAt(index).copyFrom(src); return this; }
+    public VkPhysicalDeviceMaintenance3Properties _maxMemoryAllocationSize(MemorySegment src) { return _maxMemoryAllocationSizeAt(0L, src); }
 }

@@ -14,16 +14,15 @@ public final class VKNVExternalMemoryRdma {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV = 1000371001;
     public static final int VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV = 0x00000100;
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV = 0x00001000;
+    private VKNVExternalMemoryRdma() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetMemoryRemoteAddressNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKNVExternalMemoryRdma() {}
-
     /// Invokes `vkGetMemoryRemoteAddressNV`.
     /// ```
-    /// (int) VkResult vkGetMemoryRemoteAddressNV((struct VkDevice*) VkDevice device, const VkMemoryGetRemoteAddressInfoNV* pMemoryGetRemoteAddressInfo, VkRemoteAddressNV* pAddress);
+    /// VkResult vkGetMemoryRemoteAddressNV(VkDevice device, const VkMemoryGetRemoteAddressInfoNV* pMemoryGetRemoteAddressInfo, VkRemoteAddressNV* pAddress);
     /// ```
     public static int vkGetMemoryRemoteAddressNV(@NonNull VkDevice device, @NonNull MemorySegment pMemoryGetRemoteAddressInfo, @NonNull MemorySegment pAddress) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryRemoteAddressNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryRemoteAddressNV");

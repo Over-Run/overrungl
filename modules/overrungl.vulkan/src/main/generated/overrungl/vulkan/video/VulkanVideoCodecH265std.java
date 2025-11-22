@@ -24,7 +24,7 @@ public final class VulkanVideoCodecH265std {
     public static final int STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS = 32;
     public static final int STD_VIDEO_H265_MAX_LONG_TERM_PICS = 16;
     public static final int STD_VIDEO_H265_MAX_DELTA_POC = 48;
-    public static final int STD_VIDEO_H265_NO_REFERENCE_PICTURE = 0xFF;
+    public static final byte STD_VIDEO_H265_NO_REFERENCE_PICTURE = (byte) 0xFF;
     public static final int STD_VIDEO_H265_CHROMA_FORMAT_IDC_MONOCHROME = 0;
     public static final int STD_VIDEO_H265_CHROMA_FORMAT_IDC_420 = 1;
     public static final int STD_VIDEO_H265_CHROMA_FORMAT_IDC_422 = 2;

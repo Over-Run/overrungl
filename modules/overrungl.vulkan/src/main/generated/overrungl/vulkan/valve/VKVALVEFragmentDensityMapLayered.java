@@ -1,7 +1,10 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.valve;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import org.jspecify.annotations.*;
+import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.internal.RuntimeHelper.*;
 /// `VK_VALVE_fragment_density_map_layered` - device extension
 public final class VKVALVEFragmentDensityMapLayered {
     public static final int VK_VALVE_FRAGMENT_DENSITY_MAP_LAYERED_SPEC_VERSION = 1;
@@ -12,7 +15,5 @@ public final class VKVALVEFragmentDensityMapLayered {
     public static final int VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE = 0x00000004;
     public static final int VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE = 0x00000020;
     public static final long VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE = 0x10000000000L;
-
     private VKVALVEFragmentDensityMapLayered() {}
-
 }

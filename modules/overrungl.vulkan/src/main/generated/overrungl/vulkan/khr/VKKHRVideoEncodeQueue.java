@@ -8,6 +8,8 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_KHR_video_encode_queue` - device extension
 public final class VKKHRVideoEncodeQueue {
+    public static final int VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 12;
+    public static final String VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
     public static final int VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR = 0x00000001;
     public static final int VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR = 0x00000002;
     public static final int VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR = 0x00000001;
@@ -31,8 +33,6 @@ public final class VKKHRVideoEncodeQueue {
     public static final int VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR = 0x00000001;
     public static final int VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR = 0x00000002;
     public static final int VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR = 0x00000004;
-    public static final int VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 12;
-    public static final String VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME = "VK_KHR_video_encode_queue";
     public static final long VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR = 0x08000000L;
     public static final long VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR = 0x2000000000L;
     public static final long VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR = 0x4000000000L;
@@ -66,6 +66,7 @@ public final class VKKHRVideoEncodeQueue {
     public static final int VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR = -1000299000;
     public static final long VK_FORMAT_FEATURE_2_VIDEO_ENCODE_INPUT_BIT_KHR = 0x08000000L;
     public static final long VK_FORMAT_FEATURE_2_VIDEO_ENCODE_DPB_BIT_KHR = 0x10000000L;
+    private VKKHRVideoEncodeQueue() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetEncodedVideoSessionParametersKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -73,11 +74,9 @@ public final class VKKHRVideoEncodeQueue {
         private Handles() {}
     }
 
-    private VKKHRVideoEncodeQueue() {}
-
     /// Invokes `vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR`.
     /// ```
-    /// (int) VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* pQualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* pQualityLevelProperties);
+    /// VkResult vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* pQualityLevelInfo, VkVideoEncodeQualityLevelPropertiesKHR* pQualityLevelProperties);
     /// ```
     public static int vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(@NonNull VkPhysicalDevice physicalDevice, @NonNull MemorySegment pQualityLevelInfo, @NonNull MemorySegment pQualityLevelProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR");
@@ -88,7 +87,7 @@ public final class VKKHRVideoEncodeQueue {
 
     /// Invokes `vkGetEncodedVideoSessionParametersKHR`.
     /// ```
-    /// (int) VkResult vkGetEncodedVideoSessionParametersKHR((struct VkDevice*) VkDevice device, const VkVideoEncodeSessionParametersGetInfoKHR* pVideoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, size_t* pDataSize, void* pData);
+    /// VkResult vkGetEncodedVideoSessionParametersKHR(VkDevice device, const VkVideoEncodeSessionParametersGetInfoKHR* pVideoSessionParametersInfo, VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, size_t* pDataSize, void* pData);
     /// ```
     public static int vkGetEncodedVideoSessionParametersKHR(@NonNull VkDevice device, @NonNull MemorySegment pVideoSessionParametersInfo, @NonNull MemorySegment pFeedbackInfo, @NonNull MemorySegment pDataSize, @NonNull MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetEncodedVideoSessionParametersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetEncodedVideoSessionParametersKHR");
@@ -99,7 +98,7 @@ public final class VKKHRVideoEncodeQueue {
 
     /// Invokes `vkCmdEncodeVideoKHR`.
     /// ```
-    /// void vkCmdEncodeVideoKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkVideoEncodeInfoKHR* pEncodeInfo);
+    /// void vkCmdEncodeVideoKHR(VkCommandBuffer commandBuffer, const VkVideoEncodeInfoKHR* pEncodeInfo);
     /// ```
     public static void vkCmdEncodeVideoKHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pEncodeInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEncodeVideoKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEncodeVideoKHR");

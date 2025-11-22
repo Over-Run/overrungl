@@ -16,6 +16,7 @@ public final class VKNVDeviceGeneratedCommandsCompute {
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV = 1000428003;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV = 1000428004;
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV = 0x00000080;
+    private VKNVDeviceGeneratedCommandsCompute() {}
     public static final class Handles {
         public static final MethodHandle MH_vkGetPipelineIndirectMemoryRequirementsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdUpdatePipelineIndirectBufferNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
@@ -23,11 +24,9 @@ public final class VKNVDeviceGeneratedCommandsCompute {
         private Handles() {}
     }
 
-    private VKNVDeviceGeneratedCommandsCompute() {}
-
     /// Invokes `vkGetPipelineIndirectMemoryRequirementsNV`.
     /// ```
-    /// void vkGetPipelineIndirectMemoryRequirementsNV((struct VkDevice*) VkDevice device, const VkComputePipelineCreateInfo* pCreateInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetPipelineIndirectMemoryRequirementsNV(VkDevice device, const VkComputePipelineCreateInfo* pCreateInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetPipelineIndirectMemoryRequirementsNV(@NonNull VkDevice device, @NonNull MemorySegment pCreateInfo, @NonNull MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineIndirectMemoryRequirementsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineIndirectMemoryRequirementsNV");
@@ -38,7 +37,7 @@ public final class VKNVDeviceGeneratedCommandsCompute {
 
     /// Invokes `vkCmdUpdatePipelineIndirectBufferNV`.
     /// ```
-    /// void vkCmdUpdatePipelineIndirectBufferNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineBindPoint pipelineBindPoint, (uint64_t) VkPipeline pipeline);
+    /// void vkCmdUpdatePipelineIndirectBufferNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline);
     /// ```
     public static void vkCmdUpdatePipelineIndirectBufferNV(@NonNull VkCommandBuffer commandBuffer, int pipelineBindPoint, long pipeline) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdUpdatePipelineIndirectBufferNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdUpdatePipelineIndirectBufferNV");
@@ -49,7 +48,7 @@ public final class VKNVDeviceGeneratedCommandsCompute {
 
     /// Invokes `vkGetPipelineIndirectDeviceAddressNV`.
     /// ```
-    /// (uint64_t) VkDeviceAddress vkGetPipelineIndirectDeviceAddressNV((struct VkDevice*) VkDevice device, const VkPipelineIndirectDeviceAddressInfoNV* pInfo);
+    /// VkDeviceAddress vkGetPipelineIndirectDeviceAddressNV(VkDevice device, const VkPipelineIndirectDeviceAddressInfoNV* pInfo);
     /// ```
     public static long vkGetPipelineIndirectDeviceAddressNV(@NonNull VkDevice device, @NonNull MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineIndirectDeviceAddressNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineIndirectDeviceAddressNV");

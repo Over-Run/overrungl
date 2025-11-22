@@ -14,16 +14,15 @@ public final class VKKHRPresentWait2 {
     public static final int VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_WAIT_2_KHR = 1000480000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_2_FEATURES_KHR = 1000480001;
     public static final int VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR = 1000480002;
+    private VKKHRPresentWait2() {}
     public static final class Handles {
         public static final MethodHandle MH_vkWaitForPresent2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
-    private VKKHRPresentWait2() {}
-
     /// Invokes `vkWaitForPresent2KHR`.
     /// ```
-    /// (int) VkResult vkWaitForPresent2KHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, const VkPresentWait2InfoKHR* pPresentWait2Info);
+    /// VkResult vkWaitForPresent2KHR(VkDevice device, VkSwapchainKHR swapchain, const VkPresentWait2InfoKHR* pPresentWait2Info);
     /// ```
     public static int vkWaitForPresent2KHR(@NonNull VkDevice device, long swapchain, @NonNull MemorySegment pPresentWait2Info) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitForPresent2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkWaitForPresent2KHR");

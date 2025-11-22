@@ -15,6 +15,7 @@ public final class VKKHRDeferredHostOperations {
     public static final int VK_THREAD_DONE_KHR = 1000268001;
     public static final int VK_OPERATION_DEFERRED_KHR = 1000268002;
     public static final int VK_OPERATION_NOT_DEFERRED_KHR = 1000268003;
+    private VKKHRDeferredHostOperations() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCreateDeferredOperationKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroyDeferredOperationKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -24,11 +25,9 @@ public final class VKKHRDeferredHostOperations {
         private Handles() {}
     }
 
-    private VKKHRDeferredHostOperations() {}
-
     /// Invokes `vkCreateDeferredOperationKHR`.
     /// ```
-    /// (int) VkResult vkCreateDeferredOperationKHR((struct VkDevice*) VkDevice device, const VkAllocationCallbacks* pAllocator, VkDeferredOperationKHR* pDeferredOperation);
+    /// VkResult vkCreateDeferredOperationKHR(VkDevice device, const VkAllocationCallbacks* pAllocator, VkDeferredOperationKHR* pDeferredOperation);
     /// ```
     public static int vkCreateDeferredOperationKHR(@NonNull VkDevice device, @NonNull MemorySegment pAllocator, @NonNull MemorySegment pDeferredOperation) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDeferredOperationKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDeferredOperationKHR");
@@ -39,7 +38,7 @@ public final class VKKHRDeferredHostOperations {
 
     /// Invokes `vkDestroyDeferredOperationKHR`.
     /// ```
-    /// void vkDestroyDeferredOperationKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroyDeferredOperationKHR(VkDevice device, VkDeferredOperationKHR operation, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyDeferredOperationKHR(@NonNull VkDevice device, long operation, @NonNull MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyDeferredOperationKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDeferredOperationKHR");
@@ -50,7 +49,7 @@ public final class VKKHRDeferredHostOperations {
 
     /// Invokes `vkGetDeferredOperationMaxConcurrencyKHR`.
     /// ```
-    /// uint32_t vkGetDeferredOperationMaxConcurrencyKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
+    /// uint32_t vkGetDeferredOperationMaxConcurrencyKHR(VkDevice device, VkDeferredOperationKHR operation);
     /// ```
     public static int vkGetDeferredOperationMaxConcurrencyKHR(@NonNull VkDevice device, long operation) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeferredOperationMaxConcurrencyKHR");
@@ -61,7 +60,7 @@ public final class VKKHRDeferredHostOperations {
 
     /// Invokes `vkGetDeferredOperationResultKHR`.
     /// ```
-    /// (int) VkResult vkGetDeferredOperationResultKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
+    /// VkResult vkGetDeferredOperationResultKHR(VkDevice device, VkDeferredOperationKHR operation);
     /// ```
     public static int vkGetDeferredOperationResultKHR(@NonNull VkDevice device, long operation) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationResultKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeferredOperationResultKHR");
@@ -72,7 +71,7 @@ public final class VKKHRDeferredHostOperations {
 
     /// Invokes `vkDeferredOperationJoinKHR`.
     /// ```
-    /// (int) VkResult vkDeferredOperationJoinKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
+    /// VkResult vkDeferredOperationJoinKHR(VkDevice device, VkDeferredOperationKHR operation);
     /// ```
     public static int vkDeferredOperationJoinKHR(@NonNull VkDevice device, long operation) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDeferredOperationJoinKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDeferredOperationJoinKHR");

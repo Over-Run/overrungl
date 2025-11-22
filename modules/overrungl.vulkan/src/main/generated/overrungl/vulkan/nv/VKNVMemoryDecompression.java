@@ -8,22 +8,20 @@ import overrungl.vulkan.*;
 import static overrungl.internal.RuntimeHelper.*;
 /// `VK_NV_memory_decompression` - device extension
 public final class VKNVMemoryDecompression {
-    public static final long VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV = 0x00000001L;
     public static final int VK_NV_MEMORY_DECOMPRESSION_SPEC_VERSION = 1;
     public static final String VK_NV_MEMORY_DECOMPRESSION_EXTENSION_NAME = "VK_NV_memory_decompression";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_NV = 1000427000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV = 1000427001;
+    private VKNVMemoryDecompression() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdDecompressMemoryNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdDecompressMemoryIndirectCountNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
-    private VKNVMemoryDecompression() {}
-
     /// Invokes `vkCmdDecompressMemoryNV`.
     /// ```
-    /// void vkCmdDecompressMemoryNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t decompressRegionCount, const VkDecompressMemoryRegionNV* pDecompressMemoryRegions);
+    /// void vkCmdDecompressMemoryNV(VkCommandBuffer commandBuffer, uint32_t decompressRegionCount, const VkDecompressMemoryRegionNV* pDecompressMemoryRegions);
     /// ```
     public static void vkCmdDecompressMemoryNV(@NonNull VkCommandBuffer commandBuffer, int decompressRegionCount, @NonNull MemorySegment pDecompressMemoryRegions) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecompressMemoryNV");
@@ -34,7 +32,7 @@ public final class VKNVMemoryDecompression {
 
     /// Invokes `vkCmdDecompressMemoryIndirectCountNV`.
     /// ```
-    /// void vkCmdDecompressMemoryIndirectCountNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress indirectCommandsAddress, (uint64_t) VkDeviceAddress indirectCommandsCountAddress, uint32_t stride);
+    /// void vkCmdDecompressMemoryIndirectCountNV(VkCommandBuffer commandBuffer, VkDeviceAddress indirectCommandsAddress, VkDeviceAddress indirectCommandsCountAddress, uint32_t stride);
     /// ```
     public static void vkCmdDecompressMemoryIndirectCountNV(@NonNull VkCommandBuffer commandBuffer, long indirectCommandsAddress, long indirectCommandsCountAddress, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryIndirectCountNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecompressMemoryIndirectCountNV");

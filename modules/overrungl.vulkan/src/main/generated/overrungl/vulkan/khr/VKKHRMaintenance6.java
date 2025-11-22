@@ -19,6 +19,7 @@ public final class VKKHRMaintenance6 {
     public static final int VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO_KHR = 1000545006;
     public static final int VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT = 1000545007;
     public static final int VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT = 1000545008;
+    private VKKHRMaintenance6() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdBindDescriptorSets2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdPushConstants2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -29,11 +30,9 @@ public final class VKKHRMaintenance6 {
         private Handles() {}
     }
 
-    private VKKHRMaintenance6() {}
-
     /// Invokes `vkCmdBindDescriptorSets2KHR`.
     /// ```
-    /// void vkCmdBindDescriptorSets2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBindDescriptorSetsInfo* pBindDescriptorSetsInfo);
+    /// void vkCmdBindDescriptorSets2KHR(VkCommandBuffer commandBuffer, const VkBindDescriptorSetsInfo* pBindDescriptorSetsInfo);
     /// ```
     public static void vkCmdBindDescriptorSets2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBindDescriptorSetsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorSets2KHR");
@@ -44,7 +43,7 @@ public final class VKKHRMaintenance6 {
 
     /// Invokes `vkCmdPushConstants2KHR`.
     /// ```
-    /// void vkCmdPushConstants2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushConstantsInfo* pPushConstantsInfo);
+    /// void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, const VkPushConstantsInfo* pPushConstantsInfo);
     /// ```
     public static void vkCmdPushConstants2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPushConstantsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushConstants2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushConstants2KHR");
@@ -55,7 +54,7 @@ public final class VKKHRMaintenance6 {
 
     /// Invokes `vkCmdPushDescriptorSet2KHR`.
     /// ```
-    /// void vkCmdPushDescriptorSet2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushDescriptorSetInfo* pPushDescriptorSetInfo);
+    /// void vkCmdPushDescriptorSet2KHR(VkCommandBuffer commandBuffer, const VkPushDescriptorSetInfo* pPushDescriptorSetInfo);
     /// ```
     public static void vkCmdPushDescriptorSet2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPushDescriptorSetInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSet2KHR");
@@ -66,7 +65,7 @@ public final class VKKHRMaintenance6 {
 
     /// Invokes `vkCmdPushDescriptorSetWithTemplate2KHR`.
     /// ```
-    /// void vkCmdPushDescriptorSetWithTemplate2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushDescriptorSetWithTemplateInfo* pPushDescriptorSetWithTemplateInfo);
+    /// void vkCmdPushDescriptorSetWithTemplate2KHR(VkCommandBuffer commandBuffer, const VkPushDescriptorSetWithTemplateInfo* pPushDescriptorSetWithTemplateInfo);
     /// ```
     public static void vkCmdPushDescriptorSetWithTemplate2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pPushDescriptorSetWithTemplateInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplate2KHR");
@@ -77,7 +76,7 @@ public final class VKKHRMaintenance6 {
 
     /// Invokes `vkCmdSetDescriptorBufferOffsets2EXT`.
     /// ```
-    /// void vkCmdSetDescriptorBufferOffsets2EXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSetDescriptorBufferOffsetsInfoEXT* pSetDescriptorBufferOffsetsInfo);
+    /// void vkCmdSetDescriptorBufferOffsets2EXT(VkCommandBuffer commandBuffer, const VkSetDescriptorBufferOffsetsInfoEXT* pSetDescriptorBufferOffsetsInfo);
     /// ```
     public static void vkCmdSetDescriptorBufferOffsets2EXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pSetDescriptorBufferOffsetsInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsets2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDescriptorBufferOffsets2EXT");
@@ -88,7 +87,7 @@ public final class VKKHRMaintenance6 {
 
     /// Invokes `vkCmdBindDescriptorBufferEmbeddedSamplers2EXT`.
     /// ```
-    /// void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBindDescriptorBufferEmbeddedSamplersInfoEXT* pBindDescriptorBufferEmbeddedSamplersInfo);
+    /// void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(VkCommandBuffer commandBuffer, const VkBindDescriptorBufferEmbeddedSamplersInfoEXT* pBindDescriptorBufferEmbeddedSamplersInfo);
     /// ```
     public static void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pBindDescriptorBufferEmbeddedSamplersInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorBufferEmbeddedSamplers2EXT");

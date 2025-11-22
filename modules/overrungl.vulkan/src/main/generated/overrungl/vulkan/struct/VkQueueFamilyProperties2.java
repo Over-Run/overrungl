@@ -1,6 +1,5 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.struct;
-
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
@@ -13,180 +12,91 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueueFamilyProperties2 {
-///     (int) VkStructureType sType;
+///     VkStructureType sType;
 ///     void* pNext;
-///     (struct VkQueueFamilyProperties) VkQueueFamilyProperties queueFamilyProperties;
-/// };
+///     VkQueueFamilyProperties queueFamilyProperties;
+/// }
 /// ```
 public final class VkQueueFamilyProperties2 extends GroupType {
-    /// The struct layout of `VkQueueFamilyProperties2`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkQueueFamilyProperties.LAYOUT.withName("queueFamilyProperties")
     );
-    /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
-    /// The memory layout of `sType`.
-    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The byte offset of `pNext`.
     public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
-    /// The memory layout of `pNext`.
-    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset of `queueFamilyProperties`.
     public static final long OFFSET_queueFamilyProperties = LAYOUT.byteOffset(PathElement.groupElement("queueFamilyProperties"));
-    /// The memory layout of `queueFamilyProperties`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     public static final MemoryLayout LAYOUT_queueFamilyProperties = LAYOUT.select(PathElement.groupElement("queueFamilyProperties"));
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    public static final VarHandle VH_queueFamilyProperties$queueFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyProperties"), PathElement.groupElement("queueFlags"));
+    public static final VarHandle VH_queueFamilyProperties$queueCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyProperties"), PathElement.groupElement("queueCount"));
+    public static final VarHandle VH_queueFamilyProperties$timestampValidBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyProperties"), PathElement.groupElement("timestampValidBits"));
+    public static final VarHandle VH_queueFamilyProperties$minImageTransferGranularity$width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyProperties"), PathElement.groupElement("minImageTransferGranularity"), PathElement.groupElement("width"));
+    public static final VarHandle VH_queueFamilyProperties$minImageTransferGranularity$height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyProperties"), PathElement.groupElement("minImageTransferGranularity"), PathElement.groupElement("height"));
+    public static final VarHandle VH_queueFamilyProperties$minImageTransferGranularity$depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFamilyProperties"), PathElement.groupElement("minImageTransferGranularity"), PathElement.groupElement("depth"));
 
-    /// Creates `VkQueueFamilyProperties2` with the given segment.
-    /// @param segment      the memory segment
-    /// @param elementCount the element count of this struct buffer
     public VkQueueFamilyProperties2(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
-
-    /// Creates `VkQueueFamilyProperties2` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkQueueFamilyProperties2 of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyProperties2(segment, estimateCount(segment, LAYOUT)); }
-
-    /// Creates `VkQueueFamilyProperties2` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkQueueFamilyProperties2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyProperties2(segment.reinterpret(LAYOUT.byteSize()), 1); }
-
-    /// Creates `VkQueueFamilyProperties2` with the given segment.
-    ///
-    /// Reinterprets the segment if zero-length.
-    /// @param segment the memory segment
-    /// @param count   the count of the buffer
-    /// @return the created instance or `null` if the segment is `NULL`
     public static VkQueueFamilyProperties2 ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyProperties2(segment.reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// Allocates a `VkQueueFamilyProperties2` with the given segment allocator.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkQueueFamilyProperties2`
     public static VkQueueFamilyProperties2 alloc(SegmentAllocator allocator) { return new VkQueueFamilyProperties2(allocator.allocate(LAYOUT), 1); }
-
-    /// Allocates a `VkQueueFamilyProperties2` with the given segment allocator and count.
-    /// @param allocator the segment allocator
-    /// @param count     the count
-    /// @return the allocated `VkQueueFamilyProperties2`
     public static VkQueueFamilyProperties2 alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyProperties2(allocator.allocate(LAYOUT, count), count); }
-
-    /// Copies from the given source.
-    /// @param src the source
-    /// @return `this`
+    public static VkQueueFamilyProperties2 allocInit(SegmentAllocator allocator) { return alloc(allocator).sType(overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2); }
+    public static VkQueueFamilyProperties2 allocInit(SegmentAllocator allocator, long count) {
+        var s = alloc(allocator, count);
+        for (long i = 0; i < count; i++) s.sTypeAt(i, overrungl.vulkan.VK11.VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2);
+        return s;
+    }
     public VkQueueFamilyProperties2 copyFrom(VkQueueFamilyProperties2 src) { this.segment().copyFrom(src.segment()); return this; }
-
-    /// Reinterprets this buffer with the given count.
-    /// @param count the new count
-    /// @return the reinterpreted buffer
     public VkQueueFamilyProperties2 reinterpret(long count) { return new VkQueueFamilyProperties2(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
-
-    /// {@return `sType` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
-    /// {@return `sType`}
-    public int sType() { return sType(this.segment(), 0L); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkQueueFamilyProperties2 sType(int value) { sType(this.segment(), 0L, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
-    /// {@return `pNext`}
-    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkQueueFamilyProperties2 pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
-
-    /// {@return `queueFamilyProperties` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    public static MemorySegment queueFamilyProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_queueFamilyProperties, index), LAYOUT_queueFamilyProperties); }
-    /// {@return `queueFamilyProperties`}
-    public MemorySegment queueFamilyProperties() { return queueFamilyProperties(this.segment(), 0L); }
-    /// Sets `queueFamilyProperties` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    public static void queueFamilyProperties(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_queueFamilyProperties, index), LAYOUT_queueFamilyProperties.byteSize()); }
-    /// Sets `queueFamilyProperties` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public VkQueueFamilyProperties2 queueFamilyProperties(MemorySegment value) { queueFamilyProperties(this.segment(), 0L, value); return this; }
-    /// Accepts `queueFamilyProperties` with the given function.
-    /// @param func the function
-    /// @return `this`
-    public VkQueueFamilyProperties2 queueFamilyProperties(Consumer<overrungl.vulkan.struct.VkQueueFamilyProperties> func) { func.accept(overrungl.vulkan.struct.VkQueueFamilyProperties.of(queueFamilyProperties())); return this; }
-
-    /// Creates a slice of `VkQueueFamilyProperties2`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkQueueFamilyProperties2`
     public VkQueueFamilyProperties2 asSlice(long index) { return new VkQueueFamilyProperties2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
-
-    /// Creates a slice of `VkQueueFamilyProperties2`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkQueueFamilyProperties2`
     public VkQueueFamilyProperties2 asSlice(long index, long count) { return new VkQueueFamilyProperties2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    /// Visits `VkQueueFamilyProperties2` buffer at the given index.
-    /// @param index the index of this buffer
-    /// @param func  the function to run with the slice of this buffer
-    /// @return `this`
     public VkQueueFamilyProperties2 at(long index, Consumer<VkQueueFamilyProperties2> func) { func.accept(asSlice(index)); return this; }
-
-    /// {@return `sType` at the given index}
-    /// @param index the index of the struct buffer
-    public int sTypeAt(long index) { return sType(this.segment(), index); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkQueueFamilyProperties2 sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-    /// {@return `pNext` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkQueueFamilyProperties2 pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-    /// {@return `queueFamilyProperties` at the given index}
-    /// @param index the index of the struct buffer
-    public MemorySegment queueFamilyPropertiesAt(long index) { return queueFamilyProperties(this.segment(), index); }
-    /// Sets `queueFamilyProperties` with the given value at the given index.
-    /// @param index the index of the struct buffer
-    /// @param value the value
-    /// @return `this`
-    public VkQueueFamilyProperties2 queueFamilyPropertiesAt(long index, MemorySegment value) { queueFamilyProperties(this.segment(), index, value); return this; }
-    /// Accepts `queueFamilyProperties` with the given function.
-    /// @param index the index of the struct buffer
-    /// @param func the function
-    /// @return `this`
-    public VkQueueFamilyProperties2 queueFamilyPropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkQueueFamilyProperties> func) { func.accept(overrungl.vulkan.struct.VkQueueFamilyProperties.of(queueFamilyPropertiesAt(index))); return this; }
-
+    public int sTypeAt(long index) { return (int) VH_sType.get(this.segment(), 0L, index); }
+    public MemorySegment pNextAt(long index) { return (MemorySegment) VH_pNext.get(this.segment(), 0L, index); }
+    public int queueFamilyProperties$queueFlagsAt(long index) { return (int) VH_queueFamilyProperties$queueFlags.get(this.segment(), 0L, index); }
+    public int queueFamilyProperties$queueCountAt(long index) { return (int) VH_queueFamilyProperties$queueCount.get(this.segment(), 0L, index); }
+    public int queueFamilyProperties$timestampValidBitsAt(long index) { return (int) VH_queueFamilyProperties$timestampValidBits.get(this.segment(), 0L, index); }
+    public int queueFamilyProperties$minImageTransferGranularity$widthAt(long index) { return (int) VH_queueFamilyProperties$minImageTransferGranularity$width.get(this.segment(), 0L, index); }
+    public int queueFamilyProperties$minImageTransferGranularity$heightAt(long index) { return (int) VH_queueFamilyProperties$minImageTransferGranularity$height.get(this.segment(), 0L, index); }
+    public int queueFamilyProperties$minImageTransferGranularity$depthAt(long index) { return (int) VH_queueFamilyProperties$minImageTransferGranularity$depth.get(this.segment(), 0L, index); }
+    public int sType() { return (int) VH_sType.get(this.segment(), 0L, 0L); }
+    public MemorySegment pNext() { return (MemorySegment) VH_pNext.get(this.segment(), 0L, 0L); }
+    public int queueFamilyProperties$queueFlags() { return (int) VH_queueFamilyProperties$queueFlags.get(this.segment(), 0L, 0L); }
+    public int queueFamilyProperties$queueCount() { return (int) VH_queueFamilyProperties$queueCount.get(this.segment(), 0L, 0L); }
+    public int queueFamilyProperties$timestampValidBits() { return (int) VH_queueFamilyProperties$timestampValidBits.get(this.segment(), 0L, 0L); }
+    public int queueFamilyProperties$minImageTransferGranularity$width() { return (int) VH_queueFamilyProperties$minImageTransferGranularity$width.get(this.segment(), 0L, 0L); }
+    public int queueFamilyProperties$minImageTransferGranularity$height() { return (int) VH_queueFamilyProperties$minImageTransferGranularity$height.get(this.segment(), 0L, 0L); }
+    public int queueFamilyProperties$minImageTransferGranularity$depth() { return (int) VH_queueFamilyProperties$minImageTransferGranularity$depth.get(this.segment(), 0L, 0L); }
+    public VkQueueFamilyProperties2 sTypeAt(long index, int value) { VH_sType.set(this.segment(), 0L, index, value); return this; }
+    public VkQueueFamilyProperties2 pNextAt(long index, MemorySegment value) { VH_pNext.set(this.segment(), 0L, index, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$queueFlagsAt(long index, int value) { VH_queueFamilyProperties$queueFlags.set(this.segment(), 0L, index, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$queueCountAt(long index, int value) { VH_queueFamilyProperties$queueCount.set(this.segment(), 0L, index, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$timestampValidBitsAt(long index, int value) { VH_queueFamilyProperties$timestampValidBits.set(this.segment(), 0L, index, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$minImageTransferGranularity$widthAt(long index, int value) { VH_queueFamilyProperties$minImageTransferGranularity$width.set(this.segment(), 0L, index, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$minImageTransferGranularity$heightAt(long index, int value) { VH_queueFamilyProperties$minImageTransferGranularity$height.set(this.segment(), 0L, index, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$minImageTransferGranularity$depthAt(long index, int value) { VH_queueFamilyProperties$minImageTransferGranularity$depth.set(this.segment(), 0L, index, value); return this; }
+    public VkQueueFamilyProperties2 sType(int value) { VH_sType.set(this.segment(), 0L, 0L, value); return this; }
+    public VkQueueFamilyProperties2 pNext(MemorySegment value) { VH_pNext.set(this.segment(), 0L, 0L, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$queueFlags(int value) { VH_queueFamilyProperties$queueFlags.set(this.segment(), 0L, 0L, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$queueCount(int value) { VH_queueFamilyProperties$queueCount.set(this.segment(), 0L, 0L, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$timestampValidBits(int value) { VH_queueFamilyProperties$timestampValidBits.set(this.segment(), 0L, 0L, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$minImageTransferGranularity$width(int value) { VH_queueFamilyProperties$minImageTransferGranularity$width.set(this.segment(), 0L, 0L, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$minImageTransferGranularity$height(int value) { VH_queueFamilyProperties$minImageTransferGranularity$height.set(this.segment(), 0L, 0L, value); return this; }
+    public VkQueueFamilyProperties2 queueFamilyProperties$minImageTransferGranularity$depth(int value) { VH_queueFamilyProperties$minImageTransferGranularity$depth.set(this.segment(), 0L, 0L, value); return this; }
+    public MemorySegment _sTypeAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_sType, index), LAYOUT_sType); }
+    public MemorySegment _sType() { return _sTypeAt(0L); }
+    public VkQueueFamilyProperties2 _sTypeAt(long index, MemorySegment src) { _sTypeAt(index).copyFrom(src); return this; }
+    public VkQueueFamilyProperties2 _sType(MemorySegment src) { return _sTypeAt(0L, src); }
+    public MemorySegment _pNextAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_pNext, index), LAYOUT_pNext); }
+    public MemorySegment _pNext() { return _pNextAt(0L); }
+    public VkQueueFamilyProperties2 _pNextAt(long index, MemorySegment src) { _pNextAt(index).copyFrom(src); return this; }
+    public VkQueueFamilyProperties2 _pNext(MemorySegment src) { return _pNextAt(0L, src); }
+    public MemorySegment _queueFamilyPropertiesAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_queueFamilyProperties, index), LAYOUT_queueFamilyProperties); }
+    public MemorySegment _queueFamilyProperties() { return _queueFamilyPropertiesAt(0L); }
+    public VkQueueFamilyProperties2 _queueFamilyPropertiesAt(long index, MemorySegment src) { _queueFamilyPropertiesAt(index).copyFrom(src); return this; }
+    public VkQueueFamilyProperties2 _queueFamilyProperties(MemorySegment src) { return _queueFamilyPropertiesAt(0L, src); }
 }

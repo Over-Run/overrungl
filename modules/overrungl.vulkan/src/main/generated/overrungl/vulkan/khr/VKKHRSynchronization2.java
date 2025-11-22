@@ -102,6 +102,7 @@ public final class VKKHRSynchronization2 {
     public static final long VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_NV = 0x00100000L;
     public static final long VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT = 0x00080000L;
     public static final long VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT = 0x00100000L;
+    private VKKHRSynchronization2() {}
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetEvent2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdResetEvent2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
@@ -112,11 +113,9 @@ public final class VKKHRSynchronization2 {
         private Handles() {}
     }
 
-    private VKKHRSynchronization2() {}
-
     /// Invokes `vkCmdSetEvent2KHR`.
     /// ```
-    /// void vkCmdSetEvent2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkEvent event, const VkDependencyInfo* pDependencyInfo);
+    /// void vkCmdSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent event, const VkDependencyInfo* pDependencyInfo);
     /// ```
     public static void vkCmdSetEvent2KHR(@NonNull VkCommandBuffer commandBuffer, long event, @NonNull MemorySegment pDependencyInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetEvent2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetEvent2KHR");
@@ -127,7 +126,7 @@ public final class VKKHRSynchronization2 {
 
     /// Invokes `vkCmdResetEvent2KHR`.
     /// ```
-    /// void vkCmdResetEvent2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkEvent event, ((uint64_t) VkFlags64) VkPipelineStageFlags2 stageMask);
+    /// void vkCmdResetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent event, VkPipelineStageFlags2 stageMask);
     /// ```
     public static void vkCmdResetEvent2KHR(@NonNull VkCommandBuffer commandBuffer, long event, long stageMask) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdResetEvent2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdResetEvent2KHR");
@@ -138,7 +137,7 @@ public final class VKKHRSynchronization2 {
 
     /// Invokes `vkCmdWaitEvents2KHR`.
     /// ```
-    /// void vkCmdWaitEvents2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t eventCount, const VkEvent* pEvents, const VkDependencyInfo* pDependencyInfos);
+    /// void vkCmdWaitEvents2KHR(VkCommandBuffer commandBuffer, uint32_t eventCount, const VkEvent* pEvents, const VkDependencyInfo* pDependencyInfos);
     /// ```
     public static void vkCmdWaitEvents2KHR(@NonNull VkCommandBuffer commandBuffer, int eventCount, @NonNull MemorySegment pEvents, @NonNull MemorySegment pDependencyInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWaitEvents2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWaitEvents2KHR");
@@ -149,7 +148,7 @@ public final class VKKHRSynchronization2 {
 
     /// Invokes `vkCmdPipelineBarrier2KHR`.
     /// ```
-    /// void vkCmdPipelineBarrier2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDependencyInfo* pDependencyInfo);
+    /// void vkCmdPipelineBarrier2KHR(VkCommandBuffer commandBuffer, const VkDependencyInfo* pDependencyInfo);
     /// ```
     public static void vkCmdPipelineBarrier2KHR(@NonNull VkCommandBuffer commandBuffer, @NonNull MemorySegment pDependencyInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPipelineBarrier2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPipelineBarrier2KHR");
@@ -160,7 +159,7 @@ public final class VKKHRSynchronization2 {
 
     /// Invokes `vkCmdWriteTimestamp2KHR`.
     /// ```
-    /// void vkCmdWriteTimestamp2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint64_t) VkFlags64) VkPipelineStageFlags2 stage, (uint64_t) VkQueryPool queryPool, uint32_t query);
+    /// void vkCmdWriteTimestamp2KHR(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint32_t query);
     /// ```
     public static void vkCmdWriteTimestamp2KHR(@NonNull VkCommandBuffer commandBuffer, long stage, long queryPool, int query) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteTimestamp2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteTimestamp2KHR");
@@ -171,7 +170,7 @@ public final class VKKHRSynchronization2 {
 
     /// Invokes `vkQueueSubmit2KHR`.
     /// ```
-    /// (int) VkResult vkQueueSubmit2KHR((struct VkQueue*) VkQueue queue, uint32_t submitCount, const VkSubmitInfo2* pSubmits, (uint64_t) VkFence fence);
+    /// VkResult vkQueueSubmit2KHR(VkQueue queue, uint32_t submitCount, const VkSubmitInfo2* pSubmits, VkFence fence);
     /// ```
     public static int vkQueueSubmit2KHR(@NonNull VkQueue queue, int submitCount, @NonNull MemorySegment pSubmits, long fence) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueSubmit2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueSubmit2KHR");
