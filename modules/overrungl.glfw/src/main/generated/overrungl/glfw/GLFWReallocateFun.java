@@ -30,12 +30,12 @@ public interface GLFWReallocateFun extends Upcall {
     MemorySegment invoke(MemorySegment block, long size, MemorySegment user);
 
     /// The target method of the upcall. Chosen at runtime.
-    default MemorySegment invokePPIP(MemorySegment block, int size, MemorySegment user) {
+    default MemorySegment invokeP(MemorySegment block, int size, MemorySegment user) {
         return invoke(block, MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, size), user);
     }
 
     /// The target method of the upcall. Chosen at runtime.
-    default MemorySegment invokePPJP(MemorySegment block, long size, MemorySegment user) {
+    default MemorySegment invokeP(MemorySegment block, long size, MemorySegment user) {
         return invoke(block, MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, size), user);
     }
 

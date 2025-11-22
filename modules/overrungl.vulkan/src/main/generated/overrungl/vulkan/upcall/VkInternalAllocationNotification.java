@@ -16,7 +16,7 @@ import overrungl.util.*;
 @FunctionalInterface
 public interface VkInternalAllocationNotification extends Upcall {
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    MethodHandle HANDLE = Upcall.findTarget(VkInternalAllocationNotification.class, RuntimeHelper.upcallTarget2("invoke", DESCRIPTOR), DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(VkInternalAllocationNotification.class, RuntimeHelper.upcallTarget("invoke", DESCRIPTOR), DESCRIPTOR);
     static MemorySegment alloc(Arena arena, VkInternalAllocationNotification func) {
         if (func == null) return MemorySegment.NULL;
         return func.stub(arena);

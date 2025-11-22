@@ -17,7 +17,7 @@ import overrungl.util.*;
 @FunctionalInterface
 public interface VkReallocationFunction extends Upcall {
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, CanonicalTypes.SIZE_T, ValueLayout.JAVA_INT);
-    MethodHandle HANDLE = Upcall.findTarget(VkReallocationFunction.class, RuntimeHelper.upcallTarget2("invoke", DESCRIPTOR), DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(VkReallocationFunction.class, RuntimeHelper.upcallTarget("invoke", DESCRIPTOR), DESCRIPTOR);
     static MemorySegment alloc(Arena arena, VkReallocationFunction func) {
         if (func == null) return MemorySegment.NULL;
         return func.stub(arena);

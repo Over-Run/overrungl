@@ -30,12 +30,12 @@ public interface GLFWAllocateFun extends Upcall {
     MemorySegment invoke(long size, MemorySegment user);
 
     /// The target method of the upcall. Chosen at runtime.
-    default MemorySegment invokePIP(int size, MemorySegment user) {
+    default MemorySegment invokeP(int size, MemorySegment user) {
         return invoke(MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, size), user);
     }
 
     /// The target method of the upcall. Chosen at runtime.
-    default MemorySegment invokePJP(long size, MemorySegment user) {
+    default MemorySegment invokeP(long size, MemorySegment user) {
         return invoke(MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, size), user);
     }
 

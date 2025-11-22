@@ -16,7 +16,7 @@ import overrungl.util.*;
 @FunctionalInterface
 public interface VkAllocationFunction extends Upcall {
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, CanonicalTypes.SIZE_T, ValueLayout.JAVA_INT);
-    MethodHandle HANDLE = Upcall.findTarget(VkAllocationFunction.class, RuntimeHelper.upcallTarget2("invoke", DESCRIPTOR), DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(VkAllocationFunction.class, RuntimeHelper.upcallTarget("invoke", DESCRIPTOR), DESCRIPTOR);
     static MemorySegment alloc(Arena arena, VkAllocationFunction func) {
         if (func == null) return MemorySegment.NULL;
         return func.stub(arena);

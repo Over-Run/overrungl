@@ -739,7 +739,7 @@ fun genUpcalls() {
                 // method handle
                 append("    MethodHandle HANDLE = Upcall.findTarget($name.class, ")
                 if (hasSizeT) {
-                    append("RuntimeHelper.upcallTarget2(\"invoke\", DESCRIPTOR)")
+                    append("RuntimeHelper.upcallTarget(\"invoke\", DESCRIPTOR)")
                 } else {
                     append("\"invoke_\"")
                 }

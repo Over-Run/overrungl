@@ -145,28 +145,15 @@ public final class RuntimeHelper {
         return LINKER.downcallHandle(descriptor);
     }
 
-    /// Converts upcall target name
+    /// Converts upcall target name to `name*`, where `*` is a character describing the return layout
+    ///
+    /// Implementation note: the behavior of this method was changed in 0.2.0.
+    /// the returned value used to include descriptor of parameters
     ///
     /// @param name       the original name
     /// @param descriptor the descriptor
     /// @return the converted name
     public static String upcallTarget(String name, FunctionDescriptor descriptor) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(name);
-        builder.append(descriptor.returnLayout().map(RuntimeHelper::descriptorLayoutToChar).orElse('V'));
-        for (MemoryLayout argumentLayout : descriptor.argumentLayouts()) {
-            builder.append(descriptorLayoutToChar(argumentLayout));
-        }
-        return builder.toString();
-    }
-
-    /// Converts upcall target name to `name*`, where `*` is a character describing the return layout
-    ///
-    /// @param name       the original name
-    /// @param descriptor the descriptor
-    /// @return the converted name
-    /// @since 0.2.0
-    public static String upcallTarget2(String name, FunctionDescriptor descriptor) {
         return name + descriptor.returnLayout().map(RuntimeHelper::descriptorLayoutToChar).orElse('V');
     }
 

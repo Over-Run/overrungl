@@ -30,12 +30,12 @@ public interface ShadercIncludeResolveFn extends Upcall {
     MemorySegment invoke(MemorySegment user_data, MemorySegment requested_source, int type, MemorySegment requesting_source, long include_depth);
 
     /// The target method of the upcall. Chosen at runtime.
-    default MemorySegment invokePPPIPI(MemorySegment user_data, MemorySegment requested_source, int type, MemorySegment requesting_source, int include_depth) {
+    default MemorySegment invokeP(MemorySegment user_data, MemorySegment requested_source, int type, MemorySegment requesting_source, int include_depth) {
         return invoke(user_data, requested_source, type, requesting_source, MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, include_depth));
     }
 
     /// The target method of the upcall. Chosen at runtime.
-    default MemorySegment invokePPPIPJ(MemorySegment user_data, MemorySegment requested_source, int type, MemorySegment requesting_source, long include_depth) {
+    default MemorySegment invokeP(MemorySegment user_data, MemorySegment requested_source, int type, MemorySegment requesting_source, long include_depth) {
         return invoke(user_data, requested_source, type, requesting_source, MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, include_depth));
     }
 

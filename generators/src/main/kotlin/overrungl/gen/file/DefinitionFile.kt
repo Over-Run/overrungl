@@ -213,12 +213,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     """
                     |    /// The target method of the upcall. Chosen at runtime.
                     |    default ${upcallType.returnType.memoryLayout.carrier(map[upcallType.returnType.memoryLayout.memoryLayout])} invoke${
-                        buildString {
-                            append(upcallType.returnType.memoryLayout.asChar(map[upcallType.returnType.memoryLayout.memoryLayout]))
-                            upcallType.parameters.forEach { p ->
-                                append(p.memoryLayoutWithDimensions.asChar(map[p.memoryLayoutWithDimensions.memoryLayout]))
-                            }
-                        }
+                        upcallType.returnType.memoryLayout.asChar(map[upcallType.returnType.memoryLayout.memoryLayout])
                     }(${
                         upcallType.parameters.joinToString { p ->
                             "${p.memoryLayoutWithDimensions.carrier(map[p.memoryLayoutWithDimensions.memoryLayout])} ${p.name}"

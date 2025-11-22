@@ -20,7 +20,7 @@ import overrungl.util.*;
 @FunctionalInterface
 public interface VkDebugReportCallbackEXT extends Upcall {
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, CanonicalTypes.SIZE_T, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-    MethodHandle HANDLE = Upcall.findTarget(VkDebugReportCallbackEXT.class, RuntimeHelper.upcallTarget2("invoke", DESCRIPTOR), DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(VkDebugReportCallbackEXT.class, RuntimeHelper.upcallTarget("invoke", DESCRIPTOR), DESCRIPTOR);
     static MemorySegment alloc(Arena arena, VkDebugReportCallbackEXT func) {
         if (func == null) return MemorySegment.NULL;
         return func.stub(arena);
