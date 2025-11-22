@@ -83,10 +83,9 @@ dependencies {
 ### Using -SNAPSHOT Versions
 
 We publish `-SNAPSHOT` versions frequently.
+You can check the [list of available versions](https://central.sonatype.com/repository/maven-snapshots/io/github/over-run/overrungl/maven-metadata.xml)
 
-For `-SNAPSHOT` versions, you can check
-the [list of available versions](https://central.sonatype.com/repository/maven-snapshots/io/github/over-run/overrungl/maven-metadata.xml)
-and include this maven repository:
+Add this maven repository to use snapshot versions:
 
 ```kotlin
 repositories {
@@ -96,8 +95,8 @@ repositories {
 
 ### Enable native access
 
-You must enable the access to restricted methods by adding a VM argument or a manifest attribute.
-The customizer can generate a list of modules to be enabled.
+The access to restricted methods must be enabled by adding a VM argument or a manifest attribute.
+The customizer can generate a list of modules to be enabled access.
 
 ```
 --enable-native-access=overrungl.core,...
