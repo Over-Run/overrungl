@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2025 Overrun Organization
+ * Copyright (c) 2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,27 +22,24 @@
  * SOFTWARE.
  */
 
-/// The core module of OverrunGL.
-///
-/// @author squid233
-/// @since 0.1.0
-module overrungl.core {
-    exports overrungl;
-    exports overrungl.struct;
-    exports overrungl.upcall;
-    exports overrungl.util;
-    exports overrungl.internal
-        to overrungl.glfw,
-        overrungl.nfd,
-        overrungl.openal,
-        overrungl.opengl,
-        overrungl.shaderc,
-        overrungl.stb,
-        overrungl.tinyfd,
-        overrungl.vma,
-        overrungl.vulkan;
+package overrungl.tinyfd
 
-    requires transitive io.github.overrun.platform;
-    requires static org.jspecify;
-    requires static org.graalvm.nativeimage;
+import overrungl.gen.file.DefinitionFile
+import overrungl.gen.generateLookupAccessor
+import overrungl.gen.writeNativeImageRegistration
+
+const val tinyfdPackage = "overrungl.tinyfd"
+const val tinyfdLookup = "TinyFDLibrary.lookup()"
+
+fun main() {
+    DefinitionFile("tinyfiledialogs.gen").compile(tinyfdPackage, "TinyFD", tinyfdLookup)
+
+    writeNativeImageRegistration(tinyfdPackage, libBasename = "tinyfd")
+    generateLookupAccessor(
+        packageName = "tinyfd",
+        className = "TinyFDLibrary",
+        moduleName = "tinyfd",
+        basename = "tinyfd",
+        versionRef = "TINYFD_VERSION"
+    )
 }

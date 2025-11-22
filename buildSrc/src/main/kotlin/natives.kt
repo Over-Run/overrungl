@@ -46,14 +46,15 @@ enum class NativeBinding(
     val bindingName: String,
     val basename: String,
     val repo: String,
-    val platforms: List<NativePlatform>
+    val platforms: List<NativePlatform> = NativePlatform.entries
 ) {
-    GLFW("glfw", "glfw", "Over-Run/glfw-ci", NativePlatform.entries),
-    NFD("nfd", "nfd", "Over-Run/nfd-ci", NativePlatform.entries),
-    OPENAL("openal", "openal", "Over-Run/openal-ci", NativePlatform.entries),
-    SHADERC("shaderc", "shaderc_shared", "Over-Run/shaderc-ci", NativePlatform.entries),
-    STB("stb", "stb", "Over-Run/stb-ci", NativePlatform.entries),
-    VMA("vma", "VulkanMemoryAllocator", "Over-Run/VulkanMemoryAllocator-ci", NativePlatform.entries),
+    GLFW("glfw", "glfw", "Over-Run/glfw-ci"),
+    NFD("nfd", "nfd", "Over-Run/nfd-ci"),
+    OPENAL("openal", "openal", "Over-Run/openal-ci"),
+    SHADERC("shaderc", "shaderc_shared", "Over-Run/shaderc-ci"),
+    STB("stb", "stb", "Over-Run/stb-ci"),
+    TINYFD("tinyfd", "tinyfd", "Over-Run/tinyfd-ci"),
+    VMA("vma", "VulkanMemoryAllocator", "Over-Run/VulkanMemoryAllocator-ci"),
 }
 
 enum class Artifact(
@@ -100,6 +101,11 @@ enum class Artifact(
         "OverrunGL - stb bindings",
         "Single-file public domain libraries for fonts, images, ogg vorbis files and more.",
         ":stb"
+    ),
+    TINYFD(
+        "OverrunGL - tiny file dialogs bindings",
+        "A native dialog library.",
+        ":tinyfd"
     ),
     VMA(
         "OverrunGL - Vulkan Memory Allocator bindings",

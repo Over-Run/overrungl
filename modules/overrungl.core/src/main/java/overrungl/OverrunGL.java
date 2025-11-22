@@ -61,6 +61,10 @@ public final class OverrunGL {
      * The version of stb native libraries.
      */
     public static final String STB_VERSION = "0.1.0.7";
+    /// The version of tiny file dialogs native libraries.
+    ///
+    /// @since 0.2.0
+    public static final String TINYFD_VERSION = "3.21.2.3";
     /// The version of Vulkan Memory Allocator native libraries.
     public static final String VMA_VERSION = "3.3.0.0";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
