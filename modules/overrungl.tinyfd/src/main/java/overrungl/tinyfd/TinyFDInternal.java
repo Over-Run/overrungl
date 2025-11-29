@@ -22,32 +22,24 @@
  * SOFTWARE.
  */
 
-import io.github.overrun.platform.Architecture;
-import io.github.overrun.platform.Platform;
+package overrungl.tinyfd;
 
-/// Detects the current platform and architecture and copies files to working directory.
-///
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+
 /// @since 0.2.0
-void main(String[] args) {
-    Platform platform = Platform.current();
-    if (platform instanceof Platform.Unknown) {
-        throw new IllegalStateException("platform is unknown");
+final class TinyFDInternal {
+    static MemorySegment findPointerOrThrow(String name) {
+        return TinyFDLibrary.lookup().findOrThrow(name);
     }
-    Architecture arch = Architecture.current();
-    if (arch == Architecture.UNKNOWN) {
-        throw new IllegalStateException("architecture is unknown; platform: " + platform.familyName());
+
+    static MemorySegment findInt(String name) {
+        return TinyFDLibrary.lookup().find(name)
+            .map(segment -> segment.reinterpret(ValueLayout.JAVA_INT.byteSize()))
+            .orElse(MemorySegment.NULL);
     }
-    String dir = platform.familyName() + "-" + arch;
-    Path dstDir = Path.of(IO.readln("Please enter the destination directory: "));
-    for (String arg : args) {
-        String[] split = arg.split(":", 2);
-        Path src = Path.of("natives", split[0], dir, platform.sharedLibraryName(split[1]));
-        Path target = dstDir.resolve(src.getFileName());
-        try {
-            Files.copy(src, target, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        IO.println("Copied " + src + " to " + target.toAbsolutePath());
+
+    static MemorySegment findIntOrThrow(String name) {
+        return findPointerOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
     }
 }

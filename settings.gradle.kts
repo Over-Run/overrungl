@@ -49,6 +49,7 @@ include(
     "generators:opengl",
     "generators:shaderc",
     "generators:stb",
+    "generators:tinyfd",
     "generators:vma",
     "generators:vulkan"
 )

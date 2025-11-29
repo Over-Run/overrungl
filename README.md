@@ -117,6 +117,7 @@ The customizer can generate a list of modules to be enabled access.
 |----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | [GLFW](http://www.glfw.org/)                                                     | GLFW provides a simple API for creating windows, contexts and surfaces, receiving input and events. |
 | [Native File Dialog Extended](https://github.com/btzy/nativefiledialog-extended) | A small C library that portably invokes native file open, folder select and file save dialogs.      |
+| [tinyfd](https://sourceforge.net/projects/tinyfiledialogs/)                      | A native dialog library.                                                                            |
 
 ### Audio
 
