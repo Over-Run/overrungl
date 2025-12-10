@@ -625,7 +625,7 @@ public final class VK10 {
     public static final int VK_ERROR_VALIDATION_FAILED = -1000011001;
     public static final long VK_NULL_HANDLE = 0L;
     public static final int VK_API_VERSION = VK_MAKE_API_VERSION(0, 1, 0, 0);
-    public static final int VK_HEADER_VERSION = 334;
+    public static final int VK_HEADER_VERSION = 335;
     public static final int VK_HEADER_VERSION_COMPLETE = VK_MAKE_API_VERSION(0, 1, 4, VK_HEADER_VERSION);
     public static int VK_MAKE_VERSION(int major, int minor, int patch) { return (major << 22) | (minor << 12) | patch; }
     public static int VK_VERSION_MAJOR(int version) { return version >>> 22; }
