@@ -17,7 +17,7 @@ import kotlin.jvm.optionals.getOrNull
 plugins {
     `java-platform`
     `maven-publish`
-    id("org.jreleaser") version "1.21.0"
+    id("org.jreleaser") version "1.20.0"
 }
 
 val projGroupId: String by rootProject
