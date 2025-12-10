@@ -110,6 +110,9 @@ jreleaser {
                 enabled = true
                 configurationFile = ".github/release.yml"
             }
+            changelog {
+                enabled = false
+            }
         }
     }
     deploy {
