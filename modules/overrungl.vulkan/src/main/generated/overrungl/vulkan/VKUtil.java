@@ -16,6 +16,7 @@ import static overrungl.vulkan.ext.VKEXTFullScreenExclusive.*;
 import static overrungl.vulkan.ext.VKEXTImageCompressionControl.*;
 import static overrungl.vulkan.ext.VKEXTImageDrmFormatModifier.*;
 import static overrungl.vulkan.ext.VKEXTOpacityMicromap.*;
+import static overrungl.vulkan.ext.VKEXTPresentTiming.*;
 import static overrungl.vulkan.ext.VKEXTShaderObject.*;
 import static overrungl.vulkan.ext.VKEXTValidationCache.*;
 import static overrungl.vulkan.ext.VKEXTZeroInitializeDeviceMemory.*;
@@ -184,6 +185,7 @@ public final class VKUtil {
         case VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR -> "VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR";
         case VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR -> "VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR";
         case VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT -> "VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT";
+        case VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT -> "VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT";
         case VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT -> "VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT";
         case VK_THREAD_IDLE_KHR -> "VK_THREAD_IDLE_KHR";
         case VK_THREAD_DONE_KHR -> "VK_THREAD_DONE_KHR";

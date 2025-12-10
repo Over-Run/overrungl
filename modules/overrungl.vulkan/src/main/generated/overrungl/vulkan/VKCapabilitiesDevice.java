@@ -414,6 +414,10 @@ public final class VKCapabilitiesDevice {
     public final MemorySegment PFN_vkCmdSetCheckpointNV;
     public final MemorySegment PFN_vkGetQueueCheckpointDataNV;
     public final MemorySegment PFN_vkGetQueueCheckpointData2NV;
+    public final MemorySegment PFN_vkSetSwapchainPresentTimingQueueSizeEXT;
+    public final MemorySegment PFN_vkGetSwapchainTimingPropertiesEXT;
+    public final MemorySegment PFN_vkGetSwapchainTimeDomainPropertiesEXT;
+    public final MemorySegment PFN_vkGetPastPresentationTimingEXT;
     public final MemorySegment PFN_vkInitializePerformanceApiINTEL;
     public final MemorySegment PFN_vkUninitializePerformanceApiINTEL;
     public final MemorySegment PFN_vkCmdSetPerformanceMarkerINTEL;
@@ -1070,6 +1074,10 @@ public final class VKCapabilitiesDevice {
         PFN_vkCmdSetCheckpointNV = func.invoke(device, "vkCmdSetCheckpointNV");
         PFN_vkGetQueueCheckpointDataNV = func.invoke(device, "vkGetQueueCheckpointDataNV");
         PFN_vkGetQueueCheckpointData2NV = func.invoke(device, "vkGetQueueCheckpointData2NV");
+        PFN_vkSetSwapchainPresentTimingQueueSizeEXT = func.invoke(device, "vkSetSwapchainPresentTimingQueueSizeEXT");
+        PFN_vkGetSwapchainTimingPropertiesEXT = func.invoke(device, "vkGetSwapchainTimingPropertiesEXT");
+        PFN_vkGetSwapchainTimeDomainPropertiesEXT = func.invoke(device, "vkGetSwapchainTimeDomainPropertiesEXT");
+        PFN_vkGetPastPresentationTimingEXT = func.invoke(device, "vkGetPastPresentationTimingEXT");
         PFN_vkInitializePerformanceApiINTEL = func.invoke(device, "vkInitializePerformanceApiINTEL");
         PFN_vkUninitializePerformanceApiINTEL = func.invoke(device, "vkUninitializePerformanceApiINTEL");
         PFN_vkCmdSetPerformanceMarkerINTEL = func.invoke(device, "vkCmdSetPerformanceMarkerINTEL");
