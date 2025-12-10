@@ -109,6 +109,9 @@ jreleaser {
             releaseNotes {
                 enabled = true
                 configurationFile = ".github/release.yml"
+                milestone {
+                    close = false
+                }
             }
             changelog {
                 enabled = false
