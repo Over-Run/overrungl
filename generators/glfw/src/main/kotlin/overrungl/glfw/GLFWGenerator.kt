@@ -43,7 +43,6 @@ fun main() {
         packageName = "glfw",
         className = "GLFWLibrary",
         moduleName = "glfw",
-        basename = "glfw",
-        versionRef = "GLFW_VERSION"
+        lwjglLib = "org.lwjgl.glfw.GLFW.getLibrary()"
     )
 }

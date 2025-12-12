@@ -23,4 +23,5 @@ overrunglModule {
     artifactName = "overrungl-openal"
     publishInfo = Artifact.OPENAL
     nativeBinding = NativeBinding.OPENAL
+    lwjglArtifactName = "lwjgl-openal"
 }

@@ -22,8 +22,9 @@ fun generateLookupAccessor(
     packageName: String,
     className: String,
     moduleName: String,
-    basename: String,
-    versionRef: String
+    basename: String? = null,
+    versionRef: String? = null,
+    lwjglLib: String?,
 ) {
     writeString(Path("src/main/generated/overrungl/$packageName/$className.java"), buildString {
         appendLine(commentedFileHeader)
@@ -32,8 +33,9 @@ fun generateLookupAccessor(
                 package overrungl.$packageName;
                 import overrungl.OverrunGL;
                 import overrungl.internal.RuntimeHelper;
-                import java.lang.foreign.SymbolLookup;
-                import java.util.function.Supplier;
+                import java.lang.foreign.*;
+                import java.util.*;
+                import java.util.function.*;
 
                 /// Accessor of symbol lookup of module `$moduleName`.
                 public final class $className {
@@ -44,24 +46,39 @@ fun generateLookupAccessor(
                     ///
                     /// The returned supplier tries loading each time when invoking `get`.
                     public static Supplier<SymbolLookup> defaultLookupSupplier() {
-                        return () -> RuntimeHelper.load("$moduleName", "$basename", OverrunGL.$versionRef);
-                    }
-
-                    /// Sets a custom symbol lookup for module `$moduleName`.
-                    ///
-                    /// This doesn't take effect if `$className::lookup()` had been invoked.
-                    /// @param lookup the custom symbol lookup
-                    public static void useLookup(SymbolLookup lookup) { customLookup = lookup; }
-
-                    /// {@return the symbol lookup to be used for module `$moduleName`}
-                    public static SymbolLookup lookup() {
-                        final class Holder {
-                            static final SymbolLookup lookup = customLookup != null ? customLookup : defaultLookupSupplier().get();
-                        }
-                        return Holder.lookup;
-                    }
-                }
             """.trimIndent()
+        )
+        if (lwjglLib == null) {
+            appendLine("""        return () -> RuntimeHelper.load("$moduleName", "${basename!!}", OverrunGL.${versionRef!!});""")
+        } else {
+            appendLine(
+                """
+            |        return () -> name -> {
+            |            long address = $lwjglLib.getFunctionAddress(name);
+            |            return address == 0L ? Optional.empty() : Optional.of(MemorySegment.ofAddress(address));
+            |        };
+        """.trimMargin()
+            )
+        }
+        appendLine(
+            """
+            |    }
+            |
+            |    /// Sets a custom symbol lookup for module `$moduleName`.
+            |    ///
+            |    /// This doesn't take effect if `$className::lookup()` had been invoked.
+            |    /// @param lookup the custom symbol lookup
+            |    public static void useLookup(SymbolLookup lookup) { customLookup = lookup; }
+            |
+            |    /// {@return the symbol lookup to be used for module `$moduleName`}
+            |    public static SymbolLookup lookup() {
+            |        final class Holder {
+            |            static final SymbolLookup lookup = customLookup != null ? customLookup : defaultLookupSupplier().get();
+            |        }
+            |        return Holder.lookup;
+            |    }
+            |}
+        """.trimMargin()
         )
     })
 }

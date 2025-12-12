@@ -2,8 +2,9 @@
 package overrungl.nfd;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
-import java.lang.foreign.SymbolLookup;
-import java.util.function.Supplier;
+import java.lang.foreign.*;
+import java.util.*;
+import java.util.function.*;
 
 /// Accessor of symbol lookup of module `nfd`.
 public final class NFDLibrary {

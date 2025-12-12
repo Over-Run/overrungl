@@ -50,6 +50,7 @@ fun main() {
         className = "STBLibrary",
         moduleName = "stb",
         basename = "stb",
-        versionRef = "STB_VERSION"
+        versionRef = "STB_VERSION",
+        lwjglLib = null
     )
 }

@@ -23,4 +23,5 @@ overrunglModule {
     artifactName = "overrungl-nfd"
     publishInfo = Artifact.NFD
     nativeBinding = NativeBinding.NFD
+    lwjglArtifactName = "lwjgl-nfd"
 }

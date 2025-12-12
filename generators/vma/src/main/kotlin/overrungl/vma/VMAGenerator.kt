@@ -40,6 +40,7 @@ fun main() {
         className = "VulkanMemoryAllocatorLibrary",
         moduleName = "vma",
         basename = "VulkanMemoryAllocator",
-        versionRef = "VMA_VERSION"
+        versionRef = "VMA_VERSION",
+        lwjglLib = null
     )
 }

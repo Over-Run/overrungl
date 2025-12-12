@@ -49,7 +49,6 @@ fun main() {
         packageName = "openal",
         className = "OpenALLibrary",
         moduleName = "openal",
-        basename = "openal",
-        versionRef = "OPENAL_VERSION"
+        lwjglLib = "org.lwjgl.openal.ALC.getFunctionProvider()"
     )
 }

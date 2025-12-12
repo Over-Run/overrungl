@@ -8,6 +8,8 @@
 
 ## Overview
 
+[//]: # (TODO: new API)
+
 ```java
 void main() {
     // use MemorySegment to represent memory addresses
@@ -48,14 +50,13 @@ which enables cross-platform access to a set of C library bindings, providing va
 
 [LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables cross-platform access.
 
-LWJGL 3 uses JNI to access native functions, in OverrunGL, however,
-the [FFM API](https://openjdk.org/jeps/454) is used, which makes the linking to native functions more convenient
-as well as providing better memory management.
+LWJGL 3.4.0 still uses JNI-style APIs, but delegates to the FFM backend when on JDK 25 or later.
+OverrunGL provides FFM-style APIs, where raw pointers are represented as `MemorySegment`.
 
 ## Getting Started
 
 You can check the [wiki](https://github.com/Over-Run/overrungl/wiki) or
-the [samples](modules/samples/src/test/java/overrungl/demo). To run samples, check [run.md](doc/build/run.md).
+the [samples](modules/samples/src/test/java/overrungl/demo).
 
 Feel free to ask questions in [discussions](https://github.com/Over-Run/overrungl/discussions) in case you have trouble in setup works, such as environment configuring.
 
@@ -89,7 +90,7 @@ Add this maven repository to use snapshot versions:
 
 ```kotlin
 repositories {
-    maven("https://central.sonatype.com/repository/maven-snapshots/")
+    maven("https://central.sonatype.com/repository/maven-snapshots")
 }
 ```
 

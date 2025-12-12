@@ -23,4 +23,5 @@ overrunglModule {
     artifactName = "overrungl-glfw"
     publishInfo = Artifact.GLFW
     nativeBinding = NativeBinding.GLFW
+    lwjglArtifactName = "lwjgl-glfw"
 }

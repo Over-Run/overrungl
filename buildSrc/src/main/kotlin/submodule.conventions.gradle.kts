@@ -19,9 +19,13 @@ plugins {
 }
 
 val projVersion: String by rootProject
+val lwjglVersion: String by rootProject
+val lwjglNatives: String by rootProject.ext
 
 dependencies {
     compileOnly(project(":core"))
     testImplementation(project(":core"))
     constraints { api("io.github.over-run:overrungl:$projVersion") }
+
+    implementation(overrunglModule.lwjglArtifactName.map { "org.lwjgl:$it:$lwjglVersion" })
 }

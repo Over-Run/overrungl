@@ -31,4 +31,5 @@ overrunglModule {
     artifactName = "overrungl-shaderc"
     publishInfo = Artifact.SHADERC
     nativeBinding = NativeBinding.SHADERC
+    lwjglArtifactName = "lwjgl-shaderc"
 }

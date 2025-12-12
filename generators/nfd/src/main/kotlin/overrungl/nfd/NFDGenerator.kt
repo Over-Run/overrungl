@@ -63,6 +63,7 @@ fun main() {
         className = "NFDLibrary",
         moduleName = "nfd",
         basename = "nfd",
-        versionRef = "NFD_VERSION"
+        versionRef = "NFD_VERSION",
+        lwjglLib = null
     )
 }

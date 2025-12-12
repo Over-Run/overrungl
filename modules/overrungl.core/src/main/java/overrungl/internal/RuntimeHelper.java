@@ -91,7 +91,9 @@ public final class RuntimeHelper {
      * @param version  the version suffix
      * @return the {@link SymbolLookup}
      * @throws IllegalStateException if file isn't found
+     * @deprecated we will not be using our own libraries in 0.3.0
      */
+    @Deprecated(since = "0.3.0")
     public static SymbolLookup load(String module, String basename, String version)
         throws IllegalStateException {
         final Platform os = Platform.current();

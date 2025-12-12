@@ -23,4 +23,5 @@ overrunglModule {
     artifactName = "overrungl-stb"
     publishInfo = Artifact.STB
     nativeBinding = NativeBinding.STB
+    lwjglArtifactName = "lwjgl-stb"
 }

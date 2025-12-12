@@ -40,6 +40,7 @@ fun main() {
         className = "TinyFDLibrary",
         moduleName = "tinyfd",
         basename = "tinyfd",
-        versionRef = "TINYFD_VERSION"
+        versionRef = "TINYFD_VERSION",
+        lwjglLib = null
     )
 }
