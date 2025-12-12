@@ -25,22 +25,13 @@
 package overrungl.vma
 
 import overrungl.gen.file.DefinitionFile
-import overrungl.gen.generateLookupAccessor
 import overrungl.gen.writeNativeImageRegistration
 
 const val vmaPackage = "overrungl.vma"
 const val vmaLookup = "VulkanMemoryAllocatorLibrary.lookup()"
 
 fun main() {
-    DefinitionFile("vk_mem_alloc.gen").compile(vmaPackage, "VkMemAlloc", vmaLookup)
+    DefinitionFile("vk_mem_alloc.gen").compile(vmaPackage, "VkMemAlloc", vmaLookup, hasDowncall = false)
 
-    writeNativeImageRegistration(vmaPackage, libBasename = "VulkanMemoryAllocator")
-    generateLookupAccessor(
-        packageName = "vma",
-        className = "VulkanMemoryAllocatorLibrary",
-        moduleName = "vma",
-        basename = "VulkanMemoryAllocator",
-        versionRef = "VMA_VERSION",
-        lwjglLib = null
-    )
+    writeNativeImageRegistration(vmaPackage, libBasename = "VulkanMemoryAllocator", hasForeignFeature = false)
 }

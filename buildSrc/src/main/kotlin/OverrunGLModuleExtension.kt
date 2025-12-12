@@ -7,6 +7,5 @@ import org.gradle.api.provider.Property
 abstract class OverrunGLModuleExtension {
     abstract val artifactName: Property<String>
     abstract val publishInfo: Property<Artifact>
-    abstract val nativeBinding: Property<NativeBinding>
     abstract val lwjglArtifactName: Property<String>
 }

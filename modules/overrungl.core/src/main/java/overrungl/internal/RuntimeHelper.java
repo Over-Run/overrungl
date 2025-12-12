@@ -24,18 +24,12 @@
 
 package overrungl.internal;
 
-import io.github.overrun.platform.Architecture;
-import io.github.overrun.platform.Platform;
 import overrungl.OverrunGL;
 import overrungl.OverrunGLConfig;
 
-import java.io.IOException;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -45,14 +39,11 @@ import java.util.stream.Collectors;
  * @since 0.1.0
  */
 public final class RuntimeHelper {
-    private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
-        .resolve("overrungl-" + System.getProperty("user.name"));
     private static final Linker LINKER = Linker.nativeLinker();
     /// Trace downcall invocation and print a debug message with [OverrunGL#apiLogger()].
     ///
     /// Specify with [OverrunGLConfig#TRACE_DOWNCALLS]
     public static final boolean TRACE_DOWNCALLS = OverrunGLConfig.TRACE_DOWNCALLS.get();
-    private static final boolean DEBUG = OverrunGLConfig.DEBUG.get();
 
     /**
      * constructor
@@ -81,62 +72,6 @@ public final class RuntimeHelper {
      */
     public static String unknownToken(String description, int token) {
         return description + " [0x" + Integer.toHexString(token) + "]";
-    }
-
-    /**
-     * Loads a library from classpath or local.
-     *
-     * @param module   the module name. e.g. {@code glfw}
-     * @param basename the basename of the library (without file extensions)
-     * @param version  the version suffix
-     * @return the {@link SymbolLookup}
-     * @throws IllegalStateException if file isn't found
-     * @deprecated we will not be using our own libraries in 0.3.0
-     */
-    @Deprecated(since = "0.3.0")
-    public static SymbolLookup load(String module, String basename, String version)
-        throws IllegalStateException {
-        final Platform os = Platform.current();
-        final var suffix = os.sharedLibrarySuffix();
-        final var path = os.sharedLibraryName(basename);
-
-        // 1. Load from natives directory
-        var localFile = Path.of(System.getProperty("overrungl.natives", "."), path);
-        if (Files.exists(localFile)) {
-            if (DEBUG) {
-                OverrunGL.apiLog("[OverrunGL] Loading native library from overrungl.natives: " + localFile);
-            }
-            return SymbolLookup.libraryLookup(localFile, Arena.global());
-        }
-
-        // 2. Load from classpath (copy)
-        try {
-            if (!Files.exists(tmpdir)) {
-                // Create directory
-                Files.createDirectories(tmpdir);
-            } else if (!Files.isDirectory(tmpdir)) {
-                // Remove
-                Files.delete(tmpdir);
-                // Create directory
-                Files.createDirectories(tmpdir);
-            }
-        } catch (IOException e) {
-            throw new IllegalStateException("Couldn't create temporary directory to store native libraries: " + tmpdir + "; try setting -Doverrungl.natives to a valid path containing required libraries", e);
-        }
-        var libFile = tmpdir.resolve(basename + "-" + version + suffix);
-        if (!Files.exists(libFile)) {
-            // Extract
-            final String fromPath = "overrungl." + module + "/" + os.familyName() + "-" + Architecture.current() + "/" + path;
-            try (var is = ClassLoader.getSystemResourceAsStream(fromPath)) {
-                Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
-            } catch (Exception e) {
-                throw new IllegalStateException("Couldn't load native library from: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives to a valid path containing required libraries", e);
-            }
-        }
-        if (DEBUG) {
-            OverrunGL.apiLog("[OverrunGL] Loading native library from classpath: " + libFile);
-        }
-        return SymbolLookup.libraryLookup(libFile, Arena.global());
     }
 
     /// Creates a method handle without binding to a specific address.

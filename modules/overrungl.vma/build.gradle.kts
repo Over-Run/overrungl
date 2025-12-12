@@ -24,7 +24,6 @@ val projVersion: String by rootProject
 overrunglModule {
     artifactName = "overrungl-vma"
     publishInfo = Artifact.VMA
-    nativeBinding = NativeBinding.VMA
     lwjglArtifactName = "lwjgl-vma"
 }
 

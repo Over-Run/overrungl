@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.demo.nfd;
@@ -48,7 +56,7 @@ public final class NFDTest {
 
             // show the dialog
             final int result = NFD_OpenDialog(pOutPath, filterItem.segment(), (int) filterItem.estimateCount(), MemorySegment.NULL);
-            outPath = NFD_NativeString(pOutPath.get(ValueLayout.ADDRESS, 0));
+            outPath = MemoryUtil.nativeString(pOutPath.get(ValueLayout.ADDRESS, 0));
 
             switch (result) {
                 case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
@@ -83,22 +91,18 @@ public final class NFDTest {
                 case NFD_OKAY -> {
                     System.out.println("Success!");
 
-                    long numPaths;
+                    int numPaths;
                     try (MemoryStack stack1 = MemoryStack.pushLocal()) {
-                        MemorySegment pNumPaths = stack1.allocate(nfdpathsetsize_t);
+                        MemorySegment pNumPaths = stack1.allocate(ValueLayout.JAVA_INT);
                         NFD_PathSet_GetCount(outPaths, pNumPaths);
-                        numPaths = MemoryUtil.wideningToLong(nfdpathsetsize_t, switch (nfdpathsetsize_t) {
-                            case ValueLayout.OfInt ofInt -> pNumPaths.get(ofInt, 0);
-                            case ValueLayout.OfLong ofLong -> pNumPaths.get(ofLong, 0);
-                            default -> throw new IllegalStateException("Unexpected value: " + nfdpathsetsize_t);
-                        });
+                        numPaths = pNumPaths.get(ValueLayout.JAVA_INT, 0);
                     }
-                    for (long i = 0; i < numPaths; i++) {
+                    for (int i = 0; i < numPaths; i++) {
                         String outPath;
                         try (MemoryStack stack1 = MemoryStack.pushLocal()) {
                             var pOutPath = stack1.allocate(ValueLayout.ADDRESS);
                             NFD_PathSet_GetPath(outPaths, i, pOutPath);
-                            outPath = NFD_NativeString(pOutPath.get(ValueLayout.ADDRESS, 0));
+                            outPath = MemoryUtil.nativeString(pOutPath.get(ValueLayout.ADDRESS, 0));
                         }
                         System.out.println("Path " + i + ": " + outPath);
                     }
@@ -169,7 +173,7 @@ public final class NFDTest {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             MemorySegment segment = stack.allocate(ValueLayout.ADDRESS);
             result = NFD_PickFolder(segment, MemorySegment.NULL);
-            outPath = NFD_NativeString(segment.get(ValueLayout.ADDRESS, 0));
+            outPath = MemoryUtil.nativeString(segment.get(ValueLayout.ADDRESS, 0));
         }
         switch (result) {
             case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
@@ -196,8 +200,8 @@ public final class NFDTest {
 
             // show the dialog
             MemorySegment segment = stack.allocate(ValueLayout.ADDRESS);
-            final int result = NFD_SaveDialog(segment, filterItem.segment(), (int) filterItem.estimateCount(), MemorySegment.NULL, NFD_AllocString(stack, "Untitled.java"));
-            savePath = NFD_NativeString(segment.get(ValueLayout.ADDRESS, 0));
+            final int result = NFD_SaveDialog(segment, filterItem.segment(), (int) filterItem.estimateCount(), MemorySegment.NULL, stack.allocateFrom("Untitled.java"));
+            savePath = MemoryUtil.nativeString(segment.get(ValueLayout.ADDRESS, 0));
             switch (result) {
                 case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
                 case NFD_OKAY -> System.out.println("Success! " + savePath);
@@ -219,9 +223,9 @@ public final class NFDTest {
 
     private static NFDFilterItem setupFilterItem(SegmentAllocator allocator) {
         return NFDFilterItem.alloc(allocator, 2)
-            .nameAt(0, NFD_AllocString(allocator, "Source code"))
-            .specAt(0, NFD_AllocString(allocator, "java"))
-            .nameAt(1, NFD_AllocString(allocator, "Image file"))
-            .specAt(1, NFD_AllocString(allocator, "png,jpg"));
+            .nameAt(0, allocator.allocateFrom("Source code"))
+            .specAt(0, allocator.allocateFrom("java"))
+            .nameAt(1, allocator.allocateFrom("Image file"))
+            .specAt(1, allocator.allocateFrom("png,jpg"));
     }
 }

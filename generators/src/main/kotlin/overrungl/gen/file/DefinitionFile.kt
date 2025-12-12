@@ -797,7 +797,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
 
         // functions
         interpreter.functions.forEach { (_, func) ->
-            writeFunction(sb, func)
+            writeFunction(sb, func, className = className)
         }
 
         if (!writeWholeFile) {
@@ -835,11 +835,14 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         symbolLookup: String,
         writeWholeFile: Boolean = false,
         structPackageName: String = packageName,
-        upcallPackageName: String = packageName
+        upcallPackageName: String = packageName,
+        hasDowncall: Boolean = true,
     ) {
         compileUpcalls(upcallPackageName)
         compileStructs(structPackageName)
-        compileDowncall(packageName, className, symbolLookup, writeWholeFile)
+        if (hasDowncall) {
+            compileDowncall(packageName, className, symbolLookup, writeWholeFile)
+        }
     }
 }
 
@@ -877,7 +880,8 @@ fun writeFunction(
     sb: StringBuilder,
     func: DefinitionFunction,
     handlesInstance: String = "Handles.get()",
-    staticMethod: Boolean = true
+    staticMethod: Boolean = true,
+    className: String? = null
 ) {
     val hasDynamicType = func.returnType is DynamicValueType ||
         func.parameters.any { it.memoryLayoutWithDimensions is DefTypeDynamicValueLayout }

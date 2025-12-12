@@ -77,7 +77,8 @@ dependencies {
     implementation(platform("io.github.over-run:overrungl-bom:<VERSION>"))
     implementation("io.github.over-run:overrungl")
     implementation("io.github.over-run:overrungl-glfw")
-    runtimeOnly("io.github.over-run:overrungl-glfw::natives-<OS>-<ARCH>")
+    implementation(platform("org.lwjgl:lwjgl-bom:<VERSION>"))
+    runtimeOnly("org.lwjgl:lwjgl-glfw::natives-<OS>-<ARCH>")
 }
 ```
 

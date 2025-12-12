@@ -12,6 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 import org.gradle.plugins.ide.idea.model.IdeaModel
@@ -144,23 +152,6 @@ the<IdeaModel>().module {
 }
 
 afterEvaluate {
-    overrunglModule.nativeBinding.orNull?.also { nativeBinding ->
-        nativeBinding.platforms.forEach { platform ->
-            val nativeFileName = nativeFileName(nativeBinding, platform)
-            val file = rootProject.projectDir.resolve("natives").resolve(nativeFileName)
-            tasks.register<Jar>("${nativeBinding.bindingName}${platform.classifier}Jar") {
-                archiveBaseName.set(overrunglModule.artifactName)
-                archiveClassifier.set(platform.classifier)
-                outputs.upToDateWhen { false }
-                from(file)
-                into("overrungl.${File(nativeFileName).parent}")
-                if (!file.exists()) {
-                    System.err.println("warning: $file not found for ${nativeBinding.bindingName}")
-                }
-            }
-        }
-    }
-
     overrunglModule.publishInfo.orNull?.also {
         rootProject.pluginManager.withPlugin("publishing") {
             rootProject.extensions.configure<PublishingExtension>("publishing") {
@@ -173,47 +164,6 @@ afterEvaluate {
                         from(components["java"])
                         pom {
                             setupPom(it.projectName, it.projectDescription, "jar")
-                        }
-
-                        overrunglModule.nativeBinding.orNull?.also { nativeBinding ->
-                            nativeBinding.platforms.forEach { platform ->
-                                artifact(tasks.named("${nativeBinding.bindingName}${platform.classifier}Jar"))
-
-                                val projGroupId1 = projGroupId
-                                val artifactName1 = overrunglModule.artifactName
-                                val projVersion1 = projVersion
-                                getByName<MavenPublication>("overrunglBOM") {
-                                    pom {
-                                        withXml {
-                                            asElement().getElementsByTagName("dependencyManagement").item(0).apply {
-                                                asElement().getElementsByTagName("dependencies").item(0).apply {
-                                                    ownerDocument.createElement("dependency").also(::appendChild)
-                                                        .apply {
-                                                            appendChild(
-                                                                ownerDocument.createElement("groupId")
-                                                                    .also(::appendChild)
-                                                                    .apply { textContent = projGroupId1 })
-                                                            appendChild(
-                                                                ownerDocument.createElement("artifactId")
-                                                                    .also(::appendChild)
-                                                                    .apply {
-                                                                        textContent = artifactName1.get()
-                                                                    })
-                                                            appendChild(
-                                                                ownerDocument.createElement("version")
-                                                                    .also(::appendChild)
-                                                                    .apply { textContent = projVersion1 })
-                                                            appendChild(
-                                                                ownerDocument.createElement("classifier")
-                                                                    .also(::appendChild)
-                                                                    .apply { textContent = platform.classifier })
-                                                        }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
                         }
                     }
                 }

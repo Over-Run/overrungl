@@ -27,5 +27,5 @@ dependencies {
     testImplementation(project(":core"))
     constraints { api("io.github.over-run:overrungl:$projVersion") }
 
-    implementation(overrunglModule.lwjglArtifactName.map { "org.lwjgl:$it:$lwjglVersion" })
+    api(overrunglModule.lwjglArtifactName.map { "org.lwjgl:$it:$lwjglVersion" })
 }

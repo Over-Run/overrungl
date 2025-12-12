@@ -24,6 +24,7 @@
 
 package overrungl.demo.tinyfd;
 
+import overrungl.util.MemoryStack;
 import overrungl.util.MemoryUtil;
 
 import static overrungl.tinyfd.TinyFD.*;
@@ -39,7 +40,9 @@ public class TinyFDDemo {
             case 0 -> IO.println("console mode");
             case 1 -> IO.println("graphic mode");
         }
-        IO.println("tinyfd_response: " + MemoryUtil.nativeString(tinyfd_response()));
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            IO.println("tinyfd_response: " + MemoryUtil.nativeString(tinyfd_getGlobalChar(stack.allocateFrom(tinyfd_response))));
+        }
         separate();
 
         int button = tinyfd_messageBox("tinyfd_messageBox", """

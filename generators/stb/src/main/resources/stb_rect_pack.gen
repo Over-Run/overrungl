@@ -10,8 +10,6 @@ using stbrp_coord = int;
 
 #define STBRP__MAXVAL  0x7fffffff
 
-fn STBbool stbrp_pack_rects (stbrp_context *context, stbrp_rect *rects, int num_rects);
-
 using stbrp_rect = struct STBRPRect
 {
    // reserved for your use:
@@ -25,12 +23,6 @@ using stbrp_rect = struct STBRPRect
    int            was_packed;  // non-zero if valid packing
 
 }; // 16 bytes, nominally
-
-fn void stbrp_init_target (stbrp_context *context, int width, int height, stbrp_node *nodes, int num_nodes);
-
-fn void stbrp_setup_allow_out_of_mem (stbrp_context *context, int allow_out_of_mem);
-
-fn void stbrp_setup_heuristic (stbrp_context *context, int heuristic);
 
 enum
 {

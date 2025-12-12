@@ -22,4 +22,5 @@ plugins {
 overrunglModule {
     artifactName = "overrungl-vulkan"
     publishInfo = Artifact.VULKAN
+    lwjglArtifactName = "lwjgl-vulkan"
 }
