@@ -70,4 +70,5 @@ module overrungl.vulkan {
     requires transitive overrungl.core;
     requires static org.graalvm.nativeimage;
     requires static org.jspecify;
+    requires org.lwjgl.vulkan;
 }
