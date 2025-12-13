@@ -76,7 +76,6 @@ publishing.repositories {
         name = "stagingRepo"
         setUrl(layout.buildDirectory.dir("staging-deploy"))
     }
-    mavenLocal()
 }
 
 // check https://jreleaser.org/guide/latest/examples/maven/maven-central.html#_gradle

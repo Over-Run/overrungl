@@ -85,7 +85,7 @@ dependencies {
 ### Using -SNAPSHOT Versions
 
 We publish `-SNAPSHOT` versions frequently.
-You can check the [list of available versions](https://central.sonatype.com/repository/maven-snapshots/io/github/over-run/overrungl/maven-metadata.xml)
+You can check the [list of available versions](https://central.sonatype.com/repository/maven-snapshots/io/github/over-run/overrungl/maven-metadata.xml).
 
 Add this maven repository to use snapshot versions:
 

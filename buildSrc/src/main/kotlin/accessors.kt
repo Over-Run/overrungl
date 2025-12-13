@@ -6,3 +6,9 @@ val Project.overrunglModule: OverrunGLModuleExtension
 
 fun Project.overrunglModule(configure: Action<OverrunGLModuleExtension>) =
     extensions.configure("overrunglModule", configure)
+
+val Project.overrunglModuleNew: OverrunGLNewModuleExtension
+    get() = extensions.getByName("overrunglModuleNew") as OverrunGLNewModuleExtension
+
+fun Project.overrunglModuleNew(configure: Action<OverrunGLNewModuleExtension>) =
+    extensions.configure("overrunglModuleNew", configure)
