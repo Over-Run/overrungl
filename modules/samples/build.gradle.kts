@@ -34,21 +34,20 @@ overrunglModule {
 
 val jmhVersion: String by rootProject
 val timerVersion: String by rootProject
+val lwjglVersion: String by rootProject
+val lwjglNatives: String by rootProject
 
 dependencies {
-    Artifact.entries.forEach {
-        implementation(project(it.subprojectName))
+    Artifact.entries.forEach { artifact ->
+        implementation(project(artifact.subprojectName))
+        runtimeOnly(project.project(artifact.subprojectName).overrunglModule.lwjglArtifactName.map {
+            if (it == "lwjgl-vulkan" && lwjglNatives != "natives-macos" && lwjglNatives != "natives-macos-arm64") {
+                return@map null
+            }
+            "org.lwjgl:$it:$lwjglVersion:$lwjglNatives"
+        })
     }
     implementation("io.github.over-run:timer:$timerVersion")
     jmh("org.openjdk.jmh:jmh-core:$jmhVersion")
     jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:$jmhVersion")
-}
-
-tasks.register<JavaExec>("deployNatives") {
-    dependsOn(tasks["classes"])
-    classpath = sourceSets.test.get().runtimeClasspath
-    workingDir = rootDir
-    mainClass = "NativeDeployer"
-    standardInput = System.`in`
-    args = NativeBinding.entries.map { "${it.bindingName}:${it.basename}" }
 }

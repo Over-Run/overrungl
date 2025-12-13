@@ -12,12 +12,21 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.nfd;
 
 import org.jspecify.annotations.NonNull;
 import overrungl.util.MemoryStack;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -80,7 +89,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
                 MemorySegment outPath = stack.allocate(ADDRESS);
                 int result = NFD_PathSet_EnumNext(segment, outPath);
                 if (result == NFD_ERROR) throw errorIterating();
-                nextPath = NFD_NativeString(outPath.get(ADDRESS, 0));
+                nextPath = MemoryUtil.nativeString(outPath.get(ADDRESS, 0));
                 if (nextPath != null) {
                     NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                 }
@@ -131,7 +140,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
             int result = NFD_PathSet_EnumNext(segment, outPath);
             return switch (result) {
                 case NFD_OKAY -> {
-                    String path = NFD_NativeString(outPath.get(ADDRESS, 0));
+                    String path = MemoryUtil.nativeString(outPath.get(ADDRESS, 0));
                     if (path != null) {
                         NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                     }

@@ -30,5 +30,5 @@ plugins {
 overrunglModule {
     artifactName = "overrungl-tinyfd"
     publishInfo = Artifact.TINYFD
-    nativeBinding = NativeBinding.TINYFD
+    lwjglArtifactName = "lwjgl-tinyfd"
 }

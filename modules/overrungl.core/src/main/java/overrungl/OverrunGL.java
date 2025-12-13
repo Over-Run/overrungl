@@ -42,30 +42,22 @@ public final class OverrunGL {
      */
     public static final String VERSION = "0.2.0";
     /**
-     * The version of GLFW native libraries.
-     */
-    public static final String GLFW_VERSION = "3.5.0.3";
-    /**
      * The version of NFD native libraries.
      */
+    @Deprecated(since = "0.3.0")
     public static final String NFD_VERSION = "1.2.1.1";
-    /**
-     * The version of OpenAL native libraries.
-     */
-    public static final String OPENAL_VERSION = "0.2.0.0";
-    /// The version of Shaderc native libraries.
-    ///
-    /// @since 0.2.0
-    public static final String SHADERC_VERSION = "2025.4.0";
     /**
      * The version of stb native libraries.
      */
+    @Deprecated(since = "0.3.0")
     public static final String STB_VERSION = "0.1.0.7";
     /// The version of tiny file dialogs native libraries.
     ///
     /// @since 0.2.0
+    @Deprecated(since = "0.3.0")
     public static final String TINYFD_VERSION = "3.21.2.3";
     /// The version of Vulkan Memory Allocator native libraries.
+    @Deprecated(since = "0.3.0")
     public static final String VMA_VERSION = "3.3.0.0";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;

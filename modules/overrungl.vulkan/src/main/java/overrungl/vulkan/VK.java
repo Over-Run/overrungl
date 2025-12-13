@@ -12,10 +12,19 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package overrungl.vulkan;
 
+import org.lwjgl.system.Configuration;
 import overrungl.util.MemoryStack;
 import overrungl.util.MemoryUtil;
 
@@ -36,15 +45,24 @@ public final class VK {
     private VK() {
     }
 
-    /// Loads necessary functions for Vulkan to create [VkInstance] with the given loading function.
+    /// Loads Vulkan with LWJGL 3.
     ///
-    /// @param func a function that returns an address of a Vulkan function specified with the given name. this can be `GLFW::glfwGetInstanceProcAddress`
+    /// @param func unused
     public static void create(VKLoadFunc func) {
-        if (loadFunc != null) {
-            throw new IllegalStateException("Vulkan has already been created.");
+        create();
+    }
+
+    /// Loads Vulkan with LWJGL 3.
+    ///
+    /// @since 0.3.0
+    public static void create() {
+        if (Configuration.VULKAN_EXPLICIT_INIT.get(false)) {
+            org.lwjgl.vulkan.VK.create();
         }
-        loadFunc = func;
-        globalCommands = new GlobalCommands(func);
+        loadFunc = (_, name) ->
+            MemorySegment.ofAddress(org.lwjgl.vulkan.VK.getFunctionProvider()
+                .getFunctionAddress(Objects.requireNonNull(MemoryUtil.nativeString(name))));
+        globalCommands = new GlobalCommands(loadFunc);
     }
 
     /// Removes loaded functions.

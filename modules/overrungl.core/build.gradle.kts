@@ -21,6 +21,7 @@ plugins {
 overrunglModule {
     artifactName = "overrungl"
     publishInfo = Artifact.CORE
+    lwjglArtifactName = "lwjgl"
 }
 
 val overrunPlatformVersion: String by rootProject

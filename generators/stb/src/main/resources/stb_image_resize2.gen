@@ -38,18 +38,6 @@ using stbir_pixel_layout = enum
 
 };
 
-fn unsigned char * stbir_resize_uint8_srgb( const unsigned char *input_pixels , int input_w , int input_h, int input_stride_in_bytes,
-                                                  unsigned char *output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                                                  stbir_pixel_layout pixel_type );
-
-fn unsigned char * stbir_resize_uint8_linear( const unsigned char *input_pixels , int input_w , int input_h, int input_stride_in_bytes,
-                                                    unsigned char *output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                                                    stbir_pixel_layout pixel_type );
-
-fn float * stbir_resize_float_linear( const float *input_pixels , int input_w , int input_h, int input_stride_in_bytes,
-                                            float *output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                                            stbir_pixel_layout pixel_type );
-
 using stbir_edge = enum
 {
   STBIR_EDGE_CLAMP   = 0,
@@ -79,11 +67,6 @@ using stbir_datatype = enum
   STBIR_TYPE_FLOAT            = 4,
   STBIR_TYPE_HALF_FLOAT       = 5
 };
-
-fn void *  stbir_resize( const void *input_pixels , int input_w , int input_h, int input_stride_in_bytes,
-                               void *output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                         stbir_pixel_layout pixel_layout, stbir_datatype data_type,
-                         stbir_edge edge, stbir_filter filter );
 
 using stbir_input_callback = upcall void const * STBIRInputCallback( void * optional_output, void const * input_ptr, int num_pixels, int x, int y, void * context );
 using stbir_output_callback = upcall void STBIROutputCallback( void const * output_ptr, int num_pixels, int y, void * context );
@@ -119,35 +102,3 @@ using STBIR_RESIZE = struct STBIR_RESIZE  // use the stbir_resize_init and stbir
   stbir__kernel_callback * vertical_filter_kernel; stbir__support_callback * vertical_filter_support;
   stbir__info * samplers;
 };
-
-fn void stbir_resize_init( STBIR_RESIZE * resize,
-                           const void *input_pixels,  int input_w,  int input_h, int input_stride_in_bytes, // stride can be zero
-                                 void *output_pixels, int output_w, int output_h, int output_stride_in_bytes, // stride can be zero
-                           stbir_pixel_layout pixel_layout, stbir_datatype data_type );
-
-fn void stbir_set_datatypes( STBIR_RESIZE * resize, stbir_datatype input_type, stbir_datatype output_type );
-fn void stbir_set_pixel_callbacks( STBIR_RESIZE * resize, stbir_input_callback * input_cb, stbir_output_callback * output_cb );   // no callbacks by default
-fn void stbir_set_user_data( STBIR_RESIZE * resize, void * user_data );                                               // pass back STBIR_RESIZE* by default
-fn void stbir_set_buffer_ptrs( STBIR_RESIZE * resize, const void * input_pixels, int input_stride_in_bytes, void * output_pixels, int output_stride_in_bytes );
-
-fn STBbool stbir_set_pixel_layouts( STBIR_RESIZE * resize, stbir_pixel_layout input_pixel_layout, stbir_pixel_layout output_pixel_layout );  // sets new buffer layouts
-fn STBbool stbir_set_edgemodes( STBIR_RESIZE * resize, stbir_edge horizontal_edge, stbir_edge vertical_edge );       // CLAMP by default
-
-fn STBbool stbir_set_filters( STBIR_RESIZE * resize, stbir_filter horizontal_filter, stbir_filter vertical_filter ); // STBIR_DEFAULT_FILTER_UPSAMPLE/DOWNSAMPLE by default
-fn STBbool stbir_set_filter_callbacks( STBIR_RESIZE * resize, stbir__kernel_callback * horizontal_filter, stbir__support_callback * horizontal_support, stbir__kernel_callback * vertical_filter, stbir__support_callback * vertical_support );
-
-fn STBbool stbir_set_pixel_subrect( STBIR_RESIZE * resize, int subx, int suby, int subw, int subh );        // sets both sub-regions (full regions by default)
-fn STBbool stbir_set_input_subrect( STBIR_RESIZE * resize, double s0, double t0, double s1, double t1 );    // sets input sub-region (full region by default)
-fn STBbool stbir_set_output_pixel_subrect( STBIR_RESIZE * resize, int subx, int suby, int subw, int subh ); // sets output sub-region (full region by default)
-
-fn STBbool stbir_set_non_pm_alpha_speed_over_quality( STBIR_RESIZE * resize, int non_pma_alpha_speed_over_quality );
-
-fn STBbool stbir_build_samplers( STBIR_RESIZE * resize );
-
-fn void stbir_free_samplers( STBIR_RESIZE * resize );
-
-fn STBbool stbir_resize_extended( STBIR_RESIZE * resize );
-
-fn STBbool stbir_build_samplers_with_splits( STBIR_RESIZE * resize, int try_splits );
-
-fn STBbool stbir_resize_extended_split( STBIR_RESIZE * resize, int split_start, int split_count );

@@ -22,41 +22,6 @@
  * SOFTWARE.
  */
 
-enum class NativePlatform(
-    val osFamilyName: String,
-    val osArch: String,
-    val nativeLibPrefix: String = "lib",
-    val nativeLibSuffix: String = ".so"
-) {
-    FREEBSD_X64("freebsd", "x64"),
-    LINUX_64("linux", "x64"),
-    LINUX_ARM32("linux", "arm32"),
-    LINUX_ARM64("linux", "arm64"),
-    LINUX_PPC64LE("linux", "ppc64le"),
-    LINUX_RISCV64("linux", "riscv64"),
-    MACOS("macos", "x64", nativeLibSuffix = ".dylib"),
-    MACOS_ARM64("macos", "arm64", nativeLibSuffix = ".dylib"),
-    WIN_64("windows", "x64", nativeLibPrefix = "", nativeLibSuffix = ".dll"),
-    WIN_ARM64("windows", "arm64", nativeLibPrefix = "", nativeLibSuffix = ".dll");
-
-    val classifier = "natives-$osFamilyName-$osArch"
-}
-
-enum class NativeBinding(
-    val bindingName: String,
-    val basename: String,
-    val repo: String,
-    val platforms: List<NativePlatform> = NativePlatform.entries
-) {
-    GLFW("glfw", "glfw", "Over-Run/glfw-ci"),
-    NFD("nfd", "nfd", "Over-Run/nfd-ci"),
-    OPENAL("openal", "openal", "Over-Run/openal-ci"),
-    SHADERC("shaderc", "shaderc_shared", "Over-Run/shaderc-ci"),
-    STB("stb", "stb", "Over-Run/stb-ci"),
-    TINYFD("tinyfd", "tinyfd", "Over-Run/tinyfd-ci"),
-    VMA("vma", "VulkanMemoryAllocator", "Over-Run/VulkanMemoryAllocator-ci"),
-}
-
 enum class Artifact(
     val projectName: String,
     val projectDescription: String,
@@ -117,8 +82,4 @@ enum class Artifact(
         "A new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms.",
         ":vulkan"
     ),
-}
-
-fun nativeFileName(nativeBinding: NativeBinding, platform: NativePlatform): String {
-    return "${nativeBinding.bindingName}/${platform.osFamilyName}-${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
 }

@@ -2,8 +2,9 @@
 package overrungl.openal;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
-import java.lang.foreign.SymbolLookup;
-import java.util.function.Supplier;
+import java.lang.foreign.*;
+import java.util.*;
+import java.util.function.*;
 
 /// Accessor of symbol lookup of module `openal`.
 public final class OpenALLibrary {
@@ -14,7 +15,10 @@ public final class OpenALLibrary {
     ///
     /// The returned supplier tries loading each time when invoking `get`.
     public static Supplier<SymbolLookup> defaultLookupSupplier() {
-        return () -> RuntimeHelper.load("openal", "openal", OverrunGL.OPENAL_VERSION);
+        return () -> name -> {
+            long address = org.lwjgl.openal.ALC.getFunctionProvider().getFunctionAddress(name);
+            return address == 0L ? Optional.empty() : Optional.of(MemorySegment.ofAddress(address));
+        };
     }
 
     /// Sets a custom symbol lookup for module `openal`.

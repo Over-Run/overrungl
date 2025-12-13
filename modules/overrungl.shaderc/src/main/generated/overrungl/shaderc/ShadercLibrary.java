@@ -2,8 +2,9 @@
 package overrungl.shaderc;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
-import java.lang.foreign.SymbolLookup;
-import java.util.function.Supplier;
+import java.lang.foreign.*;
+import java.util.*;
+import java.util.function.*;
 
 /// Accessor of symbol lookup of module `shaderc`.
 public final class ShadercLibrary {
@@ -14,7 +15,10 @@ public final class ShadercLibrary {
     ///
     /// The returned supplier tries loading each time when invoking `get`.
     public static Supplier<SymbolLookup> defaultLookupSupplier() {
-        return () -> RuntimeHelper.load("shaderc", "shaderc_shared", OverrunGL.SHADERC_VERSION);
+        return () -> name -> {
+            long address = org.lwjgl.util.shaderc.Shaderc.getLibrary().getFunctionAddress(name);
+            return address == 0L ? Optional.empty() : Optional.of(MemorySegment.ofAddress(address));
+        };
     }
 
     /// Sets a custom symbol lookup for module `shaderc`.

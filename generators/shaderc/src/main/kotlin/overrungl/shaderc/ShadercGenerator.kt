@@ -38,7 +38,6 @@ fun main() {
         packageName = "shaderc",
         className = "ShadercLibrary",
         moduleName = "shaderc",
-        basename = "shaderc_shared",
-        versionRef = "SHADERC_VERSION"
+        lwjglLib = "org.lwjgl.util.shaderc.Shaderc.getLibrary()"
     )
 }

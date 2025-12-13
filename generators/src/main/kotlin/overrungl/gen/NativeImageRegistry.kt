@@ -37,46 +37,47 @@ fun writeNativeImageRegistration(
     packageName: String,
     downcall: List<String> = nativeImageDowncallDescriptors,
     upcall: List<String> = nativeImageUpcallDescriptors,
-    libBasename: String?
+    libBasename: String?,
+    hasForeignFeature: Boolean = true,
 ) {
     val basePath = Path(packageName.replace('.', '/'), "$className.java")
     val path = Path("src/main/generated/").resolve(basePath)
-    path.createParentDirectories()
-    writeString(path, buildString {
-        appendLine(commentedFileHeader)
-        appendLine(
-            """
+    val nativeImgRoot =
+        Path("src/main/resources/META-INF/native-image/io.github.over-run", packageName.replace('.', '-'))
+    if (hasForeignFeature) {
+        writeString(path.createParentDirectories(), buildString {
+            appendLine(commentedFileHeader)
+            appendLine(
+                """
                 package $packageName;
                 import java.lang.foreign.*;
                 import overrungl.util.*;
                 import org.graalvm.nativeimage.hosted.Feature;
                 import static org.graalvm.nativeimage.hosted.RuntimeForeignAccess.*;
             """.trimIndent()
+            )
+            appendLine("class $className implements Feature {")
+            appendLine("    @Override public void duringSetup(DuringSetupAccess access) {")
+            downcall.toSortedSet().forEach {
+                appendLine("        registerForDowncall($it);")
+            }
+            upcall.forEach {
+                appendLine("        registerForUpcall($it);")
+            }
+            appendLine("    }")
+            appendLine("}")
+        })
+        writeString(
+            nativeImgRoot.createDirectories().resolve("native-image.properties"),
+            buildString {
+                appendLine(GENERATOR_NOTICE_SHARP)
+                appendLine("Args=--features=$packageName.$className")
+            }
         )
-        appendLine("class $className implements Feature {")
-        appendLine("    @Override public void duringSetup(DuringSetupAccess access) {")
-        downcall.toSortedSet().forEach {
-            appendLine("        registerForDowncall($it);")
-        }
-        upcall.forEach {
-            appendLine("        registerForUpcall($it);")
-        }
-        appendLine("    }")
-        appendLine("}")
-    })
-    val nativeImgRoot =
-        Path("src/main/resources/META-INF/native-image/io.github.over-run", packageName.replace('.', '-'))
-    nativeImgRoot.createDirectories()
-    writeString(
-        nativeImgRoot.resolve("native-image.properties"),
-        buildString {
-            appendLine(GENERATOR_NOTICE_SHARP)
-            appendLine("Args=--features=$packageName.$className")
-        }
-    )
+    }
     if (libBasename != null || compiledUpcallTypes.isNotEmpty()) {
         writeString(
-            nativeImgRoot.resolve("reachability-metadata.json"),
+            nativeImgRoot.createDirectories().resolve("reachability-metadata.json"),
             buildString {
                 appendLine("{")
                 if (libBasename != null) {
