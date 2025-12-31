@@ -1,12 +1,5 @@
 import groovy.json.JsonSlurper
-import org.gradle.api.Project
-import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPom
-import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.register
-import org.gradle.kotlin.dsl.the
 import java.io.File
 import java.net.URI
 import java.net.http.HttpClient
@@ -40,21 +33,6 @@ fun MavenPom.setupPom(pomName: String, pomDescription: String, pomPackaging: Str
         connection.set("scm:git:https://github.com/Over-Run/overrungl.git")
         developerConnection.set("scm:git:https://github.com/Over-Run/overrungl.git")
         url.set("https://github.com/Over-Run/overrungl.git")
-    }
-}
-
-fun Project.setupPublication() {
-    the<PublishingExtension>().publications {
-        register<MavenPublication>(overrunglModuleNew.artifactName.map { "Maven$it" }.get()) {
-            groupId = project.group.toString()
-            artifactId = overrunglModuleNew.artifactName.get()
-            version = overrunglModuleNew.artifactVersion.get()
-            description = overrunglModuleNew.description.get()
-            from(components["java"])
-            pom {
-                setupPom(overrunglModuleNew.projectTitle.get(), overrunglModuleNew.description.get(), "jar")
-            }
-        }
     }
 }
 

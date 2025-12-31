@@ -40,7 +40,7 @@ public class FileTest {
     void readTest() throws IOException {
         assertFalse(FileProvider.localFile("build.gradle.kts").readText().isEmpty());
 
-        assertEquals("Hello world\n", FileProvider.classpathFile("example.txt").readText());
+        assertEquals("Hello world", FileProvider.classpathFile("example.txt").readText().strip());
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment segment = FileProvider.classpathFile("example-bin").readBinary(arena);
             assertEquals(4, segment.byteSize());

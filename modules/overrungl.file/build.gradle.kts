@@ -34,5 +34,3 @@ overrunglModuleNew {
     projectTitle = "OverrunGL - File"
     description = "Provide utilities to access files."
 }
-
-setupPublication()

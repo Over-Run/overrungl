@@ -60,3 +60,18 @@ publishing {
     repositories {
     }
 }
+
+afterEvaluate {
+    publishing.publications {
+        register<MavenPublication>(overrunglModuleNew.artifactName.map { "Maven$it" }.get()) {
+            groupId = project.group.toString()
+            artifactId = overrunglModuleNew.artifactName.get()
+            version = overrunglModuleNew.artifactVersion.get()
+            description = overrunglModuleNew.description.get()
+            from(components["java"])
+            pom {
+                setupPom(overrunglModuleNew.projectTitle.get(), overrunglModuleNew.description.get(), "jar")
+            }
+        }
+    }
+}
