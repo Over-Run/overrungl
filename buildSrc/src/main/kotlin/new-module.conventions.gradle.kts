@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jspecify:jspecify:$jspecifyVersion")
+    api("org.jspecify:jspecify:$jspecifyVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
