@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2025-2026 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,10 +29,53 @@ import org.jspecify.annotations.Nullable;
 import java.util.Objects;
 import java.util.SequencedCollection;
 
+/// A simple sprite packer that packs [AtlasSprite].
+///
+/// This sprite packer is based on binary tree.
+///
+/// ## Example
+///
+/// This example allows storing userdata, which is useful for creating a texture atlas.
+///
+/// ```java
+/// class MySprite extends AtlasSprite {
+///     public final int id;
+///     public MySprite(int width, int height, int padding, int id) {
+///         super(width, height, padding);
+///         this.id = id;
+///     }
+/// }
+///
+/// List<MySprite> sprites = new ArrayList<>();
+/// sprites.add(new MySprite(16, 16, 0, 0));
+/// sprites.add(new MySprite(32, 32, 0, 1));
+/// // must sort to achieve the best result
+/// sprites.sort(null);
+///
+/// var packer = new SpritePacker();
+/// packer.fit(sprites);
+///
+/// for (var sprite : sprites) {
+///     System.out.printf("%d: %d, %d", sprite.id, sprite.contentWidth(), sprite.contentHeight());
+/// }
+/// ```
+///
 /// @since 0.1.0
 public class SpritePacker {
     private @Nullable Node root;
 
+    /// Constructs a [SpritePacker].
+    public SpritePacker() {
+    }
+
+    /// Resets this packer and packs the given sprites.
+    ///
+    /// The position of the sprites will be modified.
+    ///
+    /// If `sprites` is empty, then the size of this packer will be 0.
+    ///
+    /// @param sprites the sprites
+    /// @param <T>     the type of the sprite
     public <T extends AtlasSprite> void fit(SequencedCollection<T> sprites) {
         int w = sprites.isEmpty() ? 0 : sprites.getFirst().width();
         int h = sprites.isEmpty() ? 0 : sprites.getFirst().height();
@@ -134,10 +177,16 @@ public class SpritePacker {
         return Objects.requireNonNull(root, "Call SpritePacker::fit first");
     }
 
+    /// {@return the width of the packer}
+    ///
+    /// @throws NullPointerException if no sprite is fitted
     public int width() {
         return checkRoot().w;
     }
 
+    /// {@return the height of the packer}
+    ///
+    /// @throws NullPointerException if no sprite is fitted
     public int height() {
         return checkRoot().h;
     }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2025-2026 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,7 @@
 
 /// Provide utilities to create texture atlases.
 ///
+/// @see overrungl.atlas.SpritePacker
 /// @since 0.1.0
 @NullMarked
 package overrungl.atlas;
