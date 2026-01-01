@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2025-2026 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,14 +27,31 @@ package overrungl.file;
 import java.io.IOException;
 import java.lang.foreign.MemorySegment;
 
+/// Represents a file with read/write operations.
+///
 /// @since 0.1.0
 public interface ReadWriteFile extends ReadonlyFile {
-
+    /// Creates directories this file representing.
+    ///
+    /// @return `this`
+    /// @throws IOException if an I/O error occurs
     ReadWriteFile createDirectories() throws IOException;
 
+    /// Creates directories the parent of this file representing.
+    ///
+    /// @return `this`
+    /// @throws IOException if an I/O error occurs
     ReadWriteFile createParentDirectories() throws IOException;
 
+    /// Writes the specified text to this file.
+    ///
+    /// @param text the text content to be written
+    /// @throws IOException if an I/O error occurs
     void writeText(String text) throws IOException;
 
+    /// Writes the specified binary content to this file
+    ///
+    /// @param segment the content to be written
+    /// @throws IOException if an I/O error occurs
     void writeBinary(MemorySegment segment) throws IOException;
 }

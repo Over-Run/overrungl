@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2025-2026 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,7 @@
 
 package overrungl.file;
 
+import java.io.IOException;
 import java.nio.file.FileSystem;
 
 /// @since 0.1.0
@@ -47,7 +48,7 @@ final class FileSystemFileProviderImpl implements FileSystemFileProvider {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() throws IOException {
         if (implicitlyCloseFS) {
             fileSystem.close();
         }

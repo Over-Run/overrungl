@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2025-2026 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,13 +84,13 @@ final class FileSystemFile implements ReadWriteFile {
 
     @Override
     public void writeText(String text) throws IOException {
-        checkReadonly();
+        checkWritable();
         Files.writeString(path, text);
     }
 
     @Override
     public void writeBinary(MemorySegment segment) throws IOException {
-        checkReadonly();
+        checkWritable();
         try (FileChannel open = FileChannel.open(path, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
              Arena arena = Arena.ofConfined()) {
             MemorySegment mapped = open.map(FileChannel.MapMode.READ_WRITE, 0, segment.byteSize(), arena);
@@ -99,7 +99,7 @@ final class FileSystemFile implements ReadWriteFile {
         }
     }
 
-    private void checkReadonly() {
+    private void checkWritable() {
         if (readonly) {
             throw new IllegalStateException("Couldn't write to local file '" + filename + "' created with FileProvider::readonly");
         }

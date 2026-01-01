@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2025-2026 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,18 +24,7 @@
 
 /// Provides utilities to access files.
 ///
-/// ## File Providers
-///
-/// [**File providers**][overrungl.file.FileProvider]
-/// allow creating an object containing the path and loading method.
-///
-/// The file providers allow accessing:
-///
-/// - [files on specified file system][overrungl.file.FileProvider#ofFileSystem(java.nio.file.FileSystem, boolean)]
-/// - [files on local][overrungl.file.FileProvider#ofLocal()]
-/// - [files on classpath][overrungl.file.FileProvider#ofClassLoader(java.lang.ClassLoader)]
-/// - [files in zip/jar file][overrungl.file.FileProvider#ofZip(java.nio.file.Path)]
-///
+/// @see overrungl.file.FileProvider
 /// @since 0.1.0
 @NullMarked
 package overrungl.file;

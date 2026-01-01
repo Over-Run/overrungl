@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2025-2026 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,17 @@
 
 package overrungl.file;
 
+import java.io.IOException;
+
+/// A file provider created with a file system.
+///
+/// This file provider should be [closed][#close()].
+///
 /// @since 0.1.0
 public interface FileSystemFileProvider extends FileProvider, AutoCloseable {
+    /// Closes the file system associated with this file provider.
+    ///
+    /// @throws IOException If an I/O error occurs when closing the file system
+    @Override
+    void close() throws IOException;
 }

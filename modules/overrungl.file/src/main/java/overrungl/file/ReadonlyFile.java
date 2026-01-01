@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2025-2026 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,13 +28,26 @@ import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
+/// Represents a readonly file.
+///
 /// @since 0.1.0
 public interface ReadonlyFile {
+    /// {@return the name of this file}
     String filename();
 
+    /// {@return `true` if this file is readonly; otherwise `false`}
     boolean readonly();
 
+    /// Reads text from this file.
+    ///
+    /// @return the text content of this file
+    /// @throws IOException If an I/O error occurs when reading text
     String readText() throws IOException;
 
+    /// Reads this file as binary.
+    ///
+    /// @param arena an arena to be associated with the returned memory segment
+    /// @return a memory segment containing the content of the file
+    /// @throws IOException If an I/O error occurs when reading content
     MemorySegment readBinary(Arena arena) throws IOException;
 }
