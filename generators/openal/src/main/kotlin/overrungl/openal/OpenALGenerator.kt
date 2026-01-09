@@ -44,7 +44,7 @@ fun main() {
     alc.compile(alPackage, "ALC", alLookup)
     alext.compile(alPackage, "ALExt", alLookup)
 
-    writeNativeImageRegistration(alPackage, libBasename = "openal")
+    writeNativeImageRegistration(alPackage)
     generateLookupAccessor(
         packageName = "openal",
         className = "OpenALLibrary",

@@ -1,5 +1,4 @@
 {
-  "resources": [{ "glob": "overrungl.glfw/**/*glfw.*" }],
   "reflection": [
     { "type": "overrungl.glfw.GLFWAllocateFun", "allPublicMethods": true },
     { "type": "overrungl.glfw.GLFWReallocateFun", "allPublicMethods": true },

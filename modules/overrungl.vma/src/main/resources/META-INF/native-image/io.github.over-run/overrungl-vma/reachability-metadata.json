@@ -1,5 +1,4 @@
 {
-  "resources": [{ "glob": "overrungl.vma/**/*VulkanMemoryAllocator.*" }],
   "reflection": [
     { "type": "overrungl.vma.VmaAllocateDeviceMemoryFunction", "allPublicMethods": true },
     { "type": "overrungl.vma.VmaFreeDeviceMemoryFunction", "allPublicMethods": true },

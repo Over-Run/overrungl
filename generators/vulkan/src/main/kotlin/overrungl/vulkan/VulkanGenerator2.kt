@@ -313,7 +313,7 @@ fun main() {
     genCapabilities()
     genModuleInfo()
 
-    writeNativeImageRegistration(vulkanPackage, libBasename = null)
+    writeNativeImageRegistration(vulkanPackage)
 
     formatTraits(reg.reg!!.getElementsByTagName("formats").item(0) as Element)
     vkUtil()

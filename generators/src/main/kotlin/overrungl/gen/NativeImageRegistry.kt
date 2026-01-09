@@ -37,7 +37,6 @@ fun writeNativeImageRegistration(
     packageName: String,
     downcall: List<String> = nativeImageDowncallDescriptors,
     upcall: List<String> = nativeImageUpcallDescriptors,
-    libBasename: String?,
     hasForeignFeature: Boolean = true,
 ) {
     val basePath = Path(packageName.replace('.', '/'), "$className.java")
@@ -75,18 +74,11 @@ fun writeNativeImageRegistration(
             }
         )
     }
-    if (libBasename != null || compiledUpcallTypes.isNotEmpty()) {
+    if (compiledUpcallTypes.isNotEmpty()) {
         writeString(
             nativeImgRoot.createDirectories().resolve("reachability-metadata.json"),
             buildString {
                 appendLine("{")
-                if (libBasename != null) {
-                    append("""  "resources": [{ "glob": "$packageName/**/*$libBasename.*" }]""")
-                    if (compiledUpcallTypes.isNotEmpty()) {
-                        append(",")
-                    }
-                    appendLine()
-                }
                 if (compiledUpcallTypes.isNotEmpty()) {
                     appendLine("""  "reflection": [""")
                     appendLine(compiledUpcallTypes.joinToString(separator = ",\n") {

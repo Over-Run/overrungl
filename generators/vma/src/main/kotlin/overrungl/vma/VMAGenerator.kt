@@ -33,5 +33,5 @@ const val vmaLookup = "VulkanMemoryAllocatorLibrary.lookup()"
 fun main() {
     DefinitionFile("vk_mem_alloc.gen").compile(vmaPackage, "VkMemAlloc", vmaLookup, hasDowncall = false)
 
-    writeNativeImageRegistration(vmaPackage, libBasename = "VulkanMemoryAllocator", hasForeignFeature = false)
+    writeNativeImageRegistration(vmaPackage, hasForeignFeature = false)
 }

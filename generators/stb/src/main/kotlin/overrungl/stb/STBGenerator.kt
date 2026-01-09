@@ -41,5 +41,5 @@ fun main() {
     DefinitionFile("stb_truetype.gen").compile(stbPackage, "STBTruetype", stbLookup, hasDowncall = false)
     DefinitionFile("stb_vorbis.gen").compile(stbPackage, "STBVorbis", stbLookup, hasDowncall = false)
 
-    writeNativeImageRegistration(stbPackage, libBasename = "stb", hasForeignFeature = false)
+    writeNativeImageRegistration(stbPackage, hasForeignFeature = false)
 }

@@ -40,7 +40,7 @@ public final class OverrunGL {
     /**
      * The version of OverrunGL.
      */
-    public static final String VERSION = "0.2.0";
+    public static final String VERSION = "0.3.0";
     /**
      * The version of NFD native libraries.
      */

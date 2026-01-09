@@ -56,5 +56,5 @@ fun main() {
     )
     DefinitionFile("nfd.gen").compile(nfdPackage, "NFD", nfdLookup, hasDowncall = false)
 
-    writeNativeImageRegistration(nfdPackage, libBasename = "nfd", hasForeignFeature = false)
+    writeNativeImageRegistration(nfdPackage, hasForeignFeature = false)
 }

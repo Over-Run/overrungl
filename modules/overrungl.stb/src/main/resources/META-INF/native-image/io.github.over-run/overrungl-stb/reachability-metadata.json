@@ -1,5 +1,4 @@
 {
-  "resources": [{ "glob": "overrungl.stb/**/*stb.*" }],
   "reflection": [
     { "type": "overrungl.stb.STBIIORead", "allPublicMethods": true },
     { "type": "overrungl.stb.STBIIOSkip", "allPublicMethods": true },

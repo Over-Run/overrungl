@@ -38,7 +38,7 @@ fun main() {
     DefinitionFile("glfw3.gen").compile(glfwPackage, "GLFW", glfwLookup)
     DefinitionFile("glfw3native.gen").compile(glfwPackage, "GLFWNative", glfwLookup)
 
-    writeNativeImageRegistration(glfwPackage, libBasename = "glfw")
+    writeNativeImageRegistration(glfwPackage)
     generateLookupAccessor(
         packageName = "glfw",
         className = "GLFWLibrary",

@@ -1,5 +1,4 @@
 {
-  "resources": [{ "glob": "overrungl.openal/**/*openal.*" }],
   "reflection": [
     { "type": "overrungl.openal.ALFoldbackCallback", "allPublicMethods": true },
     { "type": "overrungl.openal.ALEventProcSOFT", "allPublicMethods": true },

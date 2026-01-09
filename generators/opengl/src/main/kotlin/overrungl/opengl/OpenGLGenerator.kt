@@ -498,7 +498,7 @@ fun main() {
     DefinitionFile("struct.gen").compileStructs(openglPackage)
     DefinitionFile("upcall.gen").compileUpcalls(openglPackage)
 
-    writeNativeImageRegistration(openglPackage, libBasename = null)
+    writeNativeImageRegistration(openglPackage)
 }
 
 data class GLEnum(val name: String, val value: String, val type: String?)
