@@ -1,4 +1,5 @@
 import groovy.json.JsonSlurper
+import org.gradle.api.provider.Provider
 import org.gradle.api.publish.maven.MavenPom
 import java.io.File
 import java.net.URI
@@ -36,22 +37,22 @@ fun MavenPom.setupPom(pomName: String, pomDescription: String, pomPackaging: Str
     }
 }
 
-fun suggestGitHubToken(token: String?) {
-    if (token == null) {
+fun suggestGitHubToken(token: Provider<String>) {
+    if (!token.isPresent) {
         System.err.println("warning: GitHub token not found; use token to send requests at a larger rate.")
         System.err.println("note: specify the token with project property overrungl.native.download.github.token or system property or environment variable OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
     }
 }
 
-fun HttpClient.downloadRepoFile(token: String?, owner: String, repo: String, path: String, dst: File) {
+fun HttpClient.downloadRepoFile(token: Provider<String>, owner: String, repo: String, path: String, dst: File) {
     println("Downloading file from $owner/$repo/$path to $dst")
 
     val request = HttpRequest.newBuilder()
         .uri(URI.create("https://api.github.com/repos/$owner/$repo/contents/$path"))
         .header("Accept", "application/vnd.github.object")
         .also {
-            if (token != null) {
-                it.header("Authorization", "Bearer $token")
+            if (token.isPresent) {
+                it.header("Authorization", "Bearer ${token.get()}")
             }
         }
         .header("X-GitHub-Api-Version", "2022-11-28")

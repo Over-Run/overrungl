@@ -130,9 +130,9 @@ jreleaser {
 }
 
 tasks.register("updateKhr") {
-    val token = rootProject.findProperty("overrungl.native.download.github.token") as String?
-        ?: System.getProperty("OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
-        ?: System.getenv("OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN")
+    val token = providers.gradleProperty("overrungl.native.download.github.token")
+        .orElse(providers.systemProperty("OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN"))
+        .orElse(providers.environmentVariable("OVERRUNGL_NATIVE_DOWNLOAD_GITHUB_TOKEN"))
     val glXml = project(":generators:opengl").projectDir.resolve("src/main/resources/gl.xml")
     val vkRes = project(":generators:vulkan").projectDir.resolve("src/main/resources/")
     val vkXml = vkRes.resolve("vk.xml")
@@ -155,7 +155,7 @@ ext["lwjglNatives"] = Pair(
     System.getProperty("os.arch")!!
 ).let { (name, arch) ->
     when {
-        "FreeBSD".equals(name) ->
+        "FreeBSD" == name ->
             "natives-freebsd"
 
         arrayOf("Linux", "SunOS", "Unit").any { name.startsWith(it) } ->
