@@ -22,48 +22,42 @@
  * SOFTWARE.
  */
 
-package overrungl.math;
+package overrungl.math.test;
 
-import jdk.incubator.vector.Vector;
-import jdk.incubator.vector.VectorMask;
+import org.junit.jupiter.api.Test;
+import overrungl.math.Vec3;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /// @since 0.1.0
-public interface Vec3<T> {
-    static Vec3<Double> doubles(double x, double y, double z) {
-        return new Vec3d(x, y, z);
+public class Vec3Test {
+    @Test
+    void testDouble() {
+        var v1 = Vec3.doubles(1, 2, 3);
+        var v2 = Vec3.doubles(4, 5, 6);
+
+        var vAdd = v1.add(v2);
+        assertEquals(Vec3.doubles(5, 7, 9), vAdd);
+
+        var vSub = v1.sub(v2);
+        assertEquals(Vec3.doubles(-3, -3, -3), vSub);
+
+        var vMul = v1.mul(v2);
+        assertEquals(Vec3.doubles(4, 10, 18), vMul);
+
+        var vDiv = v1.div(v2);
+        assertEquals(Vec3.doubles(1.0 / 4, 2.0 / 5, 3.0 / 6), vDiv);
+
+        var v1LengthSq = v1.lengthSquared();
+        assertEquals(14, v1LengthSq);
+
+        var v2LengthSq = v2.lengthSquared();
+        assertEquals(77, v2LengthSq);
+
+        var dot = v1.dot(v2);
+        assertEquals(32, dot);
+
+        var cross = v1.cross(v2);
+        assertEquals(Vec3.doubles(-3, 6, -3), cross);
     }
-
-    static Vec3<Double> doubles(double value) {
-        return new Vec3d(value);
-    }
-
-    Class<?> componentClass();
-
-    Vector<T> toVector(int offset);
-
-    Vector<T> toVector(int offset, VectorMask<T> mask);
-
-    Vector<T> toVector(int offset, int[] indexMap, int mapOffset);
-
-    Vector<T> toVector(int offset, int[] indexMap, int mapOffset, VectorMask<T> mask);
-
-    T x();
-
-    T y();
-
-    T z();
-
-    Vec3<T> add(Vec3<T> v);
-
-    Vec3<T> sub(Vec3<T> v);
-
-    Vec3<T> mul(Vec3<T> v);
-
-    Vec3<T> div(Vec3<T> v);
-
-    T lengthSquared();
-
-    T dot(Vec3<T> v);
-
-    Vec3<T> cross(Vec3<T> v);
 }

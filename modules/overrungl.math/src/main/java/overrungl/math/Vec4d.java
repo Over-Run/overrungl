@@ -100,7 +100,7 @@ final /*value*/ class Vec4d implements Vec4<Double> {
             case S_512_BIT, S_Max_BIT -> {
                 var mask = VectorMask.fromLong(SPECIES, 0b1111);
                 double[] arr = new double[4];
-                toVector(0, mask).add(v.toVector(0, mask)).intoArray(arr, 0, mask);
+                toVector(0, mask).add(v.toVector(0, mask), mask).intoArray(arr, 0, mask);
                 yield new Vec4d(arr);
             }
         };
@@ -123,7 +123,7 @@ final /*value*/ class Vec4d implements Vec4<Double> {
             case S_512_BIT, S_Max_BIT -> {
                 var mask = VectorMask.fromLong(SPECIES, 0b1111);
                 double[] arr = new double[4];
-                toVector(0, mask).sub(v.toVector(0, mask)).intoArray(arr, 0, mask);
+                toVector(0, mask).sub(v.toVector(0, mask), mask).intoArray(arr, 0, mask);
                 yield new Vec4d(arr);
             }
         };
@@ -146,7 +146,7 @@ final /*value*/ class Vec4d implements Vec4<Double> {
             case S_512_BIT, S_Max_BIT -> {
                 var mask = VectorMask.fromLong(SPECIES, 0b1111);
                 double[] arr = new double[4];
-                toVector(0, mask).mul(v.toVector(0, mask)).intoArray(arr, 0, mask);
+                toVector(0, mask).mul(v.toVector(0, mask), mask).intoArray(arr, 0, mask);
                 yield new Vec4d(arr);
             }
         };
@@ -169,7 +169,7 @@ final /*value*/ class Vec4d implements Vec4<Double> {
             case S_512_BIT, S_Max_BIT -> {
                 var mask = VectorMask.fromLong(SPECIES, 0b1111);
                 double[] arr = new double[4];
-                toVector(0, mask).div(v.toVector(0, mask)).intoArray(arr, 0, mask);
+                toVector(0, mask).div(v.toVector(0, mask), mask).intoArray(arr, 0, mask);
                 yield new Vec4d(arr);
             }
         };
@@ -212,7 +212,7 @@ final /*value*/ class Vec4d implements Vec4<Double> {
             case S_256_BIT -> toVector(0).mul(v.toVector(0)).reduceLanes(VectorOperators.ADD);
             case S_512_BIT, S_Max_BIT -> {
                 var mask = VectorMask.fromLong(SPECIES, 0b1111);
-                yield toVector(0, mask).mul(v.toVector(0, mask)).reduceLanes(VectorOperators.ADD, mask);
+                yield toVector(0, mask).mul(v.toVector(0, mask), mask).reduceLanes(VectorOperators.ADD, mask);
             }
         };
     }
@@ -221,7 +221,7 @@ final /*value*/ class Vec4d implements Vec4<Double> {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Vec4<?> vec4)) return false;
-        if (vec4.componentClass() != double.class) return false;
+        if (vec4.componentClass() != double.class && vec4.componentClass() != Double.class) return false;
         var vec4d = (Vec4<Double>) vec4;
         return Double.compare(components[0], vec4d.x()) == 0
             && Double.compare(components[1], vec4d.y()) == 0
