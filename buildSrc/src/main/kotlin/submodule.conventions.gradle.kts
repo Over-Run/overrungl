@@ -18,9 +18,9 @@ plugins {
     `java-library`
 }
 
-val projVersion: String by rootProject
-val lwjglVersion: String by rootProject
-val lwjglNatives: String by rootProject.ext
+val projVersion = rootProject.providers.gradleProperty("projVersion").get()
+val lwjglVersion = rootProject.providers.gradleProperty("lwjglVersion").get()
+val lwjglNatives = rootProject.ext["lwjglNatives"]
 
 dependencies {
     compileOnly(project(":core"))

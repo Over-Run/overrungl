@@ -1,19 +1,17 @@
-import org.jreleaser.model.Active
 import java.net.http.HttpClient
 import java.time.LocalDate
 
 plugins {
     `java-platform`
     `maven-publish`
-    id("org.jreleaser") version "1.20.0"
 }
 
-val projGroupId: String by rootProject
-val projVersion: String by rootProject
+val projGroupId = rootProject.providers.gradleProperty("projGroupId").get()
+val projVersion = rootProject.providers.gradleProperty("projVersion").get()
 
-val jdkVersion: String by rootProject
-val jdkEnablePreview: String by rootProject
-val jdkEarlyAccessDoc: String? by rootProject
+val jdkVersion = rootProject.providers.gradleProperty("jdkVersion").get()
+val jdkEnablePreview = rootProject.providers.gradleProperty("jdkEnablePreview").get()
+val jdkEarlyAccessDoc = rootProject.providers.gradleProperty("jdkEarlyAccessDoc").orNull
 
 val targetJavaVersion = jdkVersion.toInt()
 
@@ -75,57 +73,6 @@ publishing.repositories {
     maven {
         name = "stagingRepo"
         setUrl(layout.buildDirectory.dir("staging-deploy"))
-    }
-}
-
-// check https://jreleaser.org/guide/latest/examples/maven/maven-central.html#_gradle
-jreleaser {
-    signing {
-        active = Active.ALWAYS
-        armored = true
-    }
-    release {
-        github {
-            repoOwner = "Over-Run"
-            name = "overrungl"
-            username = "squid233"
-            overwrite = projVersion.endsWith("-SNAPSHOT")
-            prerelease {
-                pattern = ".*-(alpha|beta|rc)\\.\\d+"
-            }
-            releaseNotes {
-                enabled = true
-                configurationFile = ".github/release.yml"
-                milestone {
-                    close = false
-                }
-            }
-            changelog {
-                enabled = false
-            }
-        }
-    }
-    deploy {
-        maven {
-            mavenCentral {
-                create("release-deploy") {
-                    active = Active.RELEASE
-                    url = "https://central.sonatype.com/api/v1/publisher"
-                    stagingRepository("build/staging-deploy")
-                }
-            }
-            nexus2 {
-                create("snapshot-deploy") {
-                    active = Active.SNAPSHOT
-                    snapshotUrl = "https://central.sonatype.com/repository/maven-snapshots/"
-                    applyMavenCentralRules = true
-                    snapshotSupported = true
-                    closeRepository = true
-                    releaseRepository = true
-                    stagingRepository("build/staging-deploy")
-                }
-            }
-        }
     }
 }
 

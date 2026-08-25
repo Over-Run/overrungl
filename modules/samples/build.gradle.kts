@@ -32,10 +32,10 @@ overrunglModule {
     artifactName = "overrungl-samples"
 }
 
-val jmhVersion: String by rootProject
-val timerVersion: String by rootProject
-val lwjglVersion: String by rootProject
-val lwjglNatives: String by rootProject
+val jmhVersion = providers.gradleProperty("jmhVersion").get()
+val timerVersion = providers.gradleProperty("timerVersion").get()
+val lwjglVersion = providers.gradleProperty("lwjglVersion").get()
+val lwjglNatives = rootProject.ext["lwjglNatives"]
 
 dependencies {
     Artifact.entries.forEach { artifact ->

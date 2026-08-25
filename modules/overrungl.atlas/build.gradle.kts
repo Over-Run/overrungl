@@ -26,7 +26,7 @@ plugins {
     id("new-module.conventions")
 }
 
-val overrunglAtlasVersion: String by rootProject
+val overrunglAtlasVersion = rootProject.providers.gradleProperty("overrunglAtlasVersion").get()
 
 overrunglModuleNew {
     artifactName = "overrungl-atlas"

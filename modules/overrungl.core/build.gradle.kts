@@ -24,7 +24,7 @@ overrunglModule {
     lwjglArtifactName = "lwjgl"
 }
 
-val overrunPlatformVersion: String by rootProject
+val overrunPlatformVersion = rootProject.providers.gradleProperty("overrunPlatformVersion").get()
 
 dependencies {
     api("io.github.over-run:platform:$overrunPlatformVersion")

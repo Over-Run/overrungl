@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins { kotlin("jvm") }
 
-val kotlinTargetJdkVersion: String by rootProject
+val kotlinTargetJdkVersion = rootProject.providers.gradleProperty("kotlinTargetJdkVersion").get()
 
 repositories {
     mavenCentral()

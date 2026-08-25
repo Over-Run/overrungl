@@ -8,13 +8,13 @@ plugins {
 
 val overrunglModuleNew = extensions.create<OverrunGLNewModuleExtension>("overrunglModuleNew")
 
-val projGroupId: String by rootProject
+val projGroupId = rootProject.providers.gradleProperty("projGroupId").get()
 
-val jspecifyVersion: String by rootProject
-val junitVersion: String by rootProject
+val jspecifyVersion = rootProject.providers.gradleProperty("jspecifyVersion").get()
+val junitVersion = rootProject.providers.gradleProperty("junitVersion").get()
 
-val jdkVersion: String by rootProject
-val jdkEnablePreview: String by rootProject
+val jdkVersion = rootProject.providers.gradleProperty("jdkVersion").get()
+val jdkEnablePreview = rootProject.providers.gradleProperty("jdkEnablePreview").get()
 val targetJavaVersion = jdkVersion.toInt()
 
 group = projGroupId

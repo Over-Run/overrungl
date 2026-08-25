@@ -8,7 +8,7 @@ overrunglModule {
     publishInfo = Artifact.JOML
 }
 
-val jomlVersion: String by rootProject
+val jomlVersion = rootProject.providers.gradleProperty("jomlVersion").get()
 
 dependencies {
     api("org.joml:joml:$jomlVersion")

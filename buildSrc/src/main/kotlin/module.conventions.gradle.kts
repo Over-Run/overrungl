@@ -31,18 +31,18 @@ plugins {
 
 val overrunglModule = extensions.create<OverrunGLModuleExtension>("overrunglModule")
 
-val projGroupId: String by rootProject
-val projName: String by rootProject
-val projVersion: String by rootProject
+val projGroupId = rootProject.providers.gradleProperty("projGroupId").get()
+val projName = rootProject.providers.gradleProperty("projName").get()
+val projVersion = rootProject.providers.gradleProperty("projVersion").get()
 
-val jdkVersion: String by rootProject
-val jdkEnablePreview: String by rootProject
+val jdkVersion = rootProject.providers.gradleProperty("jdkVersion").get()
+val jdkEnablePreview = rootProject.providers.gradleProperty("jdkEnablePreview").get()
 
 val targetJavaVersion = jdkVersion.toInt()
 
-val graalvmVersion: String by rootProject
-val jspecifyVersion: String by rootProject
-val junitVersion: String by rootProject
+val graalvmVersion = rootProject.providers.gradleProperty("graalvmVersion").get()
+val jspecifyVersion = rootProject.providers.gradleProperty("jspecifyVersion").get()
+val junitVersion = rootProject.providers.gradleProperty("junitVersion").get()
 
 group = projGroupId
 version = projVersion
@@ -105,22 +105,22 @@ tasks.named<Jar>("jar") {
     }
 }
 
-val sourcesJar by tasks.getting(Jar::class) {
+val sourcesJar = tasks.getByName<Jar>("sourcesJar") {
     dependsOn(tasks.classes)
     archiveBaseName.set(overrunglModule.artifactName)
     archiveClassifier.set("sources")
     from(sourceSets.main.get().allSource)
 }
 
-val javadocJar by tasks.getting(Jar::class) {
-    val javadoc by tasks
+val javadocJar = tasks.getByName<Jar>("javadocJar") {
+    val javadoc = tasks["javadoc"]
     dependsOn(javadoc)
     archiveBaseName.set(overrunglModule.artifactName)
     archiveClassifier.set("javadoc")
     from(javadoc)
 }
 
-val instrumentedJar by tasks.registering(Jar::class) {
+val instrumentedJar = tasks.register<Jar>("instrumentedJar") {
     archiveBaseName.set(overrunglModule.artifactName)
     archiveClassifier.set("instrumented")
     from(sourceSets.main.get().output)

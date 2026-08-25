@@ -31,7 +31,7 @@ pluginManagement {
     }
 }
 
-val projName: String by settings
+val projName = settings.providers.gradleProperty("projName").get()
 
 rootProject.name = projName
 

@@ -21,12 +21,12 @@ plugins {
     java
 }
 
-val overrunPlatformVersion: String by rootProject
-val graalvmVersion: String by rootProject
-val jomlVersion: String by rootProject
-val jspecifyVersion: String by rootProject
+val overrunPlatformVersion = rootProject.providers.gradleProperty("overrunPlatformVersion").get()
+val graalvmVersion = rootProject.providers.gradleProperty("graalvmVersion").get()
+val jomlVersion = rootProject.providers.gradleProperty("jomlVersion").get()
+val jspecifyVersion = rootProject.providers.gradleProperty("jspecifyVersion").get()
 
-val jdkVersion: String by rootProject
+val jdkVersion = rootProject.providers.gradleProperty("jdkVersion").get()
 val targetJavaVersion = jdkVersion.toInt()
 
 val projectsToDoc = Artifact.entries.map { rootProject.project(it.subprojectName) }
@@ -60,7 +60,7 @@ dependencies {
             compatibilityRules.add(InstrumentedJarsRule::class.java)
         }
     }
-    val instrumentedApi by configurations
+    val instrumentedApi = configurations["instrumentedApi"]
     projectsToDoc.forEach { instrumentedApi(it) }
     instrumentedApi("io.github.over-run:platform:${overrunPlatformVersion}")
     instrumentedApi("org.graalvm.sdk:nativeimage:${graalvmVersion}")

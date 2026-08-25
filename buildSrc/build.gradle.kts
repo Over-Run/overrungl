@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins { `kotlin-dsl` }
 
-val kotlinPluginVersion: String by rootProject
-val kotlinTargetJdkVersion: String by rootProject
+val kotlinPluginVersion = rootProject.providers.gradleProperty("kotlinPluginVersion").get()
+val kotlinTargetJdkVersion = rootProject.providers.gradleProperty("kotlinTargetJdkVersion").get()
 
 repositories {
     mavenCentral()

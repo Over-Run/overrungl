@@ -26,7 +26,7 @@ plugins {
     id("new-module.conventions")
 }
 
-val overrunglFileVersion: String by rootProject
+val overrunglFileVersion = rootProject.providers.gradleProperty("overrunglFileVersion").get()
 
 overrunglModuleNew {
     artifactName = "overrungl-file"

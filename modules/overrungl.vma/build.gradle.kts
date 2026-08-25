@@ -19,7 +19,7 @@ plugins {
     id("submodule.conventions")
 }
 
-val projVersion: String by rootProject
+val projVersion = rootProject.providers.gradleProperty("projVersion").get()
 
 overrunglModule {
     artifactName = "overrungl-vma"
